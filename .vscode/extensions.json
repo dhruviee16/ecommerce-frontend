@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "bradlc.vscode-tailwindcss",
+    "esbenp.prettier-vscode",
+    "christian-kohler.path-intellisense",
+    "pkief.material-icon-theme",
+    "ms-vscode.vscode-typescript-next",
+    "dbaeumer.vscode-eslint",
+    "dsznajder.es7-react-js-snippets",
+    "aaron-bond.better-comments",
+    "steoates.autoimport",
+    "formulahendry.auto-close-tag"
+  ]
+}

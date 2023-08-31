@@ -1,5 +1,10 @@
-import './globals.css';
+'use client';
+
+import HomePage from '@/components/Home/page';
+import Navigation from '@/components/Navigation/page';
 import { Inter } from 'next/font/google';
+import './globals.css';
+import { Footer } from '@/components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -15,7 +20,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Navigation></Navigation>
+        {children}
+        <HomePage></HomePage>
+        <Footer></Footer>
+      </body>
     </html>
   );
 }

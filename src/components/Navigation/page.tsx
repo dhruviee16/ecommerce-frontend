@@ -7,8 +7,10 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import { Fragment, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import logo from 'public/Arty-US_Web-removebg-preview.png';
+import { Fragment, useState } from 'react';
 
 const navigation = {
   categories: [
@@ -296,7 +298,7 @@ function Navigation() {
                                   className="object-cover object-center"
                                 />
                               </div>
-                              <a
+                              <Link
                                 href={item.href}
                                 className="mt-6 block font-medium text-gray-900"
                               >
@@ -305,7 +307,7 @@ function Navigation() {
                                   aria-hidden="true"
                                 />
                                 {item.name}
-                              </a>
+                              </Link>
                               {/* <p aria-hidden="true" className="mt-1">
                                 Shop now
                               </p> */}
@@ -327,12 +329,12 @@ function Navigation() {
                             >
                               {section.items.map((item) => (
                                 <li key={item.name} className="flow-root">
-                                  <a
+                                  <Link
                                     href={item.href}
                                     className="-m-2 block p-2 text-gray-500"
                                   >
                                     {item.name}
-                                  </a>
+                                  </Link>
                                 </li>
                               ))}
                             </ul>
@@ -346,37 +348,37 @@ function Navigation() {
                 {/* <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                   {navigation.pages.map((page) => (
                     <div key={page.name} className="flow-root">
-                      <a
+                      <Link
                         href={page.href}
                         className="-m-2 block p-2 font-medium text-gray-900"
                       >
                         {page.name}
-                      </a>
+                      </Link>
                     </div>
                   ))}
                 </div> */}
 
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                   <div className="flow-root">
-                    <a
+                    <Link
                       href="#"
                       className="-m-2 block p-2 font-medium text-gray-900"
                     >
                       Sign in
-                    </a>
+                    </Link>
                   </div>
-                  <div className="flow-root">
-                    <a
+                  {/* <div className="flow-root">
+                    <Link
                       href="#"
                       className="-m-2 block p-2 font-medium text-gray-900"
                     >
                       Create account
-                    </a>
-                  </div>
+                    </Link>
+                  </div> */}
                 </div>
 
                 {/* <div className="border-t border-gray-200 px-4 py-6">
-                  <a href="#" className="-m-2 flex items-center p-2">
+                  <Link href="#" className="-m-2 flex items-center p-2">
                     <img
                       src="https://tailwindui.com/img/flags/flag-canada.svg"
                       alt=""
@@ -386,7 +388,7 @@ function Navigation() {
                       CAD
                     </span>
                     <span className="sr-only">, change currency</span>
-                  </a>
+                  </Link>
                 </div> */}
               </Dialog.Panel>
             </Transition.Child>
@@ -416,8 +418,13 @@ function Navigation() {
               </button>
 
               {/* Logo */}
+              <div className="ml-4 flex lg:ml-0">
+                <Link href="/">
+                  <Image src={logo} alt="" height={140} width={140} />
+                </Link>
+              </div>
               {/* <div className="ml-4 flex lg:ml-0">
-                <a href="#">
+                <Link href="#">
                   <span className="sr-only">Your Company</span>
                   <Image
                     className="h-8 w-auto"
@@ -425,7 +432,7 @@ function Navigation() {
                     alt=""
                     fill
                   />
-                </a>
+                </Link>
               </div> */}
 
               {/* Flyout menus */}
@@ -480,7 +487,7 @@ function Navigation() {
                                               className="object-cover object-center"
                                             />
                                           </div>
-                                          <a
+                                          <Link
                                             href={item.href}
                                             className="mt-6 block font-medium text-gray-900"
                                           >
@@ -489,7 +496,7 @@ function Navigation() {
                                               aria-hidden="true"
                                             />
                                             {item.name}
-                                          </a>
+                                          </Link>
                                           {/* <p
                                             aria-hidden="true"
                                             className="mt-1"
@@ -518,12 +525,12 @@ function Navigation() {
                                                 key={item.name}
                                                 className="flex"
                                               >
-                                                <a
+                                                <Link
                                                   href={item.href}
                                                   className="hover:text-gray-800"
                                                 >
                                                   {item.name}
-                                                </a>
+                                                </Link>
                                               </li>
                                             ))}
                                           </ul>
@@ -541,36 +548,36 @@ function Navigation() {
                   ))}
 
                   {/* {navigation.pages.map((page) => (
-                    <a
+                    <Link
                       key={page.name}
                       href={page.href}
                       className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
                     >
                       {page.name}
-                    </a>
+                    </Link>
                   ))} */}
                 </div>
               </Popover.Group>
 
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  <a
-                    href="#"
+                  <Link
+                    href="/auth/SignIn"
                     className="text-sm font-medium text-gray-700 hover:text-gray-800"
                   >
                     Sign in
-                  </a>
+                  </Link>
                   <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
-                  <a
+                  {/* <Link
                     href="#"
                     className="text-sm font-medium text-gray-700 hover:text-gray-800"
                   >
                     Create account
-                  </a>
+                  </Link> */}
                 </div>
 
                 {/* <div className="hidden lg:ml-8 lg:flex">
-                  <a
+                  <Link
                     href="#"
                     className="flex items-center text-gray-700 hover:text-gray-800"
                   >
@@ -581,33 +588,39 @@ function Navigation() {
                     />
                     <span className="ml-3 block text-sm font-medium">CAD</span>
                     <span className="sr-only">, change currency</span>
-                  </a>
+                  </Link>
                 </div> */}
                 <div className="header_option">
-                  <a href="#" className="p-2 text-gray-400 hover:text-gray-500">
+                  <Link
+                    href="#"
+                    className="p-2 text-gray-400 hover:text-gray-500"
+                  >
                     <span className="header_favourite">
                       <FavoriteBorderIcon
                         className="h-6 w-6"
                         aria-hidden="true"
                       ></FavoriteBorderIcon>
                     </span>
-                  </a>
+                  </Link>
                 </div>
 
                 {/* Search */}
                 <div className="flex lg:ml-6">
-                  <a href="#" className="p-2 text-gray-400 hover:text-gray-500">
+                  <Link
+                    href="#"
+                    className="p-2 text-gray-400 hover:text-gray-500"
+                  >
                     <span className="sr-only">Search</span>
                     <MagnifyingGlassIcon
                       className="h-6 w-6"
                       aria-hidden="true"
                     />
-                  </a>
+                  </Link>
                 </div>
 
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">
-                  <a href="#" className="group -m-2 flex items-center p-2">
+                  <Link href="#" className="group -m-2 flex items-center p-2">
                     <ShoppingBagIcon
                       className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
@@ -616,7 +629,7 @@ function Navigation() {
                       0
                     </span>
                     <span className="sr-only">items in cart, view bag</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

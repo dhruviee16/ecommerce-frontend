@@ -1,6 +1,5 @@
 import Image from 'next/image';
 
-
 const Test = () => {
   return (
     <div className="flex flex-row">
@@ -19,7 +18,7 @@ const Test = () => {
           <div>price</div>
         </div>
       </div>
-      
+
       <div className="flex flex-col justify-center items-center">
         <div className="hover:opacity-75 transition-opacity duration-200 h-auto w-auto bg-slate-4 first-letter:00">
           <Image

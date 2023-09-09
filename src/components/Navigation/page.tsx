@@ -4,14 +4,22 @@ import {
   Bars3Icon,
   MagnifyingGlassIcon,
   ShoppingBagIcon,
-  XMarkIcon,
+  XMarkIcon
 } from '@heroicons/react/24/outline';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import PersonIcon from '@mui/icons-material/Person';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import PopupState, { bindMenu, bindTrigger } from 'material-ui-popup-state';
 import Image from 'next/image';
 import Link from 'next/link';
-import logo from 'public/Arty-US_Web-removebg-preview.png';
+import logo from 'public/Arty-US_logo.png';
+import * as React from 'react';
 import { Fragment, useState } from 'react';
 
+
+
+const Auth = ["Sign Up As Customer", "Sgn Up As Trader", "Log In"];
 const navigation = {
   categories: [
     {
@@ -22,14 +30,14 @@ const navigation = {
           name: 'Stationery Essentials',
           href: '#',
           imageSrc:
-            'https://papier.imgix.net/https%3A%2F%2Fd1o785do8fyxgx.cloudfront.net%2Fnav_images%2Fimages%2F000%2F000%2F183%2Fretina%2F0623_SITE_Nav_Desk_Accessories.jpg%3F1686052387?ixlib=rb-3.2.1&w=400&auto=format%2Ccompress&s=d1d7de1da813ba408d374120928622c2',
+            '/image/navbarImages/nav_school_supplies.jpg',
           imageAlt: 'Stationery Image',
         },
         {
           name: 'Stationery Essentials',
           href: '#',
           imageSrc:
-            'https://img.freepik.com/free-photo/basket-with-back-school-essentials_23-2148587237.jpg?size=626&ext=jpg&ga=GA1.2.1007388061.1676950923&semt=sph',
+            '/image/navbarImages/nav_school_supplies2.jpg',
           imageAlt: 'Stationery Image.',
         },
       ],
@@ -39,7 +47,7 @@ const navigation = {
           name: 'Stationery Basics',
           items: [
             { name: 'Pencils', href: '#' },
-            { name: 'Pens', href: '#' },
+            { name: 'Pens', href: '/Products/Pens' },
             { name: 'Sharpners', href: '#' },
             { name: 'Erasers', href: '#' },
             { name: 'Drawing Books', href: '#' },
@@ -80,14 +88,14 @@ const navigation = {
           name: 'Art Essentials',
           href: '#',
           imageSrc:
-            'https://img.freepik.com/free-photo/close-up-set-painting-elements_23-2148276438.jpg?size=626&ext=jpg&ga=GA1.2.1007388061.1676950923&semt=ais',
+            '/image/navbarImages/nav_art&craft.jpg',
           imageAlt: 'Art Essentials',
         },
         {
           name: 'Art Essentials',
           href: '#',
           imageSrc:
-            'https://www.skybluestationerymart.com/cdn/shop/products/46011_2_360x.jpg?v=1644222330',
+            '/image/navbarImages/nav_art&craft2.jpg',
           imageAlt: 'Art Essentials',
         },
       ],
@@ -143,14 +151,14 @@ const navigation = {
           name: 'Meetings Planner',
           href: '#',
           imageSrc:
-            'https://images-cdn.ubuy.co.in/6359e5a9fde4e01361618ec8-dunwell-undated-planner-weekly-monthly.jpg',
+            '/image/navbarImages/nav_Planners.jpg',
           imageAlt: 'Meetings Planner',
         },
         {
           name: 'Everyday Journal',
           href: '#',
           imageSrc:
-            'https://papier.imgix.net/https%3A%2F%2Fd1o785do8fyxgx.cloudfront.net%2Fuser_photos%2Fimages%2F000%2F587%2F149%2Foriginal%2F0823_HPGs_03.jpg%3F1691575678?ixlib=rb-3.2.1&w=940&auto=format%2Ccompress&s=777bebb2992a117904c6042848af0a17',
+            '/image/navbarImages/nav_Planners2.jpg',
           imageAlt: 'Everyday Journal',
         },
       ],
@@ -185,14 +193,14 @@ const navigation = {
           name: 'Stationery Hamper',
           href: '#',
           imageSrc:
-            'https://images-cdn.ubuy.co.in/6359e5a9fde4e01361618ec8-dunwell-undated-planner-weekly-monthly.jpg',
+            '/image/HomeImages/MiniPigments.jpg',
           imageAlt: 'Sattionery Hamper',
         },
         {
           name: 'Art & Carft Hamper',
           href: '#',
           imageSrc:
-            'https://papier.imgix.net/https%3A%2F%2Fd1o785do8fyxgx.cloudfront.net%2Fuser_photos%2Fimages%2F000%2F587%2F149%2Foriginal%2F0823_HPGs_03.jpg%3F1691575678?ixlib=rb-3.2.1&w=940&auto=format%2Ccompress&s=777bebb2992a117904c6042848af0a17',
+            '/image/HomeImages/MiniPigments.jpg',
           imageAlt: 'Art & Craft Hamper',
         },
       ],
@@ -210,6 +218,7 @@ const navigation = {
     },
   ],
 };
+
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
@@ -296,6 +305,8 @@ function Navigation() {
                                   src={item.imageSrc}
                                   alt={item.imageAlt}
                                   className="object-cover object-center"
+                                  height={450}
+                                  width={500}
                                 />
                               </div>
                               <Link
@@ -361,20 +372,12 @@ function Navigation() {
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                   <div className="flow-root">
                     <Link
-                      href="#"
+                      href="/auth/SignIn"
                       className="-m-2 block p-2 font-medium text-gray-900"
                     >
                       Sign in
                     </Link>
                   </div>
-                  {/* <div className="flow-root">
-                    <Link
-                      href="#"
-                      className="-m-2 block p-2 font-medium text-gray-900"
-                    >
-                      Create account
-                    </Link>
-                  </div> */}
                 </div>
 
                 {/* <div className="border-t border-gray-200 px-4 py-6">
@@ -416,7 +419,6 @@ function Navigation() {
                 <span className="sr-only">Open menu</span>
                 <Bars3Icon className="h-6 w-6" aria-hidden="true" />
               </button>
-
               {/* Logo */}
               <div className="ml-4 flex lg:ml-0">
                 <Link href="/">
@@ -485,6 +487,8 @@ function Navigation() {
                                               src={item.imageSrc}
                                               alt={item.imageAlt}
                                               className="object-cover object-center"
+                                              height={80}
+                                              width={80}
                                             />
                                           </div>
                                           <Link
@@ -559,57 +563,38 @@ function Navigation() {
                 </div>
               </Popover.Group>
 
+
               <div className="ml-auto flex items-center">
-                <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
+                {/* <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                   <Link
                     href="/auth/SignIn"
                     className="text-sm font-medium text-gray-700 hover:text-gray-800"
                   >
-                    Sign in
+                    <PersonIcon />
                   </Link>
                   <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
-                  {/* <Link
-                    href="#"
-                    className="text-sm font-medium text-gray-700 hover:text-gray-800"
-                  >
-                    Create account
-                  </Link> */}
-                </div>
-
-                {/* <div className="hidden lg:ml-8 lg:flex">
-                  <Link
-                    href="#"
-                    className="flex items-center text-gray-700 hover:text-gray-800"
-                  >
-                    <img
-                      src="https://tailwindui.com/img/flags/flag-canada.svg"
-                      alt=""
-                      className="block h-auto w-5 flex-shrink-0"
-                    />
-                    <span className="ml-3 block text-sm font-medium">CAD</span>
-                    <span className="sr-only">, change currency</span>
-                  </Link>
                 </div> */}
-                <div className="header_option">
-                  <Link
-                    href="#"
-                    className="p-2 text-gray-400 hover:text-gray-500"
-                  >
-                    <span className="header_favourite">
-                      <FavoriteBorderIcon
-                        className="h-6 w-6"
-                        aria-hidden="true"
-                      ></FavoriteBorderIcon>
-                    </span>
-                  </Link>
+
+                <div>
+                  <PopupState variant="popover" popupId="demo-popup-menu">
+                    {(popupState) => (
+                      <React.Fragment>
+                        <Button variant="contained" {...bindTrigger(popupState)}>
+                          <PersonIcon />
+                        </Button>
+                        <Menu {...bindMenu(popupState)}>
+                          <MenuItem><Link href="/auth/SignIn">Sign Up As Customer</Link></MenuItem>
+                          <MenuItem onClick={popupState.close}>Sign Up As Trader</MenuItem>
+                          <MenuItem onClick={popupState.close}>Log In</MenuItem>
+                        </Menu>
+                      </React.Fragment>
+                    )}
+                  </PopupState>
                 </div>
 
                 {/* Search */}
                 <div className="flex lg:ml-6">
-                  <Link
-                    href="#"
-                    className="p-2 text-gray-400 hover:text-gray-500"
-                  >
+                  <Link href="#" className="p-2 text-gray-400 hover:text-gray-500">
                     <span className="sr-only">Search</span>
                     <MagnifyingGlassIcon
                       className="h-6 w-6"

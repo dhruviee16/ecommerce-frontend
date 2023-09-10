@@ -3,16 +3,16 @@
 import Image from 'next/image';
 import CategoryCircles from './CategoryCircles';
 import HomeProducts1 from './HomeProducts';
+import poster from 'public/image/HomeImages/stationery.jpg';
 
 function HomePage() {
   return (
     <div>
       <div className="HomeImgThink">
         <Image
-          src="/image/HomeImages/Think.jpg"
+          src={poster}
+          className='object-cover object-center w-[100%] h-[100vh]'
           alt="Everthing that you think IMAGE"
-          height={400}
-          width={5000}
         />
       </div>
       <div className="space-y-3">

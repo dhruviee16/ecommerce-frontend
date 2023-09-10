@@ -9,7 +9,7 @@ import {
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Image from 'next/image';
 import Link from 'next/link';
-import logo from 'public/Arty-US_Web-removebg-preview.png';
+import logo from 'public/Arty-US_logo.png';
 import { Fragment, useState } from 'react';
 
 const navigation = {
@@ -396,14 +396,14 @@ function Navigation() {
         </Dialog>
       </Transition.Root>
 
-      <header className="relative bg-white">
-        <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
-          Imagine Crafts....Imagine Us...
+      <header className=" bg-white">
+        <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-bold text-white sm:px-6 lg:px-8">
+          IMAGINE CRAFTS.... IMAGINE US!
         </p>
 
         <nav
           aria-label="Top"
-          className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+          className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8  top-0 z-50"
         >
           <div className="border-b border-gray-200">
             <div className="flex h-16 items-center">

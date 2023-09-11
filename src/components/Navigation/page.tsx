@@ -14,11 +14,10 @@ import PopupState, { bindMenu, bindTrigger } from 'material-ui-popup-state';
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from 'public/Arty-US_logo.png';
+import React from 'react';
 import { Fragment, useState } from 'react';
 
 
-
-const Auth = ["Sign Up As Customer", "Sgn Up As Trader", "Log In"];
 const navigation = {
   categories: [
     {
@@ -104,11 +103,11 @@ const navigation = {
           name: 'Art Paints',
           items: [
             { name: 'Acrylic Colors', href: '#' },
-            { name: 'Pants', href: '#' },
-            { name: 'Sweaters', href: '#' },
-            { name: 'T-Shirts', href: '#' },
-            { name: 'Jackets', href: '#' },
-            { name: 'Activewear', href: '#' },
+            { name: 'Water Colors', href: '#' },
+            { name: 'Fabric Colors', href: '#' },
+            { name: 'Pastel Colors', href: '#' },
+            { name: 'Oil Colors', href: '#' },
+            { name: 'Spray Paints', href: '#' },
             { name: 'Browse All', href: '#' },
           ],
         },
@@ -116,12 +115,9 @@ const navigation = {
           id: 'Markers',
           name: 'Markers',
           items: [
-            { name: 'Watches', href: '#' },
-            { name: 'Wallets', href: '#' },
-            { name: 'Bags', href: '#' },
-            { name: 'Sunglasses', href: '#' },
-            { name: 'Hats', href: '#' },
-            { name: 'Belts', href: '#' },
+            { name: 'Sketch Markers', href: '#' },
+            { name: 'Brush Markers', href: '#' },
+            { name: 'Fabric Markers', href: '#' },
           ],
         },
         {

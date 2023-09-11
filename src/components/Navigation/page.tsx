@@ -18,8 +18,6 @@ import * as React from 'react';
 import { Fragment, useState } from 'react';
 
 
-
-const Auth = ["Sign Up As Customer", "Sgn Up As Trader", "Log In"];
 const navigation = {
   categories: [
     {
@@ -105,11 +103,11 @@ const navigation = {
           name: 'Art Paints',
           items: [
             { name: 'Acrylic Colors', href: '#' },
-            { name: 'Pants', href: '#' },
-            { name: 'Sweaters', href: '#' },
-            { name: 'T-Shirts', href: '#' },
-            { name: 'Jackets', href: '#' },
-            { name: 'Activewear', href: '#' },
+            { name: 'Water Colors', href: '#' },
+            { name: 'Fabric Colors', href: '#' },
+            { name: 'Pastel Colors', href: '#' },
+            { name: 'Oil Colors', href: '#' },
+            { name: 'Spray Paints', href: '#' },
             { name: 'Browse All', href: '#' },
           ],
         },
@@ -117,12 +115,9 @@ const navigation = {
           id: 'Markers',
           name: 'Markers',
           items: [
-            { name: 'Watches', href: '#' },
-            { name: 'Wallets', href: '#' },
-            { name: 'Bags', href: '#' },
-            { name: 'Sunglasses', href: '#' },
-            { name: 'Hats', href: '#' },
-            { name: 'Belts', href: '#' },
+            { name: 'Sketch Markers', href: '#' },
+            { name: 'Brush Markers', href: '#' },
+            { name: 'Fabric Markers', href: '#' },
           ],
         },
         {
@@ -399,14 +394,14 @@ function Navigation() {
         </Dialog>
       </Transition.Root>
 
-      <header className="relative bg-white">
+      <header className="relative bg-white z-50">
         <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
           Imagine Crafts....Imagine Us...
         </p>
 
         <nav
           aria-label="Top"
-          className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+          className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-50"
         >
           <div className="border-b border-gray-200">
             <div className="flex h-16 items-center">

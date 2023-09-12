@@ -4,14 +4,15 @@ import { Footer } from '@/components/Footer';
 
 import Layout from '@/components/Layout';
 import { Navigation } from '@/components/Navigation';
+import { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const metadata = {
-  title: 'Arty Us',
-  description: 'Fueling your imagination',
+export const metadata: Metadata = {
+  title:'Arty Us',
+  description:'Fueling your imagination',
 };
 
 export default function RootLayout({

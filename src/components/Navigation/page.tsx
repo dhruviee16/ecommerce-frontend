@@ -44,7 +44,7 @@ const navigation = {
           id: 'StationeryBasics',
           name: 'Stationery Basics',
           items: [
-            { name: 'Pencils', href: '#' },
+            { name: 'Pencils', href: '/Products/Pencils' },
             { name: 'Pens', href: '/Products/Pens' },
             { name: 'Sharpners', href: '#' },
             { name: 'Erasers', href: '#' },
@@ -351,19 +351,6 @@ function Navigation() {
                   </Tab.Panels>
                 </Tab.Group>
 
-                {/* <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-                  {navigation.pages.map((page) => (
-                    <div key={page.name} className="flow-root">
-                      <Link
-                        href={page.href}
-                        className="-m-2 block p-2 font-medium text-gray-900"
-                      >
-                        {page.name}
-                      </Link>
-                    </div>
-                  ))}
-                </div> */}
-
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                   <div className="flow-root">
                     <Link
@@ -375,19 +362,6 @@ function Navigation() {
                   </div>
                 </div>
 
-                {/* <div className="border-t border-gray-200 px-4 py-6">
-                  <Link href="#" className="-m-2 flex items-center p-2">
-                    <img
-                      src="https://tailwindui.com/img/flags/flag-canada.svg"
-                      alt=""
-                      className="block h-auto w-5 flex-shrink-0"
-                    />
-                    <span className="ml-3 block text-base font-medium text-gray-900">
-                      CAD
-                    </span>
-                    <span className="sr-only">, change currency</span>
-                  </Link>
-                </div> */}
               </Dialog.Panel>
             </Transition.Child>
           </div>
@@ -420,17 +394,6 @@ function Navigation() {
                   <Image src={logo} alt="" height={140} width={140} />
                 </Link>
               </div>
-              {/* <div className="ml-4 flex lg:ml-0">
-                <Link href="#">
-                  <span className="sr-only">Your Company</span>
-                  <Image
-                    className="h-8 w-auto"
-                    src={logo}
-                    alt=""
-                    fill
-                  />
-                </Link>
-              </div> */}
 
               {/* Flyout menus */}
               <Popover.Group className="hidden lg:ml-8 lg:block lg:self-stretch">
@@ -496,12 +459,6 @@ function Navigation() {
                                             />
                                             {item.name}
                                           </Link>
-                                          {/* <p
-                                            aria-hidden="true"
-                                            className="mt-1"
-                                          >
-                                            Shop now
-                                          </p> */}
                                         </div>
                                       ))}
                                     </div>
@@ -546,29 +503,11 @@ function Navigation() {
                     </Popover>
                   ))}
 
-                  {/* {navigation.pages.map((page) => (
-                    <Link
-                      key={page.name}
-                      href={page.href}
-                      className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
-                    >
-                      {page.name}
-                    </Link>
-                  ))} */}
                 </div>
               </Popover.Group>
 
 
               <div className="ml-auto flex items-center">
-                {/* <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  <Link
-                    href="/auth/SignIn"
-                    className="text-sm font-medium text-gray-700 hover:text-gray-800"
-                  >
-                    <PersonIcon />
-                  </Link>
-                  <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
-                </div> */}
 
                 <div>
                   <PopupState variant="popover" popupId="demo-popup-menu">

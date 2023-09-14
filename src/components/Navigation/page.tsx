@@ -37,7 +37,7 @@ const navigation = {
           id: 'StationeryBasics',
           name: 'Stationery Basics',
           items: [
-            { name: 'Pencils', href: '#' },
+            { name: 'Pencils', href: '/Products/Pencils' },
             { name: 'Pens', href: '/Products/Pens' },
             { name: 'Sharpners', href: '#' },
             { name: 'Erasers', href: '#' },
@@ -176,13 +176,13 @@ const navigation = {
         {
           name: 'Stationery Hamper',
           href: '#',
-          imageSrc: '/image/HomeImages/MiniPigments.jpg',
-          imageAlt: 'Sattionery Hamper',
+          imageSrc: '/image/navbarImages/hamper1.webp',
+          imageAlt: 'Stationery Hamper',
         },
         {
           name: 'Art & Carft Hamper',
           href: '#',
-          imageSrc: '/image/HomeImages/MiniPigments.jpg',
+          imageSrc: '/image/navbarImages/hamper2.jpg',
           imageAlt: 'Art & Craft Hamper',
         },
       ],
@@ -358,9 +358,9 @@ function Navigation() {
         </Dialog>
       </Transition.Root>
       <header className=" bg-white z-50">
-        <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-bold text-white sm:px-6 lg:px-8">
+        {/* <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-bold text-white sm:px-6 lg:px-8">
           IMAGINE CRAFTS.... IMAGINE US!
-        </p>
+        </p> */}
 
         <nav
           aria-label="Top"
@@ -413,7 +413,7 @@ function Navigation() {
                             leaveFrom="opacity-100"
                             leaveTo="opacity-0"
                           >
-                            <Popover.Panel className="absolute inset-x-0 top-24 text-sm text-gray-500 z-50">
+                            <Popover.Panel className="absolute inset-x-0 top-16 text-sm text-gray-500 z-50">
                               {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
                               <div
                                 className="absolute inset-0 top-1/2 bg-white shadow"
@@ -434,8 +434,8 @@ function Navigation() {
                                               src={item.imageSrc}
                                               alt={item.imageAlt}
                                               className="object-cover object-center"
-                                              height={80}
-                                              width={80}
+                                              height={400}
+                                              width={400}
                                             />
                                           </div>
                                           <Link
@@ -448,12 +448,6 @@ function Navigation() {
                                             />
                                             {item.name}
                                           </Link>
-                                          {/* <p
-                                            aria-hidden="true"
-                                            className="mt-1"
-                                          >
-                                            Shop now
-                                          </p> */}
                                         </div>
                                       ))}
                                     </div>

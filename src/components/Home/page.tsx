@@ -1,18 +1,19 @@
 'use client';
 
 import Image from 'next/image';
+import poster from 'public/image/HomeImages/artist.jpg';
 import CategoryCircles from './CategoryCircles';
 import HomeProducts1 from './HomeProducts';
 
 function HomePage() {
   return (
     <div>
+      <title>ArtyUs</title>
       <div className="HomeImgThink">
         <Image
-          src="/image/HomeImages/Think.jpg"
+          src={poster}
+          className='object-cover object-center w-[100%] h-[50vh]'
           alt="Everthing that you think IMAGE"
-          height={400}
-          width={5000}
         />
       </div>
       <div className="space-y-3">
@@ -31,7 +32,8 @@ function HomePage() {
             width={800}
           />
         </div>
-        <div className="flex flex-col pl-10">
+        {/* hide 2nd and 3rd image on small screens */}
+        <div className="flex flex-col pl-10 hidden md:flex">
           <div>
             <Image
               src="/image/HomeImages/RowImages.jpg"

@@ -6,7 +6,7 @@ const products = [
     {
         id: 1,
         name: 'Basic Tee',
-        href: '/productDetails',
+        href: 'src/app/product/id/prod/page.tsx',
         imageSrc: '/image/navbarImages/nav_Planners.jpg',
         imageAlt: "Front of men's Basic Tee in black.",
         price: '$35',
@@ -15,7 +15,7 @@ const products = [
     {
         id: 2,
         name: 'Basic Tee',
-        href: '/productDetails',
+        href: 'src/app/product/id/prod/page.tsx',
         imageSrc: '/image/navbarImages/nav_art&craft2.jpg',
         imageAlt: "Front of men's Basic Tee in black.",
         price: '$35',

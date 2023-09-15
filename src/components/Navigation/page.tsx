@@ -1,41 +1,34 @@
 'use client';
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react';
+import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import {
   Bars3Icon,
   MagnifyingGlassIcon,
   ShoppingBagIcon,
-  XMarkIcon
+  XMarkIcon,
 } from '@heroicons/react/24/outline';
-import PersonIcon from '@mui/icons-material/Person';
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import PopupState, { bindMenu, bindTrigger } from 'material-ui-popup-state';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from 'public/Arty-US_logo.png';
-import * as React from 'react';
 import { Fragment, useState } from 'react';
-
 
 const navigation = {
   categories: [
     {
-      id: 'school_supplies',
-      name: 'school_supplies',
+      id: 'School Supplies',
+      name: 'School Supplies',
       featured: [
         {
           name: 'Stationery Essentials',
           href: '#',
-          imageSrc:
-            '/image/navbarImages/nav_school_supplies.jpg',
+          imageSrc: '/image/navbarImages/nav_school_supplies.jpg',
           imageAlt: 'Stationery Image',
         },
         {
           name: 'Stationery Essentials',
           href: '#',
-          imageSrc:
-            '/image/navbarImages/nav_school_supplies2.jpg',
+          imageSrc: '/image/navbarImages/nav_school_supplies2.jpg',
           imageAlt: 'Stationery Image.',
         },
       ],
@@ -44,11 +37,11 @@ const navigation = {
           id: 'StationeryBasics',
           name: 'Stationery Basics',
           items: [
-            { name: 'Pencils', href: '/Products/Pencils' },
+            { name: 'Pencils', href: '/Products/Pens' },
             { name: 'Pens', href: '/Products/Pens' },
-            { name: 'Sharpners', href: '#' },
-            { name: 'Erasers', href: '#' },
-            { name: 'Drawing Books', href: '#' },
+            { name: 'Sharpners', href: 'product/Id' },
+            { name: 'Erasers', href: 'product/Id' },
+            { name: 'Drawing Books', href: 'product/Id' },
             { name: 'Geometric Tools', href: '#' },
             { name: 'Exam Boards', href: '#' },
             { name: 'Glue/Adhesives', href: '#' },
@@ -59,8 +52,8 @@ const navigation = {
           id: 'JuniorArt',
           name: 'Junior Art',
           items: [
-            { name: 'Color Pencils', href: '#' },
-            { name: 'Water Colors', href: '#' },
+            { name: 'Color Pencils', href: 'product/Id' },
+            { name: 'Water Colors', href: 'product/Id' },
             { name: 'Crayon Colors', href: '#' },
             { name: 'Poster Colors', href: '#' },
             { name: 'Sketch Pens', href: '#' },
@@ -85,15 +78,13 @@ const navigation = {
         {
           name: 'Art Essentials',
           href: '#',
-          imageSrc:
-            '/image/navbarImages/nav_art&craft.jpg',
+          imageSrc: '/image/navbarImages/nav_art&craft.jpg',
           imageAlt: 'Art Essentials',
         },
         {
           name: 'Art Essentials',
           href: '#',
-          imageSrc:
-            '/image/navbarImages/nav_art&craft2.jpg',
+          imageSrc: '/image/navbarImages/nav_art&craft2.jpg',
           imageAlt: 'Art Essentials',
         },
       ],
@@ -145,15 +136,13 @@ const navigation = {
         {
           name: 'Meetings Planner',
           href: '#',
-          imageSrc:
-            '/image/navbarImages/nav_Planners.jpg',
+          imageSrc: '/image/navbarImages/nav_Planners.jpg',
           imageAlt: 'Meetings Planner',
         },
         {
           name: 'Everyday Journal',
           href: '#',
-          imageSrc:
-            '/image/navbarImages/nav_Planners2.jpg',
+          imageSrc: '/image/navbarImages/nav_Planners2.jpg',
           imageAlt: 'Everyday Journal',
         },
       ],
@@ -187,15 +176,13 @@ const navigation = {
         {
           name: 'Stationery Hamper',
           href: '#',
-          imageSrc:
-            '/image/HomeImages/MiniPigments.jpg',
+          imageSrc: '/image/HomeImages/MiniPigments.jpg',
           imageAlt: 'Sattionery Hamper',
         },
         {
           name: 'Art & Carft Hamper',
           href: '#',
-          imageSrc:
-            '/image/HomeImages/MiniPigments.jpg',
+          imageSrc: '/image/HomeImages/MiniPigments.jpg',
           imageAlt: 'Art & Craft Hamper',
         },
       ],
@@ -213,7 +200,6 @@ const navigation = {
     },
   ],
 };
-
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
@@ -274,7 +260,7 @@ function Navigation() {
                               selected
                                 ? 'border-indigo-600 text-indigo-600'
                                 : 'border-transparent text-gray-900',
-                              'flex-1 whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium'
+                              'flex-1 whitespace-nowrap border-b-2 px-1 py-4 text-base font-bold'
                             )
                           }
                         >
@@ -334,7 +320,7 @@ function Navigation() {
                               className="mt-6 flex flex-col space-y-6"
                             >
                               {section.items.map((item) => (
-                                <li key={item.name} className="flow-root">
+                                <li key={``} className="flow-root">
                                   <Link
                                     href={item.href}
                                     className="-m-2 block p-2 text-gray-500"
@@ -350,7 +336,6 @@ function Navigation() {
                     ))}
                   </Tab.Panels>
                 </Tab.Group>
-
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                   <div className="flow-root">
                     <Link
@@ -361,16 +346,14 @@ function Navigation() {
                     </Link>
                   </div>
                 </div>
-
               </Dialog.Panel>
             </Transition.Child>
           </div>
         </Dialog>
       </Transition.Root>
-
-      <header className="relative bg-white z-50">
-        <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
-          Imagine Crafts....Imagine Us...
+      <header className=" bg-white z-50">
+        <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-bold text-white sm:px-6 lg:px-8">
+          IMAGINE CRAFTS.... IMAGINE US!
         </p>
 
         <nav
@@ -396,7 +379,7 @@ function Navigation() {
               </div>
 
               {/* Flyout menus */}
-              <Popover.Group className="hidden lg:ml-8 lg:block lg:self-stretch">
+              <Popover.Group className="hidden lg:ml-8 lg:block lg:self-stretch z-50">
                 <div className="flex h-full space-x-8">
                   {navigation.categories.map((category) => (
                     <Popover key={category.name} className="flex">
@@ -407,7 +390,7 @@ function Navigation() {
                               className={classNames(
                                 open
                                   ? 'border-indigo-600 text-indigo-600'
-                                  : 'border-transparent text-gray-700 hover:text-gray-800',
+                                  : 'border-transparent hover:text-gray-700',
                                 'relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out'
                               )}
                             >
@@ -424,7 +407,7 @@ function Navigation() {
                             leaveFrom="opacity-100"
                             leaveTo="opacity-0"
                           >
-                            <Popover.Panel className="absolute inset-x-0 top-full text-sm text-gray-500">
+                            <Popover.Panel className="absolute inset-x-0 top-24 text-sm text-gray-500">
                               {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
                               <div
                                 className="absolute inset-0 top-1/2 bg-white shadow"
@@ -502,33 +485,63 @@ function Navigation() {
                       )}
                     </Popover>
                   ))}
-
                 </div>
               </Popover.Group>
 
-
               <div className="ml-auto flex items-center">
-
                 <div>
-                  <PopupState variant="popover" popupId="demo-popup-menu">
-                    {(popupState) => (
-                      <React.Fragment>
-                        <Button variant="contained" {...bindTrigger(popupState)}>
-                          <PersonIcon />
-                        </Button>
-                        <Menu {...bindMenu(popupState)}>
-                          <MenuItem><Link href="/auth/SignIn">Sign Up As Customer</Link></MenuItem>
-                          <MenuItem onClick={popupState.close}>Sign Up As Trader</MenuItem>
-                          <MenuItem onClick={popupState.close}>Log In</MenuItem>
-                        </Menu>
-                      </React.Fragment>
-                    )}
-                  </PopupState>
+                  <Popover className="relative">
+                    <Popover.Button className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 outline-none hover:text-gray-700">
+                      <span className="p-2 ">
+                        <PersonOutlineIcon />
+                      </span>
+                      <ChevronDownIcon className="h-5 w-5" aria-hidden="true" />
+                    </Popover.Button>
+
+                    <Transition
+                      as={Fragment}
+                      enter="transition ease-out duration-200"
+                      enterFrom="opacity-0 translate-y-1"
+                      enterTo="opacity-100 translate-y-0"
+                      leave="transition ease-in duration-150"
+                      leaveFrom="opacity-100 translate-y-0"
+                      leaveTo="opacity-0 translate-y-1"
+                    >
+                      <Popover.Panel className="absolute left-1/2 z-10 mt-5 flex w-60 max-w-max -translate-x-1/2 px-4">
+                        <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
+                          <div className="p-4">
+                            <div className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
+                              <div>
+                                <Link
+                                  href="/auth/SignIn"
+                                  className="font-semibold text-gray-900"
+                                >
+                                  Login
+                                  <span className="absolute inset-0" />
+                                </Link>
+                              </div>
+                            </div>
+                            <div className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
+                              <div>
+                                <Link
+                                  href="/auth/BecomeTrader"
+                                  className="font-semibold text-gray-900"
+                                >
+                                  Become A Trader
+                                  <span className="absolute inset-0" />
+                                </Link>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </Popover.Panel>
+                    </Transition>
+                  </Popover>
                 </div>
 
                 {/* Search */}
                 <div className="flex lg:ml-6">
-                  <Link href="#" className="p-2 text-gray-400 hover:text-gray-500">
+                  <Link href="#" className="p-2 hover:text-gray-700">
                     <span className="sr-only">Search</span>
                     <MagnifyingGlassIcon
                       className="h-6 w-6"
@@ -541,7 +554,7 @@ function Navigation() {
                 <div className="ml-4 flow-root lg:ml-6">
                   <Link href="#" className="group -m-2 flex items-center p-2">
                     <ShoppingBagIcon
-                      className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                      className="h-6 w-6 flex-shrink-0 hover:text-gray-700"
                       aria-hidden="true"
                     />
                     <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">

@@ -31,7 +31,7 @@ const handleSubmit = async (values: any) => {
 
 const SignUpForm = () => {
   return (
-    <div className="flex items-center justify-center" style={{ margin: '7%' }}>
+    <div className="flex items-center justify-center min-h-screen">
       <Card color="transparent" shadow={false} className="m-6">
         <Typography variant="h4" color="blue-gray">
           Sign Up

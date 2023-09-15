@@ -37,11 +37,11 @@ const navigation = {
           id: 'StationeryBasics',
           name: 'Stationery Basics',
           items: [
-            { name: 'Pencils', href: '/Products/Pencils' },
+            { name: 'Pencils', href: '/Products/Pens' },
             { name: 'Pens', href: '/Products/Pens' },
-            { name: 'Sharpners', href: '#' },
-            { name: 'Erasers', href: '#' },
-            { name: 'Drawing Books', href: '#' },
+            { name: 'Sharpners', href: 'product/Id' },
+            { name: 'Erasers', href: 'product/Id' },
+            { name: 'Drawing Books', href: 'product/Id' },
             { name: 'Geometric Tools', href: '#' },
             { name: 'Exam Boards', href: '#' },
             { name: 'Glue/Adhesives', href: '#' },
@@ -52,8 +52,8 @@ const navigation = {
           id: 'JuniorArt',
           name: 'Junior Art',
           items: [
-            { name: 'Color Pencils', href: '#' },
-            { name: 'Water Colors', href: '#' },
+            { name: 'Color Pencils', href: 'product/Id' },
+            { name: 'Water Colors', href: 'product/Id' },
             { name: 'Crayon Colors', href: '#' },
             { name: 'Poster Colors', href: '#' },
             { name: 'Sketch Pens', href: '#' },
@@ -326,7 +326,7 @@ function Navigation() {
                               className="mt-6 flex flex-col space-y-6"
                             >
                               {section.items.map((item) => (
-                                <li key={item.name} className="flow-root">
+                                <li key={``} className="flow-root">
                                   <Link
                                     href={item.href}
                                     className="-m-2 block p-2 text-gray-500"
@@ -385,7 +385,7 @@ function Navigation() {
               </div>
 
               {/* Flyout menus */}
-              <Popover.Group className="hidden lg:ml-8 lg:block lg:self-stretch">
+              <Popover.Group className="hidden lg:ml-8 lg:block lg:self-stretch z-50">
                 <div className="flex h-full space-x-8">
                   {navigation.categories.map((category) => (
                     <Popover key={category.name} className="flex">

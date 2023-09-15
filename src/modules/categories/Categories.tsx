@@ -6,7 +6,7 @@ const products = [
     {
         id: 1,
         name: 'Basic Tee',
-        href: 'src/app/product/id/prod/page.tsx',
+        href: '/productDetails',
         imageSrc: '/image/navbarImages/nav_Planners.jpg',
         imageAlt: "Front of men's Basic Tee in black.",
         price: '$35',
@@ -15,7 +15,7 @@ const products = [
     {
         id: 2,
         name: 'Basic Tee',
-        href: 'src/app/product/id/prod/page.tsx',
+        href: '/productDetails',
         imageSrc: '/image/navbarImages/nav_art&craft2.jpg',
         imageAlt: "Front of men's Basic Tee in black.",
         price: '$35',
@@ -24,7 +24,8 @@ const products = [
     // More products...
 ]
 
-const page = () => {
+
+const Categories = () => {
     return (
         <div className="bg-white">
             <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 ">
@@ -64,4 +65,4 @@ const page = () => {
 
 
 
-export default page;
+export default Categories;

@@ -47,7 +47,7 @@ const Categories = [
 
 function CategoryCircles() {
   return (
-    <div className="flex flex-col sm:flex-row gap-10 justify-center items-center my-6">
+    <div className="flex flex-col sm:flex-row gap-14 justify-center items-center my-6  ">
       {Categories.map((category) => (
         <div key={category.id}>
           <div className="flex flex-col hover:text-blue-500">
@@ -55,8 +55,8 @@ function CategoryCircles() {
               className="rounded-full border-2 hover:border-blue-500"
               src={category.imageSrc}
               alt={category.imageAlt}
-              height={150}
-              width={150}
+              height={175}
+              width={175}
             />
             <div className="text-center">{category.name}</div>
           </div>

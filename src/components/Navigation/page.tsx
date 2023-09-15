@@ -22,7 +22,7 @@ const navigation = {
         {
           name: 'Stationery Essentials',
           href: '#',
-          imageSrc: '/image/navbarImages/nav_school_supplies.jpg',
+          imageSrc: '/image/HomeImages/down2.jpg',
           imageAlt: 'Stationery Image',
         },
         {

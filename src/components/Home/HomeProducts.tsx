@@ -1,9 +1,11 @@
+
+import Image from 'next/image';
 const products = [
   {
     id: 1,
     name: 'Desktop sleeve',
     href: '#',
-    imageSrc: '/image/HomeImages/DesktopSleeve.jpg',
+    imageSrc: '/image/HomeImages/down4.jpg',
     imageAlt: 'Desktop Sleeve',
     price: 'Rs.1000',
     color: 'Grey',
@@ -15,7 +17,7 @@ const products = [
     id: 2,
     name: 'Sketch Pens',
     href: '#',
-    imageSrc: '/image/HomeImages/SketchPens.jpg',
+    imageSrc: '/image/HomeImages/down2.jpg',
     imageAlt: 'Sketch Pens',
     price: 'Rs.250',
     height: 450,
@@ -25,7 +27,7 @@ const products = [
     id: 3,
     name: 'Paint Brushes',
     href: '#',
-    imageSrc: '/image/HomeImages/PaintBrushes.jpg',
+    imageSrc: '/image/HomeImages/paints.jpg',
     imageAlt: 'Paint Brush Set',
     price: 'Rs.300',
     color: 'Sky Blue',
@@ -36,14 +38,14 @@ const products = [
     id: 4,
     name: 'Pigment Kit',
     href: '#',
-    imageSrc: '/image/HomeImages/MiniPigments.jpg',
+    imageSrc: '/image/HomeImages/stationery.jpg',
     imageAlt: 'Pigment Kit',
     price: 'Rs.450',
     height: 450,
     width: 450,
   },
 ];
-import Image from 'next/image';
+
 function HomeProducts() {
   return (
     <div className="bg-white">

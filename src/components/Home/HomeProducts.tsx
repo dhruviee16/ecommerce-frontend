@@ -3,43 +3,43 @@ import Image from 'next/image';
 const products = [
   {
     id: 1,
-    name: 'Desktop sleeve',
+    name: 'Color Pencils',
     href: '#',
-    imageSrc: '/image/HomeImages/down4.jpg',
-    imageAlt: 'Desktop Sleeve',
-    price: 'Rs.1000',
-    color: 'Grey',
+    imageSrc: '/image/HomeImages/colorpencil2.jpg',
+    imageAlt: 'Color Pencils',
+    price: 'Rs.200',
+    // color: 'black',
     height: 450,
     width: 450,
   },
   // More products...
   {
     id: 2,
-    name: 'Sketch Pens',
+    name: 'Vintage Diary',
     href: '#',
-    imageSrc: '/image/HomeImages/down2.jpg',
-    imageAlt: 'Sketch Pens',
-    price: 'Rs.250',
+    imageSrc: '/image/HomeImages/diary1.jpg',
+    imageAlt: 'Vintage Diary',
+    price: 'Rs.750',
     height: 450,
     width: 450,
   },
   {
     id: 3,
-    name: 'Paint Brushes',
+    name: 'Acrylic Colors',
     href: '#',
-    imageSrc: '/image/HomeImages/paints.jpg',
-    imageAlt: 'Paint Brush Set',
+    imageSrc: '/image/HomeImages/acrylic.jpg',
+    imageAlt: 'Acrylic colors',
     price: 'Rs.300',
-    color: 'Sky Blue',
+    // color: 'black',
     height: 450,
     width: 450,
   },
   {
     id: 4,
-    name: 'Pigment Kit',
+    name: 'Hamper',
     href: '#',
-    imageSrc: '/image/HomeImages/stationery.jpg',
-    imageAlt: 'Pigment Kit',
+    imageSrc: '/image/HomeImages/arthamper.jpg',
+    imageAlt: 'Hamper',
     price: 'Rs.450',
     height: 450,
     width: 450,
@@ -74,7 +74,7 @@ function HomeProducts() {
                       {product.name}
                     </a>
                   </h3>
-                  <p className="mt-1 text-sm text-gray-500">{product.color}</p>
+                  <p className="mt-1 text-sm text-gray-500"></p>
                 </div>
                 <p className="text-sm font-medium text-gray-900">
                   {product.price}

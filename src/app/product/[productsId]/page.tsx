@@ -13,13 +13,13 @@ type Props = {
 
   const page = ({ params }: Props) => {
     const { categoryId } = params
+    console.log(categoryId)
   return (
     <div>
       <div className='justify-center items-center'>
-        <div className='flex justify-center items-center min-h-screen text-justify text-6xl text-black'>{categoryId}</div>
+        <div className='flex justify-center items-center text-center text-6xl text-black'>{categoryId}</div>
         <div>
-          ABC
-          <Categories />
+          <Categories title={categoryId}/>
         </div>
       </div>
     </div>

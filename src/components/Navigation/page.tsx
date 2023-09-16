@@ -3,9 +3,7 @@ import { Dialog, Popover, Tab, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import {
   Bars3Icon,
-  MagnifyingGlassIcon,
-  ShoppingBagIcon,
-  XMarkIcon,
+  XMarkIcon
 } from '@heroicons/react/24/outline';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import Image from 'next/image';
@@ -22,13 +20,13 @@ const navigation = {
         {
           name: 'Stationery Essentials',
           href: '#',
-          imageSrc: '/image/HomeImages/down2.jpg',
+          imageSrc: '/image/navbarImages/schoolsupplies1.jpg',
           imageAlt: 'Stationery Image',
         },
         {
           name: 'Stationery Essentials',
           href: '#',
-          imageSrc: '/image/navbarImages/nav_school_supplies2.jpg',
+          imageSrc: '/image/navbarImages/schoolsupplies2.jpg',
           imageAlt: 'Stationery Image.',
         },
       ],
@@ -78,13 +76,13 @@ const navigation = {
         {
           name: 'Art Essentials',
           href: '#',
-          imageSrc: '/image/navbarImages/nav_art&craft.jpg',
+          imageSrc: '/image/navbarImages/artandcraft1.jpg',
           imageAlt: 'Art Essentials',
         },
         {
           name: 'Art Essentials',
           href: '#',
-          imageSrc: '/image/navbarImages/nav_art&craft2.jpg',
+          imageSrc: '/image/navbarImages/artandcraft2.jpg',
           imageAlt: 'Art Essentials',
         },
       ],
@@ -123,12 +121,7 @@ const navigation = {
         },
       ],
     },
-    //   ],
-    // },
-    // pages: [
-    //  { name: 'Planners', href: '#' },
-    //   { name: 'Hampers', href: '#' },
-    // ],
+    
     {
       id: 'Planners',
       name: 'Planners',
@@ -136,13 +129,13 @@ const navigation = {
         {
           name: 'Meetings Planner',
           href: '#',
-          imageSrc: '/image/navbarImages/nav_Planners.jpg',
+          imageSrc: '/image/navbarImages/planner.jpg',
           imageAlt: 'Meetings Planner',
         },
         {
           name: 'Everyday Journal',
           href: '#',
-          imageSrc: '/image/navbarImages/nav_Planners2.jpg',
+          imageSrc: '/image/navbarImages/journal.jpg',
           imageAlt: 'Everyday Journal',
         },
       ],
@@ -306,9 +299,7 @@ function Navigation() {
                                 />
                                 {item.name}
                               </Link>
-                              {/* <p aria-hidden="true" className="mt-1">
-                                Shop now
-                              </p> */}
+                              
                             </div>
                           ))}
                         </div>
@@ -358,10 +349,6 @@ function Navigation() {
         </Dialog>
       </Transition.Root>
       <header className=" bg-white z-50">
-        {/* <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-bold text-white sm:px-6 lg:px-8">
-          IMAGINE CRAFTS.... IMAGINE US!
-        </p> */}
-
         <nav
           aria-label="Top"
           className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-50"
@@ -546,7 +533,7 @@ function Navigation() {
                 </div>
 
                 {/* Search */}
-                <div className="flex lg:ml-6">
+                {/* <div className="flex lg:ml-6">
                   <Link href="#" className="p-2 hover:text-gray-700">
                     <span className="sr-only">Search</span>
                     <MagnifyingGlassIcon
@@ -554,10 +541,10 @@ function Navigation() {
                       aria-hidden="true"
                     />
                   </Link>
-                </div>
+                </div> */}
 
                 {/* Cart */}
-                <div className="ml-4 flow-root lg:ml-6">
+                {/* <div className="ml-4 flow-root lg:ml-6">
                   <Link href="#" className="group -m-2 flex items-center p-2">
                     <ShoppingBagIcon
                       className="h-6 w-6 flex-shrink-0 hover:text-gray-700"
@@ -568,7 +555,7 @@ function Navigation() {
                     </span>
                     <span className="sr-only">items in cart, view bag</span>
                   </Link>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

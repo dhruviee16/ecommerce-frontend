@@ -1,8 +1,7 @@
-
 import { Pens } from '@/modules/Pens';
 
 const page = () => {
-    return <Pens />;
+  return <Pens />;
 };
 
 export default page;

@@ -68,7 +68,7 @@ const Wizard: React.FC<IWizardProps> = ({
     >
       {(formik) => (
         <Form className="mb-2 w-80 max-w-screen-lg sm:w-96">
-          <Typography >
+          <Typography>
             Step {stepNumber + 1} of {totalSteps}
           </Typography>
           {step}
@@ -77,7 +77,7 @@ const Wizard: React.FC<IWizardProps> = ({
               <Button
                 className="mt-4"
                 fullWidth
-                color='indigo'
+                color="indigo"
                 onClick={() => previous(formik.values)}
                 type="button"
               >
@@ -89,7 +89,7 @@ const Wizard: React.FC<IWizardProps> = ({
                 disabled={formik.isSubmitting}
                 className="mt-4"
                 fullWidth
-                color='indigo'
+                color="indigo"
                 type="submit"
               >
                 {isLastStep ? 'Submit' : 'Next'}
@@ -177,7 +177,6 @@ const App = () => (
             <FormFieldLayout label="Description" name="description" />
           </div>
         </WizardStep>
-       
       </Wizard>
       <Typography color="gray" className="mt-4 text-center font-normal">
         Already have an account?{' '}

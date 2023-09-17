@@ -1,4 +1,3 @@
-
 import Image from 'next/image';
 const products = [
   {
@@ -38,7 +37,7 @@ const products = [
     id: 4,
     name: 'Hamper',
     href: '#',
-    imageSrc: '/image/HomeImages/arthamper.jpg',
+    imageSrc: '/image/HomeImages/hamper.jpg',
     imageAlt: 'Hamper',
     price: 'Rs.450',
     height: 450,

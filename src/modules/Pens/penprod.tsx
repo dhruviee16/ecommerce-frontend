@@ -1,7 +1,7 @@
-'use client'
-import { RadioGroup } from '@headlessui/react'
-import Image from 'next/image'
-import { useState } from 'react'
+'use client';
+import { RadioGroup } from '@headlessui/react';
+import Image from 'next/image';
+import { useState } from 'react';
 
 const product = {
   name: 'sketch pens',
@@ -15,35 +15,40 @@ const product = {
     {
       src: '/image/HomeImages/SketchPens.jpg',
       alt: 'Two each of gray, white, and black shirts laying flat.',
-    }],
+    },
+  ],
   colors: [
     { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },
     { name: 'Gray', class: 'bg-gray-200', selectedClass: 'ring-gray-400' },
     { name: 'Black', class: 'bg-gray-900', selectedClass: 'ring-gray-900' },
   ],
 
-  description:
-    'The Basic colouring pens',
-  details:
-    'The Pack includes 1 black, 1 white, and other colors.',
-}
+  description: 'The Basic colouring pens',
+  details: 'The Pack includes 1 black, 1 white, and other colors.',
+};
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(' ');
 }
 
 export default function PenProd() {
-  const [selectedColor, setSelectedColor] = useState(product.colors[0])
+  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
 
   return (
     <div className="bg-white">
       <div className="pt-6">
         <nav aria-label="Breadcrumb">
-          <ol role="list" className="mx-auto flex max-w-2xl items-center space-x-1 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+          <ol
+            role="list"
+            className="mx-auto flex max-w-2xl items-center space-x-1 px-4 sm:px-6 lg:max-w-7xl lg:px-8"
+          >
             {product.breadcrumbs.map((breadcrumb) => (
               <li key={breadcrumb.id}>
                 <div className="flex items-center">
-                  <a href={breadcrumb.href} className="mr-2 text-sm font-medium text-gray-900">
+                  <a
+                    href={breadcrumb.href}
+                    className="mr-2 text-sm font-medium text-gray-900"
+                  >
                     {breadcrumb.name}
                   </a>
                   <svg
@@ -60,7 +65,11 @@ export default function PenProd() {
               </li>
             ))}
             <li className="text-sm">
-              <a href={product.href} aria-current="page" className="font-medium text-gray-500 hover:text-gray-600">
+              <a
+                href={product.href}
+                aria-current="page"
+                className="font-medium text-gray-500 hover:text-gray-600"
+              >
                 {product.name}
               </a>
             </li>
@@ -81,16 +90,18 @@ export default function PenProd() {
           {/* Product info */}
           <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
             <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-              <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{product.name}</h1>
+              <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+                {product.name}
+              </h1>
             </div>
 
             {/* Options */}
             <div className="mt-4 lg:row-span-3 lg:mt-0">
               <h2 className="sr-only">Product information</h2>
-              <p className="text-3xl tracking-tight text-gray-900">{product.price}</p>
+              <p className="text-3xl tracking-tight text-gray-900">
+                {product.price}
+              </p>
               {/* </div> */}
-
-
 
               {/* Options
           <div className="mt-4 lg:row-span-3 lg:mt-0">
@@ -102,8 +113,14 @@ export default function PenProd() {
                 <div>
                   <h3 className="text-sm font-medium text-gray-900">Color</h3>
 
-                  <RadioGroup value={selectedColor} onChange={setSelectedColor} className="mt-4">
-                    <RadioGroup.Label className="sr-only">Choose a color</RadioGroup.Label>
+                  <RadioGroup
+                    value={selectedColor}
+                    onChange={setSelectedColor}
+                    className="mt-4"
+                  >
+                    <RadioGroup.Label className="sr-only">
+                      Choose a color
+                    </RadioGroup.Label>
                     <div className="flex items-center space-x-3">
                       {product.colors.map((color) => (
                         <RadioGroup.Option
@@ -149,7 +166,9 @@ export default function PenProd() {
                 <h3 className="sr-only">Description</h3>
 
                 <div className="space-y-6">
-                  <p className="text-base text-gray-900">{product.description}</p>
+                  <p className="text-base text-gray-900">
+                    {product.description}
+                  </p>
                 </div>
               </div>
 
@@ -165,5 +184,5 @@ export default function PenProd() {
         </div>
       </div>
     </div>
-  )
+  );
 }

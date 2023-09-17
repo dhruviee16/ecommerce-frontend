@@ -1,10 +1,7 @@
 'use client';
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
-import {
-  Bars3Icon,
-  XMarkIcon
-} from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -121,7 +118,7 @@ const navigation = {
         },
       ],
     },
-    
+
     {
       id: 'Planners',
       name: 'Planners',
@@ -193,6 +190,8 @@ const navigation = {
     },
   ],
 };
+
+const isLoggedin = true;
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
@@ -299,7 +298,6 @@ function Navigation() {
                                 />
                                 {item.name}
                               </Link>
-                              
                             </div>
                           ))}
                         </div>
@@ -370,7 +368,11 @@ function Navigation() {
                   <Image src={logo} alt="" height={140} width={140} />
                 </Link>
               </div>
-
+              {isLoggedin ? (
+                <div className="font-bold absolute left-[78vw] top-6">
+                  Hello Dhruvi !
+                </div>
+              ) : null}
               {/* Flyout menus */}
               <Popover.Group className="hidden lg:ml-8 lg:block lg:self-stretch z-50">
                 <div className="flex h-full space-x-8">
@@ -501,32 +503,61 @@ function Navigation() {
                       leaveTo="opacity-0 translate-y-1"
                     >
                       <Popover.Panel className="absolute left-1/2 z-10 mt-5 flex w-60 max-w-max -translate-x-1/2 px-4">
-                        <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
-                          <div className="p-4">
-                            <div className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
-                              <div>
-                                <Link
-                                  href="/auth/SignIn"
-                                  className="font-semibold text-gray-900"
-                                >
-                                  Login
-                                  <span className="absolute inset-0" />
-                                </Link>
+                        {!isLoggedin ? (
+                          <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
+                            <div className="p-4">
+                              <div className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
+                                <div>
+                                  <Link
+                                    href="/auth/SignIn"
+                                    className="font-semibold text-gray-900"
+                                  >
+                                    Login
+                                    <span className="absolute inset-0" />
+                                  </Link>
+                                </div>
                               </div>
-                            </div>
-                            <div className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
-                              <div>
-                                <Link
-                                  href="/auth/BecomeTrader"
-                                  className="font-semibold text-gray-900"
-                                >
-                                  Become A Trader
-                                  <span className="absolute inset-0" />
-                                </Link>
+                              <div className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
+                                <div>
+                                  <Link
+                                    href="/auth/BecomeTrader"
+                                    className="font-semibold text-gray-900"
+                                  >
+                                    Become A Trader
+                                    <span className="absolute inset-0" />
+                                  </Link>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
+                        ) : (
+                          <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
+                            <div className="p-4">
+                              <div className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
+                                <div>
+                                  <Link
+                                    href="/auth/SignIn"
+                                    className="font-semibold text-gray-900"
+                                  >
+                                    My Profile
+                                    <span className="absolute inset-0" />
+                                  </Link>
+                                </div>
+                              </div>
+                              <div className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
+                                <div>
+                                  <Link
+                                    href="/auth/BecomeTrader"
+                                    className="font-semibold text-gray-900"
+                                  >
+                                    Log Out
+                                    <span className="absolute inset-0" />
+                                  </Link>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        )}
                       </Popover.Panel>
                     </Transition>
                   </Popover>

@@ -41,7 +41,6 @@ const LINKS = [
         title: 'markers',
         link: '',
       },
-
     ],
   },
   {
@@ -76,10 +75,7 @@ function Footer() {
       <div className="mx-auto w-full max-w-7xl px-8">
         <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
           <Link href="/">
-            <Image src={logo}
-             alt="" 
-             height={140} 
-             width={140} />
+            <Image src={logo} alt="" height={140} width={140} />
           </Link>
           <div className="grid grid-cols-3 justify-between gap-4">
             {LINKS.map(({ title, items }) => (

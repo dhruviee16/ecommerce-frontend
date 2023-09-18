@@ -28,7 +28,7 @@ export default function HorizontalCard() {
           <Image src={diaries} className="h-full" alt="" />
         </CardHeader>
       </div>
-      <div className="flex flex-col gap-2">   
+      <div className="flex flex-col gap-2">
         <CardBody className="p-0">
           <Typography variant="h6" color="blue-gray" className="mt-3 ">
             Product Name: Diary
@@ -56,20 +56,6 @@ export default function HorizontalCard() {
                 className="flex items-center gap-2 border-2 border-black rounded-sm bg-black text-white hover:bg-white hover:text-black"
               >
                 Edit
-                {/* <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                  className="h-4 w-4"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                  />
-                </svg> */}
               </Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
@@ -79,5 +65,20 @@ export default function HorizontalCard() {
         </div>
       </div>
     </Card>
+  //   <div className="px-20 my-20 grid grid-cols-2 gap-4 w-full">
+  //   <div>
+  //   <HorizontalCard />
+  //   </div>
+  //   <div>
+  //   <HorizontalCard />
+  //   </div>
+  //   <div>
+  //   <HorizontalCard />
+  //   </div>
+  //   <div>
+  //   <HorizontalCard />
+  //   </div>
+    
+  // </div>
   );
 }

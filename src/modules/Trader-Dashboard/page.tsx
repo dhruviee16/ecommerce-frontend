@@ -1,59 +1,62 @@
-'use client';
-import { HorizontalCard } from '@/components/Cards/Trader-Dashboard';
-import { Button } from '@/components/ui/button';
-
+'use client'
+import React from 'react';
+import Link from 'next/link';
 import {
   AlertDialog,
   AlertDialogContent,
   AlertDialogTrigger,
-} from '@radix-ui/react-alert-dialog';
+} from '@/components/ui/alert-dialog';
+import { Button } from '@/components/ui/button';
 import AddProduct from '../Add-Edit-Forms/AddProduct/page';
-import { Card } from '@material-tailwind/react';
+import { HorizontalCard } from '@/components/Cards/Trader-Dashboard';
+import {
+  Card,
+} from "@material-tailwind/react";
 
-type Props = {};
-
-const TraderDashboard = (props: Props) => {
+const TraderDashboard = () => {
   return (
-    <div>
+    <>
+      <div className="justify-center items-center">
       <Card className='bg-transparent'>
-        <div className="text-center mt-5 text-4xl">Trader Dashboard</div>
-        <div className="border-2 rounded-md absolute lg:ml-[80%] sm:ml-28 flex flex-row">
+        <div className="text-center mt-5 text-4xl">Trader Dashboard</div> </Card>
+        <div className="border-2 ml-[6rem] sm:ml-[80%] mt-3 border-black absolute bg-black text-white rounded-none hover:bg-white hover:text-black">
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <Button
-                variant="outline"
-                className="rounded-sm bg-black text-white hover:bg-white hover:text-black"
-              >
-                ADD PRODUCT
-                {/* <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                  className="h-4 w-4"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                  />
-                </svg> */}
+              <Button variant="destructive" size="lg" className="flex flex-row content-start">
+                <div className='flex flex-row gap-x-3'>
+                Add Product
+                </div>
               </Button>
             </AlertDialogTrigger>
-            <AlertDialogContent>
+            <AlertDialogContent className="">
               <AddProduct />
             </AlertDialogContent>
           </AlertDialog>
         </div>
-      </Card>
-      <div className="px-20 my-20 grid grid-cols-2 gap-4 w-full">
-        <HorizontalCard />
-        <HorizontalCard />
-        <HorizontalCard />
-        <HorizontalCard />
+        <div className="px-20 my-20 grid grid-cols-2 gap-4 w-full">
+          <div>
+            <HorizontalCard
+            />
+          </div>
+          <div>
+            <HorizontalCard
+            />
+          </div>
+          <div>
+            <HorizontalCard
+            />
+          </div>
+          <div>
+            <HorizontalCard
+            />
+          </div>
+          <div>
+            <HorizontalCard
+            />
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

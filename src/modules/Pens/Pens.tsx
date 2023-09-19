@@ -9,7 +9,7 @@ const products = [
     href: '/productDetails',
     imageSrc: '/image/HomeImages/diary2.jpg',
     imageAlt: 'Diary.',
-    price: '300',
+    price: 'Rs.300',
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const products = [
     href: 'src/app/product/id/prod/page.tsx',
     imageSrc: '/image/HomeImages/diary1.jpg',
     imageAlt: 'diary.',
-    price: '750',
+    price: 'Rs.750',
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ const products = [
     href: '/productDetails',
     imageSrc: '/image/HomeImages/diary3.jpeg',
     imageAlt: 'diary.',
-    price: '900',
+    price: 'Rs.900',
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ const products = [
     href: 'src/app/product/id/prod/page.tsx',
     imageSrc: '/image/HomeImages/diary4.jpeg',
     imageAlt: 'diary.',
-    price: '400',
+    price: 'Rs.400',
   },
   {
     id: 5,
@@ -41,7 +41,7 @@ const products = [
     href: '/productDetails',
     imageSrc: '/image/HomeImages/diary2.jpg',
     imageAlt: 'Diary.',
-    price: '300',
+    price: 'Rs.300',
   },
   {
     id: 6,
@@ -49,7 +49,7 @@ const products = [
     href: 'src/app/product/id/prod/page.tsx',
     imageSrc: '/image/HomeImages/diary1.jpg',
     imageAlt: 'diary.',
-    price: '750',
+    price: 'Rs.750',
   },
   {
     id: 7,
@@ -57,7 +57,7 @@ const products = [
     href: '/productDetails',
     imageSrc: '/image/HomeImages/diary3.jpeg',
     imageAlt: 'diary.',
-    price: '900',
+    price: 'Rs.900',
   },
   {
     id: 8,
@@ -65,7 +65,7 @@ const products = [
     href: 'src/app/product/id/prod/page.tsx',
     imageSrc: '/image/HomeImages/diary4.jpeg',
     imageAlt: 'diary.',
-    price: '400',
+    price: 'Rs.400',
   },
   // More products...
 ];

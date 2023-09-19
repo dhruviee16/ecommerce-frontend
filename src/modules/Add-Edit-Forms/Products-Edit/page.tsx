@@ -30,7 +30,7 @@ const EditProducts = () => {
     <div className="-m-[15%]">
       <Card color="transparent" shadow={false} className="m-20">
         <Typography variant="h4" color="blue-gray">
-          Edit-Product
+          Edit Product
         </Typography>
         <FormLayout
           initialValues={initalValues}

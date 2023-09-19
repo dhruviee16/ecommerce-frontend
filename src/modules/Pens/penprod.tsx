@@ -1,7 +1,18 @@
 'use client';
-import { RadioGroup } from '@headlessui/react';
+import { Input } from '@/components/input';
+import { Button } from '@/components/ui/button';
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useToast } from '@/components/ui/use-toast';
 
 const product = {
   name: 'sketch pens',
@@ -13,15 +24,15 @@ const product = {
   ],
   images: [
     {
-      src: '/image/HomeImages/SketchPens.jpg',
+      src: '/image/HomeImages/diary1.jpg',
       alt: 'Two each of gray, white, and black shirts laying flat.',
     },
   ],
-  colors: [
-    { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },
-    { name: 'Gray', class: 'bg-gray-200', selectedClass: 'ring-gray-400' },
-    { name: 'Black', class: 'bg-gray-900', selectedClass: 'ring-gray-900' },
-  ],
+  // colors: [
+  //   { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },
+  //   { name: 'Gray', class: 'bg-gray-200', selectedClass: 'ring-gray-400' },
+  //   { name: 'Black', class: 'bg-gray-900', selectedClass: 'ring-gray-900' },
+  // ],
 
   description: 'The Basic colouring pens',
   details: 'The Pack includes 1 black, 1 white, and other colors.',
@@ -32,7 +43,8 @@ function classNames(...classes) {
 }
 
 export default function PenProd() {
-  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
+  // const [selectedColor, setSelectedColor] = useState(product.colors[0]);
+  const { toast } = useToast();
 
   return (
     <div className="bg-white">
@@ -108,56 +120,61 @@ export default function PenProd() {
             <h2 className="sr-only">Product information</h2>
             <p className="text-3xl tracking-tight text-gray-900">{product.price}</p> */}
 
-              <form className="mt-10">
-                {/* Colors */}
-                <div>
-                  <h3 className="text-sm font-medium text-gray-900">Color</h3>
-
-                  <RadioGroup
-                    value={selectedColor}
-                    onChange={setSelectedColor}
-                    className="mt-4"
-                  >
-                    <RadioGroup.Label className="sr-only">
-                      Choose a color
-                    </RadioGroup.Label>
-                    <div className="flex items-center space-x-3">
-                      {product.colors.map((color) => (
-                        <RadioGroup.Option
-                          key={color.name}
-                          value={color}
-                          className={({ active, checked }) =>
-                            classNames(
-                              color.selectedClass,
-                              active && checked ? 'ring ring-offset-1' : '',
-                              !active && checked ? 'ring-2' : '',
-                              'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none'
-                            )
-                          }
-                        >
-                          <RadioGroup.Label as="span" className="sr-only">
-                            {color.name}
-                          </RadioGroup.Label>
-                          <span
-                            aria-hidden="true"
-                            className={classNames(
-                              color.class,
-                              'h-8 w-8 rounded-full border border-black border-opacity-10'
-                            )}
-                          />
-                        </RadioGroup.Option>
-                      ))}
-                    </div>
-                  </RadioGroup>
-                </div>
-
+              {/* <form className="mt-10">
                 <button
                   type="submit"
                   className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 >
-                  Add to bag
+                  BUY NOW
                 </button>
-              </form>
+              </form> */}
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button className="mt-4 px-6">BUY NOW</Button>
+                </SheetTrigger>
+                <SheetContent>
+                  <SheetHeader>
+                    <SheetTitle>Edit profile</SheetTitle>
+                    <SheetDescription>
+                      Please provide your information to buy the product. Click save when
+                      you&apos;re done.
+                    </SheetDescription>
+                  </SheetHeader>
+                  <div className="grid gap-4 py-4">
+                    <div className="grid grid-cols-4 items-center gap-4">
+                      <Input
+                        id="Address"
+                        label="Address"
+                        type='text'
+                        className="col-span-3"
+                      />
+                    </div>
+                    <div className="grid grid-cols-4 items-center gap-4">
+                      <Input
+                        id="Contact no."
+                        label="Contact no."
+                        type='text'
+                        className="col-span-3"
+                      />
+                    </div>
+                  </div>
+                  <SheetFooter>
+                    <SheetClose asChild>
+                      <Button
+                        type="button"
+                        onClick={() => {
+                          toast({
+                            title: 'Order Placed',
+                            description: new Date().toLocaleString(),
+                          });
+                        }}
+                      >
+                        Save changes
+                      </Button>
+                    </SheetClose>
+                  </SheetFooter>
+                </SheetContent>
+              </Sheet>
             </div>
 
             <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">

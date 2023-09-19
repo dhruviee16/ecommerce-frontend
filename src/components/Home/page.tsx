@@ -1,11 +1,12 @@
 'use client';
 
+import { Profile } from '@/modules/profile';
 import Image from 'next/image';
+import Link from 'next/link';
 import poster from 'public/image/HomeImages/vector19.png';
+import banner from 'public/image/HomeImages/vector6.jpg';
 import CategoryCircles from './CategoryCircles';
 import HomeProducts1 from './HomeProducts';
-import banner from 'public/image/HomeImages/vector6.jpg';
-import Link from 'next/link';
 
 function HomePage() {
   return (

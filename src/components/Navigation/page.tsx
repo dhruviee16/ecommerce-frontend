@@ -32,37 +32,34 @@ const navigation = {
           id: 'StationeryBasics',
           name: 'Stationery Basics',
           items: [
-            { name: 'Pencils', href: '/Products/Pens' },
-            { name: 'Pens', href: '/Products/Pens' },
-            { name: 'Sharpners', href: 'product/Id' },
-            { name: 'Erasers', href: 'product/Id' },
-            { name: 'Drawing Books', href: 'product/Id' },
-            { name: 'Geometric Tools', href: '#' },
-            { name: 'Exam Boards', href: '#' },
-            { name: 'Glue/Adhesives', href: '#' },
-            { name: 'Browse All', href: '#' },
+            { name: 'Pencils' },
+            { name: 'Pens' },
+            { name: 'Sharpners' },
+            { name: 'Erasers' },
+            { name: 'Drawing Books' },
+            { name: 'Geometric Tools' },
+            { name: 'Exam Boards' },
+            { name: 'Glue/Adhesives' },
+            { name: 'Browse All' },
           ],
         },
         {
           id: 'JuniorArt',
           name: 'Junior Art',
           items: [
-            { name: 'Color Pencils', href: 'product/Id' },
-            { name: 'Water Colors', href: 'product/Id' },
-            { name: 'Crayon Colors', href: '#' },
-            { name: 'Poster Colors', href: '#' },
-            { name: 'Sketch Pens', href: '#' },
-            { name: 'Color Palette', href: '#' },
-            { name: 'Paint Brushes', href: '#' },
+            { name: 'Color Pencils' },
+            { name: 'Water Colors' },
+            { name: 'Crayon Colors' },
+            { name: 'Poster Colors' },
+            { name: 'Sketch Pens' },
+            { name: 'Color Palette' },
+            { name: 'Paint Brushes' },
           ],
         },
         {
           id: 'Books',
           name: 'Books',
-          items: [
-            { name: 'Coloring Books', href: '#' },
-            { name: 'Story Books', href: '#' },
-          ],
+          items: [{ name: 'Coloring Books' }, { name: 'Story Books' }],
         },
       ],
     },
@@ -88,32 +85,32 @@ const navigation = {
           id: 'ArtPaints',
           name: 'Art Paints',
           items: [
-            { name: 'Acrylic Colors', href: '#' },
-            { name: 'Water Colors', href: '#' },
-            { name: 'Fabric Colors', href: '#' },
-            { name: 'Pastel Colors', href: '#' },
-            { name: 'Oil Colors', href: '#' },
-            { name: 'Spray Paints', href: '#' },
-            { name: 'Browse All', href: '#' },
+            { name: 'Acrylic Colors' },
+            { name: 'Water Colors' },
+            { name: 'Fabric Colors' },
+            { name: 'Pastel Colors' },
+            { name: 'Oil Colors' },
+            { name: 'Spray Paints' },
+            { name: 'Browse All' },
           ],
         },
         {
           id: 'Markers',
           name: 'Markers',
           items: [
-            { name: 'Sketch Markers', href: '#' },
-            { name: 'Brush Markers', href: '#' },
-            { name: 'Fabric Markers', href: '#' },
+            { name: 'Sketch Markers' },
+            { name: 'Brush Markers' },
+            { name: 'Fabric Markers' },
           ],
         },
         {
           id: 'PapersAndCanvases',
           name: 'Paper And Canvases',
           items: [
-            { name: 'Carft Papers', href: '#' },
-            { name: 'Canvas Boards', href: '#' },
-            { name: 'Mini Canvas', href: '#' },
-            { name: 'Drawing Papers/Pads', href: '#' },
+            { name: 'Carft Papers' },
+            { name: 'Canvas Boards' },
+            { name: 'Mini Canvas' },
+            { name: 'Drawing Papers/Pads' },
           ],
         },
       ],
@@ -141,20 +138,20 @@ const navigation = {
           id: 'Planners',
           name: 'Planners',
           items: [
-            { name: 'Daily Planner', href: '#' },
-            { name: 'Weekly Planner', href: '#' },
-            { name: 'Monthly Planner', href: '#' },
-            { name: 'Bridal Planner', href: '#' },
-            { name: 'Journals', href: '#' },
+            { name: 'Daily Planner' },
+            { name: 'Weekly Planner' },
+            { name: 'Monthly Planner' },
+            { name: 'Bridal Planner' },
+            { name: 'Journals' },
           ],
         },
         {
           id: 'Diaries',
           name: 'Diaries',
           items: [
-            { name: 'Soft Bound Dairies', href: '#' },
-            { name: 'Hard Bound Dairies', href: '#' },
-            { name: 'Leather Cover Dairies', href: '#' },
+            { name: 'Soft Bound Dairies' },
+            { name: 'Hard Bound Dairies' },
+            { name: 'Leather Cover Dairies' },
           ],
         },
       ],
@@ -181,9 +178,9 @@ const navigation = {
           id: 'Hampers',
           name: 'Hampers',
           items: [
-            { name: 'Stationery Hamper', href: '#' },
-            { name: 'Art & Craft Hamper', href: '#' },
-            { name: 'Premium Hamper', href: '#' },
+            { name: 'Stationery Hamper' },
+            { name: 'Art & Craft Hamper' },
+            { name: 'Premium Hamper' },
           ],
         },
       ],
@@ -303,12 +300,15 @@ function Navigation() {
                         </div>
                         {category.sections.map((section) => (
                           <div key={section.name}>
-                            <p
-                              id={`${category.id}-${section.id}-heading-mobile`}
+                            <Link
+                              id={`${section.name}-heading`}
                               className="font-medium text-gray-900"
+                              href={`/${section.name
+                                .replace(' ', '-')
+                                .toLowerCase()}`}
                             >
                               {section.name}
-                            </p>
+                            </Link>
                             <ul
                               role="list"
                               aria-labelledby={`${category.id}-${section.id}-heading-mobile`}
@@ -317,7 +317,11 @@ function Navigation() {
                               {section.items.map((item) => (
                                 <li key={``} className="flow-root">
                                   <Link
-                                    href={item.href}
+                                    href={`/${section.name
+                                      .replace(' ', '-')
+                                      .toLowerCase()}/${item.name
+                                      .replace(' ', '-')
+                                      .toLowerCase()}`}
                                     className="-m-2 block p-2 text-gray-500"
                                   >
                                     {item.name}
@@ -443,12 +447,15 @@ function Navigation() {
                                     <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
                                       {category.sections.map((section) => (
                                         <div key={section.name}>
-                                          <p
+                                          <Link
                                             id={`${section.name}-heading`}
                                             className="font-medium text-gray-900"
+                                            href={`/${section.name
+                                              .replace(' ', '-')
+                                              .toLowerCase()}`}
                                           >
                                             {section.name}
-                                          </p>
+                                          </Link>
                                           <ul
                                             role="list"
                                             aria-labelledby={`${section.name}-heading`}
@@ -460,7 +467,12 @@ function Navigation() {
                                                 className="flex"
                                               >
                                                 <Link
-                                                  href={item.href}
+                                                  href={`/${section.name
+                                                    .replace(' ', '-')
+                                                    .toLowerCase()}/${item.name
+                                                    .replace(' ', '-')
+                                                    .toLowerCase()}`}
+                                                  // href={'/Products/Boots'}
                                                   className="hover:text-gray-800"
                                                 >
                                                   {item.name}

@@ -5,31 +5,77 @@ import Link from 'next/link';
 const products = [
   {
     id: 1,
-    name: 'Basic Tee',
-    href: '/productDetails',
-    imageSrc: '/image/navbarImages/nav_Planners.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
-    color: 'Black',
+    name: 'Red Diary',
+    href: '/abc/xyz/pqr',
+    imageSrc: '/image/HomeImages/diary2.jpg',
+    imageAlt: 'Diary.',
+    price: 'Rs.300',
   },
   {
     id: 2,
-    name: 'Basic Tee',
-    href: '/productDetails',
-    imageSrc: '/image/navbarImages/nav_art&craft2.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
-    color: 'Black',
+    name: 'vintage diary',
+    href: '/abc/xyz/pqr',
+    imageSrc: '/image/HomeImages/diary1.jpg',
+    imageAlt: 'diary.',
+    price: 'Rs.750',
+  },
+  {
+    id: 3,
+    name: 'colourful diaries',
+    href: '/abc/xyz/pqr',
+    imageSrc: '/image/HomeImages/diary3.jpeg',
+    imageAlt: 'diary.',
+    price: 'Rs.900',
+  },
+  {
+    id: 4,
+    name: 'diary',
+    href: '/abc/xyz/pqr',
+    imageSrc: '/image/HomeImages/diary4.jpeg',
+    imageAlt: 'diary.',
+    price: 'Rs.400',
+  },
+  {
+    id: 5,
+    name: 'Red Diary',
+    href: '/abc/xyz/pqr',
+    imageSrc: '/image/HomeImages/diary2.jpg',
+    imageAlt: 'Diary.',
+    price: 'Rs.300',
+  },
+  {
+    id: 6,
+    name: 'vintage diary',
+    href: '/abc/xyz/pqr',
+    imageSrc: '/image/HomeImages/diary1.jpg',
+    imageAlt: 'diary.',
+    price: 'Rs.750',
+  },
+  {
+    id: 7,
+    name: 'colourful diaries',
+    href: '/abc/xyz/pqr',
+    imageSrc: '/image/HomeImages/diary3.jpeg',
+    imageAlt: 'diary.',
+    price: 'Rs.900',
+  },
+  {
+    id: 8,
+    name: 'diary',
+    href: '/abc/xyz/pqr',
+    imageSrc: '/image/HomeImages/diary4.jpeg',
+    imageAlt: 'diary.',
+    price: 'Rs.400',
   },
   // More products...
 ];
 
-const Categories = ({ title }) => {
+const ProductsList = ({title}) => {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 ">
-        <h2 className="text-center text-2xl font-bold tracking-tight text-gray-900">
-          {title}
+        <h2 className="text-center text-4xl font-bold tracking-tight text-gray-900 ">
+          {title.replace("-"," ").toUpperCase()}
         </h2>
 
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 items-center">
@@ -52,7 +98,6 @@ const Categories = ({ title }) => {
                       {product.name}
                     </Link>
                   </h3>
-                  <p className="mt-1 text-sm text-gray-500">{product.color}</p>
                 </div>
                 <p className="text-sm font-medium text-gray-900">
                   {product.price}
@@ -66,4 +111,4 @@ const Categories = ({ title }) => {
   );
 };
 
-export default Categories;
+export default ProductsList;

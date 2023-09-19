@@ -1,20 +1,20 @@
 import React from 'react';
-import { PenProd } from '@/modules/Pens';
+import { ProductDetails } from '@/modules/products';
 
 type Props = {
   params: {
-    productId: string;
+    product: string;
   };
 };
 
 const page = ({ params }: Props) => {
-  const { productId } = params;
+  const { product } = params;
   return (
     <div>
       <div className="flex justify-center items-center text-justify text-6xl text-black space-y-1">
-        {productId}
+        {product.replace("-", " ").toUpperCase()}
       </div>
-      <PenProd />
+      <ProductDetails />
     </div>
   );
 };

@@ -1,8 +1,8 @@
-import { Categories } from '@/modules/categories';
+import { ProductsList } from '@/modules/products';
 
 type Props = {
   params: {
-    categoryId: string;
+    category: string;
   };
 };
 
@@ -11,17 +11,11 @@ type Props = {
 //const { categoryId } = params;
 
 const page = ({ params }: Props) => {
-  const { categoryId } = params;
-  console.log(categoryId);
+  const { category } = params;
   return (
     <div>
       <div className="justify-center items-center">
-        <div className="flex justify-center items-center text-center text-6xl text-black">
-          {categoryId}
-        </div>
-        <div>
-          <Categories title={categoryId} />
-        </div>
+          <ProductsList title={category} />
       </div>
     </div>
   );

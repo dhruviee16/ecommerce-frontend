@@ -18,10 +18,10 @@ const product = {
   name: 'sketch pens',
   price: 'Rs.192',
   href: '#',
-  breadcrumbs: [
-    { id: 1, name: 'school supplies', href: '#' },
-    { id: 2, name: 'pens', href: '#' },
-  ],
+  // breadcrumbs: [
+  //   { id: 1, name: 'school supplies', href: '#' },
+  //   { id: 2, name: 'pens', href: '#' },
+  // ],
   images: [
     {
       src: '/image/HomeImages/diary1.jpg',
@@ -42,14 +42,14 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function PenProd() {
+export default function ProductDetails() {
   // const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const { toast } = useToast();
 
   return (
     <div className="bg-white">
       <div className="pt-6">
-        <nav aria-label="Breadcrumb">
+        {/* <nav aria-label="Breadcrumb">
           <ol
             role="list"
             className="mx-auto flex max-w-2xl items-center space-x-1 px-4 sm:px-6 lg:max-w-7xl lg:px-8"
@@ -86,7 +86,7 @@ export default function PenProd() {
               </a>
             </li>
           </ol>
-        </nav>
+        </nav> */}
 
         {/* Image gallery */}
         <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
@@ -136,8 +136,8 @@ export default function PenProd() {
                   <SheetHeader>
                     <SheetTitle>Edit profile</SheetTitle>
                     <SheetDescription>
-                      Please provide your information to buy the product. Click save when
-                      you&apos;re done.
+                      Please provide your information to buy the product. Click
+                      save when you&apos;re done.
                     </SheetDescription>
                   </SheetHeader>
                   <div className="grid gap-4 py-4">
@@ -145,7 +145,7 @@ export default function PenProd() {
                       <Input
                         id="Address"
                         label="Address"
-                        type='text'
+                        type="text"
                         className="col-span-3"
                       />
                     </div>
@@ -153,7 +153,7 @@ export default function PenProd() {
                       <Input
                         id="Contact no."
                         label="Contact no."
-                        type='text'
+                        type="text"
                         className="col-span-3"
                       />
                     </div>

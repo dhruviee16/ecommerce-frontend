@@ -1,0 +1,6 @@
+fragment Lite_User on User {
+  id
+  name
+  email
+  password
+}

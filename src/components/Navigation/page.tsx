@@ -188,7 +188,7 @@ const navigation = {
   ],
 };
 
-const isLoggedin = true;
+const isLoggedin = !true;
 const isTrader = true;
 
 function classNames(...classes: string[]) {

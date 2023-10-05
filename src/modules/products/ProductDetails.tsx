@@ -1,93 +1,48 @@
 'use client';
-import { Input } from '@/components/input';
-import { Button } from '@/components/ui/button';
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/components/ui/sheet';
-import Image from 'next/image';
 import { useToast } from '@/components/ui/use-toast';
+import Image from 'next/image';
+import * as Yup from 'yup';
 
 const product = {
   name: 'sketch pens',
   price: 'Rs.192',
   href: '#',
-  // breadcrumbs: [
-  //   { id: 1, name: 'school supplies', href: '#' },
-  //   { id: 2, name: 'pens', href: '#' },
-  // ],
+
   images: [
     {
       src: '/image/HomeImages/diary1.jpg',
       alt: 'Two each of gray, white, and black shirts laying flat.',
     },
   ],
-  // colors: [
-  //   { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },
-  //   { name: 'Gray', class: 'bg-gray-200', selectedClass: 'ring-gray-400' },
-  //   { name: 'Black', class: 'bg-gray-900', selectedClass: 'ring-gray-900' },
-  // ],
 
   description: 'The Basic colouring pens',
   details: 'The Pack includes 1 black, 1 white, and other colors.',
 };
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
+const initalValues = {
+  email: '',
+  password: '',
+};
+
+const SigninSchema = Yup.object().shape({
+  address: Yup.string().required('Required'),
+  contactNumber: Yup.string().required('Required'),
+});
 
 export default function ProductDetails() {
-  // const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const { toast } = useToast();
+
+  const handleSubmit = async (values: any) => {
+    toast({
+      title: 'Order Placed',
+      description: new Date().toLocaleString(),
+    });
+    console.log(values);
+  };
 
   return (
     <div className="bg-white">
       <div className="pt-6">
-        {/* <nav aria-label="Breadcrumb">
-          <ol
-            role="list"
-            className="mx-auto flex max-w-2xl items-center space-x-1 px-4 sm:px-6 lg:max-w-7xl lg:px-8"
-          >
-            {product.breadcrumbs.map((breadcrumb) => (
-              <li key={breadcrumb.id}>
-                <div className="flex items-center">
-                  <a
-                    href={breadcrumb.href}
-                    className="mr-2 text-sm font-medium text-gray-900"
-                  >
-                    {breadcrumb.name}
-                  </a>
-                  <svg
-                    width={16}
-                    height={20}
-                    viewBox="0 0 16 20"
-                    fill="currentColor"
-                    aria-hidden="true"
-                    className="h-5 w-4 text-gray-300"
-                  >
-                    <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
-                  </svg>
-                </div>
-              </li>
-            ))}
-            <li className="text-sm">
-              <a
-                href={product.href}
-                aria-current="page"
-                className="font-medium text-gray-500 hover:text-gray-600"
-              >
-                {product.name}
-              </a>
-            </li>
-          </ol>
-        </nav> */}
-
         {/* Image gallery */}
         <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           <div className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
@@ -128,7 +83,7 @@ export default function ProductDetails() {
                   BUY NOW
                 </button>
               </form> */}
-              <Sheet>
+              {/* <Sheet>
                 <SheetTrigger asChild>
                   <Button className="mt-4 px-6">BUY NOW</Button>
                 </SheetTrigger>
@@ -141,40 +96,34 @@ export default function ProductDetails() {
                     </SheetDescription>
                   </SheetHeader>
                   <div className="grid gap-4 py-4">
-                    <div className="grid grid-cols-4 items-center gap-4">
-                      <Input
-                        id="Address"
-                        label="Address"
-                        type="text"
-                        className="col-span-3"
-                      />
-                    </div>
-                    <div className="grid grid-cols-4 items-center gap-4">
-                      <Input
-                        id="Contact no."
-                        label="Contact no."
-                        type="text"
-                        className="col-span-3"
-                      />
-                    </div>
+                    <FormLayout
+                      initialValues={initalValues}
+                      validationSchema={SigninSchema}
+                      onSubmit={handleSubmit}
+                    >
+                      {() => (
+                        <Form className="mt-4 mb-2 w-80 max-w-screen-lg">
+                          <div className="mb-4 flex flex-col gap-4">
+                            <FormFieldLayout label="Address" name="address" />
+                            <FormFieldLayout label="Contact Number"name="contactNumber" />
+                          </div>
+                          <SheetFooter>
+                            <SheetClose asChild>
+                              <Button
+                                className="mt-2"
+                                type="submit"
+                                disabled={false}
+                              >
+                                Save Changes
+                              </Button>
+                            </SheetClose>
+                          </SheetFooter>
+                        </Form>
+                      )}
+                    </FormLayout>
                   </div>
-                  <SheetFooter>
-                    <SheetClose asChild>
-                      <Button
-                        type="button"
-                        onClick={() => {
-                          toast({
-                            title: 'Order Placed',
-                            description: new Date().toLocaleString(),
-                          });
-                        }}
-                      >
-                        Save changes
-                      </Button>
-                    </SheetClose>
-                  </SheetFooter>
                 </SheetContent>
-              </Sheet>
+              </Sheet> */}
             </div>
 
             <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">

@@ -1,1 +1,1 @@
-export { default as EditServices } from './page';
+export { default as EditProducts } from './page';

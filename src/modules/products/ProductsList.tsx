@@ -6,7 +6,7 @@ const products = [
   {
     id: 1,
     name: 'Red Diary',
-    href: '/abc/xyz/pqr',
+    href: '/categories/abc/xyz/pqr',
     imageSrc: '/image/HomeImages/diary2.jpg',
     imageAlt: 'Diary.',
     price: 'Rs.300',
@@ -14,7 +14,7 @@ const products = [
   {
     id: 2,
     name: 'vintage diary',
-    href: '/abc/xyz/pqr',
+    href: '/categories/abc/xyz/pqr',
     imageSrc: '/image/HomeImages/diary1.jpg',
     imageAlt: 'diary.',
     price: 'Rs.750',
@@ -22,7 +22,7 @@ const products = [
   {
     id: 3,
     name: 'colourful diaries',
-    href: '/abc/xyz/pqr',
+    href: '/categories/abc/xyz/pqr',
     imageSrc: '/image/HomeImages/diary3.jpeg',
     imageAlt: 'diary.',
     price: 'Rs.900',
@@ -30,7 +30,7 @@ const products = [
   {
     id: 4,
     name: 'diary',
-    href: '/abc/xyz/pqr',
+    href: '/categories/abc/xyz/pqr',
     imageSrc: '/image/HomeImages/diary4.jpeg',
     imageAlt: 'diary.',
     price: 'Rs.400',
@@ -38,7 +38,7 @@ const products = [
   {
     id: 5,
     name: 'Red Diary',
-    href: '/abc/xyz/pqr',
+    href: '/categories/abc/xyz/pqr',
     imageSrc: '/image/HomeImages/diary2.jpg',
     imageAlt: 'Diary.',
     price: 'Rs.300',
@@ -46,7 +46,7 @@ const products = [
   {
     id: 6,
     name: 'vintage diary',
-    href: '/abc/xyz/pqr',
+    href: '/categories/abc/xyz/pqr',
     imageSrc: '/image/HomeImages/diary1.jpg',
     imageAlt: 'diary.',
     price: 'Rs.750',
@@ -54,7 +54,7 @@ const products = [
   {
     id: 7,
     name: 'colourful diaries',
-    href: '/abc/xyz/pqr',
+    href: '/categories/abc/xyz/pqr',
     imageSrc: '/image/HomeImages/diary3.jpeg',
     imageAlt: 'diary.',
     price: 'Rs.900',
@@ -62,7 +62,7 @@ const products = [
   {
     id: 8,
     name: 'diary',
-    href: '/abc/xyz/pqr',
+    href: '/categories/abc/xyz/pqr',
     imageSrc: '/image/HomeImages/diary4.jpeg',
     imageAlt: 'diary.',
     price: 'Rs.400',
@@ -75,7 +75,7 @@ const ProductsList = ({title}) => {
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 ">
         <h2 className="text-center text-4xl font-bold tracking-tight text-gray-900 ">
-          {title.replace("-"," ").toUpperCase()}
+          {title.replaceAll("-"," ").toUpperCase()}
         </h2>
 
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 items-center">

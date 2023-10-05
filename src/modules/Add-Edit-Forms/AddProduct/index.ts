@@ -1,1 +1,2 @@
-export { default as AddService } from './page';
+export { default as AddProduct } from './page';
+

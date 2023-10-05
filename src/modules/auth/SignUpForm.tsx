@@ -65,7 +65,7 @@ const SignUpForm = () => {
                 className="mt-6"
                 fullWidth
                 type="submit"
-                color="indigo"
+               
                 disabled={false}
               >
                 Sign up

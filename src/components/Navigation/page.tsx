@@ -167,7 +167,7 @@ const navigation = {
           imageAlt: 'Stationery Hamper',
         },
         {
-          name: 'Art & Carft Hamper',
+          name: 'Art-Craft Hamper',
           href: '#',
           imageSrc: '/image/navbarImages/hamper2.jpg',
           imageAlt: 'Art & Craft Hamper',
@@ -179,7 +179,7 @@ const navigation = {
           name: 'Hampers',
           items: [
             { name: 'Stationery Hamper' },
-            { name: 'Art & Craft Hamper' },
+            { name: 'Art-Craft Hamper' },
             { name: 'Premium Hamper' },
           ],
         },
@@ -189,6 +189,7 @@ const navigation = {
 };
 
 const isLoggedin = true;
+const isTrader = true;
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
@@ -303,8 +304,8 @@ function Navigation() {
                             <Link
                               id={`${section.name}-heading`}
                               className="font-medium text-gray-900"
-                              href={`/${section.name
-                                .replace(' ', '-')
+                              href={`/categories/${section.name
+                                .replaceAll(' ', '-')
                                 .toLowerCase()}`}
                             >
                               {section.name}
@@ -317,10 +318,10 @@ function Navigation() {
                               {section.items.map((item) => (
                                 <li key={``} className="flow-root">
                                   <Link
-                                    href={`/${section.name
-                                      .replace(' ', '-')
+                                    href={`/categories/${section.name
+                                      .replaceAll(' ', '-')
                                       .toLowerCase()}/${item.name
-                                      .replace(' ', '-')
+                                      .replaceAll(' ', '-')
                                       .toLowerCase()}`}
                                     className="-m-2 block p-2 text-gray-500"
                                   >
@@ -373,7 +374,7 @@ function Navigation() {
                 </Link>
               </div>
               {isLoggedin ? (
-                <div className="font-bold absolute left-[78vw] top-6">
+                <div className="font-bold absolute left-[75vw] top-6">
                   Hello Dhruvi !
                 </div>
               ) : null}
@@ -450,8 +451,8 @@ function Navigation() {
                                           <Link
                                             id={`${section.name}-heading`}
                                             className="font-medium text-gray-900"
-                                            href={`/${section.name
-                                              .replace(' ', '-')
+                                            href={`/categories/${section.name
+                                              .replaceAll(' ', '-')
                                               .toLowerCase()}`}
                                           >
                                             {section.name}
@@ -467,10 +468,10 @@ function Navigation() {
                                                 className="flex"
                                               >
                                                 <Link
-                                                  href={`/${section.name
-                                                    .replace(' ', '-')
+                                                  href={`/categories/${section.name
+                                                    .replaceAll(' ', '-')
                                                     .toLowerCase()}/${item.name
-                                                    .replace(' ', '-')
+                                                    .replaceAll(' ', '-')
                                                     .toLowerCase()}`}
                                                   // href={'/Products/Boots'}
                                                   className="hover:text-gray-800"
@@ -548,7 +549,7 @@ function Navigation() {
                               <div className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
                                 <div>
                                   <Link
-                                    href="/auth/SignIn"
+                                    href="/profile/user"
                                     className="font-semibold text-gray-900"
                                   >
                                     My Profile
@@ -556,6 +557,19 @@ function Navigation() {
                                   </Link>
                                 </div>
                               </div>
+                              {isTrader && (
+                                <div className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
+                                  <div>
+                                    <Link
+                                      href="/profile/trader"
+                                      className="font-semibold text-gray-900"
+                                    >
+                                      Trader Profile
+                                      <span className="absolute inset-0" />
+                                    </Link>
+                                  </div>
+                                </div>
+                              )}
                               <div className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
                                 <div>
                                   <Link

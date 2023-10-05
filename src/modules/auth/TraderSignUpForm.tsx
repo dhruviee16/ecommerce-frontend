@@ -89,7 +89,6 @@ const Wizard: React.FC<IWizardProps> = ({
                 disabled={formik.isSubmitting}
                 className="mt-4"
                 fullWidth
-                color="indigo"
                 type="submit"
               >
                 {isLastStep ? 'Submit' : 'Next'}

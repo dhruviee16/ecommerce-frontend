@@ -52,10 +52,8 @@ const SignInForm = () => {
                 />
               </div>
               <Button
-                onClick={handleClick}
                 className="mt-6"
                 fullWidth
-                color="indigo"
                 type="submit"
                 disabled={false}
               >

@@ -4,33 +4,33 @@ import { FormFieldLayout, FormLayout } from '@/components/forms';
 import {
   AlertDialogAction,
   AlertDialogCancel,
-  AlertDialogFooter,
+  AlertDialogFooter
 } from '@/components/ui/alert-dialog';
 import { Card, Typography } from '@material-tailwind/react';
 import { Form } from 'formik';
 import * as Yup from 'yup';
 
 const initalValues = {
-  Productname: '',
-  QTY: '',
-  price: '',
-  Description: '',
+    ShopName: '',  
+    Contact: '',
+    Address: '',
 };
 
 const SigninSchema = Yup.object().shape({
-  desc1: Yup.string().required('Required'),
-  price: Yup.string().required('Required'),
+    ShopName: Yup.string().required('Required'),
+    Contact: Yup.string().required('Required'),
+    Address: Yup.string().required('Required'),
 });
 const handleSubmit = async (values: any) => {
   console.log(values);
 };
 
-const EditProducts = () => {
+const EditProfile = () => {
   return (
     <div className="-m-[15%]">
       <Card color="transparent" shadow={false} className="m-20">
-        <Typography variant="h4" color="blue-gray">
-          Edit Product
+        <Typography variant="h4" color="black">
+       Edit Details
         </Typography>
         <FormLayout
           initialValues={initalValues}
@@ -40,18 +40,16 @@ const EditProducts = () => {
           {() => (
             <Form className="mt-4 mb-2 w-full ">
               <div className=" flex flex-col gap-4">
-                <FormFieldLayout label="Product name" name="Product name" />
-                <FormFieldLayout label="QTY " name="Quantity" />
-                <FormFieldLayout label="Price" name="price" />
-                <FormFieldLayout label="Description" name="description" />
+                <FormFieldLayout label="Shop Name" name="ShopName" isDisabled/>
+                <FormFieldLayout label="Contact" name="Contact" />
+                <FormFieldLayout label="Address" name="Address" />
                 <AlertDialogFooter>
-                  <AlertDialogCancel className="w-full">
+                
+                <AlertDialogAction className='w-full bg-black text-white '>Update</AlertDialogAction>
+                <AlertDialogCancel className="w-full">
                     Cancel
                   </AlertDialogCancel>
-                  <AlertDialogAction className="w-full bg-black text-white">
-                    Continue
-                  </AlertDialogAction>
-                </AlertDialogFooter>
+              </AlertDialogFooter>
               </div>
             </Form>
           )}
@@ -61,4 +59,4 @@ const EditProducts = () => {
   );
 };
 
-export default EditProducts;
+export default EditProfile;

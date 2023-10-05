@@ -1,1 +1,1 @@
-export { default as TraderDashboard } from './page';
+export { default as TraderDashboard } from '../profile/trader/ProductInfo';

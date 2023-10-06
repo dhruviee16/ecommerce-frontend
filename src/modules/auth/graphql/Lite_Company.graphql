@@ -1,0 +1,5 @@
+fragment Lite_Company on Company {
+  id
+  name
+  description
+}

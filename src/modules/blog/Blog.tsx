@@ -43,7 +43,9 @@ const Profile = () => {
             for creative minds. Be inspired by our blog, where we share tips,
             tutorials, and stories from the world of art, craft, and stationery.
             Discover new techniques, explore emerging trends, and connect with a
-            community that shares your passion for creativity.<br /><br />
+            community that shares your passion for creativity.
+            <br />
+            <br />
             <b> Customer-Centric Approach</b> <br />
             We understand that your creative journey is unique, and our mission
             is to support you every step of the way. With a commitment to

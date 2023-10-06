@@ -1,4 +1,4 @@
-import { TraderProfile } from "@/modules/profile/trader";
+import { TraderProfile } from '@/modules/profile/trader';
 
 const page = () => {
   return <TraderProfile />;

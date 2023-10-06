@@ -1,0 +1,9 @@
+mutation RegisterCompany($input: RegisterCompanyInput!) {
+  registerCompany(input: $input) {
+    company {
+      ...Lite_Company
+      userId
+    }
+    token
+  }
+}

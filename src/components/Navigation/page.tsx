@@ -1,12 +1,15 @@
 'use client';
+import { TOKEN_NAME, useLogout } from '@/modules/auth/hooks';
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Typography } from '@material-tailwind/react';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from 'public/Arty-US_logo.png';
 import { Fragment, useState } from 'react';
+import { useCookies } from 'react-cookie';
 
 const navigation = {
   categories: [
@@ -188,15 +191,17 @@ const navigation = {
   ],
 };
 
-const isLoggedin = !true;
-const isTrader = true;
-
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
 function Navigation() {
   const [open, setOpen] = useState(false);
+  const [cookies, setCookie] = useCookies();
+  const { logout } = useLogout();
+
+  const isLoggedin = !!cookies[TOKEN_NAME];
+  const isTrader = true;
 
   return (
     <div className="bg-white">
@@ -572,13 +577,13 @@ function Navigation() {
                               )}
                               <div className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
                                 <div>
-                                  <Link
-                                    href="/auth/BecomeTrader"
+                                  <Typography
+                                    onClick={logout}
                                     className="font-semibold text-gray-900"
                                   >
                                     Log Out
                                     <span className="absolute inset-0" />
-                                  </Link>
+                                  </Typography>
                                 </div>
                               </div>
                             </div>

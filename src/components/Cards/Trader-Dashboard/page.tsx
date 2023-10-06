@@ -49,7 +49,7 @@ export default function HorizontalCard() {
           <Typography variant="h6" color="gray" className="mb-5 ">
             Category:diary
           </Typography>
-          <Typography  color="gray" className="mb-5 ">
+          <Typography color="gray" className="mb-5 ">
             Desc:Elegant Leather-Bound Personal Diary
           </Typography>
         </CardBody>

@@ -1,1 +1,1 @@
-export {default as EditTraderProfile} from './page';
+export { default as EditTraderProfile } from './page';

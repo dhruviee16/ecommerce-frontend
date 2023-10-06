@@ -1,24 +1,24 @@
 'use client';
 
 import {
-    AlertDialogAction,
-    AlertDialogCancel,
-    AlertDialogFooter,
-  } from '@/components/ui/alert-dialog';
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogFooter,
+} from '@/components/ui/alert-dialog';
 import { FormFieldLayout, FormLayout } from '@/components/forms';
 import { Card, Typography } from '@material-tailwind/react';
 import { Form } from 'formik';
 import * as Yup from 'yup';
 
 const initalValues = {
-  title: '',  
+  title: '',
   desc1: '',
   desc2: '',
   price: '',
 };
 
 const SigninSchema = Yup.object().shape({
-    title: Yup.string().required('Required'),
+  title: Yup.string().required('Required'),
   desc1: Yup.string().required('Required'),
   price: Yup.string().required('Required'),
 });
@@ -46,9 +46,11 @@ const AddProduct = () => {
                 <FormFieldLayout label="Qty" name="qty" />
                 <FormFieldLayout label="Price" name="price" />
                 <AlertDialogFooter>
-                <AlertDialogCancel className='w-full'>Cancel</AlertDialogCancel>
-                <AlertDialogAction className='w-full'>Add</AlertDialogAction>
-              </AlertDialogFooter>
+                  <AlertDialogCancel className="w-full">
+                    Cancel
+                  </AlertDialogCancel>
+                  <AlertDialogAction className="w-full">Add</AlertDialogAction>
+                </AlertDialogFooter>
               </div>
             </Form>
           )}

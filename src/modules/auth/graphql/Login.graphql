@@ -2,8 +2,12 @@ mutation login($input: LoginInput!) {
   login(input: $input) {
     token
     user {
-      id
       ...Lite_User
+      companies {
+        nodes {
+          ...Lite_Company
+        }
+      }
     }
   }
 }

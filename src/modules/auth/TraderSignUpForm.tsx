@@ -6,6 +6,7 @@ import { Form, Formik } from 'formik';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import * as Yup from 'yup';
+import { useTraderSignUp } from './hooks/useTraderSignUp';
 
 interface IWizardProps {
   children: React.ReactNode;
@@ -122,72 +123,73 @@ const SignupSchema = Yup.object().shape({
     .equals([Yup.ref('password')], 'Passwords must match'),
 });
 
-const App = () => (
-  <div className="flex items-center justify-center min-h-screen">
-    <Card color="transparent" shadow={false} className="m-6">
-      <Wizard
-        initialValues={initalValues}
-        onSubmit={async (values: any) =>
-          sleep(300).then(() => console.log('Wizard submit', values))
-        }
-      >
-        <WizardStep
-          onSubmit={() => console.log('Step1 onSubmit')}
-          validationSchema={SignupSchema}
-        >
-          <Typography variant="h4" color="blue-gray">
-            Sign Up
-          </Typography>
-          <Typography color="gray" className="my-1 font-normal">
-            Enter details to create an account
-          </Typography>
-          <div className="mb-4 flex flex-col gap-4">
-            <FormFieldLayout label="Name" name="name" />
-            <FormFieldLayout label="Email" name="email" />
-            <FormFieldLayout type="password" label="Password" name="password" />
-            <FormFieldLayout
-              type="password"
-              label="Confirm Password"
-              name="confirmPassword"
-            />
-          </div>
-        </WizardStep>
-        <WizardStep
-          onSubmit={() => console.log('Step2 onSubmit')}
-          validationSchema={Yup.object({
-            companyName: Yup.string().required('Required'),
-            contactNumber: Yup.string().required('Required'),
-            address1: Yup.string().required('Required'),
-            address2: Yup.string().required('Required'),
-            description: Yup.string().required('Required'),
-          })}
-        >
-          <Typography variant="h4" color="blue-gray">
-            Company Details
-          </Typography>
-          <Typography color="gray" className="my-1 font-normal">
-            Enter company details to continue
-          </Typography>
-          <div className="mb-4 flex flex-col gap-4">
-            <FormFieldLayout label="Company Name" name="companyName" />
-            <FormFieldLayout label="Contact Number" name="contactNumber" />
-            <FormFieldLayout label="Address 1" name="address1" />
-            <FormFieldLayout label="Address 2" name="address2" />
-            <FormFieldLayout label="Description" name="description" />
-          </div>
-        </WizardStep>
-      </Wizard>
-      <Typography color="gray" className="mt-4 text-center font-normal">
-        Already have an account?{' '}
-        <Link
-          href="/auth/SignIn"
-          className="font-medium text-blue-500 transition-colors hover:text-blue-700 underline"
-        >
-          Sign In
-        </Link>
-      </Typography>
-    </Card>
-  </div>
-);
+const App = () => {
+  const { initialValues, handleSubmit } = useTraderSignUp();
+
+  return (
+    <div className="flex items-center justify-center min-h-screen">
+      <Card color="transparent" shadow={false} className="m-6">
+        <Wizard initialValues={initialValues} onSubmit={handleSubmit}>
+          <WizardStep
+            onSubmit={() => console.log('Step1 onSubmit')}
+            validationSchema={SignupSchema}
+          >
+            <Typography variant="h4" color="blue-gray">
+              Sign Up
+            </Typography>
+            <Typography color="gray" className="my-1 font-normal">
+              Enter details to create an account
+            </Typography>
+            <div className="mb-4 flex flex-col gap-4">
+              <FormFieldLayout label="Name" name="name" />
+              <FormFieldLayout label="Email" name="email" />
+              <FormFieldLayout
+                type="password"
+                label="Password"
+                name="password"
+              />
+              <FormFieldLayout
+                type="password"
+                label="Confirm Password"
+                name="confirmPassword"
+              />
+            </div>
+          </WizardStep>
+          <WizardStep
+            onSubmit={() => console.log('Step2 onSubmit')}
+            validationSchema={Yup.object({
+              companyName: Yup.string().required('Required'),
+              contactNumber: Yup.string().required('Required'),
+              address: Yup.string().required('Required'),
+              description: Yup.string().required('Required'),
+            })}
+          >
+            <Typography variant="h4" color="blue-gray">
+              Company Details
+            </Typography>
+            <Typography color="gray" className="my-1 font-normal">
+              Enter company details to continue
+            </Typography>
+            <div className="mb-4 flex flex-col gap-4">
+              <FormFieldLayout label="Company Name" name="companyName" />
+              <FormFieldLayout label="Contact Number" name="contactNumber" />
+              <FormFieldLayout label="Address" name="address" />
+              <FormFieldLayout label="Description" name="description" />
+            </div>
+          </WizardStep>
+        </Wizard>
+        <Typography color="gray" className="mt-4 text-center font-normal">
+          Already have an account?{' '}
+          <Link
+            href="/auth/SignIn"
+            className="font-medium text-blue-500 transition-colors hover:text-blue-700 underline"
+          >
+            Sign In
+          </Link>
+        </Typography>
+      </Card>
+    </div>
+  );
+};
 
 export default App;

@@ -15,7 +15,7 @@ const page = ({ params }: Props) => {
   return (
     <div>
       <div className="justify-center items-center">
-          <ProductsList title={category} />
+        <ProductsList title={category} />
       </div>
     </div>
   );

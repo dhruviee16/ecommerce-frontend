@@ -1,18 +1,25 @@
 import { RegisterInput, useRegisterMutation } from '@/generated/graphql';
 import { useCookies } from 'react-cookie';
+import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import { TOKEN_NAME } from '.';
 import { RegisterSchema } from '../schema';
 
 export const useSignup = () => {
-  const [cookies, setCookies] = useCookies();
+  const [cookies, setCookies, deleteCookies] = useCookies();
+  const router = useRouter();
 
   const [signupMutation, { data, loading, error }] = useRegisterMutation({
     onCompleted(data) {
+      deleteCookies(TOKEN_NAME);
+      deleteCookies('currentUserId');
+
       setCookies(TOKEN_NAME, data.register?.token);
       setCookies('currentUserId', data.register?.user?.id);
 
       toast.success('Signed up in successfully');
+
+      router.replace('/');
     },
     onError(error) {
       toast.error('Error signup in' + error.message);

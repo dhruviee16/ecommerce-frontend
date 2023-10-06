@@ -78,7 +78,6 @@ const Wizard: React.FC<IWizardProps> = ({
               <Button
                 className="mt-4"
                 fullWidth
-                color="indigo"
                 onClick={() => previous(formik.values)}
                 type="button"
               >
@@ -158,20 +157,20 @@ const App = () => {
           <WizardStep
             onSubmit={() => console.log('Step2 onSubmit')}
             validationSchema={Yup.object({
-              companyName: Yup.string().required('Required'),
+              ShopName: Yup.string().required('Required'),
               contactNumber: Yup.string().required('Required'),
               address: Yup.string().required('Required'),
               description: Yup.string().required('Required'),
             })}
           >
             <Typography variant="h4" color="blue-gray">
-              Company Details
+              Shop Details
             </Typography>
             <Typography color="gray" className="my-1 font-normal">
-              Enter company details to continue
+              Enter Shop information to continue
             </Typography>
             <div className="mb-4 flex flex-col gap-4">
-              <FormFieldLayout label="Company Name" name="companyName" />
+              <FormFieldLayout label="Shop Name" name="ShopName" />
               <FormFieldLayout label="Contact Number" name="contactNumber" />
               <FormFieldLayout label="Address" name="address" />
               <FormFieldLayout label="Description" name="description" />

@@ -11,6 +11,7 @@ import { Form } from 'formik';
 import * as Yup from 'yup';
 
 const initalValues = {
+  ProductCategory: '',
   Productname: '',
   QTY: '',
   price: '',
@@ -40,6 +41,10 @@ const EditProducts = () => {
           {() => (
             <Form className="mt-4 mb-2 w-full ">
               <div className=" flex flex-col gap-4">
+                <FormFieldLayout
+                  label="Product category"
+                  name="Product category"
+                />
                 <FormFieldLayout label="Product name" name="Product name" />
                 <FormFieldLayout label="QTY " name="Quantity" />
                 <FormFieldLayout label="Price" name="price" />

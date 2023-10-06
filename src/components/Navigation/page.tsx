@@ -42,7 +42,7 @@ const navigation = {
             { name: 'Drawing Books' },
             { name: 'Geometric Tools' },
             { name: 'Exam Boards' },
-            { name: 'Glue/Adhesives' },
+            { name: 'Glue and Adhesives' },
             { name: 'Browse All' },
           ],
         },
@@ -113,7 +113,7 @@ const navigation = {
             { name: 'Carft Papers' },
             { name: 'Canvas Boards' },
             { name: 'Mini Canvas' },
-            { name: 'Drawing Papers/Pads' },
+            { name: 'Drawing Papers and Pads' },
           ],
         },
       ],
@@ -139,12 +139,12 @@ const navigation = {
       sections: [
         {
           id: 'Planners',
-          name: 'Planners',
+          name: 'Planners and Journals',
           items: [
             { name: 'Daily Planner' },
             { name: 'Weekly Planner' },
             { name: 'Monthly Planner' },
-            { name: 'Bridal Planner' },
+            { name: 'customized Planner' },
             { name: 'Journals' },
           ],
         },
@@ -152,9 +152,9 @@ const navigation = {
           id: 'Diaries',
           name: 'Diaries',
           items: [
-            { name: 'Soft Bound Dairies' },
-            { name: 'Hard Bound Dairies' },
-            { name: 'Leather Cover Dairies' },
+            { name: 'Soft Bound Diaries' },
+            { name: 'Hard Bound Diaries' },
+            { name: 'Leather Cover Diaries' },
           ],
         },
       ],
@@ -179,7 +179,7 @@ const navigation = {
       sections: [
         {
           id: 'Hampers',
-          name: 'Hampers',
+          name: 'Gift Hampers',
           items: [
             { name: 'Stationery Hamper' },
             { name: 'Art-Craft Hamper' },
@@ -201,7 +201,7 @@ function Navigation() {
   const { logout } = useLogout();
 
   const isLoggedin = !!cookies[TOKEN_NAME];
-  const isTrader = true;
+  const isTrader = !!cookies["currentCompanyId"];
 
   return (
     <div className="bg-white">

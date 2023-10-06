@@ -1,24 +1,26 @@
 'use client';
 
+import { FormFieldLayout, FormLayout } from '@/components/forms';
 import {
   AlertDialogAction,
   AlertDialogCancel,
   AlertDialogFooter,
 } from '@/components/ui/alert-dialog';
-import { FormFieldLayout, FormLayout } from '@/components/forms';
 import { Card, Typography } from '@material-tailwind/react';
 import { Form } from 'formik';
 import * as Yup from 'yup';
 
 const initalValues = {
-  title: '',
-  desc1: '',
-  desc2: '',
+  category: '',
+  name: '',
   price: '',
+  qty: '',
+  desc: '',
 };
 
 const SigninSchema = Yup.object().shape({
   title: Yup.string().required('Required'),
+  category: Yup.string().required('Required'),
   desc1: Yup.string().required('Required'),
   price: Yup.string().required('Required'),
 });
@@ -41,7 +43,8 @@ const AddProduct = () => {
           {() => (
             <Form className="mt-4 mb-2 w-full ">
               <div className=" flex flex-col gap-4">
-                <FormFieldLayout label="Product Title" name="title" />
+                <FormFieldLayout label="Product category" name="category" />
+                <FormFieldLayout label="Product name" name="name" />
                 <FormFieldLayout label="Price" name="price" />
                 <FormFieldLayout label="Qty" name="qty" />
                 <FormFieldLayout label="Price" name="price" />

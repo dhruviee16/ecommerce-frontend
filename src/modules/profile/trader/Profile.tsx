@@ -21,6 +21,7 @@ export default function VerticalTabs() {
       value: 'react',
       desc: <ProductInfo />,
     },
+
   ];
 
   return (

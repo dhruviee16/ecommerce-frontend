@@ -14,7 +14,10 @@ export const useLogin = () => {
     onCompleted(data) {
       setCookies(TOKEN_NAME, data.login?.token);
       setCookies('currentUserId', data.login?.user?.id);
-      setCookies('currentCompanyId', data.login?.user?.companies.nodes[0]?.id);
+
+      if(data.login?.user.companies?.nodes[0]?.id){
+        setCookies('currentCompanyId', data.login?.user?.companies?.nodes[0]?.id);
+      }
 
       toast.success('Logged in successfully');
 

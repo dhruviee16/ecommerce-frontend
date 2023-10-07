@@ -29,7 +29,7 @@ function HomePage() {
           </div>
         </div>
         <div className="mt-4">
-          <Link href="#">
+          <Link href="/categories/stationery-basics">
             <button className="bg-white text-black sm:bg-black sm:text-white py-2 px-4 border-black border-2 text-center font-medium text-sm hover:bg-white transition-colors duration-200 hover:text-black">
               SHOP NOW
             </button>
@@ -63,7 +63,7 @@ function HomePage() {
             </div>
           </div>
           <div className="mt-4">
-            <Link href="#">
+            <Link href="/categories/junior-art">
               <button className="bg-white text-black sm:bg-black sm:text-white py-2 px-4 border-black border-2 text-center font-medium text-sm hover:bg-white transition-colors duration-200 hover:text-black">
                 SHOP NOW
               </button>
@@ -86,7 +86,7 @@ function HomePage() {
               </div>
             </div>
             <div className="mt-4">
-              <Link href="#">
+              <Link href="/categories/art-paints">
                 <button className="bg-white text-black sm:bg-black sm:text-white py-2 px-4 border-black border-2 text-center font-medium text-sm hover:bg-white transition-colors duration-200 hover:text-black">
                   SHOP NOW
                 </button>
@@ -95,26 +95,6 @@ function HomePage() {
           </div>
         </div>
       </div>
-
-      {/* <div className="flex-col ml-12 gap-y-16 hidden md:flex">
-          <div className="">
-            <Image
-              src="/image/HomeImages/row.jpg"
-              alt="Knives,Brushes,Pallets"
-              height={500}
-              width={400}
-            />
-          </div>
-          <div className="">
-            <Image
-              src="/image/HomeImages/row.jpg"
-              alt="Knives,Brushes,Pallets"
-              height={500}
-              width={400}
-            />
-          </div>
-        </div> */}
-
       <div className="relative m-10 p-10 text-center">
         <Image
           src={banner}

@@ -7,18 +7,14 @@ import {
 } from '@/components/ui/alert-dialog';
 import { Button } from '@material-tailwind/react';
 import AddProduct from '../../Add-Edit-Forms/AddProduct/page';
+import Link from 'next/link';
 
 const ProductInfo = () => {
   return (
     <>
       <div className="justify-center items-center  overflow-y-auto h-screen">
         <div className="text-center mt-5 text-4xl">Trader Dashboard</div>
-        <Button
-                size="lg"
-                className="flex ml-[7%] flex-row content-start border-black border-2 absolute bg-black text-white hover:bg-white hover:text-black"
-              >
-                <div className="flex flex-row gap-x-3 ">Orders</div>
-              </Button>
+        
         <div className="ml-[6rem] sm:ml-[80%] mt-3">
           
           <AlertDialog>

@@ -8,12 +8,13 @@ import {
 } from '@material-tailwind/react';
 import ProductInfo from './ProductInfo';
 import TraderInfo from './TraderInfo';
+import Order from './Order';
 
 export default function VerticalTabs() {
   const data = [
     {
       label: 'Profile',
-      value: 'html',
+      value: 'Profile',
       desc: <TraderInfo />,
     },
     {
@@ -21,7 +22,12 @@ export default function VerticalTabs() {
       value: 'react',
       desc: <ProductInfo />,
     },
-
+    
+    {
+      label: 'orders',
+      value: 'orders',
+      desc: <Order />,
+    },
   ];
 
   return (

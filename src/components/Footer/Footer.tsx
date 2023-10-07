@@ -24,23 +24,23 @@ const LINKS = [
     items: [
       {
         title: 'stationary basics',
-        link: '',
+        link: '/categories/Stationary-basics',
       },
       {
         title: 'hampers',
-        link: '',
+        link: '/categories/Hampers',
       },
       {
         title: 'diaries',
-        link: '',
+        link: '/categories/Diaries',
       },
       {
         title: 'art paints',
-        link: '',
+        link: '/categories/Art-paints',
       },
       {
         title: 'markers',
-        link: '',
+        link: '/categories/Markers',
       },
     ],
   },

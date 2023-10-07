@@ -3,7 +3,7 @@ const products = [
   {
     id: 1,
     name: 'Color Pencils',
-    href: '#',
+    href: '/categories/abc/xyz/pqr',
     imageSrc: '/image/HomeImages/colorpencil2.jpg',
     imageAlt: 'Color Pencils',
     price: 'Rs.200',
@@ -15,7 +15,7 @@ const products = [
   {
     id: 2,
     name: 'Vintage Diary',
-    href: '#',
+    href: '/categories/abc/xyz/pqr',
     imageSrc: '/image/HomeImages/diary1.jpg',
     imageAlt: 'Vintage Diary',
     price: 'Rs.750',
@@ -25,7 +25,7 @@ const products = [
   {
     id: 3,
     name: 'Acrylic Colors',
-    href: '#',
+    href: '/categories/abc/xyz/pqr',
     imageSrc: '/image/HomeImages/acrylic.jpg',
     imageAlt: 'Acrylic colors',
     price: 'Rs.300',
@@ -36,7 +36,7 @@ const products = [
   {
     id: 4,
     name: 'Hamper',
-    href: '#',
+    href: '/categories/abc/xyz/pqr',
     imageSrc: '/image/HomeImages/hamper.jpg',
     imageAlt: 'Hamper',
     price: 'Rs.450',

@@ -1,27 +1,41 @@
 'use client';
-import { useToast } from '@/components/ui/use-toast';
+import { FormFieldLayout, FormLayout } from '@/components/forms';
+import { Button } from '@/components/ui/button';
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
+import { Form } from 'formik';
 import Image from 'next/image';
+import toast from 'react-hot-toast';
 import * as Yup from 'yup';
 
 const product = {
-  name: 'sketch pens',
-  price: 'Rs.192',
+  name: 'Vintage Diary',
+  price: 'Rs.500',
   href: '#',
 
   images: [
     {
       src: '/image/HomeImages/diary1.jpg',
-      alt: 'Two each of gray, white, and black shirts laying flat.',
+      alt: 'the vintage leather bound diary',
     },
   ],
 
-  description: 'The Basic colouring pens',
-  details: 'The Pack includes 1 black, 1 white, and other colors.',
+  description: 'The  leather bound diary with vintage pages.',
+  details:
+    'Every page invites you to capture moments,Choose your diary, and let the adventure begin.',
 };
 
 const initalValues = {
-  email: '',
-  password: '',
+  address: '',
+  contactNumber: '',
 };
 
 const SigninSchema = Yup.object().shape({
@@ -30,13 +44,9 @@ const SigninSchema = Yup.object().shape({
 });
 
 export default function ProductDetails() {
-  const { toast } = useToast();
-
   const handleSubmit = async (values: any) => {
-    toast({
-      title: 'Order Placed',
-      description: new Date().toLocaleString(),
-    });
+    toast.success('order placed successfully');
+
     console.log(values);
   };
 
@@ -83,7 +93,7 @@ export default function ProductDetails() {
                   BUY NOW
                 </button>
               </form> */}
-              {/* <Sheet>
+              <Sheet>
                 <SheetTrigger asChild>
                   <Button className="mt-4 px-6">BUY NOW</Button>
                 </SheetTrigger>
@@ -95,17 +105,21 @@ export default function ProductDetails() {
                       save when you&apos;re done.
                     </SheetDescription>
                   </SheetHeader>
-                  <div className="grid gap-4 py-4">
-                    <FormLayout
-                      initialValues={initalValues}
-                      validationSchema={SigninSchema}
-                      onSubmit={handleSubmit}
-                    >
-                      {() => (
+                  <FormLayout
+                    initialValues={initalValues}
+                    validationSchema={SigninSchema}
+                    onSubmit={handleSubmit}
+                    enableReinitialize
+                  >
+                    {() => (
+                      <div className="grid gap-4 py-4">
                         <Form className="mt-4 mb-2 w-80 max-w-screen-lg">
                           <div className="mb-4 flex flex-col gap-4">
                             <FormFieldLayout label="Address" name="address" />
-                            <FormFieldLayout label="Contact Number"name="contactNumber" />
+                            <FormFieldLayout
+                              label="Contact Number"
+                              name="contactNumber"
+                            />
                           </div>
                           <SheetFooter>
                             <SheetClose asChild>
@@ -119,11 +133,11 @@ export default function ProductDetails() {
                             </SheetClose>
                           </SheetFooter>
                         </Form>
-                      )}
-                    </FormLayout>
-                  </div>
+                      </div>
+                    )}
+                  </FormLayout>
                 </SheetContent>
-              </Sheet> */}
+              </Sheet>
             </div>
 
             <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">

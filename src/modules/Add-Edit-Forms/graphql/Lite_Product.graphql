@@ -1,0 +1,15 @@
+fragment Lite_Product on Product {
+  id
+  name
+  description
+  price
+  quantity
+  companyId
+  categoryId
+  category {
+    ...Lite_Category
+  }
+  company {
+    ...Lite_Company
+  }
+}

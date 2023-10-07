@@ -1,0 +1,8 @@
+mutation UpdateProduct($id: UUID!, $product: ProductPatch!) {
+  updateProduct(input: { patch: $product, id: $id }) {
+    product {
+      id
+      ...Lite_Product
+    }
+  }
+}

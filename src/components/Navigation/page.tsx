@@ -1,5 +1,6 @@
 'use client';
-import { TOKEN_NAME, useLogout } from '@/modules/auth/hooks';
+import { useCurrentUserQuery } from '@/generated/graphql';
+import { useLogout } from '@/modules/auth/hooks';
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
@@ -9,7 +10,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import logo from 'public/Arty-US_logo.png';
 import { Fragment, useState } from 'react';
-import { useCookies } from 'react-cookie';
 
 const navigation = {
   categories: [
@@ -197,11 +197,13 @@ function classNames(...classes: string[]) {
 
 function Navigation() {
   const [open, setOpen] = useState(false);
-  const [cookies, setCookie] = useCookies();
+
+  const {data} = useCurrentUserQuery();
+
   const { logout } = useLogout();
 
-  const isLoggedin = !!cookies[TOKEN_NAME];
-  const isTrader = !!cookies["currentCompanyId"];
+  const isLoggedin = !!data?.currentUser?.id;
+  const isTrader = !!data?.currentUser?.company?.id;
 
   return (
     <div className="bg-white">

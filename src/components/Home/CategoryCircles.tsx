@@ -1,10 +1,11 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Categories = [
   {
     id: 1,
     name: 'Resin',
-    href: '#',
+    href: '/categories/resin',
     imageSrc: '/image/HomeImages/ResinCircle.jpg',
     imageAlt: 'Resin Art',
   },
@@ -47,9 +48,9 @@ const Categories = [
 
 function CategoryCircles() {
   return (
-    <div className="flex flex-col sm:flex-row gap-14 justify-center items-center my-6  ">
+    <div className="flex flex-col sm:flex-row gap-14 justify-center items-center my-6">
       {Categories.map((category) => (
-        <div key={category.id}>
+        <Link href={category.href} key={category.id}>
           <div className="flex flex-col hover:text-blue-500">
             <Image
               className="rounded-full border-2 hover:border-blue-500"
@@ -60,7 +61,7 @@ function CategoryCircles() {
             />
             <div className="text-center">{category.name}</div>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );

@@ -2,36 +2,23 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K];
-};
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]?: Maybe<T[SubKey]>;
-};
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]: Maybe<T[SubKey]>;
-};
-export type MakeEmpty<
-  T extends { [key: string]: unknown },
-  K extends keyof T
-> = { [_ in K]?: never };
-export type Incremental<T> =
-  | T
-  | {
-      [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never;
-    };
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
+export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string };
-  String: { input: string; output: string };
-  Boolean: { input: boolean; output: boolean };
-  Int: { input: number; output: number };
-  Float: { input: number; output: number };
-  BigFloat: { input: any; output: any };
-  Cursor: { input: any; output: any };
-  Datetime: { input: any; output: any };
-  UUID: { input: any; output: any };
+  ID: { input: string; output: string; }
+  String: { input: string; output: string; }
+  Boolean: { input: boolean; output: boolean; }
+  Int: { input: number; output: number; }
+  Float: { input: number; output: number; }
+  BigFloat: { input: any; output: any; }
+  Cursor: { input: any; output: any; }
+  Datetime: { input: any; output: any; }
+  UUID: { input: any; output: any; }
 };
 
 export type Address = {
@@ -53,6 +40,7 @@ export type Address = {
   usersByOrderAddressIdAndUserId: AddressUsersByOrderAddressIdAndUserIdManyToManyConnection;
 };
 
+
 export type AddressOrdersArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
@@ -63,6 +51,7 @@ export type AddressOrdersArgs = {
   orderBy?: InputMaybe<Array<OrdersOrderBy>>;
 };
 
+
 export type AddressProductsByOrderAddressIdAndProductIdArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
@@ -72,6 +61,7 @@ export type AddressProductsByOrderAddressIdAndProductIdArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<ProductsOrderBy>>;
 };
+
 
 export type AddressUsersByOrderAddressIdAndUserIdArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
@@ -159,17 +149,17 @@ export type AddressProductsByOrderAddressIdAndProductIdManyToManyEdge = {
   orders: OrdersConnection;
 };
 
+
 /** A `Product` edge in the connection, with data from `Order`. */
-export type AddressProductsByOrderAddressIdAndProductIdManyToManyEdgeOrdersArgs =
-  {
-    after?: InputMaybe<Scalars['Cursor']['input']>;
-    before?: InputMaybe<Scalars['Cursor']['input']>;
-    condition?: InputMaybe<OrderCondition>;
-    first?: InputMaybe<Scalars['Int']['input']>;
-    last?: InputMaybe<Scalars['Int']['input']>;
-    offset?: InputMaybe<Scalars['Int']['input']>;
-    orderBy?: InputMaybe<Array<OrdersOrderBy>>;
-  };
+export type AddressProductsByOrderAddressIdAndProductIdManyToManyEdgeOrdersArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  condition?: InputMaybe<OrderCondition>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<OrdersOrderBy>>;
+};
 
 /** A connection to a list of `User` values, with data from `Order`. */
 export type AddressUsersByOrderAddressIdAndUserIdManyToManyConnection = {
@@ -194,6 +184,7 @@ export type AddressUsersByOrderAddressIdAndUserIdManyToManyEdge = {
   /** Reads and enables pagination through a set of `Order`. */
   orders: OrdersConnection;
 };
+
 
 /** A `User` edge in the connection, with data from `Order`. */
 export type AddressUsersByOrderAddressIdAndUserIdManyToManyEdgeOrdersArgs = {
@@ -236,7 +227,7 @@ export enum AddressesOrderBy {
   PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
   PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
   UserIdAsc = 'USER_ID_ASC',
-  UserIdDesc = 'USER_ID_DESC',
+  UserIdDesc = 'USER_ID_DESC'
 }
 
 /** The `address` to be created by this mutation. */
@@ -271,15 +262,13 @@ export type AddressesUserIdFkeyInverseInput = {
   /** Flag indicating whether all other `address` records that match this relationship should be removed. */
   deleteOthers?: InputMaybe<Scalars['Boolean']['input']>;
   /** The primary key(s) and patch data for `address` for the far side of the relationship. */
-  updateById?: InputMaybe<
-    Array<AddressOnAddressForAddressesUserIdFkeyUsingAddressesPkeyUpdate>
-  >;
+  updateById?: InputMaybe<Array<AddressOnAddressForAddressesUserIdFkeyUsingAddressesPkeyUpdate>>;
 };
 
 /** The `user` to be created by this mutation. */
 export type AddressesUserIdFkeyUsersCreateInput = {
   addressesUsingId?: InputMaybe<AddressesUserIdFkeyInverseInput>;
-  companiesUsingId?: InputMaybe<CompaniesUserIdFkeyInverseInput>;
+  companyUsingId?: InputMaybe<CompaniesUserIdFkeyInverseInput>;
   email: Scalars['String']['input'];
   isAdmin?: InputMaybe<Scalars['Boolean']['input']>;
   isVerified?: InputMaybe<Scalars['Boolean']['input']>;
@@ -293,7 +282,7 @@ export type AddressesUserIdFkeyUsersCreateInput = {
 export type CategoriesCategoryIdFkeyCategoriesCreateInput = {
   categoryToParentId?: InputMaybe<CategoriesCategoryIdFkeyInput>;
   name: Scalars['String']['input'];
-  productCategoriesUsingId?: InputMaybe<ProductCategoriesCategoryIdFkeyInverseInput>;
+  productsUsingId?: InputMaybe<ProductsCategoryIdFkeyInverseInput>;
   slug?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -341,26 +330,27 @@ export enum CategoriesOrderBy {
   ParentIdAsc = 'PARENT_ID_ASC',
   ParentIdDesc = 'PARENT_ID_DESC',
   PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
-  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
+  PrimaryKeyDesc = 'PRIMARY_KEY_DESC'
 }
 
 export type Category = {
   __typename?: 'Category';
   /** Reads and enables pagination through a set of `Category`. */
   childCategories: CategoriesConnection;
+  /** Reads and enables pagination through a set of `Company`. */
+  companiesByProductCategoryIdAndCompanyId: CategoryCompaniesByProductCategoryIdAndCompanyIdManyToManyConnection;
   createdAt: Scalars['Datetime']['output'];
   id: Scalars['UUID']['output'];
   name: Scalars['String']['output'];
   /** Reads a single `Category` that is related to this `Category`. */
   parent?: Maybe<Category>;
   parentId?: Maybe<Scalars['UUID']['output']>;
-  /** Reads and enables pagination through a set of `ProductCategory`. */
-  productCategories: ProductCategoriesConnection;
   /** Reads and enables pagination through a set of `Product`. */
-  productsByProductCategoryCategoryIdAndProductId: CategoryProductsByProductCategoryCategoryIdAndProductIdManyToManyConnection;
+  products: ProductsConnection;
   slug?: Maybe<Scalars['String']['output']>;
   updatedAt: Scalars['Datetime']['output'];
 };
+
 
 export type CategoryChildCategoriesArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
@@ -372,17 +362,19 @@ export type CategoryChildCategoriesArgs = {
   orderBy?: InputMaybe<Array<CategoriesOrderBy>>;
 };
 
-export type CategoryProductCategoriesArgs = {
+
+export type CategoryCompaniesByProductCategoryIdAndCompanyIdArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
-  condition?: InputMaybe<ProductCategoryCondition>;
+  condition?: InputMaybe<CompanyCondition>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<ProductCategoriesOrderBy>>;
+  orderBy?: InputMaybe<Array<CompaniesOrderBy>>;
 };
 
-export type CategoryProductsByProductCategoryCategoryIdAndProductIdArgs = {
+
+export type CategoryProductsArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<ProductCondition>;
@@ -400,6 +392,42 @@ export type CategoryCategoriesPkeyConnect = {
 /** The fields on `category` to look up the row to delete. */
 export type CategoryCategoriesPkeyDelete = {
   id: Scalars['UUID']['input'];
+};
+
+/** A connection to a list of `Company` values, with data from `Product`. */
+export type CategoryCompaniesByProductCategoryIdAndCompanyIdManyToManyConnection = {
+  __typename?: 'CategoryCompaniesByProductCategoryIdAndCompanyIdManyToManyConnection';
+  /** A list of edges which contains the `Company`, info from the `Product`, and the cursor to aid in pagination. */
+  edges: Array<CategoryCompaniesByProductCategoryIdAndCompanyIdManyToManyEdge>;
+  /** A list of `Company` objects. */
+  nodes: Array<Company>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+  /** The count of *all* `Company` you could get from the connection. */
+  totalCount: Scalars['Int']['output'];
+};
+
+/** A `Company` edge in the connection, with data from `Product`. */
+export type CategoryCompaniesByProductCategoryIdAndCompanyIdManyToManyEdge = {
+  __typename?: 'CategoryCompaniesByProductCategoryIdAndCompanyIdManyToManyEdge';
+  /** A cursor for use in pagination. */
+  cursor?: Maybe<Scalars['Cursor']['output']>;
+  /** The `Company` at the end of the edge. */
+  node: Company;
+  /** Reads and enables pagination through a set of `Product`. */
+  products: ProductsConnection;
+};
+
+
+/** A `Company` edge in the connection, with data from `Product`. */
+export type CategoryCompaniesByProductCategoryIdAndCompanyIdManyToManyEdgeProductsArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  condition?: InputMaybe<ProductCondition>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<ProductsOrderBy>>;
 };
 
 /**
@@ -420,72 +448,32 @@ export type CategoryInput = {
   categoryToParentId?: InputMaybe<CategoriesCategoryIdFkeyInput>;
   name: Scalars['String']['input'];
   parentId?: InputMaybe<Scalars['UUID']['input']>;
-  productCategoriesUsingId?: InputMaybe<ProductCategoriesCategoryIdFkeyInverseInput>;
+  productsUsingId?: InputMaybe<ProductsCategoryIdFkeyInverseInput>;
   slug?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** The fields on `category` to look up the row to update. */
-export type CategoryOnCategoryForCategoriesCategoryIdFkeyUsingCategoriesPkeyUpdate =
-  {
-    id: Scalars['UUID']['input'];
-    /** An object where the defined keys will be set on the `category` being updated. */
-    patch: UpdateCategoryOnCategoryForCategoriesCategoryIdFkeyPatch;
-  };
+export type CategoryOnCategoryForCategoriesCategoryIdFkeyUsingCategoriesPkeyUpdate = {
+  id: Scalars['UUID']['input'];
+  /** An object where the defined keys will be set on the `category` being updated. */
+  patch: UpdateCategoryOnCategoryForCategoriesCategoryIdFkeyPatch;
+};
 
 /** The fields on `category` to look up the row to update. */
-export type CategoryOnProductCategoryForProductCategoriesCategoryIdFkeyUsingCategoriesPkeyUpdate =
-  {
-    id: Scalars['UUID']['input'];
-    /** An object where the defined keys will be set on the `category` being updated. */
-    patch: UpdateCategoryOnProductCategoryForProductCategoriesCategoryIdFkeyPatch;
-  };
+export type CategoryOnProductForProductsCategoryIdFkeyUsingCategoriesPkeyUpdate = {
+  id: Scalars['UUID']['input'];
+  /** An object where the defined keys will be set on the `category` being updated. */
+  patch: UpdateCategoryOnProductForProductsCategoryIdFkeyPatch;
+};
 
 /** Represents an update to a `Category`. Fields that are set will be updated. */
 export type CategoryPatch = {
   categoryToParentId?: InputMaybe<CategoriesCategoryIdFkeyInput>;
   name?: InputMaybe<Scalars['String']['input']>;
   parentId?: InputMaybe<Scalars['UUID']['input']>;
-  productCategoriesUsingId?: InputMaybe<ProductCategoriesCategoryIdFkeyInverseInput>;
+  productsUsingId?: InputMaybe<ProductsCategoryIdFkeyInverseInput>;
   slug?: InputMaybe<Scalars['String']['input']>;
 };
-
-/** A connection to a list of `Product` values, with data from `ProductCategory`. */
-export type CategoryProductsByProductCategoryCategoryIdAndProductIdManyToManyConnection =
-  {
-    __typename?: 'CategoryProductsByProductCategoryCategoryIdAndProductIdManyToManyConnection';
-    /** A list of edges which contains the `Product`, info from the `ProductCategory`, and the cursor to aid in pagination. */
-    edges: Array<CategoryProductsByProductCategoryCategoryIdAndProductIdManyToManyEdge>;
-    /** A list of `Product` objects. */
-    nodes: Array<Product>;
-    /** Information to aid in pagination. */
-    pageInfo: PageInfo;
-    /** The count of *all* `Product` you could get from the connection. */
-    totalCount: Scalars['Int']['output'];
-  };
-
-/** A `Product` edge in the connection, with data from `ProductCategory`. */
-export type CategoryProductsByProductCategoryCategoryIdAndProductIdManyToManyEdge =
-  {
-    __typename?: 'CategoryProductsByProductCategoryCategoryIdAndProductIdManyToManyEdge';
-    /** A cursor for use in pagination. */
-    cursor?: Maybe<Scalars['Cursor']['output']>;
-    /** The `Product` at the end of the edge. */
-    node: Product;
-    /** Reads and enables pagination through a set of `ProductCategory`. */
-    productCategories: ProductCategoriesConnection;
-  };
-
-/** A `Product` edge in the connection, with data from `ProductCategory`. */
-export type CategoryProductsByProductCategoryCategoryIdAndProductIdManyToManyEdgeProductCategoriesArgs =
-  {
-    after?: InputMaybe<Scalars['Cursor']['input']>;
-    before?: InputMaybe<Scalars['Cursor']['input']>;
-    condition?: InputMaybe<ProductCategoryCondition>;
-    first?: InputMaybe<Scalars['Int']['input']>;
-    last?: InputMaybe<Scalars['Int']['input']>;
-    offset?: InputMaybe<Scalars['Int']['input']>;
-    orderBy?: InputMaybe<Array<ProductCategoriesOrderBy>>;
-  };
 
 /** A connection to a list of `Company` values. */
 export type CompaniesConnection = {
@@ -517,7 +505,7 @@ export enum CompaniesOrderBy {
   PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
   PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
   UserIdAsc = 'USER_ID_ASC',
-  UserIdDesc = 'USER_ID_DESC',
+  UserIdDesc = 'USER_ID_DESC'
 }
 
 /** The `company` to be created by this mutation. */
@@ -544,23 +532,27 @@ export type CompaniesUserIdFkeyInput = {
 /** Input for the nested mutation of `company` in the `UserInput` mutation. */
 export type CompaniesUserIdFkeyInverseInput = {
   /** The primary key(s) for `company` for the far side of the relationship. */
-  connectById?: InputMaybe<Array<CompanyCompaniesPkeyConnect>>;
+  connectById?: InputMaybe<CompanyCompaniesPkeyConnect>;
+  /** The primary key(s) for `company` for the far side of the relationship. */
+  connectByUserId?: InputMaybe<CompanyCompaniesUserIdUniqueConnect>;
   /** A `CompanyInput` object that will be created and connected to this object. */
   create?: InputMaybe<Array<CompaniesUserIdFkeyCompaniesCreateInput>>;
   /** The primary key(s) for `company` for the far side of the relationship. */
-  deleteById?: InputMaybe<Array<CompanyCompaniesPkeyDelete>>;
+  deleteById?: InputMaybe<CompanyCompaniesPkeyDelete>;
+  /** The primary key(s) for `company` for the far side of the relationship. */
+  deleteByUserId?: InputMaybe<CompanyCompaniesUserIdUniqueDelete>;
   /** Flag indicating whether all other `company` records that match this relationship should be removed. */
   deleteOthers?: InputMaybe<Scalars['Boolean']['input']>;
   /** The primary key(s) and patch data for `company` for the far side of the relationship. */
-  updateById?: InputMaybe<
-    Array<CompanyOnCompanyForCompaniesUserIdFkeyUsingCompaniesPkeyUpdate>
-  >;
+  updateById?: InputMaybe<CompanyOnCompanyForCompaniesUserIdFkeyUsingCompaniesPkeyUpdate>;
+  /** The primary key(s) and patch data for `company` for the far side of the relationship. */
+  updateByUserId?: InputMaybe<CompanyOnCompanyForCompaniesUserIdFkeyUsingCompaniesUserIdUniqueUpdate>;
 };
 
 /** The `user` to be created by this mutation. */
 export type CompaniesUserIdFkeyUsersCreateInput = {
   addressesUsingId?: InputMaybe<AddressesUserIdFkeyInverseInput>;
-  companiesUsingId?: InputMaybe<CompaniesUserIdFkeyInverseInput>;
+  companyUsingId?: InputMaybe<CompaniesUserIdFkeyInverseInput>;
   email: Scalars['String']['input'];
   isAdmin?: InputMaybe<Scalars['Boolean']['input']>;
   isVerified?: InputMaybe<Scalars['Boolean']['input']>;
@@ -572,6 +564,8 @@ export type CompaniesUserIdFkeyUsersCreateInput = {
 
 export type Company = {
   __typename?: 'Company';
+  /** Reads and enables pagination through a set of `Category`. */
+  categoriesByProductCompanyIdAndCategoryId: CompanyCategoriesByProductCompanyIdAndCategoryIdManyToManyConnection;
   createdAt: Scalars['Datetime']['output'];
   description?: Maybe<Scalars['String']['output']>;
   id: Scalars['UUID']['output'];
@@ -585,7 +579,55 @@ export type Company = {
   userId: Scalars['UUID']['output'];
 };
 
+
+export type CompanyCategoriesByProductCompanyIdAndCategoryIdArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  condition?: InputMaybe<CategoryCondition>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<CategoriesOrderBy>>;
+};
+
+
 export type CompanyProductsArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  condition?: InputMaybe<ProductCondition>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<ProductsOrderBy>>;
+};
+
+/** A connection to a list of `Category` values, with data from `Product`. */
+export type CompanyCategoriesByProductCompanyIdAndCategoryIdManyToManyConnection = {
+  __typename?: 'CompanyCategoriesByProductCompanyIdAndCategoryIdManyToManyConnection';
+  /** A list of edges which contains the `Category`, info from the `Product`, and the cursor to aid in pagination. */
+  edges: Array<CompanyCategoriesByProductCompanyIdAndCategoryIdManyToManyEdge>;
+  /** A list of `Category` objects. */
+  nodes: Array<Category>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+  /** The count of *all* `Category` you could get from the connection. */
+  totalCount: Scalars['Int']['output'];
+};
+
+/** A `Category` edge in the connection, with data from `Product`. */
+export type CompanyCategoriesByProductCompanyIdAndCategoryIdManyToManyEdge = {
+  __typename?: 'CompanyCategoriesByProductCompanyIdAndCategoryIdManyToManyEdge';
+  /** A cursor for use in pagination. */
+  cursor?: Maybe<Scalars['Cursor']['output']>;
+  /** The `Category` at the end of the edge. */
+  node: Category;
+  /** Reads and enables pagination through a set of `Product`. */
+  products: ProductsConnection;
+};
+
+
+/** A `Category` edge in the connection, with data from `Product`. */
+export type CompanyCategoriesByProductCompanyIdAndCategoryIdManyToManyEdgeProductsArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<ProductCondition>;
@@ -603,6 +645,16 @@ export type CompanyCompaniesPkeyConnect = {
 /** The fields on `company` to look up the row to delete. */
 export type CompanyCompaniesPkeyDelete = {
   id: Scalars['UUID']['input'];
+};
+
+/** The fields on `company` to look up the row to connect. */
+export type CompanyCompaniesUserIdUniqueConnect = {
+  userId: Scalars['UUID']['input'];
+};
+
+/** The fields on `company` to look up the row to delete. */
+export type CompanyCompaniesUserIdUniqueDelete = {
+  userId: Scalars['UUID']['input'];
 };
 
 /** A condition to be used against `Company` object types. All fields are tested for equality and combined with a logical ‘and.’ */
@@ -631,10 +683,24 @@ export type CompanyOnCompanyForCompaniesUserIdFkeyUsingCompaniesPkeyUpdate = {
 };
 
 /** The fields on `company` to look up the row to update. */
+export type CompanyOnCompanyForCompaniesUserIdFkeyUsingCompaniesUserIdUniqueUpdate = {
+  /** An object where the defined keys will be set on the `company` being updated. */
+  patch: UpdateCompanyOnCompanyForCompaniesUserIdFkeyPatch;
+  userId: Scalars['UUID']['input'];
+};
+
+/** The fields on `company` to look up the row to update. */
 export type CompanyOnProductForProductsCompanyIdFkeyUsingCompaniesPkeyUpdate = {
   id: Scalars['UUID']['input'];
   /** An object where the defined keys will be set on the `company` being updated. */
   patch: UpdateCompanyOnProductForProductsCompanyIdFkeyPatch;
+};
+
+/** The fields on `company` to look up the row to update. */
+export type CompanyOnProductForProductsCompanyIdFkeyUsingCompaniesUserIdUniqueUpdate = {
+  /** An object where the defined keys will be set on the `company` being updated. */
+  patch: UpdateCompanyOnProductForProductsCompanyIdFkeyPatch;
+  userId: Scalars['UUID']['input'];
 };
 
 /** Represents an update to a `Company`. Fields that are set will be updated. */
@@ -676,6 +742,7 @@ export type CreateAddressPayload = {
   user?: Maybe<User>;
 };
 
+
 /** The output of our create `Address` mutation. */
 export type CreateAddressPayloadAddressEdgeArgs = {
   orderBy?: InputMaybe<Array<AddressesOrderBy>>;
@@ -710,6 +777,7 @@ export type CreateCategoryPayload = {
   query?: Maybe<Query>;
 };
 
+
 /** The output of our create `Category` mutation. */
 export type CreateCategoryPayloadCategoryEdgeArgs = {
   orderBy?: InputMaybe<Array<CategoriesOrderBy>>;
@@ -743,6 +811,7 @@ export type CreateCompanyPayload = {
   /** Reads a single `User` that is related to this `Company`. */
   user?: Maybe<User>;
 };
+
 
 /** The output of our create `Company` mutation. */
 export type CreateCompanyPayloadCompanyEdgeArgs = {
@@ -782,45 +851,10 @@ export type CreateOrderPayload = {
   user?: Maybe<User>;
 };
 
+
 /** The output of our create `Order` mutation. */
 export type CreateOrderPayloadOrderEdgeArgs = {
   orderBy?: InputMaybe<Array<OrdersOrderBy>>;
-};
-
-/** All input for the create `ProductCategory` mutation. */
-export type CreateProductCategoryInput = {
-  /**
-   * An arbitrary string value with no semantic meaning. Will be included in the
-   * payload verbatim. May be used to track mutations by the client.
-   */
-  clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  /** The `ProductCategory` to be created by this mutation. */
-  productCategory: ProductCategoryInput;
-};
-
-/** The output of our create `ProductCategory` mutation. */
-export type CreateProductCategoryPayload = {
-  __typename?: 'CreateProductCategoryPayload';
-  /** Reads a single `Category` that is related to this `ProductCategory`. */
-  category?: Maybe<Category>;
-  /**
-   * The exact same `clientMutationId` that was provided in the mutation input,
-   * unchanged and unused. May be used by a client to track mutations.
-   */
-  clientMutationId?: Maybe<Scalars['String']['output']>;
-  /** Reads a single `Product` that is related to this `ProductCategory`. */
-  product?: Maybe<Product>;
-  /** The `ProductCategory` that was created by this mutation. */
-  productCategory?: Maybe<ProductCategory>;
-  /** An edge for our `ProductCategory`. May be used by Relay 1. */
-  productCategoryEdge?: Maybe<ProductCategoriesEdge>;
-  /** Our root query field type. Allows us to run any query from our mutation payload. */
-  query?: Maybe<Query>;
-};
-
-/** The output of our create `ProductCategory` mutation. */
-export type CreateProductCategoryPayloadProductCategoryEdgeArgs = {
-  orderBy?: InputMaybe<Array<ProductCategoriesOrderBy>>;
 };
 
 /** All input for the create `Product` mutation. */
@@ -837,6 +871,8 @@ export type CreateProductInput = {
 /** The output of our create `Product` mutation. */
 export type CreateProductPayload = {
   __typename?: 'CreateProductPayload';
+  /** Reads a single `Category` that is related to this `Product`. */
+  category?: Maybe<Category>;
   /**
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
@@ -851,6 +887,7 @@ export type CreateProductPayload = {
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>;
 };
+
 
 /** The output of our create `Product` mutation. */
 export type CreateProductPayloadProductEdgeArgs = {
@@ -883,6 +920,7 @@ export type CreateUserPayload = {
   /** An edge for our `User`. May be used by Relay 1. */
   userEdge?: Maybe<UsersEdge>;
 };
+
 
 /** The output of our create `User` mutation. */
 export type CreateUserPayloadUserEdgeArgs = {
@@ -918,6 +956,7 @@ export type DeleteAddressPayload = {
   user?: Maybe<User>;
 };
 
+
 /** The output of our delete `Address` mutation. */
 export type DeleteAddressPayloadAddressEdgeArgs = {
   orderBy?: InputMaybe<Array<AddressesOrderBy>>;
@@ -952,9 +991,20 @@ export type DeleteCategoryPayload = {
   query?: Maybe<Query>;
 };
 
+
 /** The output of our delete `Category` mutation. */
 export type DeleteCategoryPayloadCategoryEdgeArgs = {
   orderBy?: InputMaybe<Array<CategoriesOrderBy>>;
+};
+
+/** All input for the `deleteCompanyByUserId` mutation. */
+export type DeleteCompanyByUserIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  userId: Scalars['UUID']['input'];
 };
 
 /** All input for the `deleteCompany` mutation. */
@@ -985,6 +1035,7 @@ export type DeleteCompanyPayload = {
   /** Reads a single `User` that is related to this `Company`. */
   user?: Maybe<User>;
 };
+
 
 /** The output of our delete `Company` mutation. */
 export type DeleteCompanyPayloadCompanyEdgeArgs = {
@@ -1024,45 +1075,10 @@ export type DeleteOrderPayload = {
   user?: Maybe<User>;
 };
 
+
 /** The output of our delete `Order` mutation. */
 export type DeleteOrderPayloadOrderEdgeArgs = {
   orderBy?: InputMaybe<Array<OrdersOrderBy>>;
-};
-
-/** All input for the `deleteProductCategory` mutation. */
-export type DeleteProductCategoryInput = {
-  /**
-   * An arbitrary string value with no semantic meaning. Will be included in the
-   * payload verbatim. May be used to track mutations by the client.
-   */
-  clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  id: Scalars['UUID']['input'];
-};
-
-/** The output of our delete `ProductCategory` mutation. */
-export type DeleteProductCategoryPayload = {
-  __typename?: 'DeleteProductCategoryPayload';
-  /** Reads a single `Category` that is related to this `ProductCategory`. */
-  category?: Maybe<Category>;
-  /**
-   * The exact same `clientMutationId` that was provided in the mutation input,
-   * unchanged and unused. May be used by a client to track mutations.
-   */
-  clientMutationId?: Maybe<Scalars['String']['output']>;
-  deletedProductCategoryNodeId?: Maybe<Scalars['ID']['output']>;
-  /** Reads a single `Product` that is related to this `ProductCategory`. */
-  product?: Maybe<Product>;
-  /** The `ProductCategory` that was deleted by this mutation. */
-  productCategory?: Maybe<ProductCategory>;
-  /** An edge for our `ProductCategory`. May be used by Relay 1. */
-  productCategoryEdge?: Maybe<ProductCategoriesEdge>;
-  /** Our root query field type. Allows us to run any query from our mutation payload. */
-  query?: Maybe<Query>;
-};
-
-/** The output of our delete `ProductCategory` mutation. */
-export type DeleteProductCategoryPayloadProductCategoryEdgeArgs = {
-  orderBy?: InputMaybe<Array<ProductCategoriesOrderBy>>;
 };
 
 /** All input for the `deleteProduct` mutation. */
@@ -1078,6 +1094,8 @@ export type DeleteProductInput = {
 /** The output of our delete `Product` mutation. */
 export type DeleteProductPayload = {
   __typename?: 'DeleteProductPayload';
+  /** Reads a single `Category` that is related to this `Product`. */
+  category?: Maybe<Category>;
   /**
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
@@ -1093,6 +1111,7 @@ export type DeleteProductPayload = {
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>;
 };
+
 
 /** The output of our delete `Product` mutation. */
 export type DeleteProductPayloadProductEdgeArgs = {
@@ -1125,6 +1144,7 @@ export type DeleteUserPayload = {
   /** An edge for our `User`. May be used by Relay 1. */
   userEdge?: Maybe<UsersEdge>;
 };
+
 
 /** The output of our delete `User` mutation. */
 export type DeleteUserPayloadUserEdgeArgs = {
@@ -1160,8 +1180,6 @@ export type Mutation = {
   createOrder?: Maybe<CreateOrderPayload>;
   /** Creates a single `Product`. */
   createProduct?: Maybe<CreateProductPayload>;
-  /** Creates a single `ProductCategory`. */
-  createProductCategory?: Maybe<CreateProductCategoryPayload>;
   /** Creates a single `User`. */
   createUser?: Maybe<CreateUserPayload>;
   /** Deletes a single `Address` using a unique key. */
@@ -1170,12 +1188,12 @@ export type Mutation = {
   deleteCategory?: Maybe<DeleteCategoryPayload>;
   /** Deletes a single `Company` using a unique key. */
   deleteCompany?: Maybe<DeleteCompanyPayload>;
+  /** Deletes a single `Company` using a unique key. */
+  deleteCompanyByUserId?: Maybe<DeleteCompanyPayload>;
   /** Deletes a single `Order` using a unique key. */
   deleteOrder?: Maybe<DeleteOrderPayload>;
   /** Deletes a single `Product` using a unique key. */
   deleteProduct?: Maybe<DeleteProductPayload>;
-  /** Deletes a single `ProductCategory` using a unique key. */
-  deleteProductCategory?: Maybe<DeleteProductCategoryPayload>;
   /** Deletes a single `User` using a unique key. */
   deleteUser?: Maybe<DeleteUserPayload>;
   /** Use this mutation to log in to your account; this login uses sessions so you do not need to take further action. */
@@ -1193,135 +1211,154 @@ export type Mutation = {
   updateCategory?: Maybe<UpdateCategoryPayload>;
   /** Updates a single `Company` using a unique key and a patch. */
   updateCompany?: Maybe<UpdateCompanyPayload>;
+  /** Updates a single `Company` using a unique key and a patch. */
+  updateCompanyByUserId?: Maybe<UpdateCompanyPayload>;
   /** Updates a single `Order` using a unique key and a patch. */
   updateOrder?: Maybe<UpdateOrderPayload>;
   /** Updates a single `Product` using a unique key and a patch. */
   updateProduct?: Maybe<UpdateProductPayload>;
-  /** Updates a single `ProductCategory` using a unique key and a patch. */
-  updateProductCategory?: Maybe<UpdateProductCategoryPayload>;
   /** Updates a single `User` using a unique key and a patch. */
   updateUser?: Maybe<UpdateUserPayload>;
 };
+
 
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationCreateAddressArgs = {
   input: CreateAddressInput;
 };
 
+
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationCreateCategoryArgs = {
   input: CreateCategoryInput;
 };
+
 
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationCreateCompanyArgs = {
   input: CreateCompanyInput;
 };
 
+
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationCreateOrderArgs = {
   input: CreateOrderInput;
 };
+
 
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationCreateProductArgs = {
   input: CreateProductInput;
 };
 
-/** The root mutation type which contains root level fields which mutate data. */
-export type MutationCreateProductCategoryArgs = {
-  input: CreateProductCategoryInput;
-};
 
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationCreateUserArgs = {
   input: CreateUserInput;
 };
 
+
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationDeleteAddressArgs = {
   input: DeleteAddressInput;
 };
+
 
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationDeleteCategoryArgs = {
   input: DeleteCategoryInput;
 };
 
+
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationDeleteCompanyArgs = {
   input: DeleteCompanyInput;
 };
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationDeleteCompanyByUserIdArgs = {
+  input: DeleteCompanyByUserIdInput;
+};
+
 
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationDeleteOrderArgs = {
   input: DeleteOrderInput;
 };
 
+
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationDeleteProductArgs = {
   input: DeleteProductInput;
 };
 
-/** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeleteProductCategoryArgs = {
-  input: DeleteProductCategoryInput;
-};
 
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationDeleteUserArgs = {
   input: DeleteUserInput;
 };
 
+
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationLoginArgs = {
   input: LoginInput;
 };
+
 
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationRegisterArgs = {
   input: RegisterInput;
 };
 
+
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationRegisterCompanyArgs = {
   input: RegisterCompanyInput;
 };
+
 
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationResetPasswordArgs = {
   input: ResetPasswordInput;
 };
 
+
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationUpdateAddressArgs = {
   input: UpdateAddressInput;
 };
+
 
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationUpdateCategoryArgs = {
   input: UpdateCategoryInput;
 };
 
+
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationUpdateCompanyArgs = {
   input: UpdateCompanyInput;
 };
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationUpdateCompanyByUserIdArgs = {
+  input: UpdateCompanyByUserIdInput;
+};
+
 
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationUpdateOrderArgs = {
   input: UpdateOrderInput;
 };
 
+
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationUpdateProductArgs = {
   input: UpdateProductInput;
 };
 
-/** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdateProductCategoryArgs = {
-  input: UpdateProductCategoryInput;
-};
 
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationUpdateUserArgs = {
@@ -1443,9 +1480,7 @@ export type OrdersAddressIdFkeyInverseInput = {
   /** Flag indicating whether all other `order` records that match this relationship should be removed. */
   deleteOthers?: InputMaybe<Scalars['Boolean']['input']>;
   /** The primary key(s) and patch data for `order` for the far side of the relationship. */
-  updateById?: InputMaybe<
-    Array<OrderOnOrderForOrdersAddressIdFkeyUsingOrdersPkeyUpdate>
-  >;
+  updateById?: InputMaybe<Array<OrderOnOrderForOrdersAddressIdFkeyUsingOrdersPkeyUpdate>>;
 };
 
 /** The `order` to be created by this mutation. */
@@ -1492,7 +1527,7 @@ export enum OrdersOrderBy {
   ProductIdAsc = 'PRODUCT_ID_ASC',
   ProductIdDesc = 'PRODUCT_ID_DESC',
   UserIdAsc = 'USER_ID_ASC',
-  UserIdDesc = 'USER_ID_DESC',
+  UserIdDesc = 'USER_ID_DESC'
 }
 
 /** Input for the nested mutation of `product` in the `OrderInput` mutation. */
@@ -1518,9 +1553,7 @@ export type OrdersProductIdFkeyInverseInput = {
   /** Flag indicating whether all other `order` records that match this relationship should be removed. */
   deleteOthers?: InputMaybe<Scalars['Boolean']['input']>;
   /** The primary key(s) and patch data for `order` for the far side of the relationship. */
-  updateById?: InputMaybe<
-    Array<OrderOnOrderForOrdersProductIdFkeyUsingOrdersPkeyUpdate>
-  >;
+  updateById?: InputMaybe<Array<OrderOnOrderForOrdersProductIdFkeyUsingOrdersPkeyUpdate>>;
 };
 
 /** The `order` to be created by this mutation. */
@@ -1535,13 +1568,14 @@ export type OrdersProductIdFkeyOrdersCreateInput = {
 
 /** The `product` to be created by this mutation. */
 export type OrdersProductIdFkeyProductsCreateInput = {
+  categoryId?: InputMaybe<Scalars['UUID']['input']>;
+  categoryToCategoryId?: InputMaybe<ProductsCategoryIdFkeyInput>;
   companyId?: InputMaybe<Scalars['UUID']['input']>;
   companyToCompanyId?: InputMaybe<ProductsCompanyIdFkeyInput>;
   description?: InputMaybe<Scalars['String']['input']>;
   name: Scalars['String']['input'];
   ordersUsingId?: InputMaybe<OrdersProductIdFkeyInverseInput>;
   price: Scalars['BigFloat']['input'];
-  productCategoriesUsingId?: InputMaybe<ProductCategoriesProductIdFkeyInverseInput>;
   quantity: Scalars['Int']['input'];
 };
 
@@ -1568,9 +1602,7 @@ export type OrdersUserIdFkeyInverseInput = {
   /** Flag indicating whether all other `order` records that match this relationship should be removed. */
   deleteOthers?: InputMaybe<Scalars['Boolean']['input']>;
   /** The primary key(s) and patch data for `order` for the far side of the relationship. */
-  updateById?: InputMaybe<
-    Array<OrderOnOrderForOrdersUserIdFkeyUsingOrdersPkeyUpdate>
-  >;
+  updateById?: InputMaybe<Array<OrderOnOrderForOrdersUserIdFkeyUsingOrdersPkeyUpdate>>;
 };
 
 /** The `order` to be created by this mutation. */
@@ -1586,7 +1618,7 @@ export type OrdersUserIdFkeyOrdersCreateInput = {
 /** The `user` to be created by this mutation. */
 export type OrdersUserIdFkeyUsersCreateInput = {
   addressesUsingId?: InputMaybe<AddressesUserIdFkeyInverseInput>;
-  companiesUsingId?: InputMaybe<CompaniesUserIdFkeyInverseInput>;
+  companyUsingId?: InputMaybe<CompaniesUserIdFkeyInverseInput>;
   email: Scalars['String']['input'];
   isAdmin?: InputMaybe<Scalars['Boolean']['input']>;
   isVerified?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1613,8 +1645,9 @@ export type Product = {
   __typename?: 'Product';
   /** Reads and enables pagination through a set of `Address`. */
   addressesByOrderProductIdAndAddressId: ProductAddressesByOrderProductIdAndAddressIdManyToManyConnection;
-  /** Reads and enables pagination through a set of `Category`. */
-  categoriesByProductCategoryProductIdAndCategoryId: ProductCategoriesByProductCategoryProductIdAndCategoryIdManyToManyConnection;
+  /** Reads a single `Category` that is related to this `Product`. */
+  category?: Maybe<Category>;
+  categoryId?: Maybe<Scalars['UUID']['output']>;
   /** Reads a single `Company` that is related to this `Product`. */
   company?: Maybe<Company>;
   companyId: Scalars['UUID']['output'];
@@ -1625,13 +1658,12 @@ export type Product = {
   /** Reads and enables pagination through a set of `Order`. */
   orders: OrdersConnection;
   price: Scalars['BigFloat']['output'];
-  /** Reads and enables pagination through a set of `ProductCategory`. */
-  productCategories: ProductCategoriesConnection;
   quantity: Scalars['Int']['output'];
   updatedAt: Scalars['Datetime']['output'];
   /** Reads and enables pagination through a set of `User`. */
   usersByOrderProductIdAndUserId: ProductUsersByOrderProductIdAndUserIdManyToManyConnection;
 };
+
 
 export type ProductAddressesByOrderProductIdAndAddressIdArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
@@ -1643,15 +1675,6 @@ export type ProductAddressesByOrderProductIdAndAddressIdArgs = {
   orderBy?: InputMaybe<Array<AddressesOrderBy>>;
 };
 
-export type ProductCategoriesByProductCategoryProductIdAndCategoryIdArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  condition?: InputMaybe<CategoryCondition>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<CategoriesOrderBy>>;
-};
 
 export type ProductOrdersArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
@@ -1663,15 +1686,6 @@ export type ProductOrdersArgs = {
   orderBy?: InputMaybe<Array<OrdersOrderBy>>;
 };
 
-export type ProductProductCategoriesArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  condition?: InputMaybe<ProductCategoryCondition>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<ProductCategoriesOrderBy>>;
-};
 
 export type ProductUsersByOrderProductIdAndUserIdArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
@@ -1707,256 +1721,22 @@ export type ProductAddressesByOrderProductIdAndAddressIdManyToManyEdge = {
   orders: OrdersConnection;
 };
 
+
 /** A `Address` edge in the connection, with data from `Order`. */
-export type ProductAddressesByOrderProductIdAndAddressIdManyToManyEdgeOrdersArgs =
-  {
-    after?: InputMaybe<Scalars['Cursor']['input']>;
-    before?: InputMaybe<Scalars['Cursor']['input']>;
-    condition?: InputMaybe<OrderCondition>;
-    first?: InputMaybe<Scalars['Int']['input']>;
-    last?: InputMaybe<Scalars['Int']['input']>;
-    offset?: InputMaybe<Scalars['Int']['input']>;
-    orderBy?: InputMaybe<Array<OrdersOrderBy>>;
-  };
-
-/** A connection to a list of `Category` values, with data from `ProductCategory`. */
-export type ProductCategoriesByProductCategoryProductIdAndCategoryIdManyToManyConnection =
-  {
-    __typename?: 'ProductCategoriesByProductCategoryProductIdAndCategoryIdManyToManyConnection';
-    /** A list of edges which contains the `Category`, info from the `ProductCategory`, and the cursor to aid in pagination. */
-    edges: Array<ProductCategoriesByProductCategoryProductIdAndCategoryIdManyToManyEdge>;
-    /** A list of `Category` objects. */
-    nodes: Array<Category>;
-    /** Information to aid in pagination. */
-    pageInfo: PageInfo;
-    /** The count of *all* `Category` you could get from the connection. */
-    totalCount: Scalars['Int']['output'];
-  };
-
-/** A `Category` edge in the connection, with data from `ProductCategory`. */
-export type ProductCategoriesByProductCategoryProductIdAndCategoryIdManyToManyEdge =
-  {
-    __typename?: 'ProductCategoriesByProductCategoryProductIdAndCategoryIdManyToManyEdge';
-    /** A cursor for use in pagination. */
-    cursor?: Maybe<Scalars['Cursor']['output']>;
-    /** The `Category` at the end of the edge. */
-    node: Category;
-    /** Reads and enables pagination through a set of `ProductCategory`. */
-    productCategories: ProductCategoriesConnection;
-  };
-
-/** A `Category` edge in the connection, with data from `ProductCategory`. */
-export type ProductCategoriesByProductCategoryProductIdAndCategoryIdManyToManyEdgeProductCategoriesArgs =
-  {
-    after?: InputMaybe<Scalars['Cursor']['input']>;
-    before?: InputMaybe<Scalars['Cursor']['input']>;
-    condition?: InputMaybe<ProductCategoryCondition>;
-    first?: InputMaybe<Scalars['Int']['input']>;
-    last?: InputMaybe<Scalars['Int']['input']>;
-    offset?: InputMaybe<Scalars['Int']['input']>;
-    orderBy?: InputMaybe<Array<ProductCategoriesOrderBy>>;
-  };
-
-/** The `category` to be created by this mutation. */
-export type ProductCategoriesCategoryIdFkeyCategoriesCreateInput = {
-  categoryToParentId?: InputMaybe<CategoriesCategoryIdFkeyInput>;
-  name: Scalars['String']['input'];
-  parentId?: InputMaybe<Scalars['UUID']['input']>;
-  productCategoriesUsingId?: InputMaybe<ProductCategoriesCategoryIdFkeyInverseInput>;
-  slug?: InputMaybe<Scalars['String']['input']>;
-};
-
-/** Input for the nested mutation of `category` in the `ProductCategoryInput` mutation. */
-export type ProductCategoriesCategoryIdFkeyInput = {
-  /** The primary key(s) for `category` for the far side of the relationship. */
-  connectById?: InputMaybe<CategoryCategoriesPkeyConnect>;
-  /** A `CategoryInput` object that will be created and connected to this object. */
-  create?: InputMaybe<ProductCategoriesCategoryIdFkeyCategoriesCreateInput>;
-  /** The primary key(s) for `category` for the far side of the relationship. */
-  deleteById?: InputMaybe<CategoryCategoriesPkeyDelete>;
-  /** The primary key(s) and patch data for `category` for the far side of the relationship. */
-  updateById?: InputMaybe<CategoryOnProductCategoryForProductCategoriesCategoryIdFkeyUsingCategoriesPkeyUpdate>;
-};
-
-/** Input for the nested mutation of `productCategory` in the `CategoryInput` mutation. */
-export type ProductCategoriesCategoryIdFkeyInverseInput = {
-  /** The primary key(s) for `productCategory` for the far side of the relationship. */
-  connectById?: InputMaybe<Array<ProductCategoryProductCategoriesPkeyConnect>>;
-  /** A `ProductCategoryInput` object that will be created and connected to this object. */
-  create?: InputMaybe<
-    Array<ProductCategoriesCategoryIdFkeyProductCategoriesCreateInput>
-  >;
-  /** The primary key(s) for `productCategory` for the far side of the relationship. */
-  deleteById?: InputMaybe<Array<ProductCategoryProductCategoriesPkeyDelete>>;
-  /** Flag indicating whether all other `productCategory` records that match this relationship should be removed. */
-  deleteOthers?: InputMaybe<Scalars['Boolean']['input']>;
-  /** The primary key(s) and patch data for `productCategory` for the far side of the relationship. */
-  updateById?: InputMaybe<
-    Array<ProductCategoryOnProductCategoryForProductCategoriesCategoryIdFkeyUsingProductCategoriesPkeyUpdate>
-  >;
-};
-
-/** The `productCategory` to be created by this mutation. */
-export type ProductCategoriesCategoryIdFkeyProductCategoriesCreateInput = {
-  categoryToCategoryId?: InputMaybe<ProductCategoriesCategoryIdFkeyInput>;
-  productId?: InputMaybe<Scalars['UUID']['input']>;
-  productToProductId?: InputMaybe<ProductCategoriesProductIdFkeyInput>;
-};
-
-/** A connection to a list of `ProductCategory` values. */
-export type ProductCategoriesConnection = {
-  __typename?: 'ProductCategoriesConnection';
-  /** A list of edges which contains the `ProductCategory` and cursor to aid in pagination. */
-  edges: Array<ProductCategoriesEdge>;
-  /** A list of `ProductCategory` objects. */
-  nodes: Array<ProductCategory>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /** The count of *all* `ProductCategory` you could get from the connection. */
-  totalCount: Scalars['Int']['output'];
-};
-
-/** A `ProductCategory` edge in the connection. */
-export type ProductCategoriesEdge = {
-  __typename?: 'ProductCategoriesEdge';
-  /** A cursor for use in pagination. */
-  cursor?: Maybe<Scalars['Cursor']['output']>;
-  /** The `ProductCategory` at the end of the edge. */
-  node: ProductCategory;
-};
-
-/** Methods to use when ordering `ProductCategory`. */
-export enum ProductCategoriesOrderBy {
-  CategoryIdAsc = 'CATEGORY_ID_ASC',
-  CategoryIdDesc = 'CATEGORY_ID_DESC',
-  IdAsc = 'ID_ASC',
-  IdDesc = 'ID_DESC',
-  Natural = 'NATURAL',
-  PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
-  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
-  ProductIdAsc = 'PRODUCT_ID_ASC',
-  ProductIdDesc = 'PRODUCT_ID_DESC',
-}
-
-/** Input for the nested mutation of `product` in the `ProductCategoryInput` mutation. */
-export type ProductCategoriesProductIdFkeyInput = {
-  /** The primary key(s) for `product` for the far side of the relationship. */
-  connectById?: InputMaybe<ProductProductsPkeyConnect>;
-  /** A `ProductInput` object that will be created and connected to this object. */
-  create?: InputMaybe<ProductCategoriesProductIdFkeyProductsCreateInput>;
-  /** The primary key(s) for `product` for the far side of the relationship. */
-  deleteById?: InputMaybe<ProductProductsPkeyDelete>;
-  /** The primary key(s) and patch data for `product` for the far side of the relationship. */
-  updateById?: InputMaybe<ProductOnProductCategoryForProductCategoriesProductIdFkeyUsingProductsPkeyUpdate>;
-};
-
-/** Input for the nested mutation of `productCategory` in the `ProductInput` mutation. */
-export type ProductCategoriesProductIdFkeyInverseInput = {
-  /** The primary key(s) for `productCategory` for the far side of the relationship. */
-  connectById?: InputMaybe<Array<ProductCategoryProductCategoriesPkeyConnect>>;
-  /** A `ProductCategoryInput` object that will be created and connected to this object. */
-  create?: InputMaybe<
-    Array<ProductCategoriesProductIdFkeyProductCategoriesCreateInput>
-  >;
-  /** The primary key(s) for `productCategory` for the far side of the relationship. */
-  deleteById?: InputMaybe<Array<ProductCategoryProductCategoriesPkeyDelete>>;
-  /** Flag indicating whether all other `productCategory` records that match this relationship should be removed. */
-  deleteOthers?: InputMaybe<Scalars['Boolean']['input']>;
-  /** The primary key(s) and patch data for `productCategory` for the far side of the relationship. */
-  updateById?: InputMaybe<
-    Array<ProductCategoryOnProductCategoryForProductCategoriesProductIdFkeyUsingProductCategoriesPkeyUpdate>
-  >;
-};
-
-/** The `productCategory` to be created by this mutation. */
-export type ProductCategoriesProductIdFkeyProductCategoriesCreateInput = {
-  categoryId?: InputMaybe<Scalars['UUID']['input']>;
-  categoryToCategoryId?: InputMaybe<ProductCategoriesCategoryIdFkeyInput>;
-  productToProductId?: InputMaybe<ProductCategoriesProductIdFkeyInput>;
-};
-
-/** The `product` to be created by this mutation. */
-export type ProductCategoriesProductIdFkeyProductsCreateInput = {
-  companyId?: InputMaybe<Scalars['UUID']['input']>;
-  companyToCompanyId?: InputMaybe<ProductsCompanyIdFkeyInput>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  name: Scalars['String']['input'];
-  ordersUsingId?: InputMaybe<OrdersProductIdFkeyInverseInput>;
-  price: Scalars['BigFloat']['input'];
-  productCategoriesUsingId?: InputMaybe<ProductCategoriesProductIdFkeyInverseInput>;
-  quantity: Scalars['Int']['input'];
-};
-
-export type ProductCategory = {
-  __typename?: 'ProductCategory';
-  /** Reads a single `Category` that is related to this `ProductCategory`. */
-  category?: Maybe<Category>;
-  categoryId: Scalars['UUID']['output'];
-  createdAt: Scalars['Datetime']['output'];
-  id: Scalars['UUID']['output'];
-  /** Reads a single `Product` that is related to this `ProductCategory`. */
-  product?: Maybe<Product>;
-  productId: Scalars['UUID']['output'];
-  updatedAt: Scalars['Datetime']['output'];
-};
-
-/**
- * A condition to be used against `ProductCategory` object types. All fields are
- * tested for equality and combined with a logical ‘and.’
- */
-export type ProductCategoryCondition = {
-  /** Checks for equality with the object’s `categoryId` field. */
-  categoryId?: InputMaybe<Scalars['UUID']['input']>;
-  /** Checks for equality with the object’s `id` field. */
-  id?: InputMaybe<Scalars['UUID']['input']>;
-  /** Checks for equality with the object’s `productId` field. */
-  productId?: InputMaybe<Scalars['UUID']['input']>;
-};
-
-/** An input for mutations affecting `ProductCategory` */
-export type ProductCategoryInput = {
-  categoryId?: InputMaybe<Scalars['UUID']['input']>;
-  categoryToCategoryId?: InputMaybe<ProductCategoriesCategoryIdFkeyInput>;
-  productId?: InputMaybe<Scalars['UUID']['input']>;
-  productToProductId?: InputMaybe<ProductCategoriesProductIdFkeyInput>;
-};
-
-/** The fields on `productCategory` to look up the row to update. */
-export type ProductCategoryOnProductCategoryForProductCategoriesCategoryIdFkeyUsingProductCategoriesPkeyUpdate =
-  {
-    id: Scalars['UUID']['input'];
-    /** An object where the defined keys will be set on the `productCategory` being updated. */
-    patch: UpdateProductCategoryOnProductCategoryForProductCategoriesCategoryIdFkeyPatch;
-  };
-
-/** The fields on `productCategory` to look up the row to update. */
-export type ProductCategoryOnProductCategoryForProductCategoriesProductIdFkeyUsingProductCategoriesPkeyUpdate =
-  {
-    id: Scalars['UUID']['input'];
-    /** An object where the defined keys will be set on the `productCategory` being updated. */
-    patch: UpdateProductCategoryOnProductCategoryForProductCategoriesProductIdFkeyPatch;
-  };
-
-/** Represents an update to a `ProductCategory`. Fields that are set will be updated. */
-export type ProductCategoryPatch = {
-  categoryId?: InputMaybe<Scalars['UUID']['input']>;
-  categoryToCategoryId?: InputMaybe<ProductCategoriesCategoryIdFkeyInput>;
-  productId?: InputMaybe<Scalars['UUID']['input']>;
-  productToProductId?: InputMaybe<ProductCategoriesProductIdFkeyInput>;
-};
-
-/** The fields on `productCategory` to look up the row to connect. */
-export type ProductCategoryProductCategoriesPkeyConnect = {
-  id: Scalars['UUID']['input'];
-};
-
-/** The fields on `productCategory` to look up the row to delete. */
-export type ProductCategoryProductCategoriesPkeyDelete = {
-  id: Scalars['UUID']['input'];
+export type ProductAddressesByOrderProductIdAndAddressIdManyToManyEdgeOrdersArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  condition?: InputMaybe<OrderCondition>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<OrdersOrderBy>>;
 };
 
 /** A condition to be used against `Product` object types. All fields are tested for equality and combined with a logical ‘and.’ */
 export type ProductCondition = {
+  /** Checks for equality with the object’s `categoryId` field. */
+  categoryId?: InputMaybe<Scalars['UUID']['input']>;
   /** Checks for equality with the object’s `companyId` field. */
   companyId?: InputMaybe<Scalars['UUID']['input']>;
   /** Checks for equality with the object’s `id` field. */
@@ -1965,13 +1745,14 @@ export type ProductCondition = {
 
 /** An input for mutations affecting `Product` */
 export type ProductInput = {
+  categoryId?: InputMaybe<Scalars['UUID']['input']>;
+  categoryToCategoryId?: InputMaybe<ProductsCategoryIdFkeyInput>;
   companyId?: InputMaybe<Scalars['UUID']['input']>;
   companyToCompanyId?: InputMaybe<ProductsCompanyIdFkeyInput>;
   description?: InputMaybe<Scalars['String']['input']>;
   name: Scalars['String']['input'];
   ordersUsingId?: InputMaybe<OrdersProductIdFkeyInverseInput>;
   price: Scalars['BigFloat']['input'];
-  productCategoriesUsingId?: InputMaybe<ProductCategoriesProductIdFkeyInverseInput>;
   quantity: Scalars['Int']['input'];
 };
 
@@ -1983,12 +1764,11 @@ export type ProductOnOrderForOrdersProductIdFkeyUsingProductsPkeyUpdate = {
 };
 
 /** The fields on `product` to look up the row to update. */
-export type ProductOnProductCategoryForProductCategoriesProductIdFkeyUsingProductsPkeyUpdate =
-  {
-    id: Scalars['UUID']['input'];
-    /** An object where the defined keys will be set on the `product` being updated. */
-    patch: UpdateProductOnProductCategoryForProductCategoriesProductIdFkeyPatch;
-  };
+export type ProductOnProductForProductsCategoryIdFkeyUsingProductsPkeyUpdate = {
+  id: Scalars['UUID']['input'];
+  /** An object where the defined keys will be set on the `product` being updated. */
+  patch: UpdateProductOnProductForProductsCategoryIdFkeyPatch;
+};
 
 /** The fields on `product` to look up the row to update. */
 export type ProductOnProductForProductsCompanyIdFkeyUsingProductsPkeyUpdate = {
@@ -1999,13 +1779,14 @@ export type ProductOnProductForProductsCompanyIdFkeyUsingProductsPkeyUpdate = {
 
 /** Represents an update to a `Product`. Fields that are set will be updated. */
 export type ProductPatch = {
+  categoryId?: InputMaybe<Scalars['UUID']['input']>;
+  categoryToCategoryId?: InputMaybe<ProductsCategoryIdFkeyInput>;
   companyId?: InputMaybe<Scalars['UUID']['input']>;
   companyToCompanyId?: InputMaybe<ProductsCompanyIdFkeyInput>;
   description?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   ordersUsingId?: InputMaybe<OrdersProductIdFkeyInverseInput>;
   price?: InputMaybe<Scalars['BigFloat']['input']>;
-  productCategoriesUsingId?: InputMaybe<ProductCategoriesProductIdFkeyInverseInput>;
   quantity?: InputMaybe<Scalars['Int']['input']>;
 };
 
@@ -2043,6 +1824,7 @@ export type ProductUsersByOrderProductIdAndUserIdManyToManyEdge = {
   orders: OrdersConnection;
 };
 
+
 /** A `User` edge in the connection, with data from `Order`. */
 export type ProductUsersByOrderProductIdAndUserIdManyToManyEdgeOrdersArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
@@ -2052,6 +1834,53 @@ export type ProductUsersByOrderProductIdAndUserIdManyToManyEdgeOrdersArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<OrdersOrderBy>>;
+};
+
+/** The `category` to be created by this mutation. */
+export type ProductsCategoryIdFkeyCategoriesCreateInput = {
+  categoryToParentId?: InputMaybe<CategoriesCategoryIdFkeyInput>;
+  name: Scalars['String']['input'];
+  parentId?: InputMaybe<Scalars['UUID']['input']>;
+  productsUsingId?: InputMaybe<ProductsCategoryIdFkeyInverseInput>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Input for the nested mutation of `category` in the `ProductInput` mutation. */
+export type ProductsCategoryIdFkeyInput = {
+  /** The primary key(s) for `category` for the far side of the relationship. */
+  connectById?: InputMaybe<CategoryCategoriesPkeyConnect>;
+  /** A `CategoryInput` object that will be created and connected to this object. */
+  create?: InputMaybe<ProductsCategoryIdFkeyCategoriesCreateInput>;
+  /** The primary key(s) for `category` for the far side of the relationship. */
+  deleteById?: InputMaybe<CategoryCategoriesPkeyDelete>;
+  /** The primary key(s) and patch data for `category` for the far side of the relationship. */
+  updateById?: InputMaybe<CategoryOnProductForProductsCategoryIdFkeyUsingCategoriesPkeyUpdate>;
+};
+
+/** Input for the nested mutation of `product` in the `CategoryInput` mutation. */
+export type ProductsCategoryIdFkeyInverseInput = {
+  /** The primary key(s) for `product` for the far side of the relationship. */
+  connectById?: InputMaybe<Array<ProductProductsPkeyConnect>>;
+  /** A `ProductInput` object that will be created and connected to this object. */
+  create?: InputMaybe<Array<ProductsCategoryIdFkeyProductsCreateInput>>;
+  /** The primary key(s) for `product` for the far side of the relationship. */
+  deleteById?: InputMaybe<Array<ProductProductsPkeyDelete>>;
+  /** Flag indicating whether all other `product` records that match this relationship should be removed. */
+  deleteOthers?: InputMaybe<Scalars['Boolean']['input']>;
+  /** The primary key(s) and patch data for `product` for the far side of the relationship. */
+  updateById?: InputMaybe<Array<ProductOnProductForProductsCategoryIdFkeyUsingProductsPkeyUpdate>>;
+};
+
+/** The `product` to be created by this mutation. */
+export type ProductsCategoryIdFkeyProductsCreateInput = {
+  categoryToCategoryId?: InputMaybe<ProductsCategoryIdFkeyInput>;
+  companyId?: InputMaybe<Scalars['UUID']['input']>;
+  companyToCompanyId?: InputMaybe<ProductsCompanyIdFkeyInput>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  name: Scalars['String']['input'];
+  ordersUsingId?: InputMaybe<OrdersProductIdFkeyInverseInput>;
+  price: Scalars['BigFloat']['input'];
+  quantity: Scalars['Int']['input'];
 };
 
 /** The `company` to be created by this mutation. */
@@ -2068,12 +1897,18 @@ export type ProductsCompanyIdFkeyCompaniesCreateInput = {
 export type ProductsCompanyIdFkeyInput = {
   /** The primary key(s) for `company` for the far side of the relationship. */
   connectById?: InputMaybe<CompanyCompaniesPkeyConnect>;
+  /** The primary key(s) for `company` for the far side of the relationship. */
+  connectByUserId?: InputMaybe<CompanyCompaniesUserIdUniqueConnect>;
   /** A `CompanyInput` object that will be created and connected to this object. */
   create?: InputMaybe<ProductsCompanyIdFkeyCompaniesCreateInput>;
   /** The primary key(s) for `company` for the far side of the relationship. */
   deleteById?: InputMaybe<CompanyCompaniesPkeyDelete>;
+  /** The primary key(s) for `company` for the far side of the relationship. */
+  deleteByUserId?: InputMaybe<CompanyCompaniesUserIdUniqueDelete>;
   /** The primary key(s) and patch data for `company` for the far side of the relationship. */
   updateById?: InputMaybe<CompanyOnProductForProductsCompanyIdFkeyUsingCompaniesPkeyUpdate>;
+  /** The primary key(s) and patch data for `company` for the far side of the relationship. */
+  updateByUserId?: InputMaybe<CompanyOnProductForProductsCompanyIdFkeyUsingCompaniesUserIdUniqueUpdate>;
 };
 
 /** Input for the nested mutation of `product` in the `CompanyInput` mutation. */
@@ -2087,19 +1922,18 @@ export type ProductsCompanyIdFkeyInverseInput = {
   /** Flag indicating whether all other `product` records that match this relationship should be removed. */
   deleteOthers?: InputMaybe<Scalars['Boolean']['input']>;
   /** The primary key(s) and patch data for `product` for the far side of the relationship. */
-  updateById?: InputMaybe<
-    Array<ProductOnProductForProductsCompanyIdFkeyUsingProductsPkeyUpdate>
-  >;
+  updateById?: InputMaybe<Array<ProductOnProductForProductsCompanyIdFkeyUsingProductsPkeyUpdate>>;
 };
 
 /** The `product` to be created by this mutation. */
 export type ProductsCompanyIdFkeyProductsCreateInput = {
+  categoryId?: InputMaybe<Scalars['UUID']['input']>;
+  categoryToCategoryId?: InputMaybe<ProductsCategoryIdFkeyInput>;
   companyToCompanyId?: InputMaybe<ProductsCompanyIdFkeyInput>;
   description?: InputMaybe<Scalars['String']['input']>;
   name: Scalars['String']['input'];
   ordersUsingId?: InputMaybe<OrdersProductIdFkeyInverseInput>;
   price: Scalars['BigFloat']['input'];
-  productCategoriesUsingId?: InputMaybe<ProductCategoriesProductIdFkeyInverseInput>;
   quantity: Scalars['Int']['input'];
 };
 
@@ -2127,13 +1961,15 @@ export type ProductsEdge = {
 
 /** Methods to use when ordering `Product`. */
 export enum ProductsOrderBy {
+  CategoryIdAsc = 'CATEGORY_ID_ASC',
+  CategoryIdDesc = 'CATEGORY_ID_DESC',
   CompanyIdAsc = 'COMPANY_ID_ASC',
   CompanyIdDesc = 'COMPANY_ID_DESC',
   IdAsc = 'ID_ASC',
   IdDesc = 'ID_DESC',
   Natural = 'NATURAL',
   PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
-  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
+  PrimaryKeyDesc = 'PRIMARY_KEY_DESC'
 }
 
 /** The root query type which gives access points into the data universe. */
@@ -2148,6 +1984,7 @@ export type Query = {
   /** Reads and enables pagination through a set of `Company`. */
   companies?: Maybe<CompaniesConnection>;
   company?: Maybe<Company>;
+  companyByUserId?: Maybe<Company>;
   currentSessionId?: Maybe<Scalars['UUID']['output']>;
   currentUser?: Maybe<User>;
   currentUserId?: Maybe<Scalars['UUID']['output']>;
@@ -2156,9 +1993,6 @@ export type Query = {
   /** Reads and enables pagination through a set of `Order`. */
   orders?: Maybe<OrdersConnection>;
   product?: Maybe<Product>;
-  /** Reads and enables pagination through a set of `ProductCategory`. */
-  productCategories?: Maybe<ProductCategoriesConnection>;
-  productCategory?: Maybe<ProductCategory>;
   /** Reads and enables pagination through a set of `Product`. */
   products?: Maybe<ProductsConnection>;
   /**
@@ -2171,10 +2005,12 @@ export type Query = {
   users?: Maybe<UsersConnection>;
 };
 
+
 /** The root query type which gives access points into the data universe. */
 export type QueryAddressArgs = {
   id: Scalars['UUID']['input'];
 };
+
 
 /** The root query type which gives access points into the data universe. */
 export type QueryAddressesArgs = {
@@ -2187,6 +2023,7 @@ export type QueryAddressesArgs = {
   orderBy?: InputMaybe<Array<AddressesOrderBy>>;
 };
 
+
 /** The root query type which gives access points into the data universe. */
 export type QueryCategoriesArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
@@ -2198,10 +2035,12 @@ export type QueryCategoriesArgs = {
   orderBy?: InputMaybe<Array<CategoriesOrderBy>>;
 };
 
+
 /** The root query type which gives access points into the data universe. */
 export type QueryCategoryArgs = {
   id: Scalars['UUID']['input'];
 };
+
 
 /** The root query type which gives access points into the data universe. */
 export type QueryCompaniesArgs = {
@@ -2214,15 +2053,24 @@ export type QueryCompaniesArgs = {
   orderBy?: InputMaybe<Array<CompaniesOrderBy>>;
 };
 
+
 /** The root query type which gives access points into the data universe. */
 export type QueryCompanyArgs = {
   id: Scalars['UUID']['input'];
 };
 
+
+/** The root query type which gives access points into the data universe. */
+export type QueryCompanyByUserIdArgs = {
+  userId: Scalars['UUID']['input'];
+};
+
+
 /** The root query type which gives access points into the data universe. */
 export type QueryOrderArgs = {
   id: Scalars['UUID']['input'];
 };
+
 
 /** The root query type which gives access points into the data universe. */
 export type QueryOrdersArgs = {
@@ -2235,26 +2083,12 @@ export type QueryOrdersArgs = {
   orderBy?: InputMaybe<Array<OrdersOrderBy>>;
 };
 
+
 /** The root query type which gives access points into the data universe. */
 export type QueryProductArgs = {
   id: Scalars['UUID']['input'];
 };
 
-/** The root query type which gives access points into the data universe. */
-export type QueryProductCategoriesArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  condition?: InputMaybe<ProductCategoryCondition>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<ProductCategoriesOrderBy>>;
-};
-
-/** The root query type which gives access points into the data universe. */
-export type QueryProductCategoryArgs = {
-  id: Scalars['UUID']['input'];
-};
 
 /** The root query type which gives access points into the data universe. */
 export type QueryProductsArgs = {
@@ -2267,10 +2101,12 @@ export type QueryProductsArgs = {
   orderBy?: InputMaybe<Array<ProductsOrderBy>>;
 };
 
+
 /** The root query type which gives access points into the data universe. */
 export type QueryUserArgs = {
   id: Scalars['UUID']['input'];
 };
+
 
 /** The root query type which gives access points into the data universe. */
 export type QueryUsersArgs = {
@@ -2366,6 +2202,7 @@ export type UpdateAddressPayload = {
   user?: Maybe<User>;
 };
 
+
 /** The output of our update `Address` mutation. */
 export type UpdateAddressPayloadAddressEdgeArgs = {
   orderBy?: InputMaybe<Array<AddressesOrderBy>>;
@@ -2401,9 +2238,22 @@ export type UpdateCategoryPayload = {
   query?: Maybe<Query>;
 };
 
+
 /** The output of our update `Category` mutation. */
 export type UpdateCategoryPayloadCategoryEdgeArgs = {
   orderBy?: InputMaybe<Array<CategoriesOrderBy>>;
+};
+
+/** All input for the `updateCompanyByUserId` mutation. */
+export type UpdateCompanyByUserIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** An object where the defined keys will be set on the `Company` being updated. */
+  patch: CompanyPatch;
+  userId: Scalars['UUID']['input'];
 };
 
 /** All input for the `updateCompany` mutation. */
@@ -2435,6 +2285,7 @@ export type UpdateCompanyPayload = {
   /** Reads a single `User` that is related to this `Company`. */
   user?: Maybe<User>;
 };
+
 
 /** The output of our update `Company` mutation. */
 export type UpdateCompanyPayloadCompanyEdgeArgs = {
@@ -2475,46 +2326,10 @@ export type UpdateOrderPayload = {
   user?: Maybe<User>;
 };
 
+
 /** The output of our update `Order` mutation. */
 export type UpdateOrderPayloadOrderEdgeArgs = {
   orderBy?: InputMaybe<Array<OrdersOrderBy>>;
-};
-
-/** All input for the `updateProductCategory` mutation. */
-export type UpdateProductCategoryInput = {
-  /**
-   * An arbitrary string value with no semantic meaning. Will be included in the
-   * payload verbatim. May be used to track mutations by the client.
-   */
-  clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  id: Scalars['UUID']['input'];
-  /** An object where the defined keys will be set on the `ProductCategory` being updated. */
-  patch: ProductCategoryPatch;
-};
-
-/** The output of our update `ProductCategory` mutation. */
-export type UpdateProductCategoryPayload = {
-  __typename?: 'UpdateProductCategoryPayload';
-  /** Reads a single `Category` that is related to this `ProductCategory`. */
-  category?: Maybe<Category>;
-  /**
-   * The exact same `clientMutationId` that was provided in the mutation input,
-   * unchanged and unused. May be used by a client to track mutations.
-   */
-  clientMutationId?: Maybe<Scalars['String']['output']>;
-  /** Reads a single `Product` that is related to this `ProductCategory`. */
-  product?: Maybe<Product>;
-  /** The `ProductCategory` that was updated by this mutation. */
-  productCategory?: Maybe<ProductCategory>;
-  /** An edge for our `ProductCategory`. May be used by Relay 1. */
-  productCategoryEdge?: Maybe<ProductCategoriesEdge>;
-  /** Our root query field type. Allows us to run any query from our mutation payload. */
-  query?: Maybe<Query>;
-};
-
-/** The output of our update `ProductCategory` mutation. */
-export type UpdateProductCategoryPayloadProductCategoryEdgeArgs = {
-  orderBy?: InputMaybe<Array<ProductCategoriesOrderBy>>;
 };
 
 /** All input for the `updateProduct` mutation. */
@@ -2532,6 +2347,8 @@ export type UpdateProductInput = {
 /** The output of our update `Product` mutation. */
 export type UpdateProductPayload = {
   __typename?: 'UpdateProductPayload';
+  /** Reads a single `Category` that is related to this `Product`. */
+  category?: Maybe<Category>;
   /**
    * The exact same `clientMutationId` that was provided in the mutation input,
    * unchanged and unused. May be used by a client to track mutations.
@@ -2546,6 +2363,7 @@ export type UpdateProductPayload = {
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>;
 };
+
 
 /** The output of our update `Product` mutation. */
 export type UpdateProductPayloadProductEdgeArgs = {
@@ -2580,6 +2398,7 @@ export type UpdateUserPayload = {
   userEdge?: Maybe<UsersEdge>;
 };
 
+
 /** The output of our update `User` mutation. */
 export type UpdateUserPayloadUserEdgeArgs = {
   orderBy?: InputMaybe<Array<UsersOrderBy>>;
@@ -2591,8 +2410,13 @@ export type User = {
   addresses: AddressesConnection;
   /** Reads and enables pagination through a set of `Address`. */
   addressesByOrderUserIdAndAddressId: UserAddressesByOrderUserIdAndAddressIdManyToManyConnection;
-  /** Reads and enables pagination through a set of `Company`. */
+  /**
+   * Reads and enables pagination through a set of `Company`.
+   * @deprecated Please use company instead
+   */
   companies: CompaniesConnection;
+  /** Reads a single `Company` that is related to this `User`. */
+  company?: Maybe<Company>;
   createdAt: Scalars['Datetime']['output'];
   email: Scalars['String']['output'];
   id: Scalars['UUID']['output'];
@@ -2608,6 +2432,7 @@ export type User = {
   updatedAt: Scalars['Datetime']['output'];
 };
 
+
 export type UserAddressesArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
@@ -2617,6 +2442,7 @@ export type UserAddressesArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<AddressesOrderBy>>;
 };
+
 
 export type UserAddressesByOrderUserIdAndAddressIdArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
@@ -2628,6 +2454,7 @@ export type UserAddressesByOrderUserIdAndAddressIdArgs = {
   orderBy?: InputMaybe<Array<AddressesOrderBy>>;
 };
 
+
 export type UserCompaniesArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
@@ -2638,6 +2465,7 @@ export type UserCompaniesArgs = {
   orderBy?: InputMaybe<Array<CompaniesOrderBy>>;
 };
 
+
 export type UserOrdersArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
@@ -2647,6 +2475,7 @@ export type UserOrdersArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<OrdersOrderBy>>;
 };
+
 
 export type UserProductsByOrderUserIdAndProductIdArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
@@ -2682,6 +2511,7 @@ export type UserAddressesByOrderUserIdAndAddressIdManyToManyEdge = {
   orders: OrdersConnection;
 };
 
+
 /** A `Address` edge in the connection, with data from `Order`. */
 export type UserAddressesByOrderUserIdAndAddressIdManyToManyEdgeOrdersArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
@@ -2706,7 +2536,7 @@ export type UserCondition = {
 /** An input for mutations affecting `User` */
 export type UserInput = {
   addressesUsingId?: InputMaybe<AddressesUserIdFkeyInverseInput>;
-  companiesUsingId?: InputMaybe<CompaniesUserIdFkeyInverseInput>;
+  companyUsingId?: InputMaybe<CompaniesUserIdFkeyInverseInput>;
   email: Scalars['String']['input'];
   isAdmin?: InputMaybe<Scalars['Boolean']['input']>;
   isVerified?: InputMaybe<Scalars['Boolean']['input']>;
@@ -2740,7 +2570,7 @@ export type UserOnOrderForOrdersUserIdFkeyUsingUsersPkeyUpdate = {
 /** Represents an update to a `User`. Fields that are set will be updated. */
 export type UserPatch = {
   addressesUsingId?: InputMaybe<AddressesUserIdFkeyInverseInput>;
-  companiesUsingId?: InputMaybe<CompaniesUserIdFkeyInverseInput>;
+  companyUsingId?: InputMaybe<CompaniesUserIdFkeyInverseInput>;
   email?: InputMaybe<Scalars['String']['input']>;
   isAdmin?: InputMaybe<Scalars['Boolean']['input']>;
   isVerified?: InputMaybe<Scalars['Boolean']['input']>;
@@ -2773,6 +2603,7 @@ export type UserProductsByOrderUserIdAndProductIdManyToManyEdge = {
   /** Reads and enables pagination through a set of `Order`. */
   orders: OrdersConnection;
 };
+
 
 /** A `Product` edge in the connection, with data from `Order`. */
 export type UserProductsByOrderUserIdAndProductIdManyToManyEdgeOrdersArgs = {
@@ -2827,7 +2658,7 @@ export enum UsersOrderBy {
   NameDesc = 'NAME_DESC',
   Natural = 'NATURAL',
   PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
-  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
+  PrimaryKeyDesc = 'PRIMARY_KEY_DESC'
 }
 
 /** An object where the defined keys will be set on the `address` being updated. */
@@ -2853,19 +2684,18 @@ export type UpdateAddressOnOrderForOrdersAddressIdFkeyPatch = {
 export type UpdateCategoryOnCategoryForCategoriesCategoryIdFkeyPatch = {
   categoryToParentId?: InputMaybe<CategoriesCategoryIdFkeyInput>;
   name?: InputMaybe<Scalars['String']['input']>;
-  productCategoriesUsingId?: InputMaybe<ProductCategoriesCategoryIdFkeyInverseInput>;
+  productsUsingId?: InputMaybe<ProductsCategoryIdFkeyInverseInput>;
   slug?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** An object where the defined keys will be set on the `category` being updated. */
-export type UpdateCategoryOnProductCategoryForProductCategoriesCategoryIdFkeyPatch =
-  {
-    categoryToParentId?: InputMaybe<CategoriesCategoryIdFkeyInput>;
-    name?: InputMaybe<Scalars['String']['input']>;
-    parentId?: InputMaybe<Scalars['UUID']['input']>;
-    productCategoriesUsingId?: InputMaybe<ProductCategoriesCategoryIdFkeyInverseInput>;
-    slug?: InputMaybe<Scalars['String']['input']>;
-  };
+export type UpdateCategoryOnProductForProductsCategoryIdFkeyPatch = {
+  categoryToParentId?: InputMaybe<CategoriesCategoryIdFkeyInput>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  parentId?: InputMaybe<Scalars['UUID']['input']>;
+  productsUsingId?: InputMaybe<ProductsCategoryIdFkeyInverseInput>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
 
 /** An object where the defined keys will be set on the `company` being updated. */
 export type UpdateCompanyOnCompanyForCompaniesUserIdFkeyPatch = {
@@ -2916,62 +2746,47 @@ export type UpdateOrderOnOrderForOrdersUserIdFkeyPatch = {
   userToUserId?: InputMaybe<OrdersUserIdFkeyInput>;
 };
 
-/** An object where the defined keys will be set on the `productCategory` being updated. */
-export type UpdateProductCategoryOnProductCategoryForProductCategoriesCategoryIdFkeyPatch =
-  {
-    categoryToCategoryId?: InputMaybe<ProductCategoriesCategoryIdFkeyInput>;
-    productId?: InputMaybe<Scalars['UUID']['input']>;
-    productToProductId?: InputMaybe<ProductCategoriesProductIdFkeyInput>;
-  };
-
-/** An object where the defined keys will be set on the `productCategory` being updated. */
-export type UpdateProductCategoryOnProductCategoryForProductCategoriesProductIdFkeyPatch =
-  {
-    categoryId?: InputMaybe<Scalars['UUID']['input']>;
-    categoryToCategoryId?: InputMaybe<ProductCategoriesCategoryIdFkeyInput>;
-    productToProductId?: InputMaybe<ProductCategoriesProductIdFkeyInput>;
-  };
-
 /** An object where the defined keys will be set on the `product` being updated. */
 export type UpdateProductOnOrderForOrdersProductIdFkeyPatch = {
+  categoryId?: InputMaybe<Scalars['UUID']['input']>;
+  categoryToCategoryId?: InputMaybe<ProductsCategoryIdFkeyInput>;
   companyId?: InputMaybe<Scalars['UUID']['input']>;
   companyToCompanyId?: InputMaybe<ProductsCompanyIdFkeyInput>;
   description?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   ordersUsingId?: InputMaybe<OrdersProductIdFkeyInverseInput>;
   price?: InputMaybe<Scalars['BigFloat']['input']>;
-  productCategoriesUsingId?: InputMaybe<ProductCategoriesProductIdFkeyInverseInput>;
   quantity?: InputMaybe<Scalars['Int']['input']>;
 };
 
 /** An object where the defined keys will be set on the `product` being updated. */
-export type UpdateProductOnProductCategoryForProductCategoriesProductIdFkeyPatch =
-  {
-    companyId?: InputMaybe<Scalars['UUID']['input']>;
-    companyToCompanyId?: InputMaybe<ProductsCompanyIdFkeyInput>;
-    description?: InputMaybe<Scalars['String']['input']>;
-    name?: InputMaybe<Scalars['String']['input']>;
-    ordersUsingId?: InputMaybe<OrdersProductIdFkeyInverseInput>;
-    price?: InputMaybe<Scalars['BigFloat']['input']>;
-    productCategoriesUsingId?: InputMaybe<ProductCategoriesProductIdFkeyInverseInput>;
-    quantity?: InputMaybe<Scalars['Int']['input']>;
-  };
-
-/** An object where the defined keys will be set on the `product` being updated. */
-export type UpdateProductOnProductForProductsCompanyIdFkeyPatch = {
+export type UpdateProductOnProductForProductsCategoryIdFkeyPatch = {
+  categoryToCategoryId?: InputMaybe<ProductsCategoryIdFkeyInput>;
+  companyId?: InputMaybe<Scalars['UUID']['input']>;
   companyToCompanyId?: InputMaybe<ProductsCompanyIdFkeyInput>;
   description?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   ordersUsingId?: InputMaybe<OrdersProductIdFkeyInverseInput>;
   price?: InputMaybe<Scalars['BigFloat']['input']>;
-  productCategoriesUsingId?: InputMaybe<ProductCategoriesProductIdFkeyInverseInput>;
+  quantity?: InputMaybe<Scalars['Int']['input']>;
+};
+
+/** An object where the defined keys will be set on the `product` being updated. */
+export type UpdateProductOnProductForProductsCompanyIdFkeyPatch = {
+  categoryId?: InputMaybe<Scalars['UUID']['input']>;
+  categoryToCategoryId?: InputMaybe<ProductsCategoryIdFkeyInput>;
+  companyToCompanyId?: InputMaybe<ProductsCompanyIdFkeyInput>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  ordersUsingId?: InputMaybe<OrdersProductIdFkeyInverseInput>;
+  price?: InputMaybe<Scalars['BigFloat']['input']>;
   quantity?: InputMaybe<Scalars['Int']['input']>;
 };
 
 /** An object where the defined keys will be set on the `user` being updated. */
 export type UpdateUserOnAddressForAddressesUserIdFkeyPatch = {
   addressesUsingId?: InputMaybe<AddressesUserIdFkeyInverseInput>;
-  companiesUsingId?: InputMaybe<CompaniesUserIdFkeyInverseInput>;
+  companyUsingId?: InputMaybe<CompaniesUserIdFkeyInverseInput>;
   email?: InputMaybe<Scalars['String']['input']>;
   isAdmin?: InputMaybe<Scalars['Boolean']['input']>;
   isVerified?: InputMaybe<Scalars['Boolean']['input']>;
@@ -2984,7 +2799,7 @@ export type UpdateUserOnAddressForAddressesUserIdFkeyPatch = {
 /** An object where the defined keys will be set on the `user` being updated. */
 export type UpdateUserOnCompanyForCompaniesUserIdFkeyPatch = {
   addressesUsingId?: InputMaybe<AddressesUserIdFkeyInverseInput>;
-  companiesUsingId?: InputMaybe<CompaniesUserIdFkeyInverseInput>;
+  companyUsingId?: InputMaybe<CompaniesUserIdFkeyInverseInput>;
   email?: InputMaybe<Scalars['String']['input']>;
   isAdmin?: InputMaybe<Scalars['Boolean']['input']>;
   isVerified?: InputMaybe<Scalars['Boolean']['input']>;
@@ -2997,7 +2812,7 @@ export type UpdateUserOnCompanyForCompaniesUserIdFkeyPatch = {
 /** An object where the defined keys will be set on the `user` being updated. */
 export type UpdateUserOnOrderForOrdersUserIdFkeyPatch = {
   addressesUsingId?: InputMaybe<AddressesUserIdFkeyInverseInput>;
-  companiesUsingId?: InputMaybe<CompaniesUserIdFkeyInverseInput>;
+  companyUsingId?: InputMaybe<CompaniesUserIdFkeyInverseInput>;
   email?: InputMaybe<Scalars['String']['input']>;
   isAdmin?: InputMaybe<Scalars['Boolean']['input']>;
   isVerified?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3007,130 +2822,319 @@ export type UpdateUserOnOrderForOrdersUserIdFkeyPatch = {
   type?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type Lite_CompanyFragment = {
-  __typename?: 'Company';
-  id: any;
-  name: string;
-  description?: string | null;
-};
+export type CategoriesQueryVariables = Exact<{
+  condition?: InputMaybe<CategoryCondition>;
+}>;
 
-export type Lite_UserFragment = {
-  __typename?: 'User';
-  id: any;
-  name?: string | null;
-  email: string;
-  password?: string | null;
-};
+
+export type CategoriesQuery = { __typename?: 'Query', categories?: { __typename?: 'CategoriesConnection', nodes: Array<{ __typename?: 'Category', id: any, name: string }> } | null };
+
+export type CreateProductMutationVariables = Exact<{
+  product: ProductInput;
+}>;
+
+
+export type CreateProductMutation = { __typename?: 'Mutation', createProduct?: { __typename?: 'CreateProductPayload', product?: { __typename?: 'Product', id: any, name: string, description?: string | null, price: any, quantity: number, companyId: any, categoryId?: any | null, category?: { __typename?: 'Category', id: any, name: string, parentId?: any | null, slug?: string | null } | null, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null } | null } | null };
+
+export type Lite_CategoryFragment = { __typename?: 'Category', id: any, name: string, parentId?: any | null, slug?: string | null };
+
+export type Lite_ProductFragment = { __typename?: 'Product', id: any, name: string, description?: string | null, price: any, quantity: number, companyId: any, categoryId?: any | null, category?: { __typename?: 'Category', id: any, name: string, parentId?: any | null, slug?: string | null } | null, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null };
+
+export type ProductQueryVariables = Exact<{
+  id: Scalars['UUID']['input'];
+}>;
+
+
+export type ProductQuery = { __typename?: 'Query', product?: { __typename?: 'Product', id: any, name: string, description?: string | null, price: any, quantity: number, companyId: any, categoryId?: any | null, category?: { __typename?: 'Category', id: any, name: string, parentId?: any | null, slug?: string | null } | null, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null } | null };
+
+export type UpdateProductMutationVariables = Exact<{
+  id: Scalars['UUID']['input'];
+  product: ProductPatch;
+}>;
+
+
+export type UpdateProductMutation = { __typename?: 'Mutation', updateProduct?: { __typename?: 'UpdateProductPayload', product?: { __typename?: 'Product', id: any, name: string, description?: string | null, price: any, quantity: number, companyId: any, categoryId?: any | null, category?: { __typename?: 'Category', id: any, name: string, parentId?: any | null, slug?: string | null } | null, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null } | null } | null };
+
+export type CurrentUserQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type CurrentUserQuery = { __typename?: 'Query', currentUser?: { __typename?: 'User', id: any, name?: string | null, email: string, type: string, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null } | null };
+
+export type Lite_CompanyFragment = { __typename?: 'Company', id: any, name: string, description?: string | null };
+
+export type Lite_UserFragment = { __typename?: 'User', id: any, name?: string | null, email: string, type: string, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null };
 
 export type LoginMutationVariables = Exact<{
   input: LoginInput;
 }>;
 
-export type LoginMutation = {
-  __typename?: 'Mutation';
-  login?: {
-    __typename?: 'LoginPayload';
-    token?: string | null;
-    user: {
-      __typename?: 'User';
-      id: any;
-      name?: string | null;
-      email: string;
-      password?: string | null;
-      companies: {
-        __typename?: 'CompaniesConnection';
-        nodes: Array<{
-          __typename?: 'Company';
-          id: any;
-          name: string;
-          description?: string | null;
-        }>;
-      };
-    };
-  } | null;
-};
 
-export type LogoutMutationVariables = Exact<{ [key: string]: never }>;
+export type LoginMutation = { __typename?: 'Mutation', login?: { __typename?: 'LoginPayload', token?: string | null, user: { __typename?: 'User', id: any, name?: string | null, email: string, type: string, companies: { __typename?: 'CompaniesConnection', nodes: Array<{ __typename?: 'Company', id: any, name: string, description?: string | null }> }, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null } } | null };
 
-export type LogoutMutation = {
-  __typename?: 'Mutation';
-  logout?: { __typename?: 'LogoutPayload'; success?: boolean | null } | null;
-};
+export type LogoutMutationVariables = Exact<{ [key: string]: never; }>;
+
+
+export type LogoutMutation = { __typename?: 'Mutation', logout?: { __typename?: 'LogoutPayload', success?: boolean | null } | null };
 
 export type RegisterMutationVariables = Exact<{
   input: RegisterInput;
 }>;
 
-export type RegisterMutation = {
-  __typename?: 'Mutation';
-  register?: {
-    __typename?: 'RegisterPayload';
-    token: string;
-    user: {
-      __typename?: 'User';
-      id: any;
-      name?: string | null;
-      email: string;
-      password?: string | null;
-    };
-  } | null;
-};
+
+export type RegisterMutation = { __typename?: 'Mutation', register?: { __typename?: 'RegisterPayload', token: string, user: { __typename?: 'User', id: any, name?: string | null, email: string, type: string, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null } } | null };
 
 export type RegisterCompanyMutationVariables = Exact<{
   input: RegisterCompanyInput;
 }>;
 
-export type RegisterCompanyMutation = {
-  __typename?: 'Mutation';
-  registerCompany?: {
-    __typename?: 'RegisterCompanyPayload';
-    token: string;
-    company: {
-      __typename?: 'Company';
-      userId: any;
-      id: any;
-      name: string;
-      description?: string | null;
-    };
-  } | null;
-};
 
+export type RegisterCompanyMutation = { __typename?: 'Mutation', registerCompany?: { __typename?: 'RegisterCompanyPayload', token: string, company: { __typename?: 'Company', userId: any, id: any, name: string, description?: string | null } } | null };
+
+export const Lite_CategoryFragmentDoc = gql`
+    fragment Lite_Category on Category {
+  id
+  name
+  parentId
+  slug
+}
+    `;
 export const Lite_CompanyFragmentDoc = gql`
-  fragment Lite_Company on Company {
+    fragment Lite_Company on Company {
+  id
+  name
+  description
+}
+    `;
+export const Lite_ProductFragmentDoc = gql`
+    fragment Lite_Product on Product {
+  id
+  name
+  description
+  price
+  quantity
+  companyId
+  categoryId
+  category {
+    ...Lite_Category
+  }
+  company {
+    ...Lite_Company
+  }
+}
+    ${Lite_CategoryFragmentDoc}
+${Lite_CompanyFragmentDoc}`;
+export const Lite_UserFragmentDoc = gql`
+    fragment Lite_User on User {
+  id
+  name
+  email
+  type
+  company {
     id
     name
     description
   }
-`;
-export const Lite_UserFragmentDoc = gql`
-  fragment Lite_User on User {
-    id
-    name
-    email
-    password
+}
+    `;
+export const CategoriesDocument = gql`
+    query Categories($condition: CategoryCondition) {
+  categories(condition: $condition) {
+    nodes {
+      id
+      name
+    }
   }
-`;
+}
+    `;
+
+/**
+ * __useCategoriesQuery__
+ *
+ * To run a query within a React component, call `useCategoriesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCategoriesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCategoriesQuery({
+ *   variables: {
+ *      condition: // value for 'condition'
+ *   },
+ * });
+ */
+export function useCategoriesQuery(baseOptions?: Apollo.QueryHookOptions<CategoriesQuery, CategoriesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<CategoriesQuery, CategoriesQueryVariables>(CategoriesDocument, options);
+      }
+export function useCategoriesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CategoriesQuery, CategoriesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<CategoriesQuery, CategoriesQueryVariables>(CategoriesDocument, options);
+        }
+export type CategoriesQueryHookResult = ReturnType<typeof useCategoriesQuery>;
+export type CategoriesLazyQueryHookResult = ReturnType<typeof useCategoriesLazyQuery>;
+export type CategoriesQueryResult = Apollo.QueryResult<CategoriesQuery, CategoriesQueryVariables>;
+export const CreateProductDocument = gql`
+    mutation CreateProduct($product: ProductInput!) {
+  createProduct(input: {product: $product}) {
+    product {
+      id
+      ...Lite_Product
+    }
+  }
+}
+    ${Lite_ProductFragmentDoc}`;
+export type CreateProductMutationFn = Apollo.MutationFunction<CreateProductMutation, CreateProductMutationVariables>;
+
+/**
+ * __useCreateProductMutation__
+ *
+ * To run a mutation, you first call `useCreateProductMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateProductMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createProductMutation, { data, loading, error }] = useCreateProductMutation({
+ *   variables: {
+ *      product: // value for 'product'
+ *   },
+ * });
+ */
+export function useCreateProductMutation(baseOptions?: Apollo.MutationHookOptions<CreateProductMutation, CreateProductMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateProductMutation, CreateProductMutationVariables>(CreateProductDocument, options);
+      }
+export type CreateProductMutationHookResult = ReturnType<typeof useCreateProductMutation>;
+export type CreateProductMutationResult = Apollo.MutationResult<CreateProductMutation>;
+export type CreateProductMutationOptions = Apollo.BaseMutationOptions<CreateProductMutation, CreateProductMutationVariables>;
+export const ProductDocument = gql`
+    query Product($id: UUID!) {
+  product(id: $id) {
+    id
+    ...Lite_Product
+  }
+}
+    ${Lite_ProductFragmentDoc}`;
+
+/**
+ * __useProductQuery__
+ *
+ * To run a query within a React component, call `useProductQuery` and pass it any options that fit your needs.
+ * When your component renders, `useProductQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useProductQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useProductQuery(baseOptions: Apollo.QueryHookOptions<ProductQuery, ProductQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ProductQuery, ProductQueryVariables>(ProductDocument, options);
+      }
+export function useProductLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProductQuery, ProductQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ProductQuery, ProductQueryVariables>(ProductDocument, options);
+        }
+export type ProductQueryHookResult = ReturnType<typeof useProductQuery>;
+export type ProductLazyQueryHookResult = ReturnType<typeof useProductLazyQuery>;
+export type ProductQueryResult = Apollo.QueryResult<ProductQuery, ProductQueryVariables>;
+export const UpdateProductDocument = gql`
+    mutation UpdateProduct($id: UUID!, $product: ProductPatch!) {
+  updateProduct(input: {patch: $product, id: $id}) {
+    product {
+      id
+      ...Lite_Product
+    }
+  }
+}
+    ${Lite_ProductFragmentDoc}`;
+export type UpdateProductMutationFn = Apollo.MutationFunction<UpdateProductMutation, UpdateProductMutationVariables>;
+
+/**
+ * __useUpdateProductMutation__
+ *
+ * To run a mutation, you first call `useUpdateProductMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateProductMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateProductMutation, { data, loading, error }] = useUpdateProductMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      product: // value for 'product'
+ *   },
+ * });
+ */
+export function useUpdateProductMutation(baseOptions?: Apollo.MutationHookOptions<UpdateProductMutation, UpdateProductMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateProductMutation, UpdateProductMutationVariables>(UpdateProductDocument, options);
+      }
+export type UpdateProductMutationHookResult = ReturnType<typeof useUpdateProductMutation>;
+export type UpdateProductMutationResult = Apollo.MutationResult<UpdateProductMutation>;
+export type UpdateProductMutationOptions = Apollo.BaseMutationOptions<UpdateProductMutation, UpdateProductMutationVariables>;
+export const CurrentUserDocument = gql`
+    query CurrentUser {
+  currentUser {
+    id
+    ...Lite_User
+  }
+}
+    ${Lite_UserFragmentDoc}`;
+
+/**
+ * __useCurrentUserQuery__
+ *
+ * To run a query within a React component, call `useCurrentUserQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCurrentUserQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCurrentUserQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useCurrentUserQuery(baseOptions?: Apollo.QueryHookOptions<CurrentUserQuery, CurrentUserQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<CurrentUserQuery, CurrentUserQueryVariables>(CurrentUserDocument, options);
+      }
+export function useCurrentUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CurrentUserQuery, CurrentUserQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<CurrentUserQuery, CurrentUserQueryVariables>(CurrentUserDocument, options);
+        }
+export type CurrentUserQueryHookResult = ReturnType<typeof useCurrentUserQuery>;
+export type CurrentUserLazyQueryHookResult = ReturnType<typeof useCurrentUserLazyQuery>;
+export type CurrentUserQueryResult = Apollo.QueryResult<CurrentUserQuery, CurrentUserQueryVariables>;
 export const LoginDocument = gql`
-  mutation login($input: LoginInput!) {
-    login(input: $input) {
-      token
-      user {
-        ...Lite_User
-        companies {
-          nodes {
-            ...Lite_Company
-          }
+    mutation login($input: LoginInput!) {
+  login(input: $input) {
+    token
+    user {
+      ...Lite_User
+      companies {
+        nodes {
+          ...Lite_Company
         }
       }
     }
   }
-  ${Lite_UserFragmentDoc}
-  ${Lite_CompanyFragmentDoc}
-`;
-export type LoginMutationFn = Apollo.MutationFunction<
-  LoginMutation,
-  LoginMutationVariables
->;
+}
+    ${Lite_UserFragmentDoc}
+${Lite_CompanyFragmentDoc}`;
+export type LoginMutationFn = Apollo.MutationFunction<LoginMutation, LoginMutationVariables>;
 
 /**
  * __useLoginMutation__
@@ -3149,35 +3153,21 @@ export type LoginMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useLoginMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    LoginMutation,
-    LoginMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<LoginMutation, LoginMutationVariables>(
-    LoginDocument,
-    options
-  );
-}
+export function useLoginMutation(baseOptions?: Apollo.MutationHookOptions<LoginMutation, LoginMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument, options);
+      }
 export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>;
 export type LoginMutationResult = Apollo.MutationResult<LoginMutation>;
-export type LoginMutationOptions = Apollo.BaseMutationOptions<
-  LoginMutation,
-  LoginMutationVariables
->;
+export type LoginMutationOptions = Apollo.BaseMutationOptions<LoginMutation, LoginMutationVariables>;
 export const LogoutDocument = gql`
-  mutation Logout {
-    logout {
-      success
-    }
+    mutation Logout {
+  logout {
+    success
   }
-`;
-export type LogoutMutationFn = Apollo.MutationFunction<
-  LogoutMutation,
-  LogoutMutationVariables
->;
+}
+    `;
+export type LogoutMutationFn = Apollo.MutationFunction<LogoutMutation, LogoutMutationVariables>;
 
 /**
  * __useLogoutMutation__
@@ -3195,40 +3185,25 @@ export type LogoutMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useLogoutMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    LogoutMutation,
-    LogoutMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<LogoutMutation, LogoutMutationVariables>(
-    LogoutDocument,
-    options
-  );
-}
+export function useLogoutMutation(baseOptions?: Apollo.MutationHookOptions<LogoutMutation, LogoutMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<LogoutMutation, LogoutMutationVariables>(LogoutDocument, options);
+      }
 export type LogoutMutationHookResult = ReturnType<typeof useLogoutMutation>;
 export type LogoutMutationResult = Apollo.MutationResult<LogoutMutation>;
-export type LogoutMutationOptions = Apollo.BaseMutationOptions<
-  LogoutMutation,
-  LogoutMutationVariables
->;
+export type LogoutMutationOptions = Apollo.BaseMutationOptions<LogoutMutation, LogoutMutationVariables>;
 export const RegisterDocument = gql`
-  mutation Register($input: RegisterInput!) {
-    register(input: $input) {
-      token
-      user {
-        id
-        ...Lite_User
-      }
+    mutation Register($input: RegisterInput!) {
+  register(input: $input) {
+    token
+    user {
+      id
+      ...Lite_User
     }
   }
-  ${Lite_UserFragmentDoc}
-`;
-export type RegisterMutationFn = Apollo.MutationFunction<
-  RegisterMutation,
-  RegisterMutationVariables
->;
+}
+    ${Lite_UserFragmentDoc}`;
+export type RegisterMutationFn = Apollo.MutationFunction<RegisterMutation, RegisterMutationVariables>;
 
 /**
  * __useRegisterMutation__
@@ -3247,40 +3222,25 @@ export type RegisterMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useRegisterMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    RegisterMutation,
-    RegisterMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<RegisterMutation, RegisterMutationVariables>(
-    RegisterDocument,
-    options
-  );
-}
+export function useRegisterMutation(baseOptions?: Apollo.MutationHookOptions<RegisterMutation, RegisterMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<RegisterMutation, RegisterMutationVariables>(RegisterDocument, options);
+      }
 export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>;
 export type RegisterMutationResult = Apollo.MutationResult<RegisterMutation>;
-export type RegisterMutationOptions = Apollo.BaseMutationOptions<
-  RegisterMutation,
-  RegisterMutationVariables
->;
+export type RegisterMutationOptions = Apollo.BaseMutationOptions<RegisterMutation, RegisterMutationVariables>;
 export const RegisterCompanyDocument = gql`
-  mutation RegisterCompany($input: RegisterCompanyInput!) {
-    registerCompany(input: $input) {
-      company {
-        ...Lite_Company
-        userId
-      }
-      token
+    mutation RegisterCompany($input: RegisterCompanyInput!) {
+  registerCompany(input: $input) {
+    company {
+      ...Lite_Company
+      userId
     }
+    token
   }
-  ${Lite_CompanyFragmentDoc}
-`;
-export type RegisterCompanyMutationFn = Apollo.MutationFunction<
-  RegisterCompanyMutation,
-  RegisterCompanyMutationVariables
->;
+}
+    ${Lite_CompanyFragmentDoc}`;
+export type RegisterCompanyMutationFn = Apollo.MutationFunction<RegisterCompanyMutation, RegisterCompanyMutationVariables>;
 
 /**
  * __useRegisterCompanyMutation__
@@ -3299,24 +3259,10 @@ export type RegisterCompanyMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useRegisterCompanyMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    RegisterCompanyMutation,
-    RegisterCompanyMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    RegisterCompanyMutation,
-    RegisterCompanyMutationVariables
-  >(RegisterCompanyDocument, options);
-}
-export type RegisterCompanyMutationHookResult = ReturnType<
-  typeof useRegisterCompanyMutation
->;
-export type RegisterCompanyMutationResult =
-  Apollo.MutationResult<RegisterCompanyMutation>;
-export type RegisterCompanyMutationOptions = Apollo.BaseMutationOptions<
-  RegisterCompanyMutation,
-  RegisterCompanyMutationVariables
->;
+export function useRegisterCompanyMutation(baseOptions?: Apollo.MutationHookOptions<RegisterCompanyMutation, RegisterCompanyMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<RegisterCompanyMutation, RegisterCompanyMutationVariables>(RegisterCompanyDocument, options);
+      }
+export type RegisterCompanyMutationHookResult = ReturnType<typeof useRegisterCompanyMutation>;
+export type RegisterCompanyMutationResult = Apollo.MutationResult<RegisterCompanyMutation>;
+export type RegisterCompanyMutationOptions = Apollo.BaseMutationOptions<RegisterCompanyMutation, RegisterCompanyMutationVariables>;

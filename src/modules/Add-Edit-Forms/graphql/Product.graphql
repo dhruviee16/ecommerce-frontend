@@ -1,0 +1,6 @@
+query Product($id: UUID!) {
+  product(id: $id) {
+    id
+    ...Lite_Product
+  }
+}

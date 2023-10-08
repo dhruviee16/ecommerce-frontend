@@ -43,7 +43,6 @@ const navigation = {
             { name: 'Geometric Tools' },
             { name: 'Exam Boards' },
             { name: 'Glue and Adhesives' },
-            { name: 'Browse All' },
           ],
         },
         {
@@ -94,7 +93,6 @@ const navigation = {
             { name: 'Pastel Colors' },
             { name: 'Oil Colors' },
             { name: 'Spray Paints' },
-            { name: 'Browse All' },
           ],
         },
         {
@@ -198,7 +196,7 @@ function classNames(...classes: string[]) {
 function Navigation() {
   const [open, setOpen] = useState(false);
 
-  const {data} = useCurrentUserQuery();
+  const { data } = useCurrentUserQuery();
 
   const { logout } = useLogout();
 
@@ -382,7 +380,7 @@ function Navigation() {
               </div>
               {isLoggedin ? (
                 <div className="font-bold absolute left-[75vw] top-6">
-                  Hello Dhruvi !
+                  Hello {data.currentUser?.name} !
                 </div>
               ) : null}
               {/* Flyout menus */}

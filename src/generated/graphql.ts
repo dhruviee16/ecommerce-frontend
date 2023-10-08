@@ -290,12 +290,18 @@ export type CategoriesCategoryIdFkeyCategoriesCreateInput = {
 export type CategoriesCategoryIdFkeyInput = {
   /** The primary key(s) for `category` for the far side of the relationship. */
   connectById?: InputMaybe<CategoryCategoriesPkeyConnect>;
+  /** The primary key(s) for `category` for the far side of the relationship. */
+  connectByName?: InputMaybe<CategoryCategoriesNameKeyConnect>;
   /** A `CategoryInput` object that will be created and connected to this object. */
   create?: InputMaybe<CategoriesCategoryIdFkeyCategoriesCreateInput>;
   /** The primary key(s) for `category` for the far side of the relationship. */
   deleteById?: InputMaybe<CategoryCategoriesPkeyDelete>;
+  /** The primary key(s) for `category` for the far side of the relationship. */
+  deleteByName?: InputMaybe<CategoryCategoriesNameKeyDelete>;
   /** The primary key(s) and patch data for `category` for the far side of the relationship. */
   updateById?: InputMaybe<CategoryOnCategoryForCategoriesCategoryIdFkeyUsingCategoriesPkeyUpdate>;
+  /** The primary key(s) and patch data for `category` for the far side of the relationship. */
+  updateByName?: InputMaybe<CategoryOnCategoryForCategoriesCategoryIdFkeyUsingCategoriesNameKeyUpdate>;
 };
 
 /** A connection to a list of `Category` values. */
@@ -385,6 +391,16 @@ export type CategoryProductsArgs = {
 };
 
 /** The fields on `category` to look up the row to connect. */
+export type CategoryCategoriesNameKeyConnect = {
+  name: Scalars['String']['input'];
+};
+
+/** The fields on `category` to look up the row to delete. */
+export type CategoryCategoriesNameKeyDelete = {
+  name: Scalars['String']['input'];
+};
+
+/** The fields on `category` to look up the row to connect. */
 export type CategoryCategoriesPkeyConnect = {
   id: Scalars['UUID']['input'];
 };
@@ -453,10 +469,24 @@ export type CategoryInput = {
 };
 
 /** The fields on `category` to look up the row to update. */
+export type CategoryOnCategoryForCategoriesCategoryIdFkeyUsingCategoriesNameKeyUpdate = {
+  name: Scalars['String']['input'];
+  /** An object where the defined keys will be set on the `category` being updated. */
+  patch: UpdateCategoryOnCategoryForCategoriesCategoryIdFkeyPatch;
+};
+
+/** The fields on `category` to look up the row to update. */
 export type CategoryOnCategoryForCategoriesCategoryIdFkeyUsingCategoriesPkeyUpdate = {
   id: Scalars['UUID']['input'];
   /** An object where the defined keys will be set on the `category` being updated. */
   patch: UpdateCategoryOnCategoryForCategoriesCategoryIdFkeyPatch;
+};
+
+/** The fields on `category` to look up the row to update. */
+export type CategoryOnProductForProductsCategoryIdFkeyUsingCategoriesNameKeyUpdate = {
+  name: Scalars['String']['input'];
+  /** An object where the defined keys will be set on the `category` being updated. */
+  patch: UpdateCategoryOnProductForProductsCategoryIdFkeyPatch;
 };
 
 /** The fields on `category` to look up the row to update. */
@@ -962,6 +992,16 @@ export type DeleteAddressPayloadAddressEdgeArgs = {
   orderBy?: InputMaybe<Array<AddressesOrderBy>>;
 };
 
+/** All input for the `deleteCategoryByName` mutation. */
+export type DeleteCategoryByNameInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  name: Scalars['String']['input'];
+};
+
 /** All input for the `deleteCategory` mutation. */
 export type DeleteCategoryInput = {
   /**
@@ -1186,6 +1226,8 @@ export type Mutation = {
   deleteAddress?: Maybe<DeleteAddressPayload>;
   /** Deletes a single `Category` using a unique key. */
   deleteCategory?: Maybe<DeleteCategoryPayload>;
+  /** Deletes a single `Category` using a unique key. */
+  deleteCategoryByName?: Maybe<DeleteCategoryPayload>;
   /** Deletes a single `Company` using a unique key. */
   deleteCompany?: Maybe<DeleteCompanyPayload>;
   /** Deletes a single `Company` using a unique key. */
@@ -1209,6 +1251,8 @@ export type Mutation = {
   updateAddress?: Maybe<UpdateAddressPayload>;
   /** Updates a single `Category` using a unique key and a patch. */
   updateCategory?: Maybe<UpdateCategoryPayload>;
+  /** Updates a single `Category` using a unique key and a patch. */
+  updateCategoryByName?: Maybe<UpdateCategoryPayload>;
   /** Updates a single `Company` using a unique key and a patch. */
   updateCompany?: Maybe<UpdateCompanyPayload>;
   /** Updates a single `Company` using a unique key and a patch. */
@@ -1267,6 +1311,12 @@ export type MutationDeleteAddressArgs = {
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationDeleteCategoryArgs = {
   input: DeleteCategoryInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationDeleteCategoryByNameArgs = {
+  input: DeleteCategoryByNameInput;
 };
 
 
@@ -1333,6 +1383,12 @@ export type MutationUpdateAddressArgs = {
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationUpdateCategoryArgs = {
   input: UpdateCategoryInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationUpdateCategoryByNameArgs = {
+  input: UpdateCategoryByNameInput;
 };
 
 
@@ -1849,12 +1905,18 @@ export type ProductsCategoryIdFkeyCategoriesCreateInput = {
 export type ProductsCategoryIdFkeyInput = {
   /** The primary key(s) for `category` for the far side of the relationship. */
   connectById?: InputMaybe<CategoryCategoriesPkeyConnect>;
+  /** The primary key(s) for `category` for the far side of the relationship. */
+  connectByName?: InputMaybe<CategoryCategoriesNameKeyConnect>;
   /** A `CategoryInput` object that will be created and connected to this object. */
   create?: InputMaybe<ProductsCategoryIdFkeyCategoriesCreateInput>;
   /** The primary key(s) for `category` for the far side of the relationship. */
   deleteById?: InputMaybe<CategoryCategoriesPkeyDelete>;
+  /** The primary key(s) for `category` for the far side of the relationship. */
+  deleteByName?: InputMaybe<CategoryCategoriesNameKeyDelete>;
   /** The primary key(s) and patch data for `category` for the far side of the relationship. */
   updateById?: InputMaybe<CategoryOnProductForProductsCategoryIdFkeyUsingCategoriesPkeyUpdate>;
+  /** The primary key(s) and patch data for `category` for the far side of the relationship. */
+  updateByName?: InputMaybe<CategoryOnProductForProductsCategoryIdFkeyUsingCategoriesNameKeyUpdate>;
 };
 
 /** Input for the nested mutation of `product` in the `CategoryInput` mutation. */
@@ -1981,6 +2043,7 @@ export type Query = {
   /** Reads and enables pagination through a set of `Category`. */
   categories?: Maybe<CategoriesConnection>;
   category?: Maybe<Category>;
+  categoryByName?: Maybe<Category>;
   /** Reads and enables pagination through a set of `Company`. */
   companies?: Maybe<CompaniesConnection>;
   company?: Maybe<Company>;
@@ -2039,6 +2102,12 @@ export type QueryCategoriesArgs = {
 /** The root query type which gives access points into the data universe. */
 export type QueryCategoryArgs = {
   id: Scalars['UUID']['input'];
+};
+
+
+/** The root query type which gives access points into the data universe. */
+export type QueryCategoryByNameArgs = {
+  name: Scalars['String']['input'];
 };
 
 
@@ -2206,6 +2275,18 @@ export type UpdateAddressPayload = {
 /** The output of our update `Address` mutation. */
 export type UpdateAddressPayloadAddressEdgeArgs = {
   orderBy?: InputMaybe<Array<AddressesOrderBy>>;
+};
+
+/** All input for the `updateCategoryByName` mutation. */
+export type UpdateCategoryByNameInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  name: Scalars['String']['input'];
+  /** An object where the defined keys will be set on the `Category` being updated. */
+  patch: CategoryPatch;
 };
 
 /** All input for the `updateCategory` mutation. */
@@ -2858,18 +2939,18 @@ export type UpdateProductMutation = { __typename?: 'Mutation', updateProduct?: {
 export type CurrentUserQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type CurrentUserQuery = { __typename?: 'Query', currentUser?: { __typename?: 'User', id: any, name?: string | null, email: string, type: string, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null } | null };
+export type CurrentUserQuery = { __typename?: 'Query', currentUser?: { __typename?: 'User', id: any, name?: string | null, email: string, type: string, addresses: { __typename?: 'AddressesConnection', nodes: Array<{ __typename?: 'Address', id: any, address?: string | null, contactNumber?: string | null }> }, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null } | null };
 
 export type Lite_CompanyFragment = { __typename?: 'Company', id: any, name: string, description?: string | null };
 
-export type Lite_UserFragment = { __typename?: 'User', id: any, name?: string | null, email: string, type: string, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null };
+export type Lite_UserFragment = { __typename?: 'User', id: any, name?: string | null, email: string, type: string, addresses: { __typename?: 'AddressesConnection', nodes: Array<{ __typename?: 'Address', id: any, address?: string | null, contactNumber?: string | null }> }, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null };
 
 export type LoginMutationVariables = Exact<{
   input: LoginInput;
 }>;
 
 
-export type LoginMutation = { __typename?: 'Mutation', login?: { __typename?: 'LoginPayload', token?: string | null, user: { __typename?: 'User', id: any, name?: string | null, email: string, type: string, companies: { __typename?: 'CompaniesConnection', nodes: Array<{ __typename?: 'Company', id: any, name: string, description?: string | null }> }, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null } } | null };
+export type LoginMutation = { __typename?: 'Mutation', login?: { __typename?: 'LoginPayload', token?: string | null, user: { __typename?: 'User', id: any, name?: string | null, email: string, type: string, companies: { __typename?: 'CompaniesConnection', nodes: Array<{ __typename?: 'Company', id: any, name: string, description?: string | null }> }, addresses: { __typename?: 'AddressesConnection', nodes: Array<{ __typename?: 'Address', id: any, address?: string | null, contactNumber?: string | null }> }, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null } } | null };
 
 export type LogoutMutationVariables = Exact<{ [key: string]: never; }>;
 
@@ -2881,7 +2962,7 @@ export type RegisterMutationVariables = Exact<{
 }>;
 
 
-export type RegisterMutation = { __typename?: 'Mutation', register?: { __typename?: 'RegisterPayload', token: string, user: { __typename?: 'User', id: any, name?: string | null, email: string, type: string, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null } } | null };
+export type RegisterMutation = { __typename?: 'Mutation', register?: { __typename?: 'RegisterPayload', token: string, user: { __typename?: 'User', id: any, name?: string | null, email: string, type: string, addresses: { __typename?: 'AddressesConnection', nodes: Array<{ __typename?: 'Address', id: any, address?: string | null, contactNumber?: string | null }> }, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null } } | null };
 
 export type RegisterCompanyMutationVariables = Exact<{
   input: RegisterCompanyInput;
@@ -2929,6 +3010,13 @@ export const Lite_UserFragmentDoc = gql`
   name
   email
   type
+  addresses {
+    nodes {
+      id
+      address
+      contactNumber
+    }
+  }
   company {
     id
     name

@@ -9,10 +9,13 @@ import { EditTraderProfile } from '@/modules/Add-Edit-Forms/EditTrader';
 import { Button, Typography } from '@material-tailwind/react';
 import Image from 'next/image';
 import Image1 from '/public/image/HomeImages/profile.png';
+import { useCurrentUserQuery } from '@/generated/graphql';
 
 type Props = {};
 
 const TraderInfo = (props: Props) => {
+  const {data} = useCurrentUserQuery()
+
   return (
     <div className="flex flex-row h-screen my-10 mx-24 gap-5">
       <div className="grow flex-initial">
@@ -27,7 +30,7 @@ const TraderInfo = (props: Props) => {
           />
 
           <Typography variant="h6" className="text-gray-600">
-            Shop Name: abc
+            Shop Name: {data?.currentUser?.company?.name}
           </Typography>
           <Separator
             orientation="horizontal"
@@ -35,7 +38,7 @@ const TraderInfo = (props: Props) => {
           />
 
           <Typography variant="h6" className="text-gray-600">
-            Contact :9865321475
+            Contact: {data?.currentUser?.addresses.nodes[0].contactNumber} 
           </Typography>
           <Separator
             orientation="horizontal"
@@ -43,7 +46,7 @@ const TraderInfo = (props: Props) => {
           />
 
           <Typography variant="h6" className="text-gray-600">
-            Address:204-gokuldham
+            Address: {data?.currentUser?.addresses.nodes[0].address}
           </Typography>
           <Separator
             orientation="horizontal"

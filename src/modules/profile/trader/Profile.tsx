@@ -19,7 +19,7 @@ export default function VerticalTabs() {
     },
     {
       label: 'Dashboard',
-      value: 'react',
+      value: 'Dashboard',
       desc: <ProductInfo />,
     },
     
@@ -32,7 +32,7 @@ export default function VerticalTabs() {
 
   return (
     <div className="h-screen m-10 ">
-      <Tabs value="html" orientation="vertical">
+      <Tabs value="Profile" orientation="vertical">
         <TabsHeader className="w-32">
           {data.map(({ label, value }) => (
             <Tab key={value} value={value} className="text-xl font-bold">

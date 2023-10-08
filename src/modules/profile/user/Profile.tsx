@@ -9,10 +9,12 @@ import { EditUserProfile } from '@/modules/Add-Edit-Forms/EditUser';
 import { Button, Typography } from '@material-tailwind/react';
 import Image from 'next/image';
 import Image1 from '/public/image/HomeImages/profile.png';
+import { useCurrentUserQuery } from '@/generated/graphql';
 
 type Props = {};
 
 const Profile = (props: Props) => {
+  const {data} = useCurrentUserQuery()
   return (
     <div className="flex flex-row h-screen my-10 mx-24 gap-5">
       <div className="grow flex-initial">
@@ -27,37 +29,21 @@ const Profile = (props: Props) => {
           />
 
           <Typography variant="h6" className="text-gray-600">
-            Name: abc
+            Name: {data?.currentUser?.name}
           </Typography>
           <Separator
             orientation="horizontal"
             className="border-2 border-gray-300"
           />
           <Typography variant="h6" className="text-gray-600">
-            Email: abc@gmail.com
+            Email: {data?.currentUser?.email}
           </Typography>
           <Separator
             orientation="horizontal"
             className="border-2 border-gray-300"
           />
 
-          <Typography variant="h6" className="text-gray-600">
-            Contact Number:9865321475
-          </Typography>
-          <Separator
-            orientation="horizontal"
-            className="border-2 border-gray-300"
-          />
-
-          <Typography variant="h6" className="text-gray-600">
-            Address:204-gokuldham
-          </Typography>
-          <Separator
-            orientation="horizontal"
-            className="border-2 border-gray-300"
-          />
-
-          <div className="">
+          {/* <div className="">
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button
@@ -71,7 +57,7 @@ const Profile = (props: Props) => {
                 <EditUserProfile />
               </AlertDialogContent>
             </AlertDialog>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="grow-0">

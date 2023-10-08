@@ -157,7 +157,7 @@ const App = () => {
           <WizardStep
             onSubmit={() => console.log('Step2 onSubmit')}
             validationSchema={Yup.object({
-              ShopName: Yup.string().required('Required'),
+              companyName: Yup.string().required('Required'),
               contactNumber: Yup.string().required('Required'),
               address: Yup.string().required('Required'),
               description: Yup.string().required('Required'),
@@ -170,7 +170,7 @@ const App = () => {
               Enter Shop information to continue
             </Typography>
             <div className="mb-4 flex flex-col gap-4">
-              <FormFieldLayout label="Shop Name" name="ShopName" />
+              <FormFieldLayout label="Shop Name" name="companyName" />
               <FormFieldLayout label="Contact Number" name="contactNumber" />
               <FormFieldLayout label="Address" name="address" />
               <FormFieldLayout label="Description" name="description" />

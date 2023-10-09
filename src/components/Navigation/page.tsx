@@ -14,8 +14,8 @@ import { Fragment, useState } from 'react';
 const navigation = {
   categories: [
     {
-      id: 'School Supplies',
-      name: 'School Supplies',
+      id: 'Stationery Supplies',
+      name: 'Stationery Supplies',
       featured: [
         {
           name: 'Stationery Essentials',
@@ -39,30 +39,26 @@ const navigation = {
             { name: 'Pens' },
             { name: 'Sharpners' },
             { name: 'Erasers' },
-            { name: 'Drawing Books' },
             { name: 'Geometric Tools' },
             { name: 'Exam Boards' },
             { name: 'Glue and Adhesives' },
+            { name: 'Desk supplies' },
           ],
         },
         {
-          id: 'JuniorArt',
-          name: 'Junior Art',
+          id: 'Artsupplies',
+          name: 'Art Supplies',
           items: [
             { name: 'Color Pencils' },
             { name: 'Water Colors' },
             { name: 'Crayon Colors' },
             { name: 'Poster Colors' },
-            { name: 'Sketch Pens' },
+            { name: 'Sketch Pens and Markers' },
             { name: 'Color Palette' },
             { name: 'Paint Brushes' },
           ],
         },
-        {
-          id: 'Books',
-          name: 'Books',
-          items: [{ name: 'Coloring Books' }, { name: 'Story Books' }],
-        },
+        
       ],
     },
     {
@@ -88,30 +84,22 @@ const navigation = {
           name: 'Art Paints',
           items: [
             { name: 'Acrylic Colors' },
-            { name: 'Water Colors' },
             { name: 'Fabric Colors' },
-            { name: 'Pastel Colors' },
             { name: 'Oil Colors' },
             { name: 'Spray Paints' },
           ],
         },
+        
         {
-          id: 'Markers',
-          name: 'Markers',
+          id: 'sketchSupplies',
+          name: 'Sketch Supplies',
           items: [
-            { name: 'Sketch Markers' },
-            { name: 'Brush Markers' },
-            { name: 'Fabric Markers' },
-          ],
-        },
-        {
-          id: 'PapersAndCanvases',
-          name: 'Paper And Canvases',
-          items: [
-            { name: 'Carft Papers' },
+            { name: 'Craft Papers' },
             { name: 'Canvas Boards' },
-            { name: 'Mini Canvas' },
-            { name: 'Drawing Papers and Pads' },
+            { name: 'sketch books' },
+            { name: 'tote bags' },
+            { name: 'paper bags' },
+            
           ],
         },
       ],
@@ -150,16 +138,15 @@ const navigation = {
           id: 'Diaries',
           name: 'Diaries',
           items: [
-            { name: 'Soft Bound Diaries' },
-            { name: 'Hard Bound Diaries' },
-            { name: 'Leather Cover Diaries' },
+            { name: 'Simple Diaries' },
+            { name: 'Vintage Diaries' },
           ],
         },
       ],
     },
     {
-      id: 'Hampers',
-      name: 'Hampers',
+      id: 'Kits and hampers',
+      name: 'Kits and hampers',
       featured: [
         {
           name: 'Stationery Hamper',
@@ -176,12 +163,25 @@ const navigation = {
       ],
       sections: [
         {
-          id: 'Hampers',
-          name: 'Gift Hampers',
+          id: 'essential kits',
+          name: 'essential kits',
           items: [
-            { name: 'Stationery Hamper' },
-            { name: 'Art-Craft Hamper' },
-            { name: 'Premium Hamper' },
+            { name: 'Stationery kits' },
+            { name: 'Art-Craft kits' },
+            
+          ],
+        },
+
+        {
+          id: 'cute stuff',
+          name: 'cute stuff',
+          items: [
+            { name: 'sticky notes' },
+            { name: 'little diaries' },
+            { name: 'cute stationery' },
+            
+
+            
           ],
         },
       ],

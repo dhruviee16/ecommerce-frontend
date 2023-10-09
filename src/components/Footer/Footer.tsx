@@ -23,24 +23,24 @@ const LINKS = [
     title: 'Products',
     items: [
       {
-        title: 'stationary basics',
-        link: '/categories/Stationary-basics',
+        title: 'acrylic colors',
+        link: '/categories/acrylic-colors',
       },
       {
-        title: 'hampers',
-        link: '/categories/Hampers',
+        title: 'stationery kits',
+        link: '/categories/Stationery-kits',
       },
       {
-        title: 'diaries',
-        link: '/categories/Diaries',
+        title: 'vintage diaries',
+        link: '/categories/vintage-diaries',
       },
       {
-        title: 'art paints',
-        link: '/categories/Art-paints',
+        title: 'cute stationery',
+        link: '/categories/cute-stationery',
       },
       {
-        title: 'markers',
-        link: '/categories/Markers',
+        title: 'desk supplies',
+        link: '/categories/desk-supplies',
       },
     ],
   },
@@ -51,10 +51,7 @@ const LINKS = [
         title: 'About Us',
         link: 'aboutus',
       },
-      {
-        title: 'Contact Us',
-        link: '/contactus',
-      },
+      
     ],
   },
   {

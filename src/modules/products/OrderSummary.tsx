@@ -1,25 +1,20 @@
 'use client';
-import {
-  AlertDialog,
-  AlertDialogContent,
-  AlertDialogTrigger,
-} from '@/components/ui/alert-dialog';
 import { Separator } from '@/components/ui/separator';
-import { EditUserProfile } from '@/modules/Add-Edit-Forms/EditUser';
-import { Button, Typography } from '@material-tailwind/react';
-import Image from 'next/image';
-import Image1 from '/public/image/HomeImages/user.png';
 import { useCurrentUserQuery } from '@/generated/graphql';
+import { Typography } from '@material-tailwind/react';
+import Image from 'next/image';
+import Image1 from '/public/image/HomeImages/order121qa2.png';
+
 
 type Props = {};
 
-const Profile = (props: Props) => {
-  const {data} = useCurrentUserQuery()
+const OrderSummary = (props: Props) => {
+  const { data } = useCurrentUserQuery();
   return (
     <div className="flex flex-row h-screen my-10 mx-24 gap-5">
       <div className="grow flex-initial">
         <Typography variant="h3" color="blue-gray" className="my-5">
-          Account Details
+          Order Summary
         </Typography>
 
         <div className="flex flex-col gap-8">
@@ -43,21 +38,28 @@ const Profile = (props: Props) => {
             className="border-2 border-gray-300"
           />
           <Typography variant="h6" className="text-gray-600">
-            Address: 
+            Address:
           </Typography>
           <Separator
             orientation="horizontal"
             className="border-2 border-gray-300"
           />
           <Typography variant="h6" className="text-gray-600">
-            Contact No: 
+            contact no:
+          </Typography>
+          <Separator
+            orientation="horizontal"
+            className="border-2 border-gray-300"
+          />
+          <Typography variant="h6" className="text-gray-600">
+            Product Name:
           </Typography>
           <Separator
             orientation="horizontal"
             className="border-2 border-gray-300"
           />
 
-          <div className="">
+          {/* <div className="">
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button
@@ -71,7 +73,7 @@ const Profile = (props: Props) => {
                 <EditUserProfile />
               </AlertDialogContent>
             </AlertDialog>
-          </div> 
+          </div> */}
         </div>
       </div>
       <div className="grow-0">
@@ -83,9 +85,9 @@ const Profile = (props: Props) => {
           alt="profile"
           className="object-contain  w-[739px]"
         />
-      </div>
+      </div> 
     </div>
   );
 };
 
-export default Profile;
+export default OrderSummary;

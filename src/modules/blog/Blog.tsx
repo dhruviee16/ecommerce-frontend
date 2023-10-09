@@ -1,3 +1,7 @@
+import Image from 'next/image';
+import Image1 from '/public/image/HomeImages/blog.png';
+import { Separator } from "@/components/ui/separator";
+
 const Profile = () => {
   return (
     <>
@@ -62,6 +66,16 @@ const Profile = () => {
             The Creative Heaven—the place where creativity knows no bounds!
             HAPPY SHOPPING!
           </p>
+        </div>
+        <div className="grow-0">
+          <Separator orientation="vertical" className="border-1" />
+        </div>
+        <div className="mt-2">
+          <Image
+            src={Image1}
+            alt="profile"
+            className="object-contain  w-[739px]"
+          />
         </div>
       </div>
     </>

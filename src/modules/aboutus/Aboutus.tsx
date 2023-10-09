@@ -1,12 +1,13 @@
-// import Image from 'next/image';
-// import AboutUsImg from 'public/AboutUs/about-us.png';
+import Image from 'next/image';
+import Image1 from '/public/image/HomeImages/profile1.png';
+import { Separator } from "@/components/ui/separator";
 
 const AboutUs = () => {
   return (
     <>
-      <div className="flex justify-center items-center min-h-[85vh]">
+      <div className="flex justify-left items-left min-h-[85vh]">
         <div className=" w-[50%] p-10 rounded-lg">
-          <h1 className="text-3xl lg:text-4xl font-bold leading-9 text-gray-900">
+          <h1 className=" mt-12 text-3xl lg:text-4xl font-bold leading-9 text-gray-900">
             About Us
           </h1>
           <p className="mt-4 gap-y-6 font-normal text-lg leading-6 text-gray-700">
@@ -22,7 +23,34 @@ const AboutUs = () => {
             blocks of imagination, the brushes that color our world, and the
             tools that turn ordinary moments into extraordinary memories.Our
             platform is designed to make these tools accessible to everyone.
+            Whether you are a professional artist or a hobbyist, a student or a
+            teacher, a homemaker or a working professional, you will find
+            everything you need to unleash your creativity at ArtyUs.We are
+            committed to providing you with a seamless shopping experience and
+            exceptional customer service. We are constantly working to improve
+            our platform and add new products to our catalog. 
           </p>
+          <p className="mt-4 gap-y-6 font-normal text-lg leading-6 text-gray-700">
+            We Offer Artistic Excellence with our carefully curated selection of top-notch art
+            supplies, from paints and brushes to sketchbooks and canvases.
+            Unleash your inner crafter with our extensive
+            range of unique craft materials, from colorful craft materials  to
+            handmade papers and
+            Elevate your everyday life
+            with our stylish and functional stationery products; From elegant
+            journals to cute stationery stuffs, we have got your stationery needs covered.
+          </p>
+         
+        </div>
+        <div className="grow-0">
+          <Separator orientation="vertical" className="border-1" />
+        </div>
+        <div className="">
+          <Image
+            src={Image1}
+            alt="profile"
+            className="object-contain  w-[739px]"
+          />
         </div>
       </div>
     </>

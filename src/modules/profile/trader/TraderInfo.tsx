@@ -8,7 +8,7 @@ import { Separator } from '@/components/ui/separator';
 import { EditTraderProfile } from '@/modules/Add-Edit-Forms/EditTrader';
 import { Button, Typography } from '@material-tailwind/react';
 import Image from 'next/image';
-import Image1 from '/public/image/HomeImages/profile.png';
+import Image1 from '/public/image/HomeImages/trader.png';
 import { useCurrentUserQuery } from '@/generated/graphql';
 
 type Props = {};

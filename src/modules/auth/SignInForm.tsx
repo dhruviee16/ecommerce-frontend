@@ -5,11 +5,14 @@ import { Button, Card, Typography } from '@material-tailwind/react';
 import { Form } from 'formik';
 import Link from 'next/link';
 import { useLogin } from './hooks';
+import Image from 'next/image';
+import Image1 from '/public/image/HomeImages/blog.png';
+import { Separator } from "@/components/ui/separator";
 
 const SignInForm = () => {
   const { initialValues, loading, handleSubmit, validationSchema } = useLogin();
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex items-left justify-left min-h-screen">
       <Card color="transparent" shadow={false} className="m-20">
         <Typography variant="h4" color="blue-gray">
           Log In
@@ -53,6 +56,16 @@ const SignInForm = () => {
           )}
         </FormLayout>
       </Card>
+      <div className="grow-0">
+          <Separator orientation="vertical" className="border-2" />
+        </div>
+        <div className="mt-2">
+          <Image
+            src={Image1}
+            alt="profile"
+            className="object-contain  w-[739px]"
+          />
+        </div>
     </div>
   );
 };

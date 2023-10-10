@@ -1,3 +1,4 @@
+import { useCurrentUserQuery } from '@/generated/graphql';
 import { ProductsList } from '@/modules/products';
 
 type Props = {
@@ -10,8 +11,9 @@ type Props = {
 
 //const { categoryId } = params;
 
-const page = ({ params }: Props) => {
+const Page = ({ params }: Props) => {
   const { category } = params;
+
   return (
     <div>
       <div className="justify-center items-center">
@@ -21,7 +23,7 @@ const page = ({ params }: Props) => {
   );
 };
 
-export default page;
+export default Page;
 
 //localhost/categoryId/sectionId/itemsId/productId
 //{ categoryId: string,sectionId: string, itemId: string }

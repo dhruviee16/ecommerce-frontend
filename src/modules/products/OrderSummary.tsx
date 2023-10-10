@@ -3,7 +3,7 @@ import { Separator } from '@/components/ui/separator';
 import { useCurrentUserQuery } from '@/generated/graphql';
 import { Typography } from '@material-tailwind/react';
 import Image from 'next/image';
-import Image1 from '/public/image/HomeImages/order121qa2.png';
+import Image1 from '/public/image/HomeImages/order2.png';
 
 
 type Props = {};
@@ -53,6 +53,13 @@ const OrderSummary = (props: Props) => {
           />
           <Typography variant="h6" className="text-gray-600">
             Product Name:
+          </Typography>
+          <Separator
+            orientation="horizontal"
+            className="border-2 border-gray-300"
+          />
+          <Typography variant="h6" className="text-gray-600">
+            Product price:
           </Typography>
           <Separator
             orientation="horizontal"

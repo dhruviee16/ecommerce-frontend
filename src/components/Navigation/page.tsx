@@ -53,7 +53,8 @@ const navigation = {
             { name: 'Water Colors' },
             { name: 'Crayon Colors' },
             { name: 'Poster Colors' },
-            { name: 'Sketch Pens and Markers' },
+            { name: 'Sketch Pens' },
+            { name: 'Markers and Highlighters ' },
             { name: 'Color Palette' },
             { name: 'Paint Brushes' },
           ],
@@ -97,9 +98,8 @@ const navigation = {
             { name: 'Craft Papers' },
             { name: 'Canvas Boards' },
             { name: 'sketch books' },
-            { name: 'tote bags' },
-            { name: 'paper bags' },
             
+  
           ],
         },
       ],
@@ -140,6 +140,9 @@ const navigation = {
           items: [
             { name: 'Simple Diaries' },
             { name: 'Vintage Diaries' },
+            { name: 'Little Diaries' },
+            { name: 'Sticky Notes' },            
+
           ],
         },
       ],
@@ -172,18 +175,7 @@ const navigation = {
           ],
         },
 
-        {
-          id: 'cute stuff',
-          name: 'cute stuff',
-          items: [
-            { name: 'sticky notes' },
-            { name: 'little diaries' },
-            { name: 'cute stationery' },
-            
-
-            
-          ],
-        },
+       
       ],
     },
   ],

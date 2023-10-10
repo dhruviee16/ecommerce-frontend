@@ -1,0 +1,6 @@
+query Category($id: UUID!) {
+  category(id: $id) {
+    id
+    name
+  }
+}

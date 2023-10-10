@@ -306,15 +306,12 @@ function Navigation() {
                         </div>
                         {category.sections.map((section) => (
                           <div key={section.name}>
-                            <Link
-                              id={`${section.name}-heading`}
+                            <Typography
+                              key={`${section.name}-heading`}
                               className="font-medium text-gray-900"
-                              href={`/categories/${section.name
-                                .replaceAll(' ', '-')
-                                .toLowerCase()}`}
                             >
                               {section.name}
-                            </Link>
+                            </Typography>
                             <ul
                               role="list"
                               aria-labelledby={`${category.id}-${section.id}-heading-mobile`}
@@ -323,9 +320,7 @@ function Navigation() {
                               {section.items.map((item) => (
                                 <li key={``} className="flow-root">
                                   <Link
-                                    href={`/categories/${section.name
-                                      .replaceAll(' ', '-')
-                                      .toLowerCase()}/${item.name
+                                    href={`/${item.name
                                       .replaceAll(' ', '-')
                                       .toLowerCase()}`}
                                     className="-m-2 block p-2 text-gray-500"
@@ -453,15 +448,12 @@ function Navigation() {
                                     <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
                                       {category.sections.map((section) => (
                                         <div key={section.name}>
-                                          <Link
-                                            id={`${section.name}-heading`}
+                                          <Typography
+                                            key={`${section.name}-heading`}
                                             className="font-medium text-gray-900"
-                                            href={`/categories/${section.name
-                                              .replaceAll(' ', '-')
-                                              .toLowerCase()}`}
                                           >
                                             {section.name}
-                                          </Link>
+                                          </Typography>
                                           <ul
                                             role="list"
                                             aria-labelledby={`${section.name}-heading`}
@@ -473,9 +465,7 @@ function Navigation() {
                                                 className="flex"
                                               >
                                                 <Link
-                                                  href={`/categories/${section.name
-                                                    .replaceAll(' ', '-')
-                                                    .toLowerCase()}/${item.name
+                                                  href={`/${item.name
                                                     .replaceAll(' ', '-')
                                                     .toLowerCase()}`}
                                                   // href={'/Products/Boots'}

@@ -1,5 +1,4 @@
 import { Footer } from '@/components/Footer';
-
 import Layout from '@/components/Layout';
 import { Navigation } from '@/components/Navigation';
 import { Metadata } from 'next';

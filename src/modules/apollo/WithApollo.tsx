@@ -8,6 +8,7 @@ import {
 } from '@apollo/client';
 import React from 'react';
 import { useAuthToken } from '../auth/hooks/useAuthToken';
+import { loadErrorMessages, loadDevMessages } from '@apollo/client/dev';
 
 const httpLink = createHttpLink({ uri: process.env.NEXT_PUBLIC_API_URL });
 
@@ -26,6 +27,13 @@ const WithApollo: React.FC<Props> = ({ children }) => {
           },
         });
       }
+
+      if (process.env.NODE_ENV !== 'production') {
+        // Adds messages only in a dev environment
+        loadDevMessages();
+        loadErrorMessages();
+      }
+
 
       return forward(request);
     });

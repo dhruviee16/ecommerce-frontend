@@ -1,8 +1,9 @@
 import { ProductsList } from '@/modules/products';
+import { useProducts } from '@/modules/products/hooks/useProducts';
 
 type Props = {
   params: {
-    products: string;
+    slug: string;
   };
 };
 
@@ -10,18 +11,19 @@ type Props = {
 
 //const { categoryId } = params;
 
-const page = ({ params }: Props) => {
-  const { products } = params;
+const Products: React.FC<Props> = ({ params }) => {
+  const { slug } = params;
+
   return (
     <div>
       <div className="justify-center items-center">
-        <ProductsList title={products} />
+        <ProductsList slug={slug} />
       </div>
     </div>
   );
 };
 
-export default page;
+export default Products;
 
 //localhost/categoryId/sectionId/itemsId/productId
 //{ categoryId: string,sectionId: string, itemId: string }

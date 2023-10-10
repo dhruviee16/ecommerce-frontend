@@ -24,6 +24,9 @@ export type Scalars = {
 export type Address = {
   __typename?: 'Address';
   address?: Maybe<Scalars['String']['output']>;
+  /** Reads a single `Company` that is related to this `Address`. */
+  company?: Maybe<Company>;
+  companyId?: Maybe<Scalars['UUID']['output']>;
   contactNumber?: Maybe<Scalars['String']['output']>;
   createdAt: Scalars['Datetime']['output'];
   id: Scalars['UUID']['output'];
@@ -45,6 +48,7 @@ export type AddressOrdersArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<OrderCondition>;
+  filter?: InputMaybe<OrderFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -56,6 +60,7 @@ export type AddressProductsByOrderAddressIdAndProductIdArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<ProductCondition>;
+  filter?: InputMaybe<ProductFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -67,10 +72,21 @@ export type AddressUsersByOrderAddressIdAndUserIdArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<UserCondition>;
+  filter?: InputMaybe<UserFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<UsersOrderBy>>;
+};
+
+/** The fields on `address` to look up the row to connect. */
+export type AddressAddressesCompanyIdKeyConnect = {
+  companyId: Scalars['UUID']['input'];
+};
+
+/** The fields on `address` to look up the row to delete. */
+export type AddressAddressesCompanyIdKeyDelete = {
+  companyId: Scalars['UUID']['input'];
 };
 
 /** The fields on `address` to look up the row to connect. */
@@ -85,15 +101,45 @@ export type AddressAddressesPkeyDelete = {
 
 /** A condition to be used against `Address` object types. All fields are tested for equality and combined with a logical ‘and.’ */
 export type AddressCondition = {
+  /** Checks for equality with the object’s `companyId` field. */
+  companyId?: InputMaybe<Scalars['UUID']['input']>;
   /** Checks for equality with the object’s `id` field. */
   id?: InputMaybe<Scalars['UUID']['input']>;
   /** Checks for equality with the object’s `userId` field. */
   userId?: InputMaybe<Scalars['UUID']['input']>;
 };
 
+/** A filter to be used against `Address` object types. All fields are combined with a logical ‘and.’ */
+export type AddressFilter = {
+  /** Checks for all expressions in this list. */
+  and?: InputMaybe<Array<AddressFilter>>;
+  /** Filter by the object’s `company` relation. */
+  company?: InputMaybe<CompanyFilter>;
+  /** A related `company` exists. */
+  companyExists?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `companyId` field. */
+  companyId?: InputMaybe<UuidFilter>;
+  /** Filter by the object’s `id` field. */
+  id?: InputMaybe<UuidFilter>;
+  /** Negates the expression. */
+  not?: InputMaybe<AddressFilter>;
+  /** Checks for any expressions in this list. */
+  or?: InputMaybe<Array<AddressFilter>>;
+  /** Filter by the object’s `orders` relation. */
+  orders?: InputMaybe<AddressToManyOrderFilter>;
+  /** Some related `orders` exist. */
+  ordersExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `user` relation. */
+  user?: InputMaybe<UserFilter>;
+  /** Filter by the object’s `userId` field. */
+  userId?: InputMaybe<UuidFilter>;
+};
+
 /** An input for mutations affecting `Address` */
 export type AddressInput = {
   address?: InputMaybe<Scalars['String']['input']>;
+  companyId?: InputMaybe<Scalars['UUID']['input']>;
+  companyToCompanyId?: InputMaybe<AddressesCompanyIdFkeyInput>;
   contactNumber?: InputMaybe<Scalars['String']['input']>;
   isPrimary?: InputMaybe<Scalars['Boolean']['input']>;
   ordersUsingId?: InputMaybe<OrdersAddressIdFkeyInverseInput>;
@@ -102,10 +148,38 @@ export type AddressInput = {
 };
 
 /** The fields on `address` to look up the row to update. */
+export type AddressOnAddressForAddressesCompanyIdFkeyUsingAddressesCompanyIdKeyUpdate = {
+  companyId: Scalars['UUID']['input'];
+  /** An object where the defined keys will be set on the `address` being updated. */
+  patch: UpdateAddressOnAddressForAddressesCompanyIdFkeyPatch;
+};
+
+/** The fields on `address` to look up the row to update. */
+export type AddressOnAddressForAddressesCompanyIdFkeyUsingAddressesPkeyUpdate = {
+  id: Scalars['UUID']['input'];
+  /** An object where the defined keys will be set on the `address` being updated. */
+  patch: UpdateAddressOnAddressForAddressesCompanyIdFkeyPatch;
+};
+
+/** The fields on `address` to look up the row to update. */
+export type AddressOnAddressForAddressesUserIdFkeyUsingAddressesCompanyIdKeyUpdate = {
+  companyId: Scalars['UUID']['input'];
+  /** An object where the defined keys will be set on the `address` being updated. */
+  patch: UpdateAddressOnAddressForAddressesUserIdFkeyPatch;
+};
+
+/** The fields on `address` to look up the row to update. */
 export type AddressOnAddressForAddressesUserIdFkeyUsingAddressesPkeyUpdate = {
   id: Scalars['UUID']['input'];
   /** An object where the defined keys will be set on the `address` being updated. */
   patch: UpdateAddressOnAddressForAddressesUserIdFkeyPatch;
+};
+
+/** The fields on `address` to look up the row to update. */
+export type AddressOnOrderForOrdersAddressIdFkeyUsingAddressesCompanyIdKeyUpdate = {
+  companyId: Scalars['UUID']['input'];
+  /** An object where the defined keys will be set on the `address` being updated. */
+  patch: UpdateAddressOnOrderForOrdersAddressIdFkeyPatch;
 };
 
 /** The fields on `address` to look up the row to update. */
@@ -118,6 +192,8 @@ export type AddressOnOrderForOrdersAddressIdFkeyUsingAddressesPkeyUpdate = {
 /** Represents an update to a `Address`. Fields that are set will be updated. */
 export type AddressPatch = {
   address?: InputMaybe<Scalars['String']['input']>;
+  companyId?: InputMaybe<Scalars['UUID']['input']>;
+  companyToCompanyId?: InputMaybe<AddressesCompanyIdFkeyInput>;
   contactNumber?: InputMaybe<Scalars['String']['input']>;
   isPrimary?: InputMaybe<Scalars['Boolean']['input']>;
   ordersUsingId?: InputMaybe<OrdersAddressIdFkeyInverseInput>;
@@ -155,10 +231,21 @@ export type AddressProductsByOrderAddressIdAndProductIdManyToManyEdgeOrdersArgs 
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<OrderCondition>;
+  filter?: InputMaybe<OrderFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<OrdersOrderBy>>;
+};
+
+/** A filter to be used against many `Order` object types. All fields are combined with a logical ‘and.’ */
+export type AddressToManyOrderFilter = {
+  /** Every related `Order` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<OrderFilter>;
+  /** No related `Order` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<OrderFilter>;
+  /** Some related `Order` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<OrderFilter>;
 };
 
 /** A connection to a list of `User` values, with data from `Order`. */
@@ -191,10 +278,71 @@ export type AddressUsersByOrderAddressIdAndUserIdManyToManyEdgeOrdersArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<OrderCondition>;
+  filter?: InputMaybe<OrderFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<OrdersOrderBy>>;
+};
+
+/** The `address` to be created by this mutation. */
+export type AddressesCompanyIdFkeyAddressesCreateInput = {
+  address?: InputMaybe<Scalars['String']['input']>;
+  companyToCompanyId?: InputMaybe<AddressesCompanyIdFkeyInput>;
+  contactNumber?: InputMaybe<Scalars['String']['input']>;
+  isPrimary?: InputMaybe<Scalars['Boolean']['input']>;
+  ordersUsingId?: InputMaybe<OrdersAddressIdFkeyInverseInput>;
+  userId?: InputMaybe<Scalars['UUID']['input']>;
+  userToUserId?: InputMaybe<AddressesUserIdFkeyInput>;
+};
+
+/** The `company` to be created by this mutation. */
+export type AddressesCompanyIdFkeyCompaniesCreateInput = {
+  addressUsingId?: InputMaybe<AddressesCompanyIdFkeyInverseInput>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  isVerified?: InputMaybe<Scalars['Boolean']['input']>;
+  name: Scalars['String']['input'];
+  productsUsingId?: InputMaybe<ProductsCompanyIdFkeyInverseInput>;
+  userId?: InputMaybe<Scalars['UUID']['input']>;
+  userToUserId?: InputMaybe<CompaniesUserIdFkeyInput>;
+};
+
+/** Input for the nested mutation of `company` in the `AddressInput` mutation. */
+export type AddressesCompanyIdFkeyInput = {
+  /** The primary key(s) for `company` for the far side of the relationship. */
+  connectById?: InputMaybe<CompanyCompaniesPkeyConnect>;
+  /** The primary key(s) for `company` for the far side of the relationship. */
+  connectByUserId?: InputMaybe<CompanyCompaniesUserIdKeyConnect>;
+  /** A `CompanyInput` object that will be created and connected to this object. */
+  create?: InputMaybe<AddressesCompanyIdFkeyCompaniesCreateInput>;
+  /** The primary key(s) for `company` for the far side of the relationship. */
+  deleteById?: InputMaybe<CompanyCompaniesPkeyDelete>;
+  /** The primary key(s) for `company` for the far side of the relationship. */
+  deleteByUserId?: InputMaybe<CompanyCompaniesUserIdKeyDelete>;
+  /** The primary key(s) and patch data for `company` for the far side of the relationship. */
+  updateById?: InputMaybe<CompanyOnAddressForAddressesCompanyIdFkeyUsingCompaniesPkeyUpdate>;
+  /** The primary key(s) and patch data for `company` for the far side of the relationship. */
+  updateByUserId?: InputMaybe<CompanyOnAddressForAddressesCompanyIdFkeyUsingCompaniesUserIdKeyUpdate>;
+};
+
+/** Input for the nested mutation of `address` in the `CompanyInput` mutation. */
+export type AddressesCompanyIdFkeyInverseInput = {
+  /** The primary key(s) for `address` for the far side of the relationship. */
+  connectByCompanyId?: InputMaybe<AddressAddressesCompanyIdKeyConnect>;
+  /** The primary key(s) for `address` for the far side of the relationship. */
+  connectById?: InputMaybe<AddressAddressesPkeyConnect>;
+  /** A `AddressInput` object that will be created and connected to this object. */
+  create?: InputMaybe<Array<AddressesCompanyIdFkeyAddressesCreateInput>>;
+  /** The primary key(s) for `address` for the far side of the relationship. */
+  deleteByCompanyId?: InputMaybe<AddressAddressesCompanyIdKeyDelete>;
+  /** The primary key(s) for `address` for the far side of the relationship. */
+  deleteById?: InputMaybe<AddressAddressesPkeyDelete>;
+  /** Flag indicating whether all other `address` records that match this relationship should be removed. */
+  deleteOthers?: InputMaybe<Scalars['Boolean']['input']>;
+  /** The primary key(s) and patch data for `address` for the far side of the relationship. */
+  updateByCompanyId?: InputMaybe<AddressOnAddressForAddressesCompanyIdFkeyUsingAddressesCompanyIdKeyUpdate>;
+  /** The primary key(s) and patch data for `address` for the far side of the relationship. */
+  updateById?: InputMaybe<AddressOnAddressForAddressesCompanyIdFkeyUsingAddressesPkeyUpdate>;
 };
 
 /** A connection to a list of `Address` values. */
@@ -221,6 +369,8 @@ export type AddressesEdge = {
 
 /** Methods to use when ordering `Address`. */
 export enum AddressesOrderBy {
+  CompanyIdAsc = 'COMPANY_ID_ASC',
+  CompanyIdDesc = 'COMPANY_ID_DESC',
   IdAsc = 'ID_ASC',
   IdDesc = 'ID_DESC',
   Natural = 'NATURAL',
@@ -233,6 +383,8 @@ export enum AddressesOrderBy {
 /** The `address` to be created by this mutation. */
 export type AddressesUserIdFkeyAddressesCreateInput = {
   address?: InputMaybe<Scalars['String']['input']>;
+  companyId?: InputMaybe<Scalars['UUID']['input']>;
+  companyToCompanyId?: InputMaybe<AddressesCompanyIdFkeyInput>;
   contactNumber?: InputMaybe<Scalars['String']['input']>;
   isPrimary?: InputMaybe<Scalars['Boolean']['input']>;
   ordersUsingId?: InputMaybe<OrdersAddressIdFkeyInverseInput>;
@@ -254,13 +406,19 @@ export type AddressesUserIdFkeyInput = {
 /** Input for the nested mutation of `address` in the `UserInput` mutation. */
 export type AddressesUserIdFkeyInverseInput = {
   /** The primary key(s) for `address` for the far side of the relationship. */
+  connectByCompanyId?: InputMaybe<Array<AddressAddressesCompanyIdKeyConnect>>;
+  /** The primary key(s) for `address` for the far side of the relationship. */
   connectById?: InputMaybe<Array<AddressAddressesPkeyConnect>>;
   /** A `AddressInput` object that will be created and connected to this object. */
   create?: InputMaybe<Array<AddressesUserIdFkeyAddressesCreateInput>>;
   /** The primary key(s) for `address` for the far side of the relationship. */
+  deleteByCompanyId?: InputMaybe<Array<AddressAddressesCompanyIdKeyDelete>>;
+  /** The primary key(s) for `address` for the far side of the relationship. */
   deleteById?: InputMaybe<Array<AddressAddressesPkeyDelete>>;
   /** Flag indicating whether all other `address` records that match this relationship should be removed. */
   deleteOthers?: InputMaybe<Scalars['Boolean']['input']>;
+  /** The primary key(s) and patch data for `address` for the far side of the relationship. */
+  updateByCompanyId?: InputMaybe<Array<AddressOnAddressForAddressesUserIdFkeyUsingAddressesCompanyIdKeyUpdate>>;
   /** The primary key(s) and patch data for `address` for the far side of the relationship. */
   updateById?: InputMaybe<Array<AddressOnAddressForAddressesUserIdFkeyUsingAddressesPkeyUpdate>>;
 };
@@ -290,18 +448,12 @@ export type CategoriesCategoryIdFkeyCategoriesCreateInput = {
 export type CategoriesCategoryIdFkeyInput = {
   /** The primary key(s) for `category` for the far side of the relationship. */
   connectById?: InputMaybe<CategoryCategoriesPkeyConnect>;
-  /** The primary key(s) for `category` for the far side of the relationship. */
-  connectByName?: InputMaybe<CategoryCategoriesNameKeyConnect>;
   /** A `CategoryInput` object that will be created and connected to this object. */
   create?: InputMaybe<CategoriesCategoryIdFkeyCategoriesCreateInput>;
   /** The primary key(s) for `category` for the far side of the relationship. */
   deleteById?: InputMaybe<CategoryCategoriesPkeyDelete>;
-  /** The primary key(s) for `category` for the far side of the relationship. */
-  deleteByName?: InputMaybe<CategoryCategoriesNameKeyDelete>;
   /** The primary key(s) and patch data for `category` for the far side of the relationship. */
   updateById?: InputMaybe<CategoryOnCategoryForCategoriesCategoryIdFkeyUsingCategoriesPkeyUpdate>;
-  /** The primary key(s) and patch data for `category` for the far side of the relationship. */
-  updateByName?: InputMaybe<CategoryOnCategoryForCategoriesCategoryIdFkeyUsingCategoriesNameKeyUpdate>;
 };
 
 /** A connection to a list of `Category` values. */
@@ -336,7 +488,9 @@ export enum CategoriesOrderBy {
   ParentIdAsc = 'PARENT_ID_ASC',
   ParentIdDesc = 'PARENT_ID_DESC',
   PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
-  PrimaryKeyDesc = 'PRIMARY_KEY_DESC'
+  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
+  SlugAsc = 'SLUG_ASC',
+  SlugDesc = 'SLUG_DESC'
 }
 
 export type Category = {
@@ -347,6 +501,7 @@ export type Category = {
   companiesByProductCategoryIdAndCompanyId: CategoryCompaniesByProductCategoryIdAndCompanyIdManyToManyConnection;
   createdAt: Scalars['Datetime']['output'];
   id: Scalars['UUID']['output'];
+  imgUrl?: Maybe<Scalars['String']['output']>;
   name: Scalars['String']['output'];
   /** Reads a single `Category` that is related to this `Category`. */
   parent?: Maybe<Category>;
@@ -362,6 +517,7 @@ export type CategoryChildCategoriesArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<CategoryCondition>;
+  filter?: InputMaybe<CategoryFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -373,6 +529,7 @@ export type CategoryCompaniesByProductCategoryIdAndCompanyIdArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<CompanyCondition>;
+  filter?: InputMaybe<CompanyFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -384,20 +541,11 @@ export type CategoryProductsArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<ProductCondition>;
+  filter?: InputMaybe<ProductFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<ProductsOrderBy>>;
-};
-
-/** The fields on `category` to look up the row to connect. */
-export type CategoryCategoriesNameKeyConnect = {
-  name: Scalars['String']['input'];
-};
-
-/** The fields on `category` to look up the row to delete. */
-export type CategoryCategoriesNameKeyDelete = {
-  name: Scalars['String']['input'];
 };
 
 /** The fields on `category` to look up the row to connect. */
@@ -440,6 +588,7 @@ export type CategoryCompaniesByProductCategoryIdAndCompanyIdManyToManyEdgeProduc
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<ProductCondition>;
+  filter?: InputMaybe<ProductFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -457,6 +606,38 @@ export type CategoryCondition = {
   name?: InputMaybe<Scalars['String']['input']>;
   /** Checks for equality with the object’s `parentId` field. */
   parentId?: InputMaybe<Scalars['UUID']['input']>;
+  /** Checks for equality with the object’s `slug` field. */
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** A filter to be used against `Category` object types. All fields are combined with a logical ‘and.’ */
+export type CategoryFilter = {
+  /** Checks for all expressions in this list. */
+  and?: InputMaybe<Array<CategoryFilter>>;
+  /** Filter by the object’s `childCategories` relation. */
+  childCategories?: InputMaybe<CategoryToManyCategoryFilter>;
+  /** Some related `childCategories` exist. */
+  childCategoriesExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `id` field. */
+  id?: InputMaybe<UuidFilter>;
+  /** Filter by the object’s `name` field. */
+  name?: InputMaybe<StringFilter>;
+  /** Negates the expression. */
+  not?: InputMaybe<CategoryFilter>;
+  /** Checks for any expressions in this list. */
+  or?: InputMaybe<Array<CategoryFilter>>;
+  /** Filter by the object’s `parent` relation. */
+  parent?: InputMaybe<CategoryFilter>;
+  /** A related `parent` exists. */
+  parentExists?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `parentId` field. */
+  parentId?: InputMaybe<UuidFilter>;
+  /** Filter by the object’s `products` relation. */
+  products?: InputMaybe<CategoryToManyProductFilter>;
+  /** Some related `products` exist. */
+  productsExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `slug` field. */
+  slug?: InputMaybe<StringFilter>;
 };
 
 /** An input for mutations affecting `Category` */
@@ -469,24 +650,10 @@ export type CategoryInput = {
 };
 
 /** The fields on `category` to look up the row to update. */
-export type CategoryOnCategoryForCategoriesCategoryIdFkeyUsingCategoriesNameKeyUpdate = {
-  name: Scalars['String']['input'];
-  /** An object where the defined keys will be set on the `category` being updated. */
-  patch: UpdateCategoryOnCategoryForCategoriesCategoryIdFkeyPatch;
-};
-
-/** The fields on `category` to look up the row to update. */
 export type CategoryOnCategoryForCategoriesCategoryIdFkeyUsingCategoriesPkeyUpdate = {
   id: Scalars['UUID']['input'];
   /** An object where the defined keys will be set on the `category` being updated. */
   patch: UpdateCategoryOnCategoryForCategoriesCategoryIdFkeyPatch;
-};
-
-/** The fields on `category` to look up the row to update. */
-export type CategoryOnProductForProductsCategoryIdFkeyUsingCategoriesNameKeyUpdate = {
-  name: Scalars['String']['input'];
-  /** An object where the defined keys will be set on the `category` being updated. */
-  patch: UpdateCategoryOnProductForProductsCategoryIdFkeyPatch;
 };
 
 /** The fields on `category` to look up the row to update. */
@@ -503,6 +670,26 @@ export type CategoryPatch = {
   parentId?: InputMaybe<Scalars['UUID']['input']>;
   productsUsingId?: InputMaybe<ProductsCategoryIdFkeyInverseInput>;
   slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** A filter to be used against many `Category` object types. All fields are combined with a logical ‘and.’ */
+export type CategoryToManyCategoryFilter = {
+  /** Every related `Category` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<CategoryFilter>;
+  /** No related `Category` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<CategoryFilter>;
+  /** Some related `Category` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<CategoryFilter>;
+};
+
+/** A filter to be used against many `Product` object types. All fields are combined with a logical ‘and.’ */
+export type CategoryToManyProductFilter = {
+  /** Every related `Product` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<ProductFilter>;
+  /** No related `Product` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<ProductFilter>;
+  /** Some related `Product` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<ProductFilter>;
 };
 
 /** A connection to a list of `Company` values. */
@@ -540,6 +727,7 @@ export enum CompaniesOrderBy {
 
 /** The `company` to be created by this mutation. */
 export type CompaniesUserIdFkeyCompaniesCreateInput = {
+  addressUsingId?: InputMaybe<AddressesCompanyIdFkeyInverseInput>;
   description?: InputMaybe<Scalars['String']['input']>;
   isVerified?: InputMaybe<Scalars['Boolean']['input']>;
   name: Scalars['String']['input'];
@@ -564,19 +752,19 @@ export type CompaniesUserIdFkeyInverseInput = {
   /** The primary key(s) for `company` for the far side of the relationship. */
   connectById?: InputMaybe<CompanyCompaniesPkeyConnect>;
   /** The primary key(s) for `company` for the far side of the relationship. */
-  connectByUserId?: InputMaybe<CompanyCompaniesUserIdUniqueConnect>;
+  connectByUserId?: InputMaybe<CompanyCompaniesUserIdKeyConnect>;
   /** A `CompanyInput` object that will be created and connected to this object. */
   create?: InputMaybe<Array<CompaniesUserIdFkeyCompaniesCreateInput>>;
   /** The primary key(s) for `company` for the far side of the relationship. */
   deleteById?: InputMaybe<CompanyCompaniesPkeyDelete>;
   /** The primary key(s) for `company` for the far side of the relationship. */
-  deleteByUserId?: InputMaybe<CompanyCompaniesUserIdUniqueDelete>;
+  deleteByUserId?: InputMaybe<CompanyCompaniesUserIdKeyDelete>;
   /** Flag indicating whether all other `company` records that match this relationship should be removed. */
   deleteOthers?: InputMaybe<Scalars['Boolean']['input']>;
   /** The primary key(s) and patch data for `company` for the far side of the relationship. */
   updateById?: InputMaybe<CompanyOnCompanyForCompaniesUserIdFkeyUsingCompaniesPkeyUpdate>;
   /** The primary key(s) and patch data for `company` for the far side of the relationship. */
-  updateByUserId?: InputMaybe<CompanyOnCompanyForCompaniesUserIdFkeyUsingCompaniesUserIdUniqueUpdate>;
+  updateByUserId?: InputMaybe<CompanyOnCompanyForCompaniesUserIdFkeyUsingCompaniesUserIdKeyUpdate>;
 };
 
 /** The `user` to be created by this mutation. */
@@ -594,6 +782,13 @@ export type CompaniesUserIdFkeyUsersCreateInput = {
 
 export type Company = {
   __typename?: 'Company';
+  /** Reads a single `Address` that is related to this `Company`. */
+  address?: Maybe<Address>;
+  /**
+   * Reads and enables pagination through a set of `Address`.
+   * @deprecated Please use address instead
+   */
+  addresses: AddressesConnection;
   /** Reads and enables pagination through a set of `Category`. */
   categoriesByProductCompanyIdAndCategoryId: CompanyCategoriesByProductCompanyIdAndCategoryIdManyToManyConnection;
   createdAt: Scalars['Datetime']['output'];
@@ -610,10 +805,23 @@ export type Company = {
 };
 
 
+export type CompanyAddressesArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  condition?: InputMaybe<AddressCondition>;
+  filter?: InputMaybe<AddressFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<AddressesOrderBy>>;
+};
+
+
 export type CompanyCategoriesByProductCompanyIdAndCategoryIdArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<CategoryCondition>;
+  filter?: InputMaybe<CategoryFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -625,6 +833,7 @@ export type CompanyProductsArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<ProductCondition>;
+  filter?: InputMaybe<ProductFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -661,6 +870,7 @@ export type CompanyCategoriesByProductCompanyIdAndCategoryIdManyToManyEdgeProduc
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<ProductCondition>;
+  filter?: InputMaybe<ProductFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -678,12 +888,12 @@ export type CompanyCompaniesPkeyDelete = {
 };
 
 /** The fields on `company` to look up the row to connect. */
-export type CompanyCompaniesUserIdUniqueConnect = {
+export type CompanyCompaniesUserIdKeyConnect = {
   userId: Scalars['UUID']['input'];
 };
 
 /** The fields on `company` to look up the row to delete. */
-export type CompanyCompaniesUserIdUniqueDelete = {
+export type CompanyCompaniesUserIdKeyDelete = {
   userId: Scalars['UUID']['input'];
 };
 
@@ -695,14 +905,53 @@ export type CompanyCondition = {
   userId?: InputMaybe<Scalars['UUID']['input']>;
 };
 
+/** A filter to be used against `Company` object types. All fields are combined with a logical ‘and.’ */
+export type CompanyFilter = {
+  /** Filter by the object’s `address` relation. */
+  address?: InputMaybe<AddressFilter>;
+  /** A related `address` exists. */
+  addressExists?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Checks for all expressions in this list. */
+  and?: InputMaybe<Array<CompanyFilter>>;
+  /** Filter by the object’s `id` field. */
+  id?: InputMaybe<UuidFilter>;
+  /** Negates the expression. */
+  not?: InputMaybe<CompanyFilter>;
+  /** Checks for any expressions in this list. */
+  or?: InputMaybe<Array<CompanyFilter>>;
+  /** Filter by the object’s `products` relation. */
+  products?: InputMaybe<CompanyToManyProductFilter>;
+  /** Some related `products` exist. */
+  productsExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `user` relation. */
+  user?: InputMaybe<UserFilter>;
+  /** Filter by the object’s `userId` field. */
+  userId?: InputMaybe<UuidFilter>;
+};
+
 /** An input for mutations affecting `Company` */
 export type CompanyInput = {
+  addressUsingId?: InputMaybe<AddressesCompanyIdFkeyInverseInput>;
   description?: InputMaybe<Scalars['String']['input']>;
   isVerified?: InputMaybe<Scalars['Boolean']['input']>;
   name: Scalars['String']['input'];
   productsUsingId?: InputMaybe<ProductsCompanyIdFkeyInverseInput>;
   userId?: InputMaybe<Scalars['UUID']['input']>;
   userToUserId?: InputMaybe<CompaniesUserIdFkeyInput>;
+};
+
+/** The fields on `company` to look up the row to update. */
+export type CompanyOnAddressForAddressesCompanyIdFkeyUsingCompaniesPkeyUpdate = {
+  id: Scalars['UUID']['input'];
+  /** An object where the defined keys will be set on the `company` being updated. */
+  patch: UpdateCompanyOnAddressForAddressesCompanyIdFkeyPatch;
+};
+
+/** The fields on `company` to look up the row to update. */
+export type CompanyOnAddressForAddressesCompanyIdFkeyUsingCompaniesUserIdKeyUpdate = {
+  /** An object where the defined keys will be set on the `company` being updated. */
+  patch: UpdateCompanyOnAddressForAddressesCompanyIdFkeyPatch;
+  userId: Scalars['UUID']['input'];
 };
 
 /** The fields on `company` to look up the row to update. */
@@ -713,7 +962,7 @@ export type CompanyOnCompanyForCompaniesUserIdFkeyUsingCompaniesPkeyUpdate = {
 };
 
 /** The fields on `company` to look up the row to update. */
-export type CompanyOnCompanyForCompaniesUserIdFkeyUsingCompaniesUserIdUniqueUpdate = {
+export type CompanyOnCompanyForCompaniesUserIdFkeyUsingCompaniesUserIdKeyUpdate = {
   /** An object where the defined keys will be set on the `company` being updated. */
   patch: UpdateCompanyOnCompanyForCompaniesUserIdFkeyPatch;
   userId: Scalars['UUID']['input'];
@@ -727,7 +976,7 @@ export type CompanyOnProductForProductsCompanyIdFkeyUsingCompaniesPkeyUpdate = {
 };
 
 /** The fields on `company` to look up the row to update. */
-export type CompanyOnProductForProductsCompanyIdFkeyUsingCompaniesUserIdUniqueUpdate = {
+export type CompanyOnProductForProductsCompanyIdFkeyUsingCompaniesUserIdKeyUpdate = {
   /** An object where the defined keys will be set on the `company` being updated. */
   patch: UpdateCompanyOnProductForProductsCompanyIdFkeyPatch;
   userId: Scalars['UUID']['input'];
@@ -735,12 +984,23 @@ export type CompanyOnProductForProductsCompanyIdFkeyUsingCompaniesUserIdUniqueUp
 
 /** Represents an update to a `Company`. Fields that are set will be updated. */
 export type CompanyPatch = {
+  addressUsingId?: InputMaybe<AddressesCompanyIdFkeyInverseInput>;
   description?: InputMaybe<Scalars['String']['input']>;
   isVerified?: InputMaybe<Scalars['Boolean']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   productsUsingId?: InputMaybe<ProductsCompanyIdFkeyInverseInput>;
   userId?: InputMaybe<Scalars['UUID']['input']>;
   userToUserId?: InputMaybe<CompaniesUserIdFkeyInput>;
+};
+
+/** A filter to be used against many `Product` object types. All fields are combined with a logical ‘and.’ */
+export type CompanyToManyProductFilter = {
+  /** Every related `Product` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<ProductFilter>;
+  /** No related `Product` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<ProductFilter>;
+  /** Some related `Product` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<ProductFilter>;
 };
 
 /** All input for the create `Address` mutation. */
@@ -766,6 +1026,8 @@ export type CreateAddressPayload = {
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** Reads a single `Company` that is related to this `Address`. */
+  company?: Maybe<Company>;
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>;
   /** Reads a single `User` that is related to this `Address`. */
@@ -957,6 +1219,16 @@ export type CreateUserPayloadUserEdgeArgs = {
   orderBy?: InputMaybe<Array<UsersOrderBy>>;
 };
 
+/** All input for the `deleteAddressByCompanyId` mutation. */
+export type DeleteAddressByCompanyIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  companyId: Scalars['UUID']['input'];
+};
+
 /** All input for the `deleteAddress` mutation. */
 export type DeleteAddressInput = {
   /**
@@ -979,6 +1251,8 @@ export type DeleteAddressPayload = {
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** Reads a single `Company` that is related to this `Address`. */
+  company?: Maybe<Company>;
   deletedAddressNodeId?: Maybe<Scalars['ID']['output']>;
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>;
@@ -990,16 +1264,6 @@ export type DeleteAddressPayload = {
 /** The output of our delete `Address` mutation. */
 export type DeleteAddressPayloadAddressEdgeArgs = {
   orderBy?: InputMaybe<Array<AddressesOrderBy>>;
-};
-
-/** All input for the `deleteCategoryByName` mutation. */
-export type DeleteCategoryByNameInput = {
-  /**
-   * An arbitrary string value with no semantic meaning. Will be included in the
-   * payload verbatim. May be used to track mutations by the client.
-   */
-  clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  name: Scalars['String']['input'];
 };
 
 /** All input for the `deleteCategory` mutation. */
@@ -1224,10 +1488,10 @@ export type Mutation = {
   createUser?: Maybe<CreateUserPayload>;
   /** Deletes a single `Address` using a unique key. */
   deleteAddress?: Maybe<DeleteAddressPayload>;
+  /** Deletes a single `Address` using a unique key. */
+  deleteAddressByCompanyId?: Maybe<DeleteAddressPayload>;
   /** Deletes a single `Category` using a unique key. */
   deleteCategory?: Maybe<DeleteCategoryPayload>;
-  /** Deletes a single `Category` using a unique key. */
-  deleteCategoryByName?: Maybe<DeleteCategoryPayload>;
   /** Deletes a single `Company` using a unique key. */
   deleteCompany?: Maybe<DeleteCompanyPayload>;
   /** Deletes a single `Company` using a unique key. */
@@ -1249,10 +1513,10 @@ export type Mutation = {
   resetPassword?: Maybe<ResetPasswordPayload>;
   /** Updates a single `Address` using a unique key and a patch. */
   updateAddress?: Maybe<UpdateAddressPayload>;
+  /** Updates a single `Address` using a unique key and a patch. */
+  updateAddressByCompanyId?: Maybe<UpdateAddressPayload>;
   /** Updates a single `Category` using a unique key and a patch. */
   updateCategory?: Maybe<UpdateCategoryPayload>;
-  /** Updates a single `Category` using a unique key and a patch. */
-  updateCategoryByName?: Maybe<UpdateCategoryPayload>;
   /** Updates a single `Company` using a unique key and a patch. */
   updateCompany?: Maybe<UpdateCompanyPayload>;
   /** Updates a single `Company` using a unique key and a patch. */
@@ -1309,14 +1573,14 @@ export type MutationDeleteAddressArgs = {
 
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeleteCategoryArgs = {
-  input: DeleteCategoryInput;
+export type MutationDeleteAddressByCompanyIdArgs = {
+  input: DeleteAddressByCompanyIdInput;
 };
 
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationDeleteCategoryByNameArgs = {
-  input: DeleteCategoryByNameInput;
+export type MutationDeleteCategoryArgs = {
+  input: DeleteCategoryInput;
 };
 
 
@@ -1381,14 +1645,14 @@ export type MutationUpdateAddressArgs = {
 
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdateCategoryArgs = {
-  input: UpdateCategoryInput;
+export type MutationUpdateAddressByCompanyIdArgs = {
+  input: UpdateAddressByCompanyIdInput;
 };
 
 
 /** The root mutation type which contains root level fields which mutate data. */
-export type MutationUpdateCategoryByNameArgs = {
-  input: UpdateCategoryByNameInput;
+export type MutationUpdateCategoryArgs = {
+  input: UpdateCategoryInput;
 };
 
 
@@ -1450,6 +1714,30 @@ export type OrderCondition = {
   userId?: InputMaybe<Scalars['UUID']['input']>;
 };
 
+/** A filter to be used against `Order` object types. All fields are combined with a logical ‘and.’ */
+export type OrderFilter = {
+  /** Filter by the object’s `address` relation. */
+  address?: InputMaybe<AddressFilter>;
+  /** Filter by the object’s `addressId` field. */
+  addressId?: InputMaybe<UuidFilter>;
+  /** Checks for all expressions in this list. */
+  and?: InputMaybe<Array<OrderFilter>>;
+  /** Filter by the object’s `id` field. */
+  id?: InputMaybe<UuidFilter>;
+  /** Negates the expression. */
+  not?: InputMaybe<OrderFilter>;
+  /** Checks for any expressions in this list. */
+  or?: InputMaybe<Array<OrderFilter>>;
+  /** Filter by the object’s `product` relation. */
+  product?: InputMaybe<ProductFilter>;
+  /** Filter by the object’s `productId` field. */
+  productId?: InputMaybe<UuidFilter>;
+  /** Filter by the object’s `user` relation. */
+  user?: InputMaybe<UserFilter>;
+  /** Filter by the object’s `userId` field. */
+  userId?: InputMaybe<UuidFilter>;
+};
+
 /** An input for mutations affecting `Order` */
 export type OrderInput = {
   addressId?: InputMaybe<Scalars['UUID']['input']>;
@@ -1506,6 +1794,8 @@ export type OrderPatch = {
 /** The `address` to be created by this mutation. */
 export type OrdersAddressIdFkeyAddressesCreateInput = {
   address?: InputMaybe<Scalars['String']['input']>;
+  companyId?: InputMaybe<Scalars['UUID']['input']>;
+  companyToCompanyId?: InputMaybe<AddressesCompanyIdFkeyInput>;
   contactNumber?: InputMaybe<Scalars['String']['input']>;
   isPrimary?: InputMaybe<Scalars['Boolean']['input']>;
   ordersUsingId?: InputMaybe<OrdersAddressIdFkeyInverseInput>;
@@ -1516,11 +1806,17 @@ export type OrdersAddressIdFkeyAddressesCreateInput = {
 /** Input for the nested mutation of `address` in the `OrderInput` mutation. */
 export type OrdersAddressIdFkeyInput = {
   /** The primary key(s) for `address` for the far side of the relationship. */
+  connectByCompanyId?: InputMaybe<AddressAddressesCompanyIdKeyConnect>;
+  /** The primary key(s) for `address` for the far side of the relationship. */
   connectById?: InputMaybe<AddressAddressesPkeyConnect>;
   /** A `AddressInput` object that will be created and connected to this object. */
   create?: InputMaybe<OrdersAddressIdFkeyAddressesCreateInput>;
   /** The primary key(s) for `address` for the far side of the relationship. */
+  deleteByCompanyId?: InputMaybe<AddressAddressesCompanyIdKeyDelete>;
+  /** The primary key(s) for `address` for the far side of the relationship. */
   deleteById?: InputMaybe<AddressAddressesPkeyDelete>;
+  /** The primary key(s) and patch data for `address` for the far side of the relationship. */
+  updateByCompanyId?: InputMaybe<AddressOnOrderForOrdersAddressIdFkeyUsingAddressesCompanyIdKeyUpdate>;
   /** The primary key(s) and patch data for `address` for the far side of the relationship. */
   updateById?: InputMaybe<AddressOnOrderForOrdersAddressIdFkeyUsingAddressesPkeyUpdate>;
 };
@@ -1629,6 +1925,7 @@ export type OrdersProductIdFkeyProductsCreateInput = {
   companyId?: InputMaybe<Scalars['UUID']['input']>;
   companyToCompanyId?: InputMaybe<ProductsCompanyIdFkeyInput>;
   description?: InputMaybe<Scalars['String']['input']>;
+  imgUrl?: InputMaybe<Scalars['String']['input']>;
   name: Scalars['String']['input'];
   ordersUsingId?: InputMaybe<OrdersProductIdFkeyInverseInput>;
   price: Scalars['BigFloat']['input'];
@@ -1710,6 +2007,7 @@ export type Product = {
   createdAt: Scalars['Datetime']['output'];
   description?: Maybe<Scalars['String']['output']>;
   id: Scalars['UUID']['output'];
+  imgUrl?: Maybe<Scalars['String']['output']>;
   name: Scalars['String']['output'];
   /** Reads and enables pagination through a set of `Order`. */
   orders: OrdersConnection;
@@ -1725,6 +2023,7 @@ export type ProductAddressesByOrderProductIdAndAddressIdArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<AddressCondition>;
+  filter?: InputMaybe<AddressFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -1736,6 +2035,7 @@ export type ProductOrdersArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<OrderCondition>;
+  filter?: InputMaybe<OrderFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -1747,6 +2047,7 @@ export type ProductUsersByOrderProductIdAndUserIdArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<UserCondition>;
+  filter?: InputMaybe<UserFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -1783,6 +2084,7 @@ export type ProductAddressesByOrderProductIdAndAddressIdManyToManyEdgeOrdersArgs
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<OrderCondition>;
+  filter?: InputMaybe<OrderFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -1799,6 +2101,32 @@ export type ProductCondition = {
   id?: InputMaybe<Scalars['UUID']['input']>;
 };
 
+/** A filter to be used against `Product` object types. All fields are combined with a logical ‘and.’ */
+export type ProductFilter = {
+  /** Checks for all expressions in this list. */
+  and?: InputMaybe<Array<ProductFilter>>;
+  /** Filter by the object’s `category` relation. */
+  category?: InputMaybe<CategoryFilter>;
+  /** A related `category` exists. */
+  categoryExists?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `categoryId` field. */
+  categoryId?: InputMaybe<UuidFilter>;
+  /** Filter by the object’s `company` relation. */
+  company?: InputMaybe<CompanyFilter>;
+  /** Filter by the object’s `companyId` field. */
+  companyId?: InputMaybe<UuidFilter>;
+  /** Filter by the object’s `id` field. */
+  id?: InputMaybe<UuidFilter>;
+  /** Negates the expression. */
+  not?: InputMaybe<ProductFilter>;
+  /** Checks for any expressions in this list. */
+  or?: InputMaybe<Array<ProductFilter>>;
+  /** Filter by the object’s `orders` relation. */
+  orders?: InputMaybe<ProductToManyOrderFilter>;
+  /** Some related `orders` exist. */
+  ordersExist?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
 /** An input for mutations affecting `Product` */
 export type ProductInput = {
   categoryId?: InputMaybe<Scalars['UUID']['input']>;
@@ -1806,6 +2134,7 @@ export type ProductInput = {
   companyId?: InputMaybe<Scalars['UUID']['input']>;
   companyToCompanyId?: InputMaybe<ProductsCompanyIdFkeyInput>;
   description?: InputMaybe<Scalars['String']['input']>;
+  imgUrl?: InputMaybe<Scalars['String']['input']>;
   name: Scalars['String']['input'];
   ordersUsingId?: InputMaybe<OrdersProductIdFkeyInverseInput>;
   price: Scalars['BigFloat']['input'];
@@ -1840,6 +2169,7 @@ export type ProductPatch = {
   companyId?: InputMaybe<Scalars['UUID']['input']>;
   companyToCompanyId?: InputMaybe<ProductsCompanyIdFkeyInput>;
   description?: InputMaybe<Scalars['String']['input']>;
+  imgUrl?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   ordersUsingId?: InputMaybe<OrdersProductIdFkeyInverseInput>;
   price?: InputMaybe<Scalars['BigFloat']['input']>;
@@ -1854,6 +2184,16 @@ export type ProductProductsPkeyConnect = {
 /** The fields on `product` to look up the row to delete. */
 export type ProductProductsPkeyDelete = {
   id: Scalars['UUID']['input'];
+};
+
+/** A filter to be used against many `Order` object types. All fields are combined with a logical ‘and.’ */
+export type ProductToManyOrderFilter = {
+  /** Every related `Order` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<OrderFilter>;
+  /** No related `Order` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<OrderFilter>;
+  /** Some related `Order` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<OrderFilter>;
 };
 
 /** A connection to a list of `User` values, with data from `Order`. */
@@ -1886,6 +2226,7 @@ export type ProductUsersByOrderProductIdAndUserIdManyToManyEdgeOrdersArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<OrderCondition>;
+  filter?: InputMaybe<OrderFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -1905,18 +2246,12 @@ export type ProductsCategoryIdFkeyCategoriesCreateInput = {
 export type ProductsCategoryIdFkeyInput = {
   /** The primary key(s) for `category` for the far side of the relationship. */
   connectById?: InputMaybe<CategoryCategoriesPkeyConnect>;
-  /** The primary key(s) for `category` for the far side of the relationship. */
-  connectByName?: InputMaybe<CategoryCategoriesNameKeyConnect>;
   /** A `CategoryInput` object that will be created and connected to this object. */
   create?: InputMaybe<ProductsCategoryIdFkeyCategoriesCreateInput>;
   /** The primary key(s) for `category` for the far side of the relationship. */
   deleteById?: InputMaybe<CategoryCategoriesPkeyDelete>;
-  /** The primary key(s) for `category` for the far side of the relationship. */
-  deleteByName?: InputMaybe<CategoryCategoriesNameKeyDelete>;
   /** The primary key(s) and patch data for `category` for the far side of the relationship. */
   updateById?: InputMaybe<CategoryOnProductForProductsCategoryIdFkeyUsingCategoriesPkeyUpdate>;
-  /** The primary key(s) and patch data for `category` for the far side of the relationship. */
-  updateByName?: InputMaybe<CategoryOnProductForProductsCategoryIdFkeyUsingCategoriesNameKeyUpdate>;
 };
 
 /** Input for the nested mutation of `product` in the `CategoryInput` mutation. */
@@ -1939,6 +2274,7 @@ export type ProductsCategoryIdFkeyProductsCreateInput = {
   companyId?: InputMaybe<Scalars['UUID']['input']>;
   companyToCompanyId?: InputMaybe<ProductsCompanyIdFkeyInput>;
   description?: InputMaybe<Scalars['String']['input']>;
+  imgUrl?: InputMaybe<Scalars['String']['input']>;
   name: Scalars['String']['input'];
   ordersUsingId?: InputMaybe<OrdersProductIdFkeyInverseInput>;
   price: Scalars['BigFloat']['input'];
@@ -1947,6 +2283,7 @@ export type ProductsCategoryIdFkeyProductsCreateInput = {
 
 /** The `company` to be created by this mutation. */
 export type ProductsCompanyIdFkeyCompaniesCreateInput = {
+  addressUsingId?: InputMaybe<AddressesCompanyIdFkeyInverseInput>;
   description?: InputMaybe<Scalars['String']['input']>;
   isVerified?: InputMaybe<Scalars['Boolean']['input']>;
   name: Scalars['String']['input'];
@@ -1960,17 +2297,17 @@ export type ProductsCompanyIdFkeyInput = {
   /** The primary key(s) for `company` for the far side of the relationship. */
   connectById?: InputMaybe<CompanyCompaniesPkeyConnect>;
   /** The primary key(s) for `company` for the far side of the relationship. */
-  connectByUserId?: InputMaybe<CompanyCompaniesUserIdUniqueConnect>;
+  connectByUserId?: InputMaybe<CompanyCompaniesUserIdKeyConnect>;
   /** A `CompanyInput` object that will be created and connected to this object. */
   create?: InputMaybe<ProductsCompanyIdFkeyCompaniesCreateInput>;
   /** The primary key(s) for `company` for the far side of the relationship. */
   deleteById?: InputMaybe<CompanyCompaniesPkeyDelete>;
   /** The primary key(s) for `company` for the far side of the relationship. */
-  deleteByUserId?: InputMaybe<CompanyCompaniesUserIdUniqueDelete>;
+  deleteByUserId?: InputMaybe<CompanyCompaniesUserIdKeyDelete>;
   /** The primary key(s) and patch data for `company` for the far side of the relationship. */
   updateById?: InputMaybe<CompanyOnProductForProductsCompanyIdFkeyUsingCompaniesPkeyUpdate>;
   /** The primary key(s) and patch data for `company` for the far side of the relationship. */
-  updateByUserId?: InputMaybe<CompanyOnProductForProductsCompanyIdFkeyUsingCompaniesUserIdUniqueUpdate>;
+  updateByUserId?: InputMaybe<CompanyOnProductForProductsCompanyIdFkeyUsingCompaniesUserIdKeyUpdate>;
 };
 
 /** Input for the nested mutation of `product` in the `CompanyInput` mutation. */
@@ -1993,6 +2330,7 @@ export type ProductsCompanyIdFkeyProductsCreateInput = {
   categoryToCategoryId?: InputMaybe<ProductsCategoryIdFkeyInput>;
   companyToCompanyId?: InputMaybe<ProductsCompanyIdFkeyInput>;
   description?: InputMaybe<Scalars['String']['input']>;
+  imgUrl?: InputMaybe<Scalars['String']['input']>;
   name: Scalars['String']['input'];
   ordersUsingId?: InputMaybe<OrdersProductIdFkeyInverseInput>;
   price: Scalars['BigFloat']['input'];
@@ -2038,12 +2376,12 @@ export enum ProductsOrderBy {
 export type Query = {
   __typename?: 'Query';
   address?: Maybe<Address>;
+  addressByCompanyId?: Maybe<Address>;
   /** Reads and enables pagination through a set of `Address`. */
   addresses?: Maybe<AddressesConnection>;
   /** Reads and enables pagination through a set of `Category`. */
   categories?: Maybe<CategoriesConnection>;
   category?: Maybe<Category>;
-  categoryByName?: Maybe<Category>;
   /** Reads and enables pagination through a set of `Company`. */
   companies?: Maybe<CompaniesConnection>;
   company?: Maybe<Company>;
@@ -2076,10 +2414,17 @@ export type QueryAddressArgs = {
 
 
 /** The root query type which gives access points into the data universe. */
+export type QueryAddressByCompanyIdArgs = {
+  companyId: Scalars['UUID']['input'];
+};
+
+
+/** The root query type which gives access points into the data universe. */
 export type QueryAddressesArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<AddressCondition>;
+  filter?: InputMaybe<AddressFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -2092,6 +2437,7 @@ export type QueryCategoriesArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<CategoryCondition>;
+  filter?: InputMaybe<CategoryFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -2106,16 +2452,11 @@ export type QueryCategoryArgs = {
 
 
 /** The root query type which gives access points into the data universe. */
-export type QueryCategoryByNameArgs = {
-  name: Scalars['String']['input'];
-};
-
-
-/** The root query type which gives access points into the data universe. */
 export type QueryCompaniesArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<CompanyCondition>;
+  filter?: InputMaybe<CompanyFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -2146,6 +2487,7 @@ export type QueryOrdersArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<OrderCondition>;
+  filter?: InputMaybe<OrderFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -2164,6 +2506,7 @@ export type QueryProductsArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<ProductCondition>;
+  filter?: InputMaybe<ProductFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -2182,6 +2525,7 @@ export type QueryUsersArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<UserCondition>;
+  filter?: InputMaybe<UserFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -2241,6 +2585,122 @@ export type ResetPasswordPayload = {
   success?: Maybe<Scalars['Boolean']['output']>;
 };
 
+/** A filter to be used against String fields. All fields are combined with a logical ‘and.’ */
+export type StringFilter = {
+  /** Not equal to the specified value, treating null like an ordinary value. */
+  distinctFrom?: InputMaybe<Scalars['String']['input']>;
+  /** Not equal to the specified value, treating null like an ordinary value (case-insensitive). */
+  distinctFromInsensitive?: InputMaybe<Scalars['String']['input']>;
+  /** Ends with the specified string (case-sensitive). */
+  endsWith?: InputMaybe<Scalars['String']['input']>;
+  /** Ends with the specified string (case-insensitive). */
+  endsWithInsensitive?: InputMaybe<Scalars['String']['input']>;
+  /** Equal to the specified value. */
+  equalTo?: InputMaybe<Scalars['String']['input']>;
+  /** Equal to the specified value (case-insensitive). */
+  equalToInsensitive?: InputMaybe<Scalars['String']['input']>;
+  /** Greater than the specified value. */
+  greaterThan?: InputMaybe<Scalars['String']['input']>;
+  /** Greater than the specified value (case-insensitive). */
+  greaterThanInsensitive?: InputMaybe<Scalars['String']['input']>;
+  /** Greater than or equal to the specified value. */
+  greaterThanOrEqualTo?: InputMaybe<Scalars['String']['input']>;
+  /** Greater than or equal to the specified value (case-insensitive). */
+  greaterThanOrEqualToInsensitive?: InputMaybe<Scalars['String']['input']>;
+  /** Included in the specified list. */
+  in?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** Included in the specified list (case-insensitive). */
+  inInsensitive?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** Contains the specified string (case-sensitive). */
+  includes?: InputMaybe<Scalars['String']['input']>;
+  /** Contains the specified string (case-insensitive). */
+  includesInsensitive?: InputMaybe<Scalars['String']['input']>;
+  /** Is null (if `true` is specified) or is not null (if `false` is specified). */
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Less than the specified value. */
+  lessThan?: InputMaybe<Scalars['String']['input']>;
+  /** Less than the specified value (case-insensitive). */
+  lessThanInsensitive?: InputMaybe<Scalars['String']['input']>;
+  /** Less than or equal to the specified value. */
+  lessThanOrEqualTo?: InputMaybe<Scalars['String']['input']>;
+  /** Less than or equal to the specified value (case-insensitive). */
+  lessThanOrEqualToInsensitive?: InputMaybe<Scalars['String']['input']>;
+  /** Matches the specified pattern (case-sensitive). An underscore (_) matches any single character; a percent sign (%) matches any sequence of zero or more characters. */
+  like?: InputMaybe<Scalars['String']['input']>;
+  /** Matches the specified pattern (case-insensitive). An underscore (_) matches any single character; a percent sign (%) matches any sequence of zero or more characters. */
+  likeInsensitive?: InputMaybe<Scalars['String']['input']>;
+  /** Equal to the specified value, treating null like an ordinary value. */
+  notDistinctFrom?: InputMaybe<Scalars['String']['input']>;
+  /** Equal to the specified value, treating null like an ordinary value (case-insensitive). */
+  notDistinctFromInsensitive?: InputMaybe<Scalars['String']['input']>;
+  /** Does not end with the specified string (case-sensitive). */
+  notEndsWith?: InputMaybe<Scalars['String']['input']>;
+  /** Does not end with the specified string (case-insensitive). */
+  notEndsWithInsensitive?: InputMaybe<Scalars['String']['input']>;
+  /** Not equal to the specified value. */
+  notEqualTo?: InputMaybe<Scalars['String']['input']>;
+  /** Not equal to the specified value (case-insensitive). */
+  notEqualToInsensitive?: InputMaybe<Scalars['String']['input']>;
+  /** Not included in the specified list. */
+  notIn?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** Not included in the specified list (case-insensitive). */
+  notInInsensitive?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** Does not contain the specified string (case-sensitive). */
+  notIncludes?: InputMaybe<Scalars['String']['input']>;
+  /** Does not contain the specified string (case-insensitive). */
+  notIncludesInsensitive?: InputMaybe<Scalars['String']['input']>;
+  /** Does not match the specified pattern (case-sensitive). An underscore (_) matches any single character; a percent sign (%) matches any sequence of zero or more characters. */
+  notLike?: InputMaybe<Scalars['String']['input']>;
+  /** Does not match the specified pattern (case-insensitive). An underscore (_) matches any single character; a percent sign (%) matches any sequence of zero or more characters. */
+  notLikeInsensitive?: InputMaybe<Scalars['String']['input']>;
+  /** Does not start with the specified string (case-sensitive). */
+  notStartsWith?: InputMaybe<Scalars['String']['input']>;
+  /** Does not start with the specified string (case-insensitive). */
+  notStartsWithInsensitive?: InputMaybe<Scalars['String']['input']>;
+  /** Starts with the specified string (case-sensitive). */
+  startsWith?: InputMaybe<Scalars['String']['input']>;
+  /** Starts with the specified string (case-insensitive). */
+  startsWithInsensitive?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** A filter to be used against UUID fields. All fields are combined with a logical ‘and.’ */
+export type UuidFilter = {
+  /** Not equal to the specified value, treating null like an ordinary value. */
+  distinctFrom?: InputMaybe<Scalars['UUID']['input']>;
+  /** Equal to the specified value. */
+  equalTo?: InputMaybe<Scalars['UUID']['input']>;
+  /** Greater than the specified value. */
+  greaterThan?: InputMaybe<Scalars['UUID']['input']>;
+  /** Greater than or equal to the specified value. */
+  greaterThanOrEqualTo?: InputMaybe<Scalars['UUID']['input']>;
+  /** Included in the specified list. */
+  in?: InputMaybe<Array<Scalars['UUID']['input']>>;
+  /** Is null (if `true` is specified) or is not null (if `false` is specified). */
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Less than the specified value. */
+  lessThan?: InputMaybe<Scalars['UUID']['input']>;
+  /** Less than or equal to the specified value. */
+  lessThanOrEqualTo?: InputMaybe<Scalars['UUID']['input']>;
+  /** Equal to the specified value, treating null like an ordinary value. */
+  notDistinctFrom?: InputMaybe<Scalars['UUID']['input']>;
+  /** Not equal to the specified value. */
+  notEqualTo?: InputMaybe<Scalars['UUID']['input']>;
+  /** Not included in the specified list. */
+  notIn?: InputMaybe<Array<Scalars['UUID']['input']>>;
+};
+
+/** All input for the `updateAddressByCompanyId` mutation. */
+export type UpdateAddressByCompanyIdInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  companyId: Scalars['UUID']['input'];
+  /** An object where the defined keys will be set on the `Address` being updated. */
+  patch: AddressPatch;
+};
+
 /** All input for the `updateAddress` mutation. */
 export type UpdateAddressInput = {
   /**
@@ -2265,6 +2725,8 @@ export type UpdateAddressPayload = {
    * unchanged and unused. May be used by a client to track mutations.
    */
   clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** Reads a single `Company` that is related to this `Address`. */
+  company?: Maybe<Company>;
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>;
   /** Reads a single `User` that is related to this `Address`. */
@@ -2275,18 +2737,6 @@ export type UpdateAddressPayload = {
 /** The output of our update `Address` mutation. */
 export type UpdateAddressPayloadAddressEdgeArgs = {
   orderBy?: InputMaybe<Array<AddressesOrderBy>>;
-};
-
-/** All input for the `updateCategoryByName` mutation. */
-export type UpdateCategoryByNameInput = {
-  /**
-   * An arbitrary string value with no semantic meaning. Will be included in the
-   * payload verbatim. May be used to track mutations by the client.
-   */
-  clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  name: Scalars['String']['input'];
-  /** An object where the defined keys will be set on the `Category` being updated. */
-  patch: CategoryPatch;
 };
 
 /** All input for the `updateCategory` mutation. */
@@ -2518,6 +2968,7 @@ export type UserAddressesArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<AddressCondition>;
+  filter?: InputMaybe<AddressFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -2529,6 +2980,7 @@ export type UserAddressesByOrderUserIdAndAddressIdArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<AddressCondition>;
+  filter?: InputMaybe<AddressFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -2540,6 +2992,7 @@ export type UserCompaniesArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<CompanyCondition>;
+  filter?: InputMaybe<CompanyFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -2551,6 +3004,7 @@ export type UserOrdersArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<OrderCondition>;
+  filter?: InputMaybe<OrderFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -2562,6 +3016,7 @@ export type UserProductsByOrderUserIdAndProductIdArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<ProductCondition>;
+  filter?: InputMaybe<ProductFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -2598,6 +3053,7 @@ export type UserAddressesByOrderUserIdAndAddressIdManyToManyEdgeOrdersArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<OrderCondition>;
+  filter?: InputMaybe<OrderFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -2612,6 +3068,34 @@ export type UserCondition = {
   id?: InputMaybe<Scalars['UUID']['input']>;
   /** Checks for equality with the object’s `name` field. */
   name?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** A filter to be used against `User` object types. All fields are combined with a logical ‘and.’ */
+export type UserFilter = {
+  /** Filter by the object’s `addresses` relation. */
+  addresses?: InputMaybe<UserToManyAddressFilter>;
+  /** Some related `addresses` exist. */
+  addressesExist?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Checks for all expressions in this list. */
+  and?: InputMaybe<Array<UserFilter>>;
+  /** Filter by the object’s `company` relation. */
+  company?: InputMaybe<CompanyFilter>;
+  /** A related `company` exists. */
+  companyExists?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Filter by the object’s `email` field. */
+  email?: InputMaybe<StringFilter>;
+  /** Filter by the object’s `id` field. */
+  id?: InputMaybe<UuidFilter>;
+  /** Filter by the object’s `name` field. */
+  name?: InputMaybe<StringFilter>;
+  /** Negates the expression. */
+  not?: InputMaybe<UserFilter>;
+  /** Checks for any expressions in this list. */
+  or?: InputMaybe<Array<UserFilter>>;
+  /** Filter by the object’s `orders` relation. */
+  orders?: InputMaybe<UserToManyOrderFilter>;
+  /** Some related `orders` exist. */
+  ordersExist?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 /** An input for mutations affecting `User` */
@@ -2691,10 +3175,31 @@ export type UserProductsByOrderUserIdAndProductIdManyToManyEdgeOrdersArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
   condition?: InputMaybe<OrderCondition>;
+  filter?: InputMaybe<OrderFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<OrdersOrderBy>>;
+};
+
+/** A filter to be used against many `Address` object types. All fields are combined with a logical ‘and.’ */
+export type UserToManyAddressFilter = {
+  /** Every related `Address` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<AddressFilter>;
+  /** No related `Address` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<AddressFilter>;
+  /** Some related `Address` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<AddressFilter>;
+};
+
+/** A filter to be used against many `Order` object types. All fields are combined with a logical ‘and.’ */
+export type UserToManyOrderFilter = {
+  /** Every related `Order` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  every?: InputMaybe<OrderFilter>;
+  /** No related `Order` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  none?: InputMaybe<OrderFilter>;
+  /** Some related `Order` matches the filter criteria. All fields are combined with a logical ‘and.’ */
+  some?: InputMaybe<OrderFilter>;
 };
 
 /** The fields on `user` to look up the row to connect. */
@@ -2743,8 +3248,21 @@ export enum UsersOrderBy {
 }
 
 /** An object where the defined keys will be set on the `address` being updated. */
+export type UpdateAddressOnAddressForAddressesCompanyIdFkeyPatch = {
+  address?: InputMaybe<Scalars['String']['input']>;
+  companyToCompanyId?: InputMaybe<AddressesCompanyIdFkeyInput>;
+  contactNumber?: InputMaybe<Scalars['String']['input']>;
+  isPrimary?: InputMaybe<Scalars['Boolean']['input']>;
+  ordersUsingId?: InputMaybe<OrdersAddressIdFkeyInverseInput>;
+  userId?: InputMaybe<Scalars['UUID']['input']>;
+  userToUserId?: InputMaybe<AddressesUserIdFkeyInput>;
+};
+
+/** An object where the defined keys will be set on the `address` being updated. */
 export type UpdateAddressOnAddressForAddressesUserIdFkeyPatch = {
   address?: InputMaybe<Scalars['String']['input']>;
+  companyId?: InputMaybe<Scalars['UUID']['input']>;
+  companyToCompanyId?: InputMaybe<AddressesCompanyIdFkeyInput>;
   contactNumber?: InputMaybe<Scalars['String']['input']>;
   isPrimary?: InputMaybe<Scalars['Boolean']['input']>;
   ordersUsingId?: InputMaybe<OrdersAddressIdFkeyInverseInput>;
@@ -2754,6 +3272,8 @@ export type UpdateAddressOnAddressForAddressesUserIdFkeyPatch = {
 /** An object where the defined keys will be set on the `address` being updated. */
 export type UpdateAddressOnOrderForOrdersAddressIdFkeyPatch = {
   address?: InputMaybe<Scalars['String']['input']>;
+  companyId?: InputMaybe<Scalars['UUID']['input']>;
+  companyToCompanyId?: InputMaybe<AddressesCompanyIdFkeyInput>;
   contactNumber?: InputMaybe<Scalars['String']['input']>;
   isPrimary?: InputMaybe<Scalars['Boolean']['input']>;
   ordersUsingId?: InputMaybe<OrdersAddressIdFkeyInverseInput>;
@@ -2779,7 +3299,19 @@ export type UpdateCategoryOnProductForProductsCategoryIdFkeyPatch = {
 };
 
 /** An object where the defined keys will be set on the `company` being updated. */
+export type UpdateCompanyOnAddressForAddressesCompanyIdFkeyPatch = {
+  addressUsingId?: InputMaybe<AddressesCompanyIdFkeyInverseInput>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  isVerified?: InputMaybe<Scalars['Boolean']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  productsUsingId?: InputMaybe<ProductsCompanyIdFkeyInverseInput>;
+  userId?: InputMaybe<Scalars['UUID']['input']>;
+  userToUserId?: InputMaybe<CompaniesUserIdFkeyInput>;
+};
+
+/** An object where the defined keys will be set on the `company` being updated. */
 export type UpdateCompanyOnCompanyForCompaniesUserIdFkeyPatch = {
+  addressUsingId?: InputMaybe<AddressesCompanyIdFkeyInverseInput>;
   description?: InputMaybe<Scalars['String']['input']>;
   isVerified?: InputMaybe<Scalars['Boolean']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
@@ -2789,6 +3321,7 @@ export type UpdateCompanyOnCompanyForCompaniesUserIdFkeyPatch = {
 
 /** An object where the defined keys will be set on the `company` being updated. */
 export type UpdateCompanyOnProductForProductsCompanyIdFkeyPatch = {
+  addressUsingId?: InputMaybe<AddressesCompanyIdFkeyInverseInput>;
   description?: InputMaybe<Scalars['String']['input']>;
   isVerified?: InputMaybe<Scalars['Boolean']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
@@ -2834,6 +3367,7 @@ export type UpdateProductOnOrderForOrdersProductIdFkeyPatch = {
   companyId?: InputMaybe<Scalars['UUID']['input']>;
   companyToCompanyId?: InputMaybe<ProductsCompanyIdFkeyInput>;
   description?: InputMaybe<Scalars['String']['input']>;
+  imgUrl?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   ordersUsingId?: InputMaybe<OrdersProductIdFkeyInverseInput>;
   price?: InputMaybe<Scalars['BigFloat']['input']>;
@@ -2846,6 +3380,7 @@ export type UpdateProductOnProductForProductsCategoryIdFkeyPatch = {
   companyId?: InputMaybe<Scalars['UUID']['input']>;
   companyToCompanyId?: InputMaybe<ProductsCompanyIdFkeyInput>;
   description?: InputMaybe<Scalars['String']['input']>;
+  imgUrl?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   ordersUsingId?: InputMaybe<OrdersProductIdFkeyInverseInput>;
   price?: InputMaybe<Scalars['BigFloat']['input']>;
@@ -2858,6 +3393,7 @@ export type UpdateProductOnProductForProductsCompanyIdFkeyPatch = {
   categoryToCategoryId?: InputMaybe<ProductsCategoryIdFkeyInput>;
   companyToCompanyId?: InputMaybe<ProductsCompanyIdFkeyInput>;
   description?: InputMaybe<Scalars['String']['input']>;
+  imgUrl?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   ordersUsingId?: InputMaybe<OrdersProductIdFkeyInverseInput>;
   price?: InputMaybe<Scalars['BigFloat']['input']>;
@@ -2915,18 +3451,18 @@ export type CreateProductMutationVariables = Exact<{
 }>;
 
 
-export type CreateProductMutation = { __typename?: 'Mutation', createProduct?: { __typename?: 'CreateProductPayload', product?: { __typename?: 'Product', id: any, name: string, description?: string | null, price: any, quantity: number, companyId: any, categoryId?: any | null, category?: { __typename?: 'Category', id: any, name: string, parentId?: any | null, slug?: string | null } | null, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null } | null } | null };
+export type CreateProductMutation = { __typename?: 'Mutation', createProduct?: { __typename?: 'CreateProductPayload', product?: { __typename?: 'Product', id: any, name: string, description?: string | null, price: any, imgUrl?: string | null, quantity: number, companyId: any, categoryId?: any | null, category?: { __typename?: 'Category', id: any, name: string, parentId?: any | null, slug?: string | null } | null, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null } | null } | null };
 
 export type Lite_CategoryFragment = { __typename?: 'Category', id: any, name: string, parentId?: any | null, slug?: string | null };
 
-export type Lite_ProductFragment = { __typename?: 'Product', id: any, name: string, description?: string | null, price: any, quantity: number, companyId: any, categoryId?: any | null, category?: { __typename?: 'Category', id: any, name: string, parentId?: any | null, slug?: string | null } | null, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null };
+export type Lite_ProductFragment = { __typename?: 'Product', id: any, name: string, description?: string | null, price: any, imgUrl?: string | null, quantity: number, companyId: any, categoryId?: any | null, category?: { __typename?: 'Category', id: any, name: string, parentId?: any | null, slug?: string | null } | null, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null };
 
 export type ProductQueryVariables = Exact<{
   id: Scalars['UUID']['input'];
 }>;
 
 
-export type ProductQuery = { __typename?: 'Query', product?: { __typename?: 'Product', id: any, name: string, description?: string | null, price: any, quantity: number, companyId: any, categoryId?: any | null, category?: { __typename?: 'Category', id: any, name: string, parentId?: any | null, slug?: string | null } | null, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null } | null };
+export type ProductQuery = { __typename?: 'Query', product?: { __typename?: 'Product', id: any, name: string, description?: string | null, price: any, imgUrl?: string | null, quantity: number, companyId: any, categoryId?: any | null, category?: { __typename?: 'Category', id: any, name: string, parentId?: any | null, slug?: string | null } | null, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null } | null };
 
 export type UpdateProductMutationVariables = Exact<{
   id: Scalars['UUID']['input'];
@@ -2934,7 +3470,7 @@ export type UpdateProductMutationVariables = Exact<{
 }>;
 
 
-export type UpdateProductMutation = { __typename?: 'Mutation', updateProduct?: { __typename?: 'UpdateProductPayload', product?: { __typename?: 'Product', id: any, name: string, description?: string | null, price: any, quantity: number, companyId: any, categoryId?: any | null, category?: { __typename?: 'Category', id: any, name: string, parentId?: any | null, slug?: string | null } | null, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null } | null } | null };
+export type UpdateProductMutation = { __typename?: 'Mutation', updateProduct?: { __typename?: 'UpdateProductPayload', product?: { __typename?: 'Product', id: any, name: string, description?: string | null, price: any, imgUrl?: string | null, quantity: number, companyId: any, categoryId?: any | null, category?: { __typename?: 'Category', id: any, name: string, parentId?: any | null, slug?: string | null } | null, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null } | null } | null };
 
 export type CurrentUserQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2971,6 +3507,13 @@ export type RegisterCompanyMutationVariables = Exact<{
 
 export type RegisterCompanyMutation = { __typename?: 'Mutation', registerCompany?: { __typename?: 'RegisterCompanyPayload', token: string, company: { __typename?: 'Company', userId: any, id: any, name: string, description?: string | null } } | null };
 
+export type ProductsQueryVariables = Exact<{
+  filter?: InputMaybe<ProductFilter>;
+}>;
+
+
+export type ProductsQuery = { __typename?: 'Query', products?: { __typename?: 'ProductsConnection', nodes: Array<{ __typename?: 'Product', id: any, name: string, description?: string | null, price: any, imgUrl?: string | null, quantity: number, companyId: any, categoryId?: any | null, category?: { __typename?: 'Category', id: any, name: string, parentId?: any | null, slug?: string | null } | null, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null }> } | null };
+
 export const Lite_CategoryFragmentDoc = gql`
     fragment Lite_Category on Category {
   id
@@ -2992,6 +3535,7 @@ export const Lite_ProductFragmentDoc = gql`
   name
   description
   price
+  imgUrl
   quantity
   companyId
   categoryId
@@ -3354,3 +3898,40 @@ export function useRegisterCompanyMutation(baseOptions?: Apollo.MutationHookOpti
 export type RegisterCompanyMutationHookResult = ReturnType<typeof useRegisterCompanyMutation>;
 export type RegisterCompanyMutationResult = Apollo.MutationResult<RegisterCompanyMutation>;
 export type RegisterCompanyMutationOptions = Apollo.BaseMutationOptions<RegisterCompanyMutation, RegisterCompanyMutationVariables>;
+export const ProductsDocument = gql`
+    query Products($filter: ProductFilter) {
+  products(filter: $filter) {
+    nodes {
+      ...Lite_Product
+    }
+  }
+}
+    ${Lite_ProductFragmentDoc}`;
+
+/**
+ * __useProductsQuery__
+ *
+ * To run a query within a React component, call `useProductsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useProductsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useProductsQuery({
+ *   variables: {
+ *      filter: // value for 'filter'
+ *   },
+ * });
+ */
+export function useProductsQuery(baseOptions?: Apollo.QueryHookOptions<ProductsQuery, ProductsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ProductsQuery, ProductsQueryVariables>(ProductsDocument, options);
+      }
+export function useProductsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProductsQuery, ProductsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ProductsQuery, ProductsQueryVariables>(ProductsDocument, options);
+        }
+export type ProductsQueryHookResult = ReturnType<typeof useProductsQuery>;
+export type ProductsLazyQueryHookResult = ReturnType<typeof useProductsLazyQuery>;
+export type ProductsQueryResult = Apollo.QueryResult<ProductsQuery, ProductsQueryVariables>;

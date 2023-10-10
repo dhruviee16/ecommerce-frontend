@@ -1,0 +1,7 @@
+query Products($filter: ProductFilter) {
+  products(filter: $filter) {
+    nodes {
+      ...Lite_Product
+    }
+  }
+}

@@ -15,23 +15,7 @@ import { Form } from 'formik';
 import Image from 'next/image';
 import toast from 'react-hot-toast';
 import * as Yup from 'yup';
-
-const product = {
-  name: 'Vintage Diary',
-  price: 'Rs.500',
-  href: '#',
-
-  images: [
-    {
-      src: '/image/HomeImages/diary1.jpg',
-      alt: 'the vintage leather bound diary',
-    },
-  ],
-
-  description: 'The  leather bound diary with vintage pages.',
-  details:
-    'Every page invites you to capture moments,Choose your diary, and let the adventure begin.',
-};
+import { useProduct } from '../Add-Edit-Forms/hooks/useProduct';
 
 const initalValues = {
   address: '',
@@ -43,12 +27,19 @@ const SigninSchema = Yup.object().shape({
   contactNumber: Yup.string().required('Required'),
 });
 
-export default function ProductDetails() {
+interface Props {
+  slug: string;
+}
+
+const ProductDetails:React.FC<Props> = ({slug}) => {
   const handleSubmit = async (values: any) => {
     toast.success('order placed successfully');
 
     console.log(values);
   };
+
+
+  const { product } = useProduct(slug);
 
   return (
     <div className="bg-white">
@@ -57,8 +48,8 @@ export default function ProductDetails() {
         <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           <div className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
             <Image
-              src={product.images[0].src}
-              alt={product.images[0].alt}
+              src={product?.imgUrl || ''}
+              alt={product?.name || ''}
               className="h-full w-full object-cover object-center"
               height={200}
               width={200}
@@ -68,7 +59,7 @@ export default function ProductDetails() {
           <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
             <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
               <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
-                {product.name}
+                {product?.name.toUpperCase()}
               </h1>
             </div>
 
@@ -76,7 +67,7 @@ export default function ProductDetails() {
             <div className="mt-4 lg:row-span-3 lg:mt-0">
               <h2 className="sr-only">Product information</h2>
               <p className="text-3xl tracking-tight text-gray-900">
-                {product.price}
+                {product?.price}
               </p>
               {/* </div> */}
 
@@ -142,21 +133,11 @@ export default function ProductDetails() {
 
             <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
               {/* Description and details */}
-              <div>
-                <h3 className="sr-only">Description</h3>
-
-                <div className="space-y-6">
-                  <p className="text-base text-gray-900">
-                    {product.description}
-                  </p>
-                </div>
-              </div>
-
               <div className="mt-10">
                 <h2 className="text-sm font-medium text-gray-900">Details</h2>
 
                 <div className="mt-4 space-y-6">
-                  <p className="text-sm text-gray-600">{product.details}</p>
+                  <p className="text-sm text-gray-600">{product?.description}</p>
                 </div>
               </div>
             </div>
@@ -166,3 +147,5 @@ export default function ProductDetails() {
     </div>
   );
 }
+
+export default ProductDetails;

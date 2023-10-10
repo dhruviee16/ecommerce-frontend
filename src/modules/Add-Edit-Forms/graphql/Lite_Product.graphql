@@ -3,6 +3,7 @@ fragment Lite_Product on Product {
   name
   description
   price
+  imgUrl
   quantity
   companyId
   categoryId

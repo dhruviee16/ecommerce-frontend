@@ -11,12 +11,9 @@ type Props = {
 const Page: React.FC<Props> = ({ params }) => {
   const { productId } = params;
 
-
   return (
     <div>
-      <ProductDetails 
-        slug={productId}
-      />
+      <ProductDetails slug={productId} />
     </div>
   );
 };

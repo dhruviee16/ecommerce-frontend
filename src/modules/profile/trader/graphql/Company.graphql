@@ -1,0 +1,10 @@
+query Company($id: UUID!) {
+  company(id: $id) {
+    id
+    ...Lite_Company
+    user {
+      id
+      ...Lite_User
+    }
+  }
+}

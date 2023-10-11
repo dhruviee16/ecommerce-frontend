@@ -59,7 +59,6 @@ const navigation = {
             { name: 'Paint Brushes' },
           ],
         },
-        
       ],
     },
     {
@@ -90,7 +89,7 @@ const navigation = {
             { name: 'Spray Paints' },
           ],
         },
-        
+
         {
           id: 'sketchSupplies',
           name: 'Sketch Supplies',
@@ -98,8 +97,6 @@ const navigation = {
             { name: 'Craft Papers' },
             { name: 'Canvas Boards' },
             { name: 'sketch books' },
-            
-  
           ],
         },
       ],
@@ -141,8 +138,7 @@ const navigation = {
             { name: 'Simple Diaries' },
             { name: 'Vintage Diaries' },
             { name: 'Little Diaries' },
-            { name: 'Sticky Notes' },            
-
+            { name: 'Sticky Notes' },
           ],
         },
       ],
@@ -168,14 +164,8 @@ const navigation = {
         {
           id: 'essential kits',
           name: 'essential kits',
-          items: [
-            { name: 'Stationery kits' },
-            { name: 'Art-Craft kits' },
-            
-          ],
+          items: [{ name: 'Stationery kits' }, { name: 'Art-Craft kits' }],
         },
-
-       
       ],
     },
   ],

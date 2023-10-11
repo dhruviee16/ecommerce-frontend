@@ -1,28 +1,28 @@
-import { useProductsQuery } from "@/generated/graphql"
+import { useProductsQuery } from '@/generated/graphql';
 
-export const useProducts = (filters: { slug?: any; companyId?: any; }) => {
+export const useProducts = (filters: { slug?: any; companyId?: any }) => {
   const { data } = useProductsQuery({
     variables: {
       filter: {
         or: [
           {
             companyId: {
-              equalTo: filters.companyId || null
-            }
+              equalTo: filters.companyId || null,
+            },
           },
           {
             category: {
               slug: {
-                equalTo: filters.slug || null
-              }
-            }
-          }
-        ]
-      }
-    }
+                equalTo: filters.slug || null,
+              },
+            },
+          },
+        ],
+      },
+    },
   });
 
   return {
-    products: data?.products?.nodes || []
-  }
-}
+    products: data?.products?.nodes || [],
+  };
+};

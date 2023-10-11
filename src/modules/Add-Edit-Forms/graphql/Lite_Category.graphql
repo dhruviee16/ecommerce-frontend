@@ -1,6 +1,7 @@
 fragment Lite_Category on Category {
   id
   name
+  description
   parentId
   slug
 }

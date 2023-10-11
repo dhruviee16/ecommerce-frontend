@@ -51,7 +51,6 @@ const LINKS = [
         title: 'About Us',
         link: 'aboutus',
       },
-      
     ],
   },
   {

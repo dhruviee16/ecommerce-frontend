@@ -34,7 +34,6 @@ const WithApollo: React.FC<Props> = ({ children }) => {
         loadErrorMessages();
       }
 
-
       return forward(request);
     });
 

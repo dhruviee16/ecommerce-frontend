@@ -13,7 +13,6 @@ export const useLogout = () => {
     onCompleted(data) {
       deleteCookie(TOKEN_NAME);
       deleteCookie('currentUserId');
-      deleteCookie('currentCompanyId');
 
       toast.success('Logged out successfully');
 

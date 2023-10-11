@@ -6,14 +6,11 @@ import { TOKEN_NAME } from '.';
 import { RegisterSchema } from '../schema';
 
 export const useSignup = () => {
-  const [cookies, setCookies, deleteCookies] = useCookies();
+  const [cookies, setCookies] = useCookies();
   const router = useRouter();
 
   const [signupMutation, { data, loading, error }] = useRegisterMutation({
     onCompleted(data) {
-      deleteCookies(TOKEN_NAME);
-      deleteCookies('currentUserId');
-
       setCookies(TOKEN_NAME, data.register?.token);
       setCookies('currentUserId', data.register?.user?.id);
 

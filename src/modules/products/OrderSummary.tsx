@@ -5,7 +5,6 @@ import { Typography } from '@material-tailwind/react';
 import Image from 'next/image';
 import Image1 from '/public/image/HomeImages/order2.png';
 
-
 type Props = {};
 
 const OrderSummary = (props: Props) => {
@@ -92,7 +91,7 @@ const OrderSummary = (props: Props) => {
           alt="profile"
           className="object-contain  w-[739px]"
         />
-      </div> 
+      </div>
     </div>
   );
 };

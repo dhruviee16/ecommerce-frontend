@@ -2,4 +2,9 @@ fragment Lite_Company on Company {
   id
   name
   description
+  address {
+    id
+    address
+    contactNumber
+  }
 }

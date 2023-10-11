@@ -1,0 +1,7 @@
+query Address($id: UUID!) {
+  address(id: $id) {
+    id
+    address
+    contactNumber
+  }
+}

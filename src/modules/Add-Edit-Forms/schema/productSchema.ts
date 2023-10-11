@@ -8,4 +8,5 @@ export const productSchema = Yup.object().shape({
   quantity: Yup.number().required(),
   companyId: Yup.string().required(),
   categoryId: Yup.string().required(),
+  imgUrl: Yup.string(),
 });

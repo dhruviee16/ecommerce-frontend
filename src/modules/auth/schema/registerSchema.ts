@@ -8,6 +8,11 @@ export const registerFields = {
   confirmPassword: string()
     .required('Required')
     .equals([ref('password')], 'Passwords must match'),
+  address: string().trim().ensure().required('Address is required'),
+  contactNumber: string()
+    .trim()
+    .ensure()
+    .required('Contact Number is required'),
 };
 
 export const RegisterSchema = object().shape(registerFields).required();

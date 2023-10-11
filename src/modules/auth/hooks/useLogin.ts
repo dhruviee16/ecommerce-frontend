@@ -15,10 +15,6 @@ export const useLogin = () => {
       setCookies(TOKEN_NAME, data.login?.token);
       setCookies('currentUserId', data.login?.user?.id);
 
-      if(data.login?.user.companies?.nodes[0]?.id){
-        setCookies('currentCompanyId', data.login?.user?.companies?.nodes[0]?.id);
-      }
-
       toast.success('Logged in successfully');
 
       router.replace('/');

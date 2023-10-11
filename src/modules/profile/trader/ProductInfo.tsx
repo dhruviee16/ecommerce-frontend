@@ -7,16 +7,18 @@ import {
 } from '@/components/ui/alert-dialog';
 import { Button } from '@material-tailwind/react';
 import AddProduct from '../../Add-Edit-Forms/AddProduct/page';
-import Link from 'next/link';
+import { useProducts } from '@/modules/products/hooks/useProducts';
+import { useCurrentUserQuery } from '@/generated/graphql';
 
 const ProductInfo = () => {
+  const { data } = useCurrentUserQuery();
+
   return (
     <>
       <div className="justify-center items-center  overflow-y-auto h-screen">
         <div className="text-center mt-5 text-4xl">Trader Dashboard</div>
-        
+
         <div className="ml-[6rem] sm:ml-[80%] mt-3">
-          
           <AlertDialog>
             <AlertDialogTrigger asChild>
               <Button
@@ -25,29 +27,14 @@ const ProductInfo = () => {
               >
                 <div className="flex flex-row gap-x-3 ">Add Product</div>
               </Button>
-            </AlertDialogTrigger>       
+            </AlertDialogTrigger>
             <AlertDialogContent className="">
               <AddProduct />
             </AlertDialogContent>
           </AlertDialog>
         </div>
-        <div className="px-20 my-20 grid grid-cols-2 gap-4 w-full ">
-          <div>
-            <HorizontalCard />
-          </div>
-          <div>
-            <HorizontalCard />
-          </div>
-          <div>
-            <HorizontalCard />
-          </div>
-          <div>
-            <HorizontalCard />
-          </div>
-          <div>
-            <HorizontalCard />
-          </div>
-        </div>
+
+        <HorizontalCard id={data?.currentUser?.company?.id} />
       </div>
     </>
   );

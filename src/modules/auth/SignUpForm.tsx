@@ -28,6 +28,8 @@ const SignUpForm = () => {
               <div className="mb-4 flex flex-col gap-4">
                 <FormFieldLayout label="Name" name="name" />
                 <FormFieldLayout label="Email" name="email" />
+                <FormFieldLayout label="Address" name="address" />
+                <FormFieldLayout label="Contact Number" name="contactNumber" />
                 <FormFieldLayout
                   type="password"
                   label="Password"

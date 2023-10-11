@@ -1,0 +1,8 @@
+mutation UpdateCompany($id: UUID!, $company: CompanyPatch!) {
+  updateCompany(input: { patch: $company, id: $id }) {
+    company {
+      id
+      ...Lite_Company
+    }
+  }
+}

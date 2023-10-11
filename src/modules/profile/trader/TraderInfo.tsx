@@ -10,11 +10,14 @@ import { Button, Typography } from '@material-tailwind/react';
 import Image from 'next/image';
 import Image1 from '/public/image/HomeImages/trader.png';
 import { useCurrentUserQuery } from '@/generated/graphql';
+import { useCompany } from './hooks/useCompany';
 
 type Props = {};
 
 const TraderInfo = (props: Props) => {
-  const {data} = useCurrentUserQuery()
+  const { data } = useCurrentUserQuery();
+
+  const { company } = useCompany(data?.currentUser?.company?.id);
 
   return (
     <div className="flex flex-row h-screen my-10 mx-24 gap-5">
@@ -30,7 +33,7 @@ const TraderInfo = (props: Props) => {
           />
 
           <Typography variant="h6" className="text-gray-600">
-            Shop Name: {data?.currentUser?.company?.name}
+            Shop Name: {company?.name}
           </Typography>
           <Separator
             orientation="horizontal"
@@ -38,7 +41,7 @@ const TraderInfo = (props: Props) => {
           />
 
           <Typography variant="h6" className="text-gray-600">
-            Contact: {data?.currentUser?.addresses.nodes[0].contactNumber} 
+            Contact: {company?.address?.contactNumber}
           </Typography>
           <Separator
             orientation="horizontal"
@@ -46,7 +49,14 @@ const TraderInfo = (props: Props) => {
           />
 
           <Typography variant="h6" className="text-gray-600">
-            Address: {data?.currentUser?.addresses.nodes[0].address}
+            Address: {company?.address?.address}
+          </Typography>
+          <Separator
+            orientation="horizontal"
+            className="border-2 border-gray-300"
+          />
+          <Typography variant="h6" className="text-gray-600">
+            Description: {company?.description}
           </Typography>
           <Separator
             orientation="horizontal"
@@ -64,7 +74,7 @@ const TraderInfo = (props: Props) => {
                 </Button>
               </AlertDialogTrigger>
               <AlertDialogContent className="">
-                <EditTraderProfile />
+                <EditTraderProfile id={company?.id} />
               </AlertDialogContent>
             </AlertDialog>
           </div>

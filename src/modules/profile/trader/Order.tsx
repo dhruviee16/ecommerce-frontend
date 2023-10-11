@@ -14,7 +14,9 @@ export default function Order() {
                   </div> */}
       <div className="py-4">
         <div className="max-w-full overflow-x-auto rounded-lg shadow">
-        <div className="mb-5 text-center text-3xl font-bold text-black">Order History</div>
+          <div className="mb-5 text-center text-3xl font-bold text-black">
+            Order History
+          </div>
           <table className="w-full leading-normal">
             <thead>
               <tr>
@@ -55,7 +57,9 @@ export default function Order() {
                   <p className="whitespace-nowrap text-gray-900">Pens</p>
                 </td>
                 <td className="border-b border-gray-200 bg-white p-5 text-sm">
-                  <p className="whitespace-nowrap text-gray-900">test address1</p>
+                  <p className="whitespace-nowrap text-gray-900">
+                    test address1
+                  </p>
                 </td>
               </tr>
               <tr>
@@ -70,7 +74,9 @@ export default function Order() {
                   <p className="whitespace-nowrap text-gray-900">Pencils</p>
                 </td>
                 <td className="border-b border-gray-200 bg-white p-5 text-sm">
-                  <p className="whitespace-nowrap text-gray-900">test address2</p>
+                  <p className="whitespace-nowrap text-gray-900">
+                    test address2
+                  </p>
                 </td>
               </tr>
               <tr>
@@ -85,7 +91,9 @@ export default function Order() {
                   <p className="whitespace-nowrap text-gray-900">Canvas</p>
                 </td>
                 <td className="border-b border-gray-200 bg-white p-5 text-sm">
-                  <p className="whitespace-nowrap text-gray-900">test address3</p>
+                  <p className="whitespace-nowrap text-gray-900">
+                    test address3
+                  </p>
                 </td>
               </tr>
               <tr>
@@ -102,7 +110,9 @@ export default function Order() {
                   </p>
                 </td>
                 <td className="border-b border-gray-200 bg-white p-5 text-sm">
-                  <p className="whitespace-nowrap text-gray-900">test address4</p>
+                  <p className="whitespace-nowrap text-gray-900">
+                    test address4
+                  </p>
                 </td>
               </tr>
             </tbody>

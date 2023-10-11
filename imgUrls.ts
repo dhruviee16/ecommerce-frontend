@@ -1,4 +1,15 @@
-export const imgUrls = {
+type ImgUrls = {
+  [key: string]: string[];
+};
+
+export const imgUrls: ImgUrls = {
+  '8539ca44-6fe2-42d1-a8ca-4f1f25818f82': [
+    '/image/products/d9c1635e-b38b-4306-b7d4-369833f702db/pencil1.jpeg',
+    '/image/products/d9c1635e-b38b-4306-b7d4-369833f702db/pencil2.jpeg',
+    '/image/products/d9c1635e-b38b-4306-b7d4-369833f702db/pencil3.jpeg',
+    '/image/products/d9c1635e-b38b-4306-b7d4-369833f702db/pencil4.jpeg',
+    '/image/products/d9c1635e-b38b-4306-b7d4-369833f702db/pencil5.jpeg',
+  ],
   '1ba43666-97e1-44ed-8333-3fe4a84a5388': [
     '/image/products/1ba43666-97e1-44ed-8333-3fe4a84a5388/fabric1.jpg',
     '/image/products/1ba43666-97e1-44ed-8333-3fe4a84a5388/fabric2.jpg',

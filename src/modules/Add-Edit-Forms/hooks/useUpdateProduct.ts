@@ -1,5 +1,5 @@
-import { useUpdateProductMutation } from "@/generated/graphql";
-import toast from "react-hot-toast";
+import { useUpdateProductMutation } from '@/generated/graphql';
+import toast from 'react-hot-toast';
 
 export const useUpdateProduct = () => {
   const [updateProduct, { data, loading, error }] = useUpdateProductMutation({
@@ -9,21 +9,21 @@ export const useUpdateProduct = () => {
     onError(error) {
       toast.error('Error creating service ' + error.message);
     },
-  })
+  });
 
   const handleSubmit = (input: any) => {
     const { id, ...product } = input;
     updateProduct({
       variables: {
         id,
-        product
-      }
-    })
-  }
+        product,
+      },
+    });
+  };
 
   return {
     handleSubmit,
     loading,
-    error
+    error,
   };
-}
+};

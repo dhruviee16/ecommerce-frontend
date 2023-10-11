@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Image1 from '/public/image/HomeImages/profile1.png';
-import { Separator } from "@/components/ui/separator";
+import { Separator } from '@/components/ui/separator';
 
 const AboutUs = () => {
   return (
@@ -28,19 +28,17 @@ const AboutUs = () => {
             everything you need to unleash your creativity at ArtyUs.We are
             committed to providing you with a seamless shopping experience and
             exceptional customer service. We are constantly working to improve
-            our platform and add new products to our catalog. 
+            our platform and add new products to our catalog.
           </p>
           <p className="mt-4 gap-y-6 font-normal text-lg leading-6 text-gray-700">
-            We Offer Artistic Excellence with our carefully curated selection of top-notch art
-            supplies, from paints and brushes to sketchbooks and canvases.
-            Unleash your inner crafter with our extensive
-            range of unique craft materials, from colorful craft materials  to
-            handmade papers and
-            Elevate your everyday life
-            with our stylish and functional stationery products; From elegant
-            journals to cute stationery stuffs, we have got your stationery needs covered.
+            We Offer Artistic Excellence with our carefully curated selection of
+            top-notch art supplies, from paints and brushes to sketchbooks and
+            canvases. Unleash your inner crafter with our extensive range of
+            unique craft materials, from colorful craft materials to handmade
+            papers and Elevate your everyday life with our stylish and
+            functional stationery products; From elegant journals to cute
+            stationery stuffs, we have got your stationery needs covered.
           </p>
-         
         </div>
         <div className="grow-0">
           <Separator orientation="vertical" className="border-1" />

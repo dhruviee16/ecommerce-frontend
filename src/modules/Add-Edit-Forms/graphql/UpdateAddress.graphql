@@ -1,0 +1,7 @@
+mutation UpdateAddress($id: UUID!, $patch: AddressPatch!) {
+  updateAddress(input: { patch: $patch, id: $id }) {
+    user {
+      ...Lite_User
+    }
+  }
+}

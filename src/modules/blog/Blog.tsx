@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Image1 from '/public/image/HomeImages/blog.png';
-import { Separator } from "@/components/ui/separator";
+import { Separator } from '@/components/ui/separator';
 
 const Profile = () => {
   return (

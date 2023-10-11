@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { useLogin } from './hooks';
 import Image from 'next/image';
 import Image1 from '/public/image/HomeImages/blog.png';
-import { Separator } from "@/components/ui/separator";
+import { Separator } from '@/components/ui/separator';
 
 const SignInForm = () => {
   const { initialValues, loading, handleSubmit, validationSchema } = useLogin();
@@ -57,15 +57,15 @@ const SignInForm = () => {
         </FormLayout>
       </Card>
       <div className="grow-0">
-          <Separator orientation="vertical" className="border-2" />
-        </div>
-        <div className="mt-2">
-          <Image
-            src={Image1}
-            alt="profile"
-            className="object-contain  w-[739px]"
-          />
-        </div>
+        <Separator orientation="vertical" className="border-2" />
+      </div>
+      <div className="mt-2">
+        <Image
+          src={Image1}
+          alt="profile"
+          className="object-contain  w-[739px]"
+        />
+      </div>
     </div>
   );
 };

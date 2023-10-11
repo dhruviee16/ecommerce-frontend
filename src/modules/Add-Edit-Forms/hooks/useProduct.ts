@@ -1,16 +1,16 @@
-import { useProductQuery } from "@/generated/graphql";
+import { useProductQuery } from '@/generated/graphql';
 
 export const useProduct = (id?: string) => {
   const { data, loading, error } = useProductQuery({
     variables: {
-      id
+      id,
     },
-    skip: !id
+    skip: !id,
   });
 
   return {
     product: data?.product,
     loading,
-    error
-  }
-}
+    error,
+  };
+};

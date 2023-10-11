@@ -22,7 +22,7 @@ export default function VerticalTabs() {
       value: 'Dashboard',
       desc: <ProductInfo />,
     },
-    
+
     {
       label: 'orders',
       value: 'orders',

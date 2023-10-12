@@ -1,7 +1,7 @@
-import { UserProfile } from '@/modules/profile/user';
+import Profile from "@/modules/profile/user/Profile";
 
 const page = () => {
-  return <UserProfile />;
-};
+  return <Profile />;
+};    
 
 export default page;

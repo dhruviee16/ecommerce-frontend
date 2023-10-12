@@ -1,97 +1,48 @@
 'use client';
 import {
-  AlertDialog,
-  AlertDialogContent,
-  AlertDialogTrigger,
-} from '@/components/ui/alert-dialog';
-import { Separator } from '@/components/ui/separator';
-import { EditUserProfile } from '@/modules/Add-Edit-Forms/EditUser';
-import { Button, Typography } from '@material-tailwind/react';
-import Image from 'next/image';
-import Image1 from '/public/image/HomeImages/user.png';
-import { useCurrentUserQuery } from '@/generated/graphql';
+  Tab,
+  TabPanel,
+  Tabs,
+  TabsBody,
+  TabsHeader,
+} from '@material-tailwind/react';
 
-type Props = {};
+import UserInfo from './UserInfo';
+import Order from './Order';
 
-const Profile = (props: Props) => {
-  const { data } = useCurrentUserQuery();
+export default function Profile() {
+  const data = [
+    {
+      label: 'Profile',
+      value: 'Profile',
+      desc: <UserInfo />,
+    },
+    
+    {
+      label: 'orders',
+      value: 'orders',
+      desc: <Order />,
+    },
+  ];
+
   return (
-    <div className="flex flex-row h-screen my-10 mx-24 gap-5">
-      <div className="grow flex-initial">
-        <Typography variant="h3" color="blue-gray" className="my-5">
-          Account Details
-        </Typography>
-
-        <div className="flex flex-col gap-8">
-          <Separator
-            orientation="horizontal"
-            className="border-2 border-gray-300"
-          />
-
-          <Typography variant="h6" className="text-gray-600">
-            Name: {data?.currentUser?.name}
-          </Typography>
-          <Separator
-            orientation="horizontal"
-            className="border-2 border-gray-300"
-          />
-          <Typography variant="h6" className="text-gray-600">
-            Email: {data?.currentUser?.email}
-          </Typography>
-          <Separator
-            orientation="horizontal"
-            className="border-2 border-gray-300"
-          />
-          {!data?.currentUser?.company?.id && (
-            <>
-              <Typography variant="h6" className="text-gray-600">
-                Address: {data?.currentUser?.addresses?.nodes[0]?.address}
-              </Typography>
-              <Separator
-                orientation="horizontal"
-                className="border-2 border-gray-300"
-              />
-              <Typography variant="h6" className="text-gray-600">
-                Contact No:{' '}
-                {data?.currentUser?.addresses?.nodes[0]?.contactNumber}
-              </Typography>
-              <Separator
-                orientation="horizontal"
-                className="border-2 border-gray-300"
-              />
-              <div className="">
-                <AlertDialog>
-                  <AlertDialogTrigger asChild>
-                    <Button
-                      size="lg"
-                      className="flex flex-row content-start border-gray-800 border-2 absolute bg-black text-white hover:bg-white hover:text-black"
-                    >
-                      <div className="flex flex-row gap-x-3 ">Edit Details</div>
-                    </Button>
-                  </AlertDialogTrigger>
-                  <AlertDialogContent className="">
-                    <EditUserProfile
-                      id={data?.currentUser?.addresses?.nodes[0]?.id}
-                    />
-                  </AlertDialogContent>
-                </AlertDialog>
-              </div>{' '}
-            </>
-          )}
-        </div>
-      </div>
-      <div className="grow-0">
-        <Separator orientation="vertical" className="border-2" />
-      </div>
-      <div className="">
-        <Image
-          src={Image1}
-          alt="profile"
-          className="object-contain  w-[739px]"
-        />
-      </div>
+    <div className="h-screen m-10 ">
+      <Tabs value="Profile" orientation="vertical">
+        <TabsHeader className="w-32">
+          {data.map(({ label, value }) => (
+            <Tab key={value} value={value} className="text-xl font-bold">
+              {label}
+            </Tab>
+          ))}
+        </TabsHeader>
+        <TabsBody>
+          {data.map(({ value, desc }) => (
+            <TabPanel key={value} value={value} className="py-0">
+              {desc}
+            </TabPanel>
+          ))}
+        </TabsBody>
+      </Tabs>
     </div>
   );
-};
-
-export default Profile;
+}

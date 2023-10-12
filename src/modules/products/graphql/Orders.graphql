@@ -1,0 +1,23 @@
+query Orders($filter: OrderFilter) {
+  orders(filter: $filter) {
+    nodes {
+      id
+      status
+      user {
+        id
+        name
+        email
+      }
+      product {
+        id
+        name
+        description
+      }
+      address {
+        address
+        id
+        contactNumber
+      }
+    }
+  }
+}

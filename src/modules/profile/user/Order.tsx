@@ -9,8 +9,9 @@ export default function Order() {
   const { data } = useCurrentUserQuery();
 
   const { orders } = useOrders({
-    companyId: data?.currentUser?.company?.id,
+    userId: data?.currentUser?.id,
   });
+
   return (
     <div>
       <div className="py-4">
@@ -43,7 +44,7 @@ export default function Order() {
                   scope="col"
                   className="border-b border-gray-200 bg-white  px-5 py-3 text-left  text-sm font-normal uppercase text-gray-800"
                 >
-                  status
+                  Status
                 </th> */}
               </tr>
             </thead>
@@ -61,9 +62,7 @@ export default function Order() {
                       </div>
                     </td>
                     <td className="border-b border-gray-200 bg-white p-5 text-sm">
-                      <p className="whitespace-nowrap text-gray-900">
-                        {order.product?.name}
-                      </p>
+                      <p className="whitespace-nowrap text-gray-900">{order.product?.name}</p>
                     </td>
                     <td className="border-b border-gray-200 bg-white p-5 text-sm">
                       <p className="whitespace-nowrap text-gray-900">

@@ -1,14 +1,23 @@
 'use client';
 import { Separator } from '@/components/ui/separator';
 import { useCurrentUserQuery } from '@/generated/graphql';
-import { Typography } from '@material-tailwind/react';
+import { Button, Typography } from '@material-tailwind/react';
 import Image from 'next/image';
 import Image1 from '/public/image/HomeImages/order2.png';
+import { useProduct } from '../Add-Edit-Forms/hooks/useProduct';
+import { useCreateOrder } from './hooks/useCreateOrder';
 
-type Props = {};
+type Props = {
+  id : string
+};
 
-const OrderSummary = (props: Props) => {
+const OrderSummary:React.FC<Props> = ({id}) => {
   const { data } = useCurrentUserQuery();
+
+  const { product} = useProduct(id);
+
+  const {handleSubmit, loading, error} = useCreateOrder()
+
   return (
     <div className="flex flex-row h-screen my-10 mx-24 gap-5">
       <div className="grow flex-initial">
@@ -29,58 +38,43 @@ const OrderSummary = (props: Props) => {
             orientation="horizontal"
             className="border-2 border-gray-300"
           />
+          
           <Typography variant="h6" className="text-gray-600">
-            Email: {data?.currentUser?.email}
+            Address: {data?.currentUser?.addresses?.nodes[0]?.address}
           </Typography>
           <Separator
             orientation="horizontal"
             className="border-2 border-gray-300"
           />
           <Typography variant="h6" className="text-gray-600">
-            Address:
+            contact no: {data?.currentUser?.addresses?.nodes[0]?.contactNumber}
           </Typography>
           <Separator
             orientation="horizontal"
             className="border-2 border-gray-300"
           />
           <Typography variant="h6" className="text-gray-600">
-            contact no:
+            Product Name:{product?.name}
           </Typography>
           <Separator
             orientation="horizontal"
             className="border-2 border-gray-300"
           />
           <Typography variant="h6" className="text-gray-600">
-            Product Name:
+            Product price:{product?.price }
           </Typography>
           <Separator
             orientation="horizontal"
             className="border-2 border-gray-300"
           />
-          <Typography variant="h6" className="text-gray-600">
-            Product price:
-          </Typography>
-          <Separator
-            orientation="horizontal"
-            className="border-2 border-gray-300"
-          />
-
-          {/* <div className="">
-            <AlertDialog>
-              <AlertDialogTrigger asChild>
-                <Button
-                  size="lg"
-                  className="flex flex-row content-start border-gray-800 border-2 absolute bg-black text-white hover:bg-white hover:text-black"
-                >
-                  <div className="flex flex-row gap-x-3 ">Edit Details</div>
-                </Button>
-              </AlertDialogTrigger>
-              <AlertDialogContent className="">
-                <EditUserProfile />
-              </AlertDialogContent>
-            </AlertDialog>
-          </div> */}
-        </div>
+          <Button onClick={
+            () => {
+              handleSubmit(product?.id)
+            }
+          } className='py-3'>
+            Confirm Order
+          </Button>
+        </div>  
       </div>
       <div className="grow-0">
         <Separator orientation="vertical" className="border-2" />
@@ -91,7 +85,7 @@ const OrderSummary = (props: Props) => {
           alt="profile"
           className="object-contain  w-[739px]"
         />
-      </div>
+      </div> 
     </div>
   );
 };

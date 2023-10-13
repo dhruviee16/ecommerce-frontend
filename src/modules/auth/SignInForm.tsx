@@ -6,13 +6,13 @@ import { Form } from 'formik';
 import Link from 'next/link';
 import { useLogin } from './hooks';
 import Image from 'next/image';
-import Image1 from '/public/image/HomeImages/blog.png';
+import Image1 from '/public/image/HomeImages/login.png';
 import { Separator } from '@/components/ui/separator';
 
 const SignInForm = () => {
   const { initialValues, loading, handleSubmit, validationSchema } = useLogin();
   return (
-    <div className="flex items-left justify-left min-h-screen">
+    <div className="flex items-center justify-center min-h-screen">
       <Card color="transparent" shadow={false} className="m-20">
         <Typography variant="h4" color="blue-gray">
           Log In
@@ -56,9 +56,9 @@ const SignInForm = () => {
           )}
         </FormLayout>
       </Card>
-      <div className="grow-0">
-        <Separator orientation="vertical" className="border-2" />
-      </div>
+          {/* <div className="">
+            <Separator orientation="vertical" className="border-2" />
+          </div> */}
       <div className="mt-2">
         <Image
           src={Image1}

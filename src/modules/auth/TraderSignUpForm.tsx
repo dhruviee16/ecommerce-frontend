@@ -7,6 +7,8 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { useTraderSignUp } from './hooks/useTraderSignUp';
+import Image from 'next/image';
+import Image1 from '/public/image/HomeImages/traderSignUp.png';
 
 interface IWizardProps {
   children: React.ReactNode;
@@ -187,6 +189,13 @@ const App = () => {
           </Link>
         </Typography>
       </Card>
+      <div className="mt-2">
+        <Image
+          src={Image1}
+          alt="profile"
+          className="object-contain  w-[739px]"
+        />
+      </div>
     </div>
   );
 };

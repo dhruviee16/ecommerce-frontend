@@ -5,6 +5,8 @@ import { Button, Card, Typography } from '@material-tailwind/react';
 import { Form } from 'formik';
 import Link from 'next/link';
 import { useSignup } from './hooks';
+import Image from 'next/image';
+import Image1 from '/public/image/HomeImages/Signup.png';
 
 const SignUpForm = () => {
   const { initialValues, loading, handleSubmit, RegisterSchema } = useSignup();
@@ -62,6 +64,13 @@ const SignUpForm = () => {
           )}
         </FormLayout>
       </Card>
+      <div className="mt-2">
+        <Image
+          src={Image1}
+          alt="profile"
+          className="object-contain  w-[739px]"
+        />
+      </div>
     </div>
   );
 };

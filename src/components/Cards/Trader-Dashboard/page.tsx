@@ -5,6 +5,7 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import EditProducts from '@/modules/Add-Edit-Forms/Products-Edit/page';
+import { useDeleteProduct } from '@/modules/products/hooks/useDeleteProduct';
 import { useProducts } from '@/modules/products/hooks/useProducts';
 
 import {
@@ -20,6 +21,8 @@ export default function HorizontalCard({ id }: { id: string }) {
   const { products } = useProducts({
     companyId: id,
   });
+
+  const { handleDelete, data } = useDeleteProduct();
 
   return (
     <div className="px-20 my-20 grid grid-cols-2 gap-4 w-full ">
@@ -62,11 +65,11 @@ export default function HorizontalCard({ id }: { id: string }) {
                 <Typography variant="h6" color="gray" className="mb-5 ">
                   Category: {product.category?.name}
                 </Typography>
-                <Typography color="gray" className="mb-5 ">
+                <Typography variant="h6" color="gray" className="mb-5 ">
                   Desc: {product.description}
                 </Typography>
               </CardBody>
-              <div className="mb-2">
+              <div className="mb-2 flex flex-row gap-4">
                 <AlertDialog>
                   <AlertDialogTrigger asChild>
                     <Button className="flex items-center gap-2 border-2 border-black bg-black text-white hover:bg-white hover:text-black">
@@ -77,25 +80,20 @@ export default function HorizontalCard({ id }: { id: string }) {
                     <EditProducts id={product.id} />
                   </AlertDialogContent>
                 </AlertDialog>
+                <div>
+                  <Button
+                    onClick={() => {
+                      handleDelete(product.id);
+                    }}
+                    className="flex items-center gap-2 border-2 border-black bg-black text-white hover:bg-white hover:text-black"
+                  >
+                    Delete
+                  </Button>
+                </div>
               </div>
             </div>
           </Card>
         ))}
     </div>
-    //   <div className="px-20 my-20 grid grid-cols-2 gap-4 w-full">
-    //   <div>
-    //   <HorizontalCard />
-    //   </div>
-    //   <div>
-    //   <HorizontalCard />
-    //   </div>
-    //   <div>
-    //   <HorizontalCard />
-    //   </div>
-    //   <div>
-    //   <HorizontalCard />
-    //   </div>
-
-    // </div>
   );
 }

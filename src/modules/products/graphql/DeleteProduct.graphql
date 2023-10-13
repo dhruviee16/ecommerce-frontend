@@ -1,0 +1,6 @@
+mutation DeleteProduct($input: DeleteProductInput!) {
+  deleteProduct(input: $input) {
+    clientMutationId
+    deletedProductNodeId
+  }
+}

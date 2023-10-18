@@ -15,9 +15,9 @@ import { TbLayoutSidebarLeftCollapseFilled } from 'react-icons/tb';
 const menuItems = [
   {
     id: 1,
-    label: 'Dashboard',
+    label: 'Manage Users',
     icon: AiOutlineHome,
-    link: '/admin/home',
+    link: '/admin/manage-users',
   },
   {
     id: 2,
@@ -30,6 +30,12 @@ const menuItems = [
     label: 'Manage Products',
     icon: FiShoppingCart,
     link: '/admin/manage-products',
+  },
+  {
+    id: 4,
+    label: 'Manage Orders',
+    icon: FiShoppingCart,
+    link: '/admin/manage-orders',
   },
 ];
 
@@ -95,14 +101,14 @@ const Sidebar = () => {
           <div className={smallLogoClass}>
             <Image src={SmallLogo} alt="" />
           </div>
-          {isCollapsible && (
+          {/* {isCollapsible && (
             <button
               className={collapseIconClasses}
               onClick={handleSidebarToggle}
             >
               <TbLayoutSidebarLeftCollapseFilled size={30} />
             </button>
-          )}
+          )} */}
         </div>
 
         <div className="flex flex-col items-start mt-24">

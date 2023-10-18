@@ -1,6 +1,6 @@
 import { useOrdersQuery } from '@/generated/graphql';
 
-export const useOrders = (filters: any) => {
+export const useOrders = (filters?: any) => {
   const { data } = useOrdersQuery({
     variables: {
       filter: {

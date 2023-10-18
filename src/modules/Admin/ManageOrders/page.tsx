@@ -1,69 +1,28 @@
 'use client';
 import { AdminSidebar } from '@/components/AdminSidebar';
+import React, { use, useState } from 'react';
 import { Button, Card, Typography } from '@material-tailwind/react';
-import { useState } from 'react';
-import { useCompanies } from '../hooks/useCompanies';
-import { useDeleteUser } from '../hooks/useDeleteUser';
+import { useUsers } from '../hooks/useUsers';
+import { useProducts } from '@/modules/products/hooks/useProducts';
+import { useDeleteProduct } from '@/modules/products/hooks/useDeleteProduct';
+import { useOrders } from '@/modules/products/hooks/useOrders';
 
-const TABLE_HEAD = ['Name', 'Email', 'Account open', 'Action'];
-
-const TABLE_ROWS = [
-  {
-    name: 'John Michael',
-    date: '23/04/18',
-    category: 'Car Services',
-    email: 'john@example.com',
-  },
-  {
-    name: 'Alexa Liras',
-    date: '23/04/18',
-    category: 'Home Services',
-    email: 'alexa@example.com',
-  },
-  {
-    name: 'Laurent Perrier',
-    date: '19/09/17',
-    category: 'Home Services',
-    email: 'laurent@example.com',
-  },
-  {
-    name: 'Michael Levi',
-    date: '24/12/08',
-    category: 'Car Services',
-    email: 'michael@example.com',
-  },
-  {
-    name: 'Laurent Perrier',
-    date: '19/09/17',
-    category: 'Car Services',
-    email: 'laurent@example.com',
-  },
-  {
-    name: 'Michael Levi',
-    date: '24/12/08',
-    category: 'Car Services',
-    email: 'michael@example.com',
-  },
-];
+const TABLE_HEAD = ['User Name', 'Shop Name', 'Product Name', 'Created At'];
 
 type Props = {};
 
-const ManageServiceProviders = (props: Props) => {
-  const { companies } = useCompanies();
-  const { handleDelete } = useDeleteUser();
+const ManageUsers = (props: Props) => {
+
+  const {orders} =useOrders();
 
   const [searchText, setSearchText] = useState('');
-
-  const filteredRows = TABLE_ROWS.filter((row) =>
-    row.email.toLowerCase().includes(searchText.toLowerCase())
-  );
 
   return (
     <div className="h-screen flex flex-row justify-start">
       <AdminSidebar />
       <div className="bg-blue-gray-100 justify-center flex-1 text-black">
         <div className="text-center text-black text-3xl font-bold m-4 ">
-          Manage Traders
+          Manage Orders
         </div>
         <div className="m-6 bg-blue-gray-100">
           <Card className="h-full w-full">
@@ -78,7 +37,7 @@ const ManageServiceProviders = (props: Props) => {
                       <Typography
                         variant="small"
                         color="blue-gray"
-                        className="font-normal leading-none opacity-70"
+                        className="font-normal leading-none opacity-70 "
                       >
                         {head}
                       </Typography>
@@ -87,21 +46,21 @@ const ManageServiceProviders = (props: Props) => {
                 </tr>
               </thead>
               <tbody>
-                {companies.map((company, index) => {
-                  const isLast = index === companies.length - 1;
+                {orders.map((order, index) => {
+                  const isLast = index === orders.length - 1;
                   const classes = isLast
                     ? 'p-4'
                     : 'p-4 border-b border-blue-gray-50';
 
                   return (
-                    <tr key={company.id}>
+                    <tr key={order.id}>
                       <td className={classes}>
                         <Typography
                           variant="small"
                           color="blue-gray"
                           className="font-normal"
                         >
-                          {company.name}
+                          {order.user?.name}
                         </Typography>
                       </td>
                       <td className={classes}>
@@ -110,7 +69,7 @@ const ManageServiceProviders = (props: Props) => {
                           color="blue-gray"
                           className="font-normal"
                         >
-                          {company?.user?.email}
+                          {order.product?.company?.name}
                         </Typography>
                       </td>
                       <td className={classes}>
@@ -119,19 +78,19 @@ const ManageServiceProviders = (props: Props) => {
                           color="blue-gray"
                           className="font-normal"
                         >
-                          {company.createdAt}
+                          {order.product?.name}
                         </Typography>
                       </td>
                       <td className={classes}>
-                        <Button
-                          onClick={() => {
-                            handleDelete(company.user?.id);
-                          }}
-                          variant="text"
+                        <Typography
+                          variant="small"
+                          color="blue-gray"
+                          className="font-normal"
                         >
-                          Delete
-                        </Button>
+                          {order.createdAt}
+                        </Typography>
                       </td>
+                      
                     </tr>
                   );
                 })}
@@ -144,4 +103,4 @@ const ManageServiceProviders = (props: Props) => {
   );
 };
 
-export default ManageServiceProviders;
+export default ManageUsers;

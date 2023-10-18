@@ -1,3 +1,4 @@
+import Layout from '@/components/Layout';
 import { useProduct } from '@/modules/Add-Edit-Forms/hooks/useProduct';
 import { ProductDetails } from '@/modules/products';
 import React from 'react';
@@ -12,9 +13,9 @@ const Page: React.FC<Props> = ({ params }) => {
   const { productId } = params;
 
   return (
-    <div>
+    <Layout>
       <ProductDetails slug={productId} />
-    </div>
+    </Layout>
   );
 };
 

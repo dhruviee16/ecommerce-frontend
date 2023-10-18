@@ -10,7 +10,7 @@ export default function Home() {
   const { data } = useCurrentUserQuery();
 
   if (data?.currentUser?.isAdmin) {
-    router.replace('/admin/home');
+    router.replace('/admin/manage-users');
   }
   return (
     <Layout>

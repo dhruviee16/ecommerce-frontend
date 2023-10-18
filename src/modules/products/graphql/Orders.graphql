@@ -12,12 +12,16 @@ query Orders($filter: OrderFilter) {
         id
         name
         description
+        company {
+          ...Lite_Company
+        }
       }
       address {
         address
         id
         contactNumber
       }
+    createdAt
     }
   }
 }

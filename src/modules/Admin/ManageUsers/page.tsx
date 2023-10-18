@@ -1,44 +1,13 @@
 'use client';
 import { AdminSidebar } from '@/components/AdminSidebar';
-import React, { useState } from 'react';
 import { Button, Card, Typography } from '@material-tailwind/react';
-import { useUsers } from '../hooks/useUsers';
+import { useState } from 'react';
 import { useDeleteUser } from '../hooks/useDeleteUser';
+import { useUsers } from '../hooks/useUsers';
 
 const TABLE_HEAD = ['Name', 'Email', 'Account open', 'Action'];
 
-const TABLE_ROWS = [
-  {
-    name: 'John Michael',
-    date: '23/04/18',
-    email: 'john@example.com',
-  },
-  {
-    name: 'Alexa Liras',
-    date: '23/04/18',
-    email: 'alexa@example.com',
-  },
-  {
-    name: 'Laurent Perrier',
-    date: '19/09/17',
-    email: 'laurent@example.com',
-  },
-  {
-    name: 'Michael Levi',
-    date: '24/12/08',
-    email: 'michael@example.com',
-  },
-  {
-    name: 'Laurent Perrier',
-    date: '19/09/17',
-    email: 'laurent@example.com',
-  },
-  {
-    name: 'Michael Levi',
-    date: '24/12/08',
-    email: 'michael@example.com',
-  },
-];
+
 
 type Props = {};
 
@@ -48,15 +17,14 @@ const ManageUsers = (props: Props) => {
 
   const [searchText, setSearchText] = useState('');
 
-  const filteredRows = TABLE_ROWS.filter((row) =>
-    row.email.toLowerCase().includes(searchText.toLowerCase())
-  );
+  
+  
 
   return (
     <div className="h-screen flex flex-row justify-start">
       <AdminSidebar />
       <div className="bg-blue-gray-100 justify-center flex-1 text-black">
-        <div className="text-center text-white text-3xl bg-black p-3 m-4 rounded-md">
+        <div className="text-center text-black text-3xl font-bold m-4 ">
           Manage Users
         </div>
         <div className="m-6 bg-blue-gray-100">

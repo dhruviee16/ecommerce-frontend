@@ -17,7 +17,7 @@ export default function Profile() {
       value: 'Profile',
       desc: <UserInfo />,
     },
-    
+
     {
       label: 'orders',
       value: 'orders',

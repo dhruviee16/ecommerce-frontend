@@ -105,13 +105,6 @@ const Wizard: React.FC<IWizardProps> = ({
 
 const WizardStep = ({ children }: IWizardStepProps) => children;
 
-const initalValues = {
-  name: '',
-  email: '',
-  password: '',
-  confirmPassword: '',
-};
-
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Too Short!')
@@ -122,6 +115,8 @@ const SignupSchema = Yup.object().shape({
   confirmPassword: Yup.string()
     .required('Required')
     .equals([Yup.ref('password')], 'Passwords must match'),
+  address: Yup.string().required('Required'),
+  contactNumber: Yup.string().required('Required'),
 });
 
 const App = () => {
@@ -154,14 +149,16 @@ const App = () => {
                 label="Confirm Password"
                 name="confirmPassword"
               />
+              <FormFieldLayout label="Address" name="address" />
+              <FormFieldLayout label="Contact Number" name="contactNumber" />
             </div>
           </WizardStep>
           <WizardStep
             onSubmit={() => console.log('Step2 onSubmit')}
             validationSchema={Yup.object({
               companyName: Yup.string().required('Required'),
-              contactNumber: Yup.string().required('Required'),
-              address: Yup.string().required('Required'),
+              shopContactNumber: Yup.string().required('Required'),
+              shopAddress: Yup.string().required('Required'),
               description: Yup.string().required('Required'),
             })}
           >
@@ -173,8 +170,11 @@ const App = () => {
             </Typography>
             <div className="mb-4 flex flex-col gap-4">
               <FormFieldLayout label="Shop Name" name="companyName" />
-              <FormFieldLayout label="Contact Number" name="contactNumber" />
-              <FormFieldLayout label="Address" name="address" />
+              <FormFieldLayout
+                label="Contact Number"
+                name="shopContactNumber"
+              />
+              <FormFieldLayout label="Address" name="shopAddress" />
               <FormFieldLayout label="Description" name="description" />
             </div>
           </WizardStep>

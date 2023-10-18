@@ -8,15 +8,15 @@ import { useProduct } from '../Add-Edit-Forms/hooks/useProduct';
 import { useCreateOrder } from './hooks/useCreateOrder';
 
 type Props = {
-  id : string
+  id: string;
 };
 
-const OrderSummary:React.FC<Props> = ({id}) => {
+const OrderSummary: React.FC<Props> = ({ id }) => {
   const { data } = useCurrentUserQuery();
 
-  const { product} = useProduct(id);
+  const { product } = useProduct(id);
 
-  const {handleSubmit, loading, error} = useCreateOrder()
+  const { handleSubmit, loading, error } = useCreateOrder(product?.id);
 
   return (
     <div className="flex flex-row h-screen my-10 mx-24 gap-5">
@@ -38,7 +38,7 @@ const OrderSummary:React.FC<Props> = ({id}) => {
             orientation="horizontal"
             className="border-2 border-gray-300"
           />
-          
+
           <Typography variant="h6" className="text-gray-600">
             Address: {data?.currentUser?.addresses?.nodes[0]?.address}
           </Typography>
@@ -61,20 +61,19 @@ const OrderSummary:React.FC<Props> = ({id}) => {
             className="border-2 border-gray-300"
           />
           <Typography variant="h6" className="text-gray-600">
-            Product price:{product?.price }
+            Product price:{product?.price}
           </Typography>
           <Separator
             orientation="horizontal"
             className="border-2 border-gray-300"
           />
-          <Button onClick={
-            () => {
-              handleSubmit(product?.id)
-            }
-          } className='py-3'>
+          <Button
+            onClick={handleSubmit}
+            className="py-3"
+          >
             Confirm Order
           </Button>
-        </div>  
+        </div>
       </div>
       <div className="grow-0">
         <Separator orientation="vertical" className="border-2" />
@@ -85,7 +84,7 @@ const OrderSummary:React.FC<Props> = ({id}) => {
           alt="profile"
           className="object-contain  w-[739px]"
         />
-      </div> 
+      </div>
     </div>
   );
 };

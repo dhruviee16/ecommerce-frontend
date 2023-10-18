@@ -2547,6 +2547,8 @@ export type RegisterCompanyInput = {
   email: Scalars['String']['input'];
   name: Scalars['String']['input'];
   password: Scalars['String']['input'];
+  shopAddress: Scalars['String']['input'];
+  shopContactNumber: Scalars['String']['input'];
 };
 
 export type RegisterCompanyPayload = {
@@ -3563,6 +3565,7 @@ export type OrdersQuery = { __typename?: 'Query', orders?: { __typename?: 'Order
 
 export type ProductsQueryVariables = Exact<{
   filter?: InputMaybe<ProductFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
 }>;
 
 
@@ -4208,8 +4211,8 @@ export type OrdersQueryHookResult = ReturnType<typeof useOrdersQuery>;
 export type OrdersLazyQueryHookResult = ReturnType<typeof useOrdersLazyQuery>;
 export type OrdersQueryResult = Apollo.QueryResult<OrdersQuery, OrdersQueryVariables>;
 export const ProductsDocument = gql`
-    query Products($filter: ProductFilter) {
-  products(filter: $filter) {
+    query Products($filter: ProductFilter, $first: Int) {
+  products(filter: $filter, first: $first) {
     nodes {
       ...Lite_Product
     }
@@ -4230,6 +4233,7 @@ export const ProductsDocument = gql`
  * const { data, loading, error } = useProductsQuery({
  *   variables: {
  *      filter: // value for 'filter'
+ *      first: // value for 'first'
  *   },
  * });
  */

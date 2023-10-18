@@ -8,7 +8,7 @@ type Props = {
 };
 
 const Page: React.FC<Props> = ({ params: { id } }) => {
-  return <OrderSummary id={id}/>;
+  return <OrderSummary id={id} />;
 };
 
 export default Page;

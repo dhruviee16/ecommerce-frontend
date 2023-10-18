@@ -42,42 +42,40 @@ const UserInfo = (props: Props) => {
             orientation="horizontal"
             className="border-2 border-gray-300"
           />
-          {!data?.currentUser?.company?.id && (
-            <>
-              <Typography variant="h6" className="text-gray-600">
-                Address: {data?.currentUser?.addresses?.nodes[0]?.address}
-              </Typography>
-              <Separator
-                orientation="horizontal"
-                className="border-2 border-gray-300"
-              />
-              <Typography variant="h6" className="text-gray-600">
-                Contact No:{' '}
-                {data?.currentUser?.addresses?.nodes[0]?.contactNumber}
-              </Typography>
-              <Separator
-                orientation="horizontal"
-                className="border-2 border-gray-300"
-              />
-              <div className="">
-                <AlertDialog>
-                  <AlertDialogTrigger asChild>
-                    <Button
-                      size="lg"
-                      className="flex flex-row content-start border-gray-800 border-2 absolute bg-black text-white hover:bg-white hover:text-black"
-                    >
-                      <div className="flex flex-row gap-x-3 ">Edit Details</div>
-                    </Button>
-                  </AlertDialogTrigger>
-                  <AlertDialogContent className="">
-                    <EditUserProfile
-                      id={data?.currentUser?.addresses?.nodes[0]?.id}
-                    />
-                  </AlertDialogContent>
-                </AlertDialog>
-              </div>{' '}
-            </>
-          )}
+          <>
+            <Typography variant="h6" className="text-gray-600">
+              Address: {data?.currentUser?.addresses?.nodes[0]?.address}
+            </Typography>
+            <Separator
+              orientation="horizontal"
+              className="border-2 border-gray-300"
+            />
+            <Typography variant="h6" className="text-gray-600">
+              Contact No:{' '}
+              {data?.currentUser?.addresses?.nodes[0]?.contactNumber}
+            </Typography>
+            <Separator
+              orientation="horizontal"
+              className="border-2 border-gray-300"
+            />
+            <div className="">
+              <AlertDialog>
+                <AlertDialogTrigger asChild>
+                  <Button
+                    size="lg"
+                    className="flex flex-row content-start border-gray-800 border-2 absolute bg-black text-white hover:bg-white hover:text-black"
+                  >
+                    <div className="flex flex-row gap-x-3 ">Edit Details</div>
+                  </Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent className="">
+                  <EditUserProfile
+                    id={data?.currentUser?.addresses?.nodes[0]?.id}
+                  />
+                </AlertDialogContent>
+              </AlertDialog>
+            </div>{' '}
+          </>
         </div>
       </div>
       <div className="grow-0">

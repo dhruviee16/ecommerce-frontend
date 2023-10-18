@@ -1,7 +1,8 @@
+import Layout from '@/components/Layout';
 import { TraderProfile } from '@/modules/profile/trader';
 
 const page = () => {
-  return <TraderProfile />;
+  return <Layout><TraderProfile /></Layout>;
 };
 
 export default page;

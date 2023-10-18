@@ -1,3 +1,4 @@
+import Layout from '@/components/Layout';
 import OrderSummary from '@/modules/products/OrderSummary';
 import React from 'react';
 
@@ -8,7 +9,7 @@ type Props = {
 };
 
 const Page: React.FC<Props> = ({ params: { id } }) => {
-  return <OrderSummary id={id} />;
+  return <Layout><OrderSummary id={id} /></Layout>;
 };
 
 export default Page;

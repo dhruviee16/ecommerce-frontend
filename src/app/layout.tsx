@@ -5,6 +5,7 @@ import { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { Toaster } from 'react-hot-toast';
+import { WithApollo } from '@/modules/apollo';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,12 +22,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Layout>
-          <Navigation />
+        <WithApollo>
           {children}
           <Toaster />
-          <Footer />
-        </Layout>
+        </WithApollo>
       </body>
     </html>
   );

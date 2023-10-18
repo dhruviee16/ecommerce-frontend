@@ -1,3 +1,4 @@
+import Layout from '@/components/Layout';
 import { ProductsList } from '@/modules/products';
 import { useProducts } from '@/modules/products/hooks/useProducts';
 
@@ -15,11 +16,11 @@ const Products: React.FC<Props> = ({ params }) => {
   const { slug } = params;
 
   return (
-    <div>
+    <Layout>
       <div className="justify-center items-center">
         <ProductsList slug={slug} />
       </div>
-    </div>
+    </Layout>
   );
 };
 

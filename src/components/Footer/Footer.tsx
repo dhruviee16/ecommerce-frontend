@@ -49,7 +49,7 @@ const LINKS = [
     items: [
       {
         title: 'About Us',
-        link: 'aboutus',
+        link: '/aboutus',
       },
     ],
   },
@@ -107,7 +107,7 @@ function Footer() {
             className="mb-4 text-center font-normal text-blue-gray-900 md:mb-0"
           >
             &copy; {currentYear}{' '}
-            <a href="https://material-tailwind.com/">Material Tailwind</a>. All
+            Arty Us. All
             Rights Reserved.
           </Typography>
         </div>

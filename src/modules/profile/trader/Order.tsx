@@ -2,8 +2,15 @@
 //   title?: string;
 // }
 
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
 import { useCurrentUserQuery } from '@/generated/graphql';
 import { useOrders } from '@/modules/products/hooks/useOrders';
+import { Button } from '@material-tailwind/react';
+import UpdateOrderStatus from './UpdateOrderStatus';
 
 export default function Order() {
   const { data } = useCurrentUserQuery();
@@ -39,12 +46,18 @@ export default function Order() {
                 >
                   Address
                 </th>
-                {/* <th
+                <th
                   scope="col"
                   className="border-b border-gray-200 bg-white  px-5 py-3 text-left  text-sm font-normal uppercase text-gray-800"
                 >
                   status
-                </th> */}
+                </th>
+                <th
+                  scope="col"
+                  className="border-b border-gray-200 bg-white px-14 py-3 text-left text-sm font-normal uppercase text-gray-800"
+                >
+                  action
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -70,11 +83,32 @@ export default function Order() {
                         {order.address?.address}
                       </p>
                     </td>
-                    {/* <td className="border-b border-gray-200 bg-white p-5 text-sm">
+                    <td className="border-b border-gray-200 bg-white p-5 text-sm">
                       <p className="whitespace-nowrap text-gray-900">
                         {order.status}
                       </p>
-                    </td> */}
+                    </td>
+                    <td className="border-b border-gray-200 bg-white p-5 text-sm">
+                      <p className="whitespace-nowrap text-gray-900">
+                        <AlertDialog>
+                          <AlertDialogTrigger className='m-0' asChild>
+                            <Button
+                              variant="text"
+                              className='m-0'
+                              disabled={order.status !== 'PENDING'}
+                            >
+                              Update Status
+                            </Button>
+                          </AlertDialogTrigger>
+                          <AlertDialogContent className="">
+                            <UpdateOrderStatus
+                              status={order.status}
+                              id={order.id}
+                            />
+                          </AlertDialogContent>
+                        </AlertDialog>
+                      </p>
+                    </td>
                   </tr>
                 ))}
             </tbody>

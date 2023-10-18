@@ -1,0 +1,10 @@
+mutation UpdateOrder($id: UUID!, $order: OrderPatch!) {
+  updateOrder(input: { patch: $order, id: $id }) {
+    order {
+      id
+      status
+      productId
+      userId
+    }
+  }
+}

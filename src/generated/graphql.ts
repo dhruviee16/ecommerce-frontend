@@ -3604,6 +3604,13 @@ export type CompanyQueryVariables = Exact<{
 
 export type CompanyQuery = { __typename?: 'Query', company?: { __typename?: 'Company', id: any, name: string, description?: string | null, user?: { __typename?: 'User', id: any, name?: string | null, email: string, type: string, isAdmin: boolean, addresses: { __typename?: 'AddressesConnection', nodes: Array<{ __typename?: 'Address', id: any, address?: string | null, contactNumber?: string | null }> }, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null } | null, address?: { __typename?: 'Address', id: any, address?: string | null, contactNumber?: string | null } | null } | null };
 
+export type OrderQueryVariables = Exact<{
+  id: Scalars['UUID']['input'];
+}>;
+
+
+export type OrderQuery = { __typename?: 'Query', order?: { __typename?: 'Order', id: any, status: string, productId: any, userId: any } | null };
+
 export type UpdateCompanyMutationVariables = Exact<{
   id: Scalars['UUID']['input'];
   company: CompanyPatch;
@@ -3611,6 +3618,14 @@ export type UpdateCompanyMutationVariables = Exact<{
 
 
 export type UpdateCompanyMutation = { __typename?: 'Mutation', updateCompany?: { __typename?: 'UpdateCompanyPayload', company?: { __typename?: 'Company', id: any, name: string, description?: string | null, address?: { __typename?: 'Address', id: any, address?: string | null, contactNumber?: string | null } | null } | null } | null };
+
+export type UpdateOrderMutationVariables = Exact<{
+  id: Scalars['UUID']['input'];
+  order: OrderPatch;
+}>;
+
+
+export type UpdateOrderMutation = { __typename?: 'Mutation', updateOrder?: { __typename?: 'UpdateOrderPayload', order?: { __typename?: 'Order', id: any, status: string, productId: any, userId: any } | null } | null };
 
 export const Lite_CategoryFragmentDoc = gql`
     fragment Lite_Category on Category {
@@ -4474,6 +4489,44 @@ export function useCompanyLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Co
 export type CompanyQueryHookResult = ReturnType<typeof useCompanyQuery>;
 export type CompanyLazyQueryHookResult = ReturnType<typeof useCompanyLazyQuery>;
 export type CompanyQueryResult = Apollo.QueryResult<CompanyQuery, CompanyQueryVariables>;
+export const OrderDocument = gql`
+    query Order($id: UUID!) {
+  order(id: $id) {
+    id
+    status
+    productId
+    userId
+  }
+}
+    `;
+
+/**
+ * __useOrderQuery__
+ *
+ * To run a query within a React component, call `useOrderQuery` and pass it any options that fit your needs.
+ * When your component renders, `useOrderQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useOrderQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useOrderQuery(baseOptions: Apollo.QueryHookOptions<OrderQuery, OrderQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<OrderQuery, OrderQueryVariables>(OrderDocument, options);
+      }
+export function useOrderLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<OrderQuery, OrderQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<OrderQuery, OrderQueryVariables>(OrderDocument, options);
+        }
+export type OrderQueryHookResult = ReturnType<typeof useOrderQuery>;
+export type OrderLazyQueryHookResult = ReturnType<typeof useOrderLazyQuery>;
+export type OrderQueryResult = Apollo.QueryResult<OrderQuery, OrderQueryVariables>;
 export const UpdateCompanyDocument = gql`
     mutation UpdateCompany($id: UUID!, $company: CompanyPatch!) {
   updateCompany(input: {patch: $company, id: $id}) {
@@ -4511,3 +4564,42 @@ export function useUpdateCompanyMutation(baseOptions?: Apollo.MutationHookOption
 export type UpdateCompanyMutationHookResult = ReturnType<typeof useUpdateCompanyMutation>;
 export type UpdateCompanyMutationResult = Apollo.MutationResult<UpdateCompanyMutation>;
 export type UpdateCompanyMutationOptions = Apollo.BaseMutationOptions<UpdateCompanyMutation, UpdateCompanyMutationVariables>;
+export const UpdateOrderDocument = gql`
+    mutation UpdateOrder($id: UUID!, $order: OrderPatch!) {
+  updateOrder(input: {patch: $order, id: $id}) {
+    order {
+      id
+      status
+      productId
+      userId
+    }
+  }
+}
+    `;
+export type UpdateOrderMutationFn = Apollo.MutationFunction<UpdateOrderMutation, UpdateOrderMutationVariables>;
+
+/**
+ * __useUpdateOrderMutation__
+ *
+ * To run a mutation, you first call `useUpdateOrderMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateOrderMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateOrderMutation, { data, loading, error }] = useUpdateOrderMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      order: // value for 'order'
+ *   },
+ * });
+ */
+export function useUpdateOrderMutation(baseOptions?: Apollo.MutationHookOptions<UpdateOrderMutation, UpdateOrderMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateOrderMutation, UpdateOrderMutationVariables>(UpdateOrderDocument, options);
+      }
+export type UpdateOrderMutationHookResult = ReturnType<typeof useUpdateOrderMutation>;
+export type UpdateOrderMutationResult = Apollo.MutationResult<UpdateOrderMutation>;
+export type UpdateOrderMutationOptions = Apollo.BaseMutationOptions<UpdateOrderMutation, UpdateOrderMutationVariables>;

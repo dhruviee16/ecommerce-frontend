@@ -62,7 +62,9 @@ export default function Order() {
                       </div>
                     </td>
                     <td className="border-b border-gray-200 bg-white p-5 text-sm">
-                      <p className="whitespace-nowrap text-gray-900">{order.product?.name}</p>
+                      <p className="whitespace-nowrap text-gray-900">
+                        {order.product?.name}
+                      </p>
                     </td>
                     <td className="border-b border-gray-200 bg-white p-5 text-sm">
                       <p className="whitespace-nowrap text-gray-900">

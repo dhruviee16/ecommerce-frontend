@@ -1,5 +1,5 @@
-query Products($filter: ProductFilter) {
-  products(filter: $filter) {
+query Products($filter: ProductFilter, $first: Int) {
+  products(filter: $filter, first: $first) {
     nodes {
       ...Lite_Product
     }

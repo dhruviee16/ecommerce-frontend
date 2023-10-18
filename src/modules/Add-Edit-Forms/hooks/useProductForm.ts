@@ -86,8 +86,6 @@ export const useProductForm = (id?: string) => {
     }
   );
 
-  console.log(initialValues);
-
   return {
     initialValues,
     validationSchema: productSchema,

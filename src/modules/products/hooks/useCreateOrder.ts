@@ -2,10 +2,13 @@ import {
   useCreateOrderMutation,
   useCurrentUserQuery,
 } from '@/generated/graphql';
+import { useProduct } from '@/modules/Add-Edit-Forms/hooks/useProduct';
 import toast from 'react-hot-toast';
 
-export const useCreateOrder = () => {
+export const useCreateOrder = (id: any) => {
   const { data } = useCurrentUserQuery();
+
+  const { product } = useProduct(id)
 
   const [createOrder, { data: orderData, loading, error }] =
     useCreateOrderMutation({
@@ -17,9 +20,14 @@ export const useCreateOrder = () => {
       },
     });
 
-  const handleSubmit = (id: any) => {
+  const handleSubmit = () => {
     if (!data) {
       toast.error('You must be logged in to create an order');
+      return;
+    }
+
+    if (data.currentUser?.company?.id === product?.company?.id) {
+      toast.error('You cannot order your own product');
       return;
     }
 

@@ -8,15 +8,15 @@ export const useOrders = (filters: any) => {
           {
             userId: {
               equalTo: filters?.userId || null,
-            }
+            },
           },
           {
             product: {
               categoryId: {
                 equalTo: filters?.categoryId || null,
-              }
-            }
-          }
+              },
+            },
+          },
         ],
       },
     },
@@ -24,5 +24,5 @@ export const useOrders = (filters: any) => {
 
   return {
     orders: data?.orders?.nodes || [],
-  }
+  };
 };

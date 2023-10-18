@@ -9,7 +9,6 @@ interface Props {
 }
 
 const ProductDetails: React.FC<Props> = ({ slug }) => {
-
   const { product } = useProduct(slug);
 
   return (

@@ -3,7 +3,6 @@ type ImgUrls = {
 };
 
 export const imgUrls: ImgUrls = {
-  
   '1ba43666-97e1-44ed-8333-3fe4a84a5388': [
     '/image/products/1ba43666-97e1-44ed-8333-3fe4a84a5388/fabric1.jpg',
     '/image/products/1ba43666-97e1-44ed-8333-3fe4a84a5388/fabric2.jpg',

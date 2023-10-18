@@ -56,7 +56,7 @@ const SignInForm = () => {
           )}
         </FormLayout>
       </Card>
-          {/* <div className="">
+      {/* <div className="">
             <Separator orientation="vertical" className="border-2" />
           </div> */}
       <div className="mt-2">

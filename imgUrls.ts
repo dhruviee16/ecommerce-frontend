@@ -156,6 +156,7 @@ export const imgUrls: ImgUrls = {
     '/image/products/9ed82091-17e9-46df-85ae-f28cb76a90dd/vintage12.jpeg',
     '/image/products/9ed82091-17e9-46df-85ae-f28cb76a90dd/vintage13.jpeg',
     '/image/products/9ed82091-17e9-46df-85ae-f28cb76a90dd/vintage14.jpeg',
+    '/image/products/9ed82091-17e9-46df-85ae-f28cb76a90dd/vintage15.jpeg',
   ],
   '12e5c375-3dc9-460f-907a-13934eaed6f7': [
     '/image/products/12e5c375-3dc9-460f-907a-13934eaed6f7/gt1.jpeg',
@@ -172,6 +173,7 @@ export const imgUrls: ImgUrls = {
     '/image/products/12e5c375-3dc9-460f-907a-13934eaed6f7/gt12.jpeg',
     '/image/products/12e5c375-3dc9-460f-907a-13934eaed6f7/gt13.jpeg',
     '/image/products/12e5c375-3dc9-460f-907a-13934eaed6f7/gt14.jpeg',
+    
   ],
   '23a81091-108f-497c-9a2a-a239c7f1f303': [
     '/image/products/23a81091-108f-497c-9a2a-a239c7f1f303/pens1.jpg',
@@ -322,6 +324,9 @@ export const imgUrls: ImgUrls = {
     '/image/products/a71742e2-11ba-4536-ab0d-9752e0800358/simple9.jpeg',
     '/image/products/a71742e2-11ba-4536-ab0d-9752e0800358/simple10.jpeg',
     '/image/products/a71742e2-11ba-4536-ab0d-9752e0800358/simple11.jpeg',
+    '/image/products/a71742e2-11ba-4536-ab0d-9752e0800358/simple12.jpeg',
+    '/image/products/a71742e2-11ba-4536-ab0d-9752e0800358/simple13.jpeg',
+    '/image/products/a71742e2-11ba-4536-ab0d-9752e0800358/simple14.jpeg',
   ],
 
   'a8285722-4a3b-4039-b5e1-33087e928893': [
@@ -559,5 +564,6 @@ export const imgUrls: ImgUrls = {
     '/image/products/f805df5d-a323-4351-8b33-a78440be809f/acry15.jpeg',
     '/image/products/f805df5d-a323-4351-8b33-a78440be809f/acry16.jpeg',
     '/image/products/f805df5d-a323-4351-8b33-a78440be809f/acry17.jpeg',
+    '/image/products/f805df5d-a323-4351-8b33-a78440be809f/acry18.jpeg',
   ],
 };

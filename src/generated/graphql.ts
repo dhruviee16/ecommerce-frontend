@@ -2,23 +2,36 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
-export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
+export type MakeEmpty<
+  T extends { [key: string]: unknown },
+  K extends keyof T
+> = { [_ in K]?: never };
+export type Incremental<T> =
+  | T
+  | {
+      [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never;
+    };
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string; }
-  String: { input: string; output: string; }
-  Boolean: { input: boolean; output: boolean; }
-  Int: { input: number; output: number; }
-  Float: { input: number; output: number; }
-  BigFloat: { input: any; output: any; }
-  Cursor: { input: any; output: any; }
-  Datetime: { input: any; output: any; }
-  UUID: { input: any; output: any; }
+  ID: { input: string; output: string };
+  String: { input: string; output: string };
+  Boolean: { input: boolean; output: boolean };
+  Int: { input: number; output: number };
+  Float: { input: number; output: number };
+  BigFloat: { input: any; output: any };
+  Cursor: { input: any; output: any };
+  Datetime: { input: any; output: any };
+  UUID: { input: any; output: any };
 };
 
 export type Address = {
@@ -43,7 +56,6 @@ export type Address = {
   usersByOrderAddressIdAndUserId: AddressUsersByOrderAddressIdAndUserIdManyToManyConnection;
 };
 
-
 export type AddressOrdersArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
@@ -55,7 +67,6 @@ export type AddressOrdersArgs = {
   orderBy?: InputMaybe<Array<OrdersOrderBy>>;
 };
 
-
 export type AddressProductsByOrderAddressIdAndProductIdArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
@@ -66,7 +77,6 @@ export type AddressProductsByOrderAddressIdAndProductIdArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<ProductsOrderBy>>;
 };
-
 
 export type AddressUsersByOrderAddressIdAndUserIdArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
@@ -150,25 +160,28 @@ export type AddressInput = {
 };
 
 /** The fields on `address` to look up the row to update. */
-export type AddressOnAddressForAddressesCompanyIdFkeyUsingAddressesCompanyIdKeyUpdate = {
-  companyId: Scalars['UUID']['input'];
-  /** An object where the defined keys will be set on the `address` being updated. */
-  patch: UpdateAddressOnAddressForAddressesCompanyIdFkeyPatch;
-};
+export type AddressOnAddressForAddressesCompanyIdFkeyUsingAddressesCompanyIdKeyUpdate =
+  {
+    companyId: Scalars['UUID']['input'];
+    /** An object where the defined keys will be set on the `address` being updated. */
+    patch: UpdateAddressOnAddressForAddressesCompanyIdFkeyPatch;
+  };
 
 /** The fields on `address` to look up the row to update. */
-export type AddressOnAddressForAddressesCompanyIdFkeyUsingAddressesPkeyUpdate = {
-  id: Scalars['UUID']['input'];
-  /** An object where the defined keys will be set on the `address` being updated. */
-  patch: UpdateAddressOnAddressForAddressesCompanyIdFkeyPatch;
-};
+export type AddressOnAddressForAddressesCompanyIdFkeyUsingAddressesPkeyUpdate =
+  {
+    id: Scalars['UUID']['input'];
+    /** An object where the defined keys will be set on the `address` being updated. */
+    patch: UpdateAddressOnAddressForAddressesCompanyIdFkeyPatch;
+  };
 
 /** The fields on `address` to look up the row to update. */
-export type AddressOnAddressForAddressesUserIdFkeyUsingAddressesCompanyIdKeyUpdate = {
-  companyId: Scalars['UUID']['input'];
-  /** An object where the defined keys will be set on the `address` being updated. */
-  patch: UpdateAddressOnAddressForAddressesUserIdFkeyPatch;
-};
+export type AddressOnAddressForAddressesUserIdFkeyUsingAddressesCompanyIdKeyUpdate =
+  {
+    companyId: Scalars['UUID']['input'];
+    /** An object where the defined keys will be set on the `address` being updated. */
+    patch: UpdateAddressOnAddressForAddressesUserIdFkeyPatch;
+  };
 
 /** The fields on `address` to look up the row to update. */
 export type AddressOnAddressForAddressesUserIdFkeyUsingAddressesPkeyUpdate = {
@@ -178,11 +191,12 @@ export type AddressOnAddressForAddressesUserIdFkeyUsingAddressesPkeyUpdate = {
 };
 
 /** The fields on `address` to look up the row to update. */
-export type AddressOnOrderForOrdersAddressIdFkeyUsingAddressesCompanyIdKeyUpdate = {
-  companyId: Scalars['UUID']['input'];
-  /** An object where the defined keys will be set on the `address` being updated. */
-  patch: UpdateAddressOnOrderForOrdersAddressIdFkeyPatch;
-};
+export type AddressOnOrderForOrdersAddressIdFkeyUsingAddressesCompanyIdKeyUpdate =
+  {
+    companyId: Scalars['UUID']['input'];
+    /** An object where the defined keys will be set on the `address` being updated. */
+    patch: UpdateAddressOnOrderForOrdersAddressIdFkeyPatch;
+  };
 
 /** The fields on `address` to look up the row to update. */
 export type AddressOnOrderForOrdersAddressIdFkeyUsingAddressesPkeyUpdate = {
@@ -227,18 +241,18 @@ export type AddressProductsByOrderAddressIdAndProductIdManyToManyEdge = {
   orders: OrdersConnection;
 };
 
-
 /** A `Product` edge in the connection, with data from `Order`. */
-export type AddressProductsByOrderAddressIdAndProductIdManyToManyEdgeOrdersArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  condition?: InputMaybe<OrderCondition>;
-  filter?: InputMaybe<OrderFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<OrdersOrderBy>>;
-};
+export type AddressProductsByOrderAddressIdAndProductIdManyToManyEdgeOrdersArgs =
+  {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    condition?: InputMaybe<OrderCondition>;
+    filter?: InputMaybe<OrderFilter>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    orderBy?: InputMaybe<Array<OrdersOrderBy>>;
+  };
 
 /** A filter to be used against many `Order` object types. All fields are combined with a logical ‘and.’ */
 export type AddressToManyOrderFilter = {
@@ -273,7 +287,6 @@ export type AddressUsersByOrderAddressIdAndUserIdManyToManyEdge = {
   /** Reads and enables pagination through a set of `Order`. */
   orders: OrdersConnection;
 };
-
 
 /** A `User` edge in the connection, with data from `Order`. */
 export type AddressUsersByOrderAddressIdAndUserIdManyToManyEdgeOrdersArgs = {
@@ -379,7 +392,7 @@ export enum AddressesOrderBy {
   PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
   PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
   UserIdAsc = 'USER_ID_ASC',
-  UserIdDesc = 'USER_ID_DESC'
+  UserIdDesc = 'USER_ID_DESC',
 }
 
 /** The `address` to be created by this mutation. */
@@ -420,9 +433,13 @@ export type AddressesUserIdFkeyInverseInput = {
   /** Flag indicating whether all other `address` records that match this relationship should be removed. */
   deleteOthers?: InputMaybe<Scalars['Boolean']['input']>;
   /** The primary key(s) and patch data for `address` for the far side of the relationship. */
-  updateByCompanyId?: InputMaybe<Array<AddressOnAddressForAddressesUserIdFkeyUsingAddressesCompanyIdKeyUpdate>>;
+  updateByCompanyId?: InputMaybe<
+    Array<AddressOnAddressForAddressesUserIdFkeyUsingAddressesCompanyIdKeyUpdate>
+  >;
   /** The primary key(s) and patch data for `address` for the far side of the relationship. */
-  updateById?: InputMaybe<Array<AddressOnAddressForAddressesUserIdFkeyUsingAddressesPkeyUpdate>>;
+  updateById?: InputMaybe<
+    Array<AddressOnAddressForAddressesUserIdFkeyUsingAddressesPkeyUpdate>
+  >;
 };
 
 /** The `user` to be created by this mutation. */
@@ -493,7 +510,7 @@ export enum CategoriesOrderBy {
   PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
   PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
   SlugAsc = 'SLUG_ASC',
-  SlugDesc = 'SLUG_DESC'
+  SlugDesc = 'SLUG_DESC',
 }
 
 export type Category = {
@@ -516,7 +533,6 @@ export type Category = {
   updatedAt: Scalars['Datetime']['output'];
 };
 
-
 export type CategoryChildCategoriesArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
@@ -528,7 +544,6 @@ export type CategoryChildCategoriesArgs = {
   orderBy?: InputMaybe<Array<CategoriesOrderBy>>;
 };
 
-
 export type CategoryCompaniesByProductCategoryIdAndCompanyIdArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
@@ -539,7 +554,6 @@ export type CategoryCompaniesByProductCategoryIdAndCompanyIdArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<CompaniesOrderBy>>;
 };
-
 
 export type CategoryProductsArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
@@ -563,17 +577,18 @@ export type CategoryCategoriesPkeyDelete = {
 };
 
 /** A connection to a list of `Company` values, with data from `Product`. */
-export type CategoryCompaniesByProductCategoryIdAndCompanyIdManyToManyConnection = {
-  __typename?: 'CategoryCompaniesByProductCategoryIdAndCompanyIdManyToManyConnection';
-  /** A list of edges which contains the `Company`, info from the `Product`, and the cursor to aid in pagination. */
-  edges: Array<CategoryCompaniesByProductCategoryIdAndCompanyIdManyToManyEdge>;
-  /** A list of `Company` objects. */
-  nodes: Array<Company>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /** The count of *all* `Company` you could get from the connection. */
-  totalCount: Scalars['Int']['output'];
-};
+export type CategoryCompaniesByProductCategoryIdAndCompanyIdManyToManyConnection =
+  {
+    __typename?: 'CategoryCompaniesByProductCategoryIdAndCompanyIdManyToManyConnection';
+    /** A list of edges which contains the `Company`, info from the `Product`, and the cursor to aid in pagination. */
+    edges: Array<CategoryCompaniesByProductCategoryIdAndCompanyIdManyToManyEdge>;
+    /** A list of `Company` objects. */
+    nodes: Array<Company>;
+    /** Information to aid in pagination. */
+    pageInfo: PageInfo;
+    /** The count of *all* `Company` you could get from the connection. */
+    totalCount: Scalars['Int']['output'];
+  };
 
 /** A `Company` edge in the connection, with data from `Product`. */
 export type CategoryCompaniesByProductCategoryIdAndCompanyIdManyToManyEdge = {
@@ -586,18 +601,18 @@ export type CategoryCompaniesByProductCategoryIdAndCompanyIdManyToManyEdge = {
   products: ProductsConnection;
 };
 
-
 /** A `Company` edge in the connection, with data from `Product`. */
-export type CategoryCompaniesByProductCategoryIdAndCompanyIdManyToManyEdgeProductsArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  condition?: InputMaybe<ProductCondition>;
-  filter?: InputMaybe<ProductFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<ProductsOrderBy>>;
-};
+export type CategoryCompaniesByProductCategoryIdAndCompanyIdManyToManyEdgeProductsArgs =
+  {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    condition?: InputMaybe<ProductCondition>;
+    filter?: InputMaybe<ProductFilter>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    orderBy?: InputMaybe<Array<ProductsOrderBy>>;
+  };
 
 /**
  * A condition to be used against `Category` object types. All fields are tested
@@ -655,18 +670,20 @@ export type CategoryInput = {
 };
 
 /** The fields on `category` to look up the row to update. */
-export type CategoryOnCategoryForCategoriesCategoryIdFkeyUsingCategoriesPkeyUpdate = {
-  id: Scalars['UUID']['input'];
-  /** An object where the defined keys will be set on the `category` being updated. */
-  patch: UpdateCategoryOnCategoryForCategoriesCategoryIdFkeyPatch;
-};
+export type CategoryOnCategoryForCategoriesCategoryIdFkeyUsingCategoriesPkeyUpdate =
+  {
+    id: Scalars['UUID']['input'];
+    /** An object where the defined keys will be set on the `category` being updated. */
+    patch: UpdateCategoryOnCategoryForCategoriesCategoryIdFkeyPatch;
+  };
 
 /** The fields on `category` to look up the row to update. */
-export type CategoryOnProductForProductsCategoryIdFkeyUsingCategoriesPkeyUpdate = {
-  id: Scalars['UUID']['input'];
-  /** An object where the defined keys will be set on the `category` being updated. */
-  patch: UpdateCategoryOnProductForProductsCategoryIdFkeyPatch;
-};
+export type CategoryOnProductForProductsCategoryIdFkeyUsingCategoriesPkeyUpdate =
+  {
+    id: Scalars['UUID']['input'];
+    /** An object where the defined keys will be set on the `category` being updated. */
+    patch: UpdateCategoryOnProductForProductsCategoryIdFkeyPatch;
+  };
 
 /** Represents an update to a `Category`. Fields that are set will be updated. */
 export type CategoryPatch = {
@@ -728,7 +745,7 @@ export enum CompaniesOrderBy {
   PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
   PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
   UserIdAsc = 'USER_ID_ASC',
-  UserIdDesc = 'USER_ID_DESC'
+  UserIdDesc = 'USER_ID_DESC',
 }
 
 /** The `company` to be created by this mutation. */
@@ -810,7 +827,6 @@ export type Company = {
   userId: Scalars['UUID']['output'];
 };
 
-
 export type CompanyAddressesArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
@@ -822,7 +838,6 @@ export type CompanyAddressesArgs = {
   orderBy?: InputMaybe<Array<AddressesOrderBy>>;
 };
 
-
 export type CompanyCategoriesByProductCompanyIdAndCategoryIdArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
@@ -833,7 +848,6 @@ export type CompanyCategoriesByProductCompanyIdAndCategoryIdArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<CategoriesOrderBy>>;
 };
-
 
 export type CompanyProductsArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
@@ -847,17 +861,18 @@ export type CompanyProductsArgs = {
 };
 
 /** A connection to a list of `Category` values, with data from `Product`. */
-export type CompanyCategoriesByProductCompanyIdAndCategoryIdManyToManyConnection = {
-  __typename?: 'CompanyCategoriesByProductCompanyIdAndCategoryIdManyToManyConnection';
-  /** A list of edges which contains the `Category`, info from the `Product`, and the cursor to aid in pagination. */
-  edges: Array<CompanyCategoriesByProductCompanyIdAndCategoryIdManyToManyEdge>;
-  /** A list of `Category` objects. */
-  nodes: Array<Category>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /** The count of *all* `Category` you could get from the connection. */
-  totalCount: Scalars['Int']['output'];
-};
+export type CompanyCategoriesByProductCompanyIdAndCategoryIdManyToManyConnection =
+  {
+    __typename?: 'CompanyCategoriesByProductCompanyIdAndCategoryIdManyToManyConnection';
+    /** A list of edges which contains the `Category`, info from the `Product`, and the cursor to aid in pagination. */
+    edges: Array<CompanyCategoriesByProductCompanyIdAndCategoryIdManyToManyEdge>;
+    /** A list of `Category` objects. */
+    nodes: Array<Category>;
+    /** Information to aid in pagination. */
+    pageInfo: PageInfo;
+    /** The count of *all* `Category` you could get from the connection. */
+    totalCount: Scalars['Int']['output'];
+  };
 
 /** A `Category` edge in the connection, with data from `Product`. */
 export type CompanyCategoriesByProductCompanyIdAndCategoryIdManyToManyEdge = {
@@ -870,18 +885,18 @@ export type CompanyCategoriesByProductCompanyIdAndCategoryIdManyToManyEdge = {
   products: ProductsConnection;
 };
 
-
 /** A `Category` edge in the connection, with data from `Product`. */
-export type CompanyCategoriesByProductCompanyIdAndCategoryIdManyToManyEdgeProductsArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  condition?: InputMaybe<ProductCondition>;
-  filter?: InputMaybe<ProductFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<ProductsOrderBy>>;
-};
+export type CompanyCategoriesByProductCompanyIdAndCategoryIdManyToManyEdgeProductsArgs =
+  {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    condition?: InputMaybe<ProductCondition>;
+    filter?: InputMaybe<ProductFilter>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    orderBy?: InputMaybe<Array<ProductsOrderBy>>;
+  };
 
 /** The fields on `company` to look up the row to connect. */
 export type CompanyCompaniesPkeyConnect = {
@@ -947,18 +962,20 @@ export type CompanyInput = {
 };
 
 /** The fields on `company` to look up the row to update. */
-export type CompanyOnAddressForAddressesCompanyIdFkeyUsingCompaniesPkeyUpdate = {
-  id: Scalars['UUID']['input'];
-  /** An object where the defined keys will be set on the `company` being updated. */
-  patch: UpdateCompanyOnAddressForAddressesCompanyIdFkeyPatch;
-};
+export type CompanyOnAddressForAddressesCompanyIdFkeyUsingCompaniesPkeyUpdate =
+  {
+    id: Scalars['UUID']['input'];
+    /** An object where the defined keys will be set on the `company` being updated. */
+    patch: UpdateCompanyOnAddressForAddressesCompanyIdFkeyPatch;
+  };
 
 /** The fields on `company` to look up the row to update. */
-export type CompanyOnAddressForAddressesCompanyIdFkeyUsingCompaniesUserIdKeyUpdate = {
-  /** An object where the defined keys will be set on the `company` being updated. */
-  patch: UpdateCompanyOnAddressForAddressesCompanyIdFkeyPatch;
-  userId: Scalars['UUID']['input'];
-};
+export type CompanyOnAddressForAddressesCompanyIdFkeyUsingCompaniesUserIdKeyUpdate =
+  {
+    /** An object where the defined keys will be set on the `company` being updated. */
+    patch: UpdateCompanyOnAddressForAddressesCompanyIdFkeyPatch;
+    userId: Scalars['UUID']['input'];
+  };
 
 /** The fields on `company` to look up the row to update. */
 export type CompanyOnCompanyForCompaniesUserIdFkeyUsingCompaniesPkeyUpdate = {
@@ -968,11 +985,12 @@ export type CompanyOnCompanyForCompaniesUserIdFkeyUsingCompaniesPkeyUpdate = {
 };
 
 /** The fields on `company` to look up the row to update. */
-export type CompanyOnCompanyForCompaniesUserIdFkeyUsingCompaniesUserIdKeyUpdate = {
-  /** An object where the defined keys will be set on the `company` being updated. */
-  patch: UpdateCompanyOnCompanyForCompaniesUserIdFkeyPatch;
-  userId: Scalars['UUID']['input'];
-};
+export type CompanyOnCompanyForCompaniesUserIdFkeyUsingCompaniesUserIdKeyUpdate =
+  {
+    /** An object where the defined keys will be set on the `company` being updated. */
+    patch: UpdateCompanyOnCompanyForCompaniesUserIdFkeyPatch;
+    userId: Scalars['UUID']['input'];
+  };
 
 /** The fields on `company` to look up the row to update. */
 export type CompanyOnProductForProductsCompanyIdFkeyUsingCompaniesPkeyUpdate = {
@@ -982,11 +1000,12 @@ export type CompanyOnProductForProductsCompanyIdFkeyUsingCompaniesPkeyUpdate = {
 };
 
 /** The fields on `company` to look up the row to update. */
-export type CompanyOnProductForProductsCompanyIdFkeyUsingCompaniesUserIdKeyUpdate = {
-  /** An object where the defined keys will be set on the `company` being updated. */
-  patch: UpdateCompanyOnProductForProductsCompanyIdFkeyPatch;
-  userId: Scalars['UUID']['input'];
-};
+export type CompanyOnProductForProductsCompanyIdFkeyUsingCompaniesUserIdKeyUpdate =
+  {
+    /** An object where the defined keys will be set on the `company` being updated. */
+    patch: UpdateCompanyOnProductForProductsCompanyIdFkeyPatch;
+    userId: Scalars['UUID']['input'];
+  };
 
 /** Represents an update to a `Company`. Fields that are set will be updated. */
 export type CompanyPatch = {
@@ -1040,7 +1059,6 @@ export type CreateAddressPayload = {
   user?: Maybe<User>;
 };
 
-
 /** The output of our create `Address` mutation. */
 export type CreateAddressPayloadAddressEdgeArgs = {
   orderBy?: InputMaybe<Array<AddressesOrderBy>>;
@@ -1075,7 +1093,6 @@ export type CreateCategoryPayload = {
   query?: Maybe<Query>;
 };
 
-
 /** The output of our create `Category` mutation. */
 export type CreateCategoryPayloadCategoryEdgeArgs = {
   orderBy?: InputMaybe<Array<CategoriesOrderBy>>;
@@ -1109,7 +1126,6 @@ export type CreateCompanyPayload = {
   /** Reads a single `User` that is related to this `Company`. */
   user?: Maybe<User>;
 };
-
 
 /** The output of our create `Company` mutation. */
 export type CreateCompanyPayloadCompanyEdgeArgs = {
@@ -1149,7 +1165,6 @@ export type CreateOrderPayload = {
   user?: Maybe<User>;
 };
 
-
 /** The output of our create `Order` mutation. */
 export type CreateOrderPayloadOrderEdgeArgs = {
   orderBy?: InputMaybe<Array<OrdersOrderBy>>;
@@ -1186,7 +1201,6 @@ export type CreateProductPayload = {
   query?: Maybe<Query>;
 };
 
-
 /** The output of our create `Product` mutation. */
 export type CreateProductPayloadProductEdgeArgs = {
   orderBy?: InputMaybe<Array<ProductsOrderBy>>;
@@ -1218,7 +1232,6 @@ export type CreateUserPayload = {
   /** An edge for our `User`. May be used by Relay 1. */
   userEdge?: Maybe<UsersEdge>;
 };
-
 
 /** The output of our create `User` mutation. */
 export type CreateUserPayloadUserEdgeArgs = {
@@ -1266,7 +1279,6 @@ export type DeleteAddressPayload = {
   user?: Maybe<User>;
 };
 
-
 /** The output of our delete `Address` mutation. */
 export type DeleteAddressPayloadAddressEdgeArgs = {
   orderBy?: InputMaybe<Array<AddressesOrderBy>>;
@@ -1300,7 +1312,6 @@ export type DeleteCategoryPayload = {
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>;
 };
-
 
 /** The output of our delete `Category` mutation. */
 export type DeleteCategoryPayloadCategoryEdgeArgs = {
@@ -1346,7 +1357,6 @@ export type DeleteCompanyPayload = {
   user?: Maybe<User>;
 };
 
-
 /** The output of our delete `Company` mutation. */
 export type DeleteCompanyPayloadCompanyEdgeArgs = {
   orderBy?: InputMaybe<Array<CompaniesOrderBy>>;
@@ -1385,7 +1395,6 @@ export type DeleteOrderPayload = {
   user?: Maybe<User>;
 };
 
-
 /** The output of our delete `Order` mutation. */
 export type DeleteOrderPayloadOrderEdgeArgs = {
   orderBy?: InputMaybe<Array<OrdersOrderBy>>;
@@ -1422,7 +1431,6 @@ export type DeleteProductPayload = {
   query?: Maybe<Query>;
 };
 
-
 /** The output of our delete `Product` mutation. */
 export type DeleteProductPayloadProductEdgeArgs = {
   orderBy?: InputMaybe<Array<ProductsOrderBy>>;
@@ -1454,7 +1462,6 @@ export type DeleteUserPayload = {
   /** An edge for our `User`. May be used by Relay 1. */
   userEdge?: Maybe<UsersEdge>;
 };
-
 
 /** The output of our delete `User` mutation. */
 export type DeleteUserPayloadUserEdgeArgs = {
@@ -1535,156 +1542,130 @@ export type Mutation = {
   updateUser?: Maybe<UpdateUserPayload>;
 };
 
-
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationCreateAddressArgs = {
   input: CreateAddressInput;
 };
-
 
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationCreateCategoryArgs = {
   input: CreateCategoryInput;
 };
 
-
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationCreateCompanyArgs = {
   input: CreateCompanyInput;
 };
-
 
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationCreateOrderArgs = {
   input: CreateOrderInput;
 };
 
-
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationCreateProductArgs = {
   input: CreateProductInput;
 };
-
 
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationCreateUserArgs = {
   input: CreateUserInput;
 };
 
-
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationDeleteAddressArgs = {
   input: DeleteAddressInput;
 };
-
 
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationDeleteAddressByCompanyIdArgs = {
   input: DeleteAddressByCompanyIdInput;
 };
 
-
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationDeleteCategoryArgs = {
   input: DeleteCategoryInput;
 };
-
 
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationDeleteCompanyArgs = {
   input: DeleteCompanyInput;
 };
 
-
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationDeleteCompanyByUserIdArgs = {
   input: DeleteCompanyByUserIdInput;
 };
-
 
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationDeleteOrderArgs = {
   input: DeleteOrderInput;
 };
 
-
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationDeleteProductArgs = {
   input: DeleteProductInput;
 };
-
 
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationDeleteUserArgs = {
   input: DeleteUserInput;
 };
 
-
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationLoginArgs = {
   input: LoginInput;
 };
-
 
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationRegisterArgs = {
   input: RegisterInput;
 };
 
-
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationRegisterCompanyArgs = {
   input: RegisterCompanyInput;
 };
-
 
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationResetPasswordArgs = {
   input: ResetPasswordInput;
 };
 
-
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationUpdateAddressArgs = {
   input: UpdateAddressInput;
 };
-
 
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationUpdateAddressByCompanyIdArgs = {
   input: UpdateAddressByCompanyIdInput;
 };
 
-
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationUpdateCategoryArgs = {
   input: UpdateCategoryInput;
 };
-
 
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationUpdateCompanyArgs = {
   input: UpdateCompanyInput;
 };
 
-
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationUpdateCompanyByUserIdArgs = {
   input: UpdateCompanyByUserIdInput;
 };
-
 
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationUpdateOrderArgs = {
   input: UpdateOrderInput;
 };
 
-
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationUpdateProductArgs = {
   input: UpdateProductInput;
 };
-
 
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationUpdateUserArgs = {
@@ -1838,7 +1819,9 @@ export type OrdersAddressIdFkeyInverseInput = {
   /** Flag indicating whether all other `order` records that match this relationship should be removed. */
   deleteOthers?: InputMaybe<Scalars['Boolean']['input']>;
   /** The primary key(s) and patch data for `order` for the far side of the relationship. */
-  updateById?: InputMaybe<Array<OrderOnOrderForOrdersAddressIdFkeyUsingOrdersPkeyUpdate>>;
+  updateById?: InputMaybe<
+    Array<OrderOnOrderForOrdersAddressIdFkeyUsingOrdersPkeyUpdate>
+  >;
 };
 
 /** The `order` to be created by this mutation. */
@@ -1885,7 +1868,7 @@ export enum OrdersOrderBy {
   ProductIdAsc = 'PRODUCT_ID_ASC',
   ProductIdDesc = 'PRODUCT_ID_DESC',
   UserIdAsc = 'USER_ID_ASC',
-  UserIdDesc = 'USER_ID_DESC'
+  UserIdDesc = 'USER_ID_DESC',
 }
 
 /** Input for the nested mutation of `product` in the `OrderInput` mutation. */
@@ -1911,7 +1894,9 @@ export type OrdersProductIdFkeyInverseInput = {
   /** Flag indicating whether all other `order` records that match this relationship should be removed. */
   deleteOthers?: InputMaybe<Scalars['Boolean']['input']>;
   /** The primary key(s) and patch data for `order` for the far side of the relationship. */
-  updateById?: InputMaybe<Array<OrderOnOrderForOrdersProductIdFkeyUsingOrdersPkeyUpdate>>;
+  updateById?: InputMaybe<
+    Array<OrderOnOrderForOrdersProductIdFkeyUsingOrdersPkeyUpdate>
+  >;
 };
 
 /** The `order` to be created by this mutation. */
@@ -1961,7 +1946,9 @@ export type OrdersUserIdFkeyInverseInput = {
   /** Flag indicating whether all other `order` records that match this relationship should be removed. */
   deleteOthers?: InputMaybe<Scalars['Boolean']['input']>;
   /** The primary key(s) and patch data for `order` for the far side of the relationship. */
-  updateById?: InputMaybe<Array<OrderOnOrderForOrdersUserIdFkeyUsingOrdersPkeyUpdate>>;
+  updateById?: InputMaybe<
+    Array<OrderOnOrderForOrdersUserIdFkeyUsingOrdersPkeyUpdate>
+  >;
 };
 
 /** The `order` to be created by this mutation. */
@@ -2024,7 +2011,6 @@ export type Product = {
   usersByOrderProductIdAndUserId: ProductUsersByOrderProductIdAndUserIdManyToManyConnection;
 };
 
-
 export type ProductAddressesByOrderProductIdAndAddressIdArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
@@ -2036,7 +2022,6 @@ export type ProductAddressesByOrderProductIdAndAddressIdArgs = {
   orderBy?: InputMaybe<Array<AddressesOrderBy>>;
 };
 
-
 export type ProductOrdersArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
@@ -2047,7 +2032,6 @@ export type ProductOrdersArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<OrdersOrderBy>>;
 };
-
 
 export type ProductUsersByOrderProductIdAndUserIdArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
@@ -2084,18 +2068,18 @@ export type ProductAddressesByOrderProductIdAndAddressIdManyToManyEdge = {
   orders: OrdersConnection;
 };
 
-
 /** A `Address` edge in the connection, with data from `Order`. */
-export type ProductAddressesByOrderProductIdAndAddressIdManyToManyEdgeOrdersArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  condition?: InputMaybe<OrderCondition>;
-  filter?: InputMaybe<OrderFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<OrdersOrderBy>>;
-};
+export type ProductAddressesByOrderProductIdAndAddressIdManyToManyEdgeOrdersArgs =
+  {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    condition?: InputMaybe<OrderCondition>;
+    filter?: InputMaybe<OrderFilter>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    orderBy?: InputMaybe<Array<OrdersOrderBy>>;
+  };
 
 /** A condition to be used against `Product` object types. All fields are tested for equality and combined with a logical ‘and.’ */
 export type ProductCondition = {
@@ -2226,7 +2210,6 @@ export type ProductUsersByOrderProductIdAndUserIdManyToManyEdge = {
   orders: OrdersConnection;
 };
 
-
 /** A `User` edge in the connection, with data from `Order`. */
 export type ProductUsersByOrderProductIdAndUserIdManyToManyEdgeOrdersArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
@@ -2272,7 +2255,9 @@ export type ProductsCategoryIdFkeyInverseInput = {
   /** Flag indicating whether all other `product` records that match this relationship should be removed. */
   deleteOthers?: InputMaybe<Scalars['Boolean']['input']>;
   /** The primary key(s) and patch data for `product` for the far side of the relationship. */
-  updateById?: InputMaybe<Array<ProductOnProductForProductsCategoryIdFkeyUsingProductsPkeyUpdate>>;
+  updateById?: InputMaybe<
+    Array<ProductOnProductForProductsCategoryIdFkeyUsingProductsPkeyUpdate>
+  >;
 };
 
 /** The `product` to be created by this mutation. */
@@ -2328,7 +2313,9 @@ export type ProductsCompanyIdFkeyInverseInput = {
   /** Flag indicating whether all other `product` records that match this relationship should be removed. */
   deleteOthers?: InputMaybe<Scalars['Boolean']['input']>;
   /** The primary key(s) and patch data for `product` for the far side of the relationship. */
-  updateById?: InputMaybe<Array<ProductOnProductForProductsCompanyIdFkeyUsingProductsPkeyUpdate>>;
+  updateById?: InputMaybe<
+    Array<ProductOnProductForProductsCompanyIdFkeyUsingProductsPkeyUpdate>
+  >;
 };
 
 /** The `product` to be created by this mutation. */
@@ -2376,7 +2363,7 @@ export enum ProductsOrderBy {
   IdDesc = 'ID_DESC',
   Natural = 'NATURAL',
   PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
-  PrimaryKeyDesc = 'PRIMARY_KEY_DESC'
+  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
 }
 
 /** The root query type which gives access points into the data universe. */
@@ -2413,18 +2400,15 @@ export type Query = {
   users?: Maybe<UsersConnection>;
 };
 
-
 /** The root query type which gives access points into the data universe. */
 export type QueryAddressArgs = {
   id: Scalars['UUID']['input'];
 };
 
-
 /** The root query type which gives access points into the data universe. */
 export type QueryAddressByCompanyIdArgs = {
   companyId: Scalars['UUID']['input'];
 };
-
 
 /** The root query type which gives access points into the data universe. */
 export type QueryAddressesArgs = {
@@ -2438,7 +2422,6 @@ export type QueryAddressesArgs = {
   orderBy?: InputMaybe<Array<AddressesOrderBy>>;
 };
 
-
 /** The root query type which gives access points into the data universe. */
 export type QueryCategoriesArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
@@ -2451,12 +2434,10 @@ export type QueryCategoriesArgs = {
   orderBy?: InputMaybe<Array<CategoriesOrderBy>>;
 };
 
-
 /** The root query type which gives access points into the data universe. */
 export type QueryCategoryArgs = {
   id: Scalars['UUID']['input'];
 };
-
 
 /** The root query type which gives access points into the data universe. */
 export type QueryCompaniesArgs = {
@@ -2470,24 +2451,20 @@ export type QueryCompaniesArgs = {
   orderBy?: InputMaybe<Array<CompaniesOrderBy>>;
 };
 
-
 /** The root query type which gives access points into the data universe. */
 export type QueryCompanyArgs = {
   id: Scalars['UUID']['input'];
 };
-
 
 /** The root query type which gives access points into the data universe. */
 export type QueryCompanyByUserIdArgs = {
   userId: Scalars['UUID']['input'];
 };
 
-
 /** The root query type which gives access points into the data universe. */
 export type QueryOrderArgs = {
   id: Scalars['UUID']['input'];
 };
-
 
 /** The root query type which gives access points into the data universe. */
 export type QueryOrdersArgs = {
@@ -2501,12 +2478,10 @@ export type QueryOrdersArgs = {
   orderBy?: InputMaybe<Array<OrdersOrderBy>>;
 };
 
-
 /** The root query type which gives access points into the data universe. */
 export type QueryProductArgs = {
   id: Scalars['UUID']['input'];
 };
-
 
 /** The root query type which gives access points into the data universe. */
 export type QueryProductsArgs = {
@@ -2520,12 +2495,10 @@ export type QueryProductsArgs = {
   orderBy?: InputMaybe<Array<ProductsOrderBy>>;
 };
 
-
 /** The root query type which gives access points into the data universe. */
 export type QueryUserArgs = {
   id: Scalars['UUID']['input'];
 };
-
 
 /** The root query type which gives access points into the data universe. */
 export type QueryUsersArgs = {
@@ -2558,8 +2531,6 @@ export type RegisterCompanyPayload = {
 };
 
 export type RegisterInput = {
-  address: Scalars['String']['input'];
-  contactNumber: Scalars['String']['input'];
   email: Scalars['String']['input'];
   name: Scalars['String']['input'];
   password: Scalars['String']['input'];
@@ -2744,7 +2715,6 @@ export type UpdateAddressPayload = {
   user?: Maybe<User>;
 };
 
-
 /** The output of our update `Address` mutation. */
 export type UpdateAddressPayloadAddressEdgeArgs = {
   orderBy?: InputMaybe<Array<AddressesOrderBy>>;
@@ -2779,7 +2749,6 @@ export type UpdateCategoryPayload = {
   /** Our root query field type. Allows us to run any query from our mutation payload. */
   query?: Maybe<Query>;
 };
-
 
 /** The output of our update `Category` mutation. */
 export type UpdateCategoryPayloadCategoryEdgeArgs = {
@@ -2828,7 +2797,6 @@ export type UpdateCompanyPayload = {
   user?: Maybe<User>;
 };
 
-
 /** The output of our update `Company` mutation. */
 export type UpdateCompanyPayloadCompanyEdgeArgs = {
   orderBy?: InputMaybe<Array<CompaniesOrderBy>>;
@@ -2868,7 +2836,6 @@ export type UpdateOrderPayload = {
   user?: Maybe<User>;
 };
 
-
 /** The output of our update `Order` mutation. */
 export type UpdateOrderPayloadOrderEdgeArgs = {
   orderBy?: InputMaybe<Array<OrdersOrderBy>>;
@@ -2906,7 +2873,6 @@ export type UpdateProductPayload = {
   query?: Maybe<Query>;
 };
 
-
 /** The output of our update `Product` mutation. */
 export type UpdateProductPayloadProductEdgeArgs = {
   orderBy?: InputMaybe<Array<ProductsOrderBy>>;
@@ -2939,7 +2905,6 @@ export type UpdateUserPayload = {
   /** An edge for our `User`. May be used by Relay 1. */
   userEdge?: Maybe<UsersEdge>;
 };
-
 
 /** The output of our update `User` mutation. */
 export type UpdateUserPayloadUserEdgeArgs = {
@@ -2974,7 +2939,6 @@ export type User = {
   updatedAt: Scalars['Datetime']['output'];
 };
 
-
 export type UserAddressesArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
@@ -2985,7 +2949,6 @@ export type UserAddressesArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<AddressesOrderBy>>;
 };
-
 
 export type UserAddressesByOrderUserIdAndAddressIdArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
@@ -2998,7 +2961,6 @@ export type UserAddressesByOrderUserIdAndAddressIdArgs = {
   orderBy?: InputMaybe<Array<AddressesOrderBy>>;
 };
 
-
 export type UserCompaniesArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
@@ -3010,7 +2972,6 @@ export type UserCompaniesArgs = {
   orderBy?: InputMaybe<Array<CompaniesOrderBy>>;
 };
 
-
 export type UserOrdersArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
   before?: InputMaybe<Scalars['Cursor']['input']>;
@@ -3021,7 +2982,6 @@ export type UserOrdersArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<OrdersOrderBy>>;
 };
-
 
 export type UserProductsByOrderUserIdAndProductIdArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
@@ -3057,7 +3017,6 @@ export type UserAddressesByOrderUserIdAndAddressIdManyToManyEdge = {
   /** Reads and enables pagination through a set of `Order`. */
   orders: OrdersConnection;
 };
-
 
 /** A `Address` edge in the connection, with data from `Order`. */
 export type UserAddressesByOrderUserIdAndAddressIdManyToManyEdgeOrdersArgs = {
@@ -3180,7 +3139,6 @@ export type UserProductsByOrderUserIdAndProductIdManyToManyEdge = {
   orders: OrdersConnection;
 };
 
-
 /** A `Product` edge in the connection, with data from `Order`. */
 export type UserProductsByOrderUserIdAndProductIdManyToManyEdgeOrdersArgs = {
   after?: InputMaybe<Scalars['Cursor']['input']>;
@@ -3255,7 +3213,7 @@ export enum UsersOrderBy {
   NameDesc = 'NAME_DESC',
   Natural = 'NATURAL',
   PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
-  PrimaryKeyDesc = 'PRIMARY_KEY_DESC'
+  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
 }
 
 /** An object where the defined keys will be set on the `address` being updated. */
@@ -3456,205 +3414,739 @@ export type AddressQueryVariables = Exact<{
   id: Scalars['UUID']['input'];
 }>;
 
-
-export type AddressQuery = { __typename?: 'Query', address?: { __typename?: 'Address', id: any, address?: string | null, contactNumber?: string | null } | null };
+export type AddressQuery = {
+  __typename?: 'Query';
+  address?: {
+    __typename?: 'Address';
+    id: any;
+    address?: string | null;
+    contactNumber?: string | null;
+  } | null;
+};
 
 export type CategoriesQueryVariables = Exact<{
   condition?: InputMaybe<CategoryCondition>;
 }>;
 
-
-export type CategoriesQuery = { __typename?: 'Query', categories?: { __typename?: 'CategoriesConnection', nodes: Array<{ __typename?: 'Category', id: any, name: string }> } | null };
+export type CategoriesQuery = {
+  __typename?: 'Query';
+  categories?: {
+    __typename?: 'CategoriesConnection';
+    nodes: Array<{ __typename?: 'Category'; id: any; name: string }>;
+  } | null;
+};
 
 export type CategoryQueryVariables = Exact<{
   id: Scalars['UUID']['input'];
 }>;
 
-
-export type CategoryQuery = { __typename?: 'Query', category?: { __typename?: 'Category', id: any, name: string } | null };
+export type CategoryQuery = {
+  __typename?: 'Query';
+  category?: { __typename?: 'Category'; id: any; name: string } | null;
+};
 
 export type CreateProductMutationVariables = Exact<{
   product: ProductInput;
 }>;
 
+export type CreateProductMutation = {
+  __typename?: 'Mutation';
+  createProduct?: {
+    __typename?: 'CreateProductPayload';
+    product?: {
+      __typename?: 'Product';
+      id: any;
+      name: string;
+      description?: string | null;
+      price: any;
+      imgUrl?: string | null;
+      quantity: number;
+      companyId: any;
+      categoryId?: any | null;
+      createdAt: any;
+      category?: {
+        __typename?: 'Category';
+        id: any;
+        name: string;
+        description?: string | null;
+        parentId?: any | null;
+        slug?: string | null;
+      } | null;
+      company?: {
+        __typename?: 'Company';
+        id: any;
+        name: string;
+        description?: string | null;
+        address?: {
+          __typename?: 'Address';
+          id: any;
+          address?: string | null;
+          contactNumber?: string | null;
+        } | null;
+      } | null;
+    } | null;
+  } | null;
+};
 
-export type CreateProductMutation = { __typename?: 'Mutation', createProduct?: { __typename?: 'CreateProductPayload', product?: { __typename?: 'Product', id: any, name: string, description?: string | null, price: any, imgUrl?: string | null, quantity: number, companyId: any, categoryId?: any | null, category?: { __typename?: 'Category', id: any, name: string, description?: string | null, parentId?: any | null, slug?: string | null } | null, company?: { __typename?: 'Company', id: any, name: string, description?: string | null, address?: { __typename?: 'Address', id: any, address?: string | null, contactNumber?: string | null } | null } | null } | null } | null };
+export type Lite_CategoryFragment = {
+  __typename?: 'Category';
+  id: any;
+  name: string;
+  description?: string | null;
+  parentId?: any | null;
+  slug?: string | null;
+};
 
-export type Lite_CategoryFragment = { __typename?: 'Category', id: any, name: string, description?: string | null, parentId?: any | null, slug?: string | null };
-
-export type Lite_ProductFragment = { __typename?: 'Product', id: any, name: string, description?: string | null, price: any, imgUrl?: string | null, quantity: number, companyId: any, categoryId?: any | null, category?: { __typename?: 'Category', id: any, name: string, description?: string | null, parentId?: any | null, slug?: string | null } | null, company?: { __typename?: 'Company', id: any, name: string, description?: string | null, address?: { __typename?: 'Address', id: any, address?: string | null, contactNumber?: string | null } | null } | null };
+export type Lite_ProductFragment = {
+  __typename?: 'Product';
+  id: any;
+  name: string;
+  description?: string | null;
+  price: any;
+  imgUrl?: string | null;
+  quantity: number;
+  companyId: any;
+  categoryId?: any | null;
+  createdAt: any;
+  category?: {
+    __typename?: 'Category';
+    id: any;
+    name: string;
+    description?: string | null;
+    parentId?: any | null;
+    slug?: string | null;
+  } | null;
+  company?: {
+    __typename?: 'Company';
+    id: any;
+    name: string;
+    description?: string | null;
+    address?: {
+      __typename?: 'Address';
+      id: any;
+      address?: string | null;
+      contactNumber?: string | null;
+    } | null;
+  } | null;
+};
 
 export type ProductQueryVariables = Exact<{
   id: Scalars['UUID']['input'];
 }>;
 
-
-export type ProductQuery = { __typename?: 'Query', product?: { __typename?: 'Product', id: any, name: string, description?: string | null, price: any, imgUrl?: string | null, quantity: number, companyId: any, categoryId?: any | null, category?: { __typename?: 'Category', id: any, name: string, description?: string | null, parentId?: any | null, slug?: string | null } | null, company?: { __typename?: 'Company', id: any, name: string, description?: string | null, address?: { __typename?: 'Address', id: any, address?: string | null, contactNumber?: string | null } | null } | null } | null };
+export type ProductQuery = {
+  __typename?: 'Query';
+  product?: {
+    __typename?: 'Product';
+    id: any;
+    name: string;
+    description?: string | null;
+    price: any;
+    imgUrl?: string | null;
+    quantity: number;
+    companyId: any;
+    categoryId?: any | null;
+    createdAt: any;
+    category?: {
+      __typename?: 'Category';
+      id: any;
+      name: string;
+      description?: string | null;
+      parentId?: any | null;
+      slug?: string | null;
+    } | null;
+    company?: {
+      __typename?: 'Company';
+      id: any;
+      name: string;
+      description?: string | null;
+      address?: {
+        __typename?: 'Address';
+        id: any;
+        address?: string | null;
+        contactNumber?: string | null;
+      } | null;
+    } | null;
+  } | null;
+};
 
 export type UpdateAddressMutationVariables = Exact<{
   id: Scalars['UUID']['input'];
   patch: AddressPatch;
 }>;
 
-
-export type UpdateAddressMutation = { __typename?: 'Mutation', updateAddress?: { __typename?: 'UpdateAddressPayload', user?: { __typename?: 'User', id: any, name?: string | null, email: string, type: string, addresses: { __typename?: 'AddressesConnection', nodes: Array<{ __typename?: 'Address', id: any, address?: string | null, contactNumber?: string | null }> }, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null } | null } | null };
+export type UpdateAddressMutation = {
+  __typename?: 'Mutation';
+  updateAddress?: {
+    __typename?: 'UpdateAddressPayload';
+    user?: {
+      __typename?: 'User';
+      id: any;
+      name?: string | null;
+      email: string;
+      type: string;
+      isAdmin: boolean;
+      addresses: {
+        __typename?: 'AddressesConnection';
+        nodes: Array<{
+          __typename?: 'Address';
+          id: any;
+          address?: string | null;
+          contactNumber?: string | null;
+        }>;
+      };
+      company?: {
+        __typename?: 'Company';
+        id: any;
+        name: string;
+        description?: string | null;
+      } | null;
+    } | null;
+  } | null;
+};
 
 export type UpdateProductMutationVariables = Exact<{
   id: Scalars['UUID']['input'];
   product: ProductPatch;
 }>;
 
+export type UpdateProductMutation = {
+  __typename?: 'Mutation';
+  updateProduct?: {
+    __typename?: 'UpdateProductPayload';
+    product?: {
+      __typename?: 'Product';
+      id: any;
+      name: string;
+      description?: string | null;
+      price: any;
+      imgUrl?: string | null;
+      quantity: number;
+      companyId: any;
+      categoryId?: any | null;
+      createdAt: any;
+      category?: {
+        __typename?: 'Category';
+        id: any;
+        name: string;
+        description?: string | null;
+        parentId?: any | null;
+        slug?: string | null;
+      } | null;
+      company?: {
+        __typename?: 'Company';
+        id: any;
+        name: string;
+        description?: string | null;
+        address?: {
+          __typename?: 'Address';
+          id: any;
+          address?: string | null;
+          contactNumber?: string | null;
+        } | null;
+      } | null;
+    } | null;
+  } | null;
+};
 
-export type UpdateProductMutation = { __typename?: 'Mutation', updateProduct?: { __typename?: 'UpdateProductPayload', product?: { __typename?: 'Product', id: any, name: string, description?: string | null, price: any, imgUrl?: string | null, quantity: number, companyId: any, categoryId?: any | null, category?: { __typename?: 'Category', id: any, name: string, description?: string | null, parentId?: any | null, slug?: string | null } | null, company?: { __typename?: 'Company', id: any, name: string, description?: string | null, address?: { __typename?: 'Address', id: any, address?: string | null, contactNumber?: string | null } | null } | null } | null } | null };
+export type CompaniesQueryVariables = Exact<{ [key: string]: never }>;
 
-export type CurrentUserQueryVariables = Exact<{ [key: string]: never; }>;
+export type CompaniesQuery = {
+  __typename?: 'Query';
+  companies?: {
+    __typename?: 'CompaniesConnection';
+    totalCount: number;
+    nodes: Array<{
+      __typename?: 'Company';
+      id: any;
+      name: string;
+      createdAt: any;
+      user?: {
+        __typename?: 'User';
+        id: any;
+        name?: string | null;
+        email: string;
+      } | null;
+    }>;
+  } | null;
+};
 
+export type DeleteCompanyMutationVariables = Exact<{
+  input: DeleteCompanyInput;
+}>;
 
-export type CurrentUserQuery = { __typename?: 'Query', currentUser?: { __typename?: 'User', id: any, name?: string | null, email: string, type: string, addresses: { __typename?: 'AddressesConnection', nodes: Array<{ __typename?: 'Address', id: any, address?: string | null, contactNumber?: string | null }> }, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null } | null };
+export type DeleteCompanyMutation = {
+  __typename?: 'Mutation';
+  deleteCompany?: {
+    __typename?: 'DeleteCompanyPayload';
+    clientMutationId?: string | null;
+    deletedCompanyNodeId?: string | null;
+  } | null;
+};
 
-export type Lite_CompanyFragment = { __typename?: 'Company', id: any, name: string, description?: string | null, address?: { __typename?: 'Address', id: any, address?: string | null, contactNumber?: string | null } | null };
+export type DeleteUserMutationVariables = Exact<{
+  input: DeleteUserInput;
+}>;
 
-export type Lite_UserFragment = { __typename?: 'User', id: any, name?: string | null, email: string, type: string, addresses: { __typename?: 'AddressesConnection', nodes: Array<{ __typename?: 'Address', id: any, address?: string | null, contactNumber?: string | null }> }, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null };
+export type DeleteUserMutation = {
+  __typename?: 'Mutation';
+  deleteUser?: {
+    __typename?: 'DeleteUserPayload';
+    clientMutationId?: string | null;
+    deletedUserNodeId?: string | null;
+  } | null;
+};
+
+export type UsersQueryVariables = Exact<{
+  filter?: InputMaybe<UserFilter>;
+}>;
+
+export type UsersQuery = {
+  __typename?: 'Query';
+  users?: {
+    __typename?: 'UsersConnection';
+    totalCount: number;
+    nodes: Array<{
+      __typename?: 'User';
+      id: any;
+      name?: string | null;
+      email: string;
+      createdAt: any;
+    }>;
+  } | null;
+};
+
+export type CurrentUserQueryVariables = Exact<{ [key: string]: never }>;
+
+export type CurrentUserQuery = {
+  __typename?: 'Query';
+  currentUser?: {
+    __typename?: 'User';
+    id: any;
+    name?: string | null;
+    email: string;
+    type: string;
+    isAdmin: boolean;
+    addresses: {
+      __typename?: 'AddressesConnection';
+      nodes: Array<{
+        __typename?: 'Address';
+        id: any;
+        address?: string | null;
+        contactNumber?: string | null;
+      }>;
+    };
+    company?: {
+      __typename?: 'Company';
+      id: any;
+      name: string;
+      description?: string | null;
+    } | null;
+  } | null;
+};
+
+export type Lite_CompanyFragment = {
+  __typename?: 'Company';
+  id: any;
+  name: string;
+  description?: string | null;
+  address?: {
+    __typename?: 'Address';
+    id: any;
+    address?: string | null;
+    contactNumber?: string | null;
+  } | null;
+};
+
+export type Lite_UserFragment = {
+  __typename?: 'User';
+  id: any;
+  name?: string | null;
+  email: string;
+  type: string;
+  isAdmin: boolean;
+  addresses: {
+    __typename?: 'AddressesConnection';
+    nodes: Array<{
+      __typename?: 'Address';
+      id: any;
+      address?: string | null;
+      contactNumber?: string | null;
+    }>;
+  };
+  company?: {
+    __typename?: 'Company';
+    id: any;
+    name: string;
+    description?: string | null;
+  } | null;
+};
 
 export type LoginMutationVariables = Exact<{
   input: LoginInput;
 }>;
 
+export type LoginMutation = {
+  __typename?: 'Mutation';
+  login?: {
+    __typename?: 'LoginPayload';
+    token?: string | null;
+    user: {
+      __typename?: 'User';
+      id: any;
+      name?: string | null;
+      email: string;
+      type: string;
+      isAdmin: boolean;
+      companies: {
+        __typename?: 'CompaniesConnection';
+        nodes: Array<{
+          __typename?: 'Company';
+          id: any;
+          name: string;
+          description?: string | null;
+          address?: {
+            __typename?: 'Address';
+            id: any;
+            address?: string | null;
+            contactNumber?: string | null;
+          } | null;
+        }>;
+      };
+      addresses: {
+        __typename?: 'AddressesConnection';
+        nodes: Array<{
+          __typename?: 'Address';
+          id: any;
+          address?: string | null;
+          contactNumber?: string | null;
+        }>;
+      };
+      company?: {
+        __typename?: 'Company';
+        id: any;
+        name: string;
+        description?: string | null;
+      } | null;
+    };
+  } | null;
+};
 
-export type LoginMutation = { __typename?: 'Mutation', login?: { __typename?: 'LoginPayload', token?: string | null, user: { __typename?: 'User', id: any, name?: string | null, email: string, type: string, companies: { __typename?: 'CompaniesConnection', nodes: Array<{ __typename?: 'Company', id: any, name: string, description?: string | null, address?: { __typename?: 'Address', id: any, address?: string | null, contactNumber?: string | null } | null }> }, addresses: { __typename?: 'AddressesConnection', nodes: Array<{ __typename?: 'Address', id: any, address?: string | null, contactNumber?: string | null }> }, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null } } | null };
+export type LogoutMutationVariables = Exact<{ [key: string]: never }>;
 
-export type LogoutMutationVariables = Exact<{ [key: string]: never; }>;
-
-
-export type LogoutMutation = { __typename?: 'Mutation', logout?: { __typename?: 'LogoutPayload', success?: boolean | null } | null };
+export type LogoutMutation = {
+  __typename?: 'Mutation';
+  logout?: { __typename?: 'LogoutPayload'; success?: boolean | null } | null;
+};
 
 export type RegisterMutationVariables = Exact<{
   input: RegisterInput;
 }>;
 
-
-export type RegisterMutation = { __typename?: 'Mutation', register?: { __typename?: 'RegisterPayload', token: string, user: { __typename?: 'User', id: any, name?: string | null, email: string, type: string, addresses: { __typename?: 'AddressesConnection', nodes: Array<{ __typename?: 'Address', id: any, address?: string | null, contactNumber?: string | null }> }, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null } } | null };
+export type RegisterMutation = {
+  __typename?: 'Mutation';
+  register?: {
+    __typename?: 'RegisterPayload';
+    token: string;
+    user: {
+      __typename?: 'User';
+      id: any;
+      name?: string | null;
+      email: string;
+      type: string;
+      isAdmin: boolean;
+      addresses: {
+        __typename?: 'AddressesConnection';
+        nodes: Array<{
+          __typename?: 'Address';
+          id: any;
+          address?: string | null;
+          contactNumber?: string | null;
+        }>;
+      };
+      company?: {
+        __typename?: 'Company';
+        id: any;
+        name: string;
+        description?: string | null;
+      } | null;
+    };
+  } | null;
+};
 
 export type RegisterCompanyMutationVariables = Exact<{
   input: RegisterCompanyInput;
 }>;
 
-
-export type RegisterCompanyMutation = { __typename?: 'Mutation', registerCompany?: { __typename?: 'RegisterCompanyPayload', token: string, company: { __typename?: 'Company', userId: any, id: any, name: string, description?: string | null, address?: { __typename?: 'Address', id: any, address?: string | null, contactNumber?: string | null } | null } } | null };
+export type RegisterCompanyMutation = {
+  __typename?: 'Mutation';
+  registerCompany?: {
+    __typename?: 'RegisterCompanyPayload';
+    token: string;
+    company: {
+      __typename?: 'Company';
+      userId: any;
+      id: any;
+      name: string;
+      description?: string | null;
+      address?: {
+        __typename?: 'Address';
+        id: any;
+        address?: string | null;
+        contactNumber?: string | null;
+      } | null;
+    };
+  } | null;
+};
 
 export type CreateOrderMutationVariables = Exact<{
   input: CreateOrderInput;
 }>;
 
-
-export type CreateOrderMutation = { __typename?: 'Mutation', createOrder?: { __typename?: 'CreateOrderPayload', order?: { __typename?: 'Order', id: any, status: string, productId: any, userId: any } | null } | null };
+export type CreateOrderMutation = {
+  __typename?: 'Mutation';
+  createOrder?: {
+    __typename?: 'CreateOrderPayload';
+    order?: {
+      __typename?: 'Order';
+      id: any;
+      status: string;
+      productId: any;
+      userId: any;
+    } | null;
+  } | null;
+};
 
 export type DeleteProductMutationVariables = Exact<{
   input: DeleteProductInput;
 }>;
 
-
-export type DeleteProductMutation = { __typename?: 'Mutation', deleteProduct?: { __typename?: 'DeleteProductPayload', clientMutationId?: string | null, deletedProductNodeId?: string | null } | null };
+export type DeleteProductMutation = {
+  __typename?: 'Mutation';
+  deleteProduct?: {
+    __typename?: 'DeleteProductPayload';
+    clientMutationId?: string | null;
+    deletedProductNodeId?: string | null;
+  } | null;
+};
 
 export type OrdersQueryVariables = Exact<{
   filter?: InputMaybe<OrderFilter>;
 }>;
 
-
-export type OrdersQuery = { __typename?: 'Query', orders?: { __typename?: 'OrdersConnection', nodes: Array<{ __typename?: 'Order', id: any, status: string, user?: { __typename?: 'User', id: any, name?: string | null, email: string } | null, product?: { __typename?: 'Product', id: any, name: string, description?: string | null } | null, address?: { __typename?: 'Address', address?: string | null, id: any, contactNumber?: string | null } | null }> } | null };
+export type OrdersQuery = {
+  __typename?: 'Query';
+  orders?: {
+    __typename?: 'OrdersConnection';
+    nodes: Array<{
+      __typename?: 'Order';
+      id: any;
+      status: string;
+      user?: {
+        __typename?: 'User';
+        id: any;
+        name?: string | null;
+        email: string;
+      } | null;
+      product?: {
+        __typename?: 'Product';
+        id: any;
+        name: string;
+        description?: string | null;
+      } | null;
+      address?: {
+        __typename?: 'Address';
+        address?: string | null;
+        id: any;
+        contactNumber?: string | null;
+      } | null;
+    }>;
+  } | null;
+};
 
 export type ProductsQueryVariables = Exact<{
   filter?: InputMaybe<ProductFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
 }>;
 
-
-export type ProductsQuery = { __typename?: 'Query', products?: { __typename?: 'ProductsConnection', nodes: Array<{ __typename?: 'Product', id: any, name: string, description?: string | null, price: any, imgUrl?: string | null, quantity: number, companyId: any, categoryId?: any | null, category?: { __typename?: 'Category', id: any, name: string, description?: string | null, parentId?: any | null, slug?: string | null } | null, company?: { __typename?: 'Company', id: any, name: string, description?: string | null, address?: { __typename?: 'Address', id: any, address?: string | null, contactNumber?: string | null } | null } | null }> } | null };
+export type ProductsQuery = {
+  __typename?: 'Query';
+  products?: {
+    __typename?: 'ProductsConnection';
+    nodes: Array<{
+      __typename?: 'Product';
+      id: any;
+      name: string;
+      description?: string | null;
+      price: any;
+      imgUrl?: string | null;
+      quantity: number;
+      companyId: any;
+      categoryId?: any | null;
+      createdAt: any;
+      category?: {
+        __typename?: 'Category';
+        id: any;
+        name: string;
+        description?: string | null;
+        parentId?: any | null;
+        slug?: string | null;
+      } | null;
+      company?: {
+        __typename?: 'Company';
+        id: any;
+        name: string;
+        description?: string | null;
+        address?: {
+          __typename?: 'Address';
+          id: any;
+          address?: string | null;
+          contactNumber?: string | null;
+        } | null;
+      } | null;
+    }>;
+  } | null;
+};
 
 export type CompanyQueryVariables = Exact<{
   id: Scalars['UUID']['input'];
 }>;
 
-
-export type CompanyQuery = { __typename?: 'Query', company?: { __typename?: 'Company', id: any, name: string, description?: string | null, user?: { __typename?: 'User', id: any, name?: string | null, email: string, type: string, addresses: { __typename?: 'AddressesConnection', nodes: Array<{ __typename?: 'Address', id: any, address?: string | null, contactNumber?: string | null }> }, company?: { __typename?: 'Company', id: any, name: string, description?: string | null } | null } | null, address?: { __typename?: 'Address', id: any, address?: string | null, contactNumber?: string | null } | null } | null };
+export type CompanyQuery = {
+  __typename?: 'Query';
+  company?: {
+    __typename?: 'Company';
+    id: any;
+    name: string;
+    description?: string | null;
+    user?: {
+      __typename?: 'User';
+      id: any;
+      name?: string | null;
+      email: string;
+      type: string;
+      isAdmin: boolean;
+      addresses: {
+        __typename?: 'AddressesConnection';
+        nodes: Array<{
+          __typename?: 'Address';
+          id: any;
+          address?: string | null;
+          contactNumber?: string | null;
+        }>;
+      };
+      company?: {
+        __typename?: 'Company';
+        id: any;
+        name: string;
+        description?: string | null;
+      } | null;
+    } | null;
+    address?: {
+      __typename?: 'Address';
+      id: any;
+      address?: string | null;
+      contactNumber?: string | null;
+    } | null;
+  } | null;
+};
 
 export type UpdateCompanyMutationVariables = Exact<{
   id: Scalars['UUID']['input'];
   company: CompanyPatch;
 }>;
 
-
-export type UpdateCompanyMutation = { __typename?: 'Mutation', updateCompany?: { __typename?: 'UpdateCompanyPayload', company?: { __typename?: 'Company', id: any, name: string, description?: string | null, address?: { __typename?: 'Address', id: any, address?: string | null, contactNumber?: string | null } | null } | null } | null };
+export type UpdateCompanyMutation = {
+  __typename?: 'Mutation';
+  updateCompany?: {
+    __typename?: 'UpdateCompanyPayload';
+    company?: {
+      __typename?: 'Company';
+      id: any;
+      name: string;
+      description?: string | null;
+      address?: {
+        __typename?: 'Address';
+        id: any;
+        address?: string | null;
+        contactNumber?: string | null;
+      } | null;
+    } | null;
+  } | null;
+};
 
 export const Lite_CategoryFragmentDoc = gql`
-    fragment Lite_Category on Category {
-  id
-  name
-  description
-  parentId
-  slug
-}
-    `;
-export const Lite_CompanyFragmentDoc = gql`
-    fragment Lite_Company on Company {
-  id
-  name
-  description
-  address {
+  fragment Lite_Category on Category {
     id
-    address
-    contactNumber
+    name
+    description
+    parentId
+    slug
   }
-}
-    `;
-export const Lite_ProductFragmentDoc = gql`
-    fragment Lite_Product on Product {
-  id
-  name
-  description
-  price
-  imgUrl
-  quantity
-  companyId
-  categoryId
-  category {
-    ...Lite_Category
-  }
-  company {
-    ...Lite_Company
-  }
-}
-    ${Lite_CategoryFragmentDoc}
-${Lite_CompanyFragmentDoc}`;
-export const Lite_UserFragmentDoc = gql`
-    fragment Lite_User on User {
-  id
-  name
-  email
-  type
-  addresses {
-    nodes {
+`;
+export const Lite_CompanyFragmentDoc = gql`
+  fragment Lite_Company on Company {
+    id
+    name
+    description
+    address {
       id
       address
       contactNumber
     }
   }
-  company {
+`;
+export const Lite_ProductFragmentDoc = gql`
+  fragment Lite_Product on Product {
     id
     name
     description
+    price
+    imgUrl
+    quantity
+    companyId
+    categoryId
+    category {
+      ...Lite_Category
+    }
+    company {
+      ...Lite_Company
+    }
+    createdAt
   }
-}
-    `;
-export const AddressDocument = gql`
-    query Address($id: UUID!) {
-  address(id: $id) {
+  ${Lite_CategoryFragmentDoc}
+  ${Lite_CompanyFragmentDoc}
+`;
+export const Lite_UserFragmentDoc = gql`
+  fragment Lite_User on User {
     id
-    address
-    contactNumber
+    name
+    email
+    type
+    addresses {
+      nodes {
+        id
+        address
+        contactNumber
+      }
+    }
+    company {
+      id
+      name
+      description
+    }
+    isAdmin
   }
-}
-    `;
+`;
+export const AddressDocument = gql`
+  query Address($id: UUID!) {
+    address(id: $id) {
+      id
+      address
+      contactNumber
+    }
+  }
+`;
 
 /**
  * __useAddressQuery__
@@ -3672,27 +4164,40 @@ export const AddressDocument = gql`
  *   },
  * });
  */
-export function useAddressQuery(baseOptions: Apollo.QueryHookOptions<AddressQuery, AddressQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<AddressQuery, AddressQueryVariables>(AddressDocument, options);
-      }
-export function useAddressLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AddressQuery, AddressQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<AddressQuery, AddressQueryVariables>(AddressDocument, options);
-        }
+export function useAddressQuery(
+  baseOptions: Apollo.QueryHookOptions<AddressQuery, AddressQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<AddressQuery, AddressQueryVariables>(
+    AddressDocument,
+    options
+  );
+}
+export function useAddressLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<AddressQuery, AddressQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<AddressQuery, AddressQueryVariables>(
+    AddressDocument,
+    options
+  );
+}
 export type AddressQueryHookResult = ReturnType<typeof useAddressQuery>;
 export type AddressLazyQueryHookResult = ReturnType<typeof useAddressLazyQuery>;
-export type AddressQueryResult = Apollo.QueryResult<AddressQuery, AddressQueryVariables>;
+export type AddressQueryResult = Apollo.QueryResult<
+  AddressQuery,
+  AddressQueryVariables
+>;
 export const CategoriesDocument = gql`
-    query Categories($condition: CategoryCondition) {
-  categories(condition: $condition) {
-    nodes {
-      id
-      name
+  query Categories($condition: CategoryCondition) {
+    categories(condition: $condition) {
+      nodes {
+        id
+        name
+      }
     }
   }
-}
-    `;
+`;
 
 /**
  * __useCategoriesQuery__
@@ -3710,25 +4215,46 @@ export const CategoriesDocument = gql`
  *   },
  * });
  */
-export function useCategoriesQuery(baseOptions?: Apollo.QueryHookOptions<CategoriesQuery, CategoriesQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<CategoriesQuery, CategoriesQueryVariables>(CategoriesDocument, options);
-      }
-export function useCategoriesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CategoriesQuery, CategoriesQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<CategoriesQuery, CategoriesQueryVariables>(CategoriesDocument, options);
-        }
-export type CategoriesQueryHookResult = ReturnType<typeof useCategoriesQuery>;
-export type CategoriesLazyQueryHookResult = ReturnType<typeof useCategoriesLazyQuery>;
-export type CategoriesQueryResult = Apollo.QueryResult<CategoriesQuery, CategoriesQueryVariables>;
-export const CategoryDocument = gql`
-    query Category($id: UUID!) {
-  category(id: $id) {
-    id
-    name
-  }
+export function useCategoriesQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    CategoriesQuery,
+    CategoriesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<CategoriesQuery, CategoriesQueryVariables>(
+    CategoriesDocument,
+    options
+  );
 }
-    `;
+export function useCategoriesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    CategoriesQuery,
+    CategoriesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<CategoriesQuery, CategoriesQueryVariables>(
+    CategoriesDocument,
+    options
+  );
+}
+export type CategoriesQueryHookResult = ReturnType<typeof useCategoriesQuery>;
+export type CategoriesLazyQueryHookResult = ReturnType<
+  typeof useCategoriesLazyQuery
+>;
+export type CategoriesQueryResult = Apollo.QueryResult<
+  CategoriesQuery,
+  CategoriesQueryVariables
+>;
+export const CategoryDocument = gql`
+  query Category($id: UUID!) {
+    category(id: $id) {
+      id
+      name
+    }
+  }
+`;
 
 /**
  * __useCategoryQuery__
@@ -3746,28 +4272,50 @@ export const CategoryDocument = gql`
  *   },
  * });
  */
-export function useCategoryQuery(baseOptions: Apollo.QueryHookOptions<CategoryQuery, CategoryQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<CategoryQuery, CategoryQueryVariables>(CategoryDocument, options);
-      }
-export function useCategoryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CategoryQuery, CategoryQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<CategoryQuery, CategoryQueryVariables>(CategoryDocument, options);
-        }
+export function useCategoryQuery(
+  baseOptions: Apollo.QueryHookOptions<CategoryQuery, CategoryQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<CategoryQuery, CategoryQueryVariables>(
+    CategoryDocument,
+    options
+  );
+}
+export function useCategoryLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    CategoryQuery,
+    CategoryQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<CategoryQuery, CategoryQueryVariables>(
+    CategoryDocument,
+    options
+  );
+}
 export type CategoryQueryHookResult = ReturnType<typeof useCategoryQuery>;
-export type CategoryLazyQueryHookResult = ReturnType<typeof useCategoryLazyQuery>;
-export type CategoryQueryResult = Apollo.QueryResult<CategoryQuery, CategoryQueryVariables>;
+export type CategoryLazyQueryHookResult = ReturnType<
+  typeof useCategoryLazyQuery
+>;
+export type CategoryQueryResult = Apollo.QueryResult<
+  CategoryQuery,
+  CategoryQueryVariables
+>;
 export const CreateProductDocument = gql`
-    mutation CreateProduct($product: ProductInput!) {
-  createProduct(input: {product: $product}) {
-    product {
-      id
-      ...Lite_Product
+  mutation CreateProduct($product: ProductInput!) {
+    createProduct(input: { product: $product }) {
+      product {
+        id
+        ...Lite_Product
+      }
     }
   }
-}
-    ${Lite_ProductFragmentDoc}`;
-export type CreateProductMutationFn = Apollo.MutationFunction<CreateProductMutation, CreateProductMutationVariables>;
+  ${Lite_ProductFragmentDoc}
+`;
+export type CreateProductMutationFn = Apollo.MutationFunction<
+  CreateProductMutation,
+  CreateProductMutationVariables
+>;
 
 /**
  * __useCreateProductMutation__
@@ -3786,21 +4334,36 @@ export type CreateProductMutationFn = Apollo.MutationFunction<CreateProductMutat
  *   },
  * });
  */
-export function useCreateProductMutation(baseOptions?: Apollo.MutationHookOptions<CreateProductMutation, CreateProductMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<CreateProductMutation, CreateProductMutationVariables>(CreateProductDocument, options);
-      }
-export type CreateProductMutationHookResult = ReturnType<typeof useCreateProductMutation>;
-export type CreateProductMutationResult = Apollo.MutationResult<CreateProductMutation>;
-export type CreateProductMutationOptions = Apollo.BaseMutationOptions<CreateProductMutation, CreateProductMutationVariables>;
-export const ProductDocument = gql`
-    query Product($id: UUID!) {
-  product(id: $id) {
-    id
-    ...Lite_Product
-  }
+export function useCreateProductMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    CreateProductMutation,
+    CreateProductMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    CreateProductMutation,
+    CreateProductMutationVariables
+  >(CreateProductDocument, options);
 }
-    ${Lite_ProductFragmentDoc}`;
+export type CreateProductMutationHookResult = ReturnType<
+  typeof useCreateProductMutation
+>;
+export type CreateProductMutationResult =
+  Apollo.MutationResult<CreateProductMutation>;
+export type CreateProductMutationOptions = Apollo.BaseMutationOptions<
+  CreateProductMutation,
+  CreateProductMutationVariables
+>;
+export const ProductDocument = gql`
+  query Product($id: UUID!) {
+    product(id: $id) {
+      id
+      ...Lite_Product
+    }
+  }
+  ${Lite_ProductFragmentDoc}
+`;
 
 /**
  * __useProductQuery__
@@ -3818,27 +4381,44 @@ export const ProductDocument = gql`
  *   },
  * });
  */
-export function useProductQuery(baseOptions: Apollo.QueryHookOptions<ProductQuery, ProductQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<ProductQuery, ProductQueryVariables>(ProductDocument, options);
-      }
-export function useProductLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProductQuery, ProductQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<ProductQuery, ProductQueryVariables>(ProductDocument, options);
-        }
+export function useProductQuery(
+  baseOptions: Apollo.QueryHookOptions<ProductQuery, ProductQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<ProductQuery, ProductQueryVariables>(
+    ProductDocument,
+    options
+  );
+}
+export function useProductLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<ProductQuery, ProductQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<ProductQuery, ProductQueryVariables>(
+    ProductDocument,
+    options
+  );
+}
 export type ProductQueryHookResult = ReturnType<typeof useProductQuery>;
 export type ProductLazyQueryHookResult = ReturnType<typeof useProductLazyQuery>;
-export type ProductQueryResult = Apollo.QueryResult<ProductQuery, ProductQueryVariables>;
+export type ProductQueryResult = Apollo.QueryResult<
+  ProductQuery,
+  ProductQueryVariables
+>;
 export const UpdateAddressDocument = gql`
-    mutation UpdateAddress($id: UUID!, $patch: AddressPatch!) {
-  updateAddress(input: {patch: $patch, id: $id}) {
-    user {
-      ...Lite_User
+  mutation UpdateAddress($id: UUID!, $patch: AddressPatch!) {
+    updateAddress(input: { patch: $patch, id: $id }) {
+      user {
+        ...Lite_User
+      }
     }
   }
-}
-    ${Lite_UserFragmentDoc}`;
-export type UpdateAddressMutationFn = Apollo.MutationFunction<UpdateAddressMutation, UpdateAddressMutationVariables>;
+  ${Lite_UserFragmentDoc}
+`;
+export type UpdateAddressMutationFn = Apollo.MutationFunction<
+  UpdateAddressMutation,
+  UpdateAddressMutationVariables
+>;
 
 /**
  * __useUpdateAddressMutation__
@@ -3858,24 +4438,42 @@ export type UpdateAddressMutationFn = Apollo.MutationFunction<UpdateAddressMutat
  *   },
  * });
  */
-export function useUpdateAddressMutation(baseOptions?: Apollo.MutationHookOptions<UpdateAddressMutation, UpdateAddressMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<UpdateAddressMutation, UpdateAddressMutationVariables>(UpdateAddressDocument, options);
-      }
-export type UpdateAddressMutationHookResult = ReturnType<typeof useUpdateAddressMutation>;
-export type UpdateAddressMutationResult = Apollo.MutationResult<UpdateAddressMutation>;
-export type UpdateAddressMutationOptions = Apollo.BaseMutationOptions<UpdateAddressMutation, UpdateAddressMutationVariables>;
+export function useUpdateAddressMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateAddressMutation,
+    UpdateAddressMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateAddressMutation,
+    UpdateAddressMutationVariables
+  >(UpdateAddressDocument, options);
+}
+export type UpdateAddressMutationHookResult = ReturnType<
+  typeof useUpdateAddressMutation
+>;
+export type UpdateAddressMutationResult =
+  Apollo.MutationResult<UpdateAddressMutation>;
+export type UpdateAddressMutationOptions = Apollo.BaseMutationOptions<
+  UpdateAddressMutation,
+  UpdateAddressMutationVariables
+>;
 export const UpdateProductDocument = gql`
-    mutation UpdateProduct($id: UUID!, $product: ProductPatch!) {
-  updateProduct(input: {patch: $product, id: $id}) {
-    product {
-      id
-      ...Lite_Product
+  mutation UpdateProduct($id: UUID!, $product: ProductPatch!) {
+    updateProduct(input: { patch: $product, id: $id }) {
+      product {
+        id
+        ...Lite_Product
+      }
     }
   }
-}
-    ${Lite_ProductFragmentDoc}`;
-export type UpdateProductMutationFn = Apollo.MutationFunction<UpdateProductMutation, UpdateProductMutationVariables>;
+  ${Lite_ProductFragmentDoc}
+`;
+export type UpdateProductMutationFn = Apollo.MutationFunction<
+  UpdateProductMutation,
+  UpdateProductMutationVariables
+>;
 
 /**
  * __useUpdateProductMutation__
@@ -3895,21 +4493,254 @@ export type UpdateProductMutationFn = Apollo.MutationFunction<UpdateProductMutat
  *   },
  * });
  */
-export function useUpdateProductMutation(baseOptions?: Apollo.MutationHookOptions<UpdateProductMutation, UpdateProductMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<UpdateProductMutation, UpdateProductMutationVariables>(UpdateProductDocument, options);
-      }
-export type UpdateProductMutationHookResult = ReturnType<typeof useUpdateProductMutation>;
-export type UpdateProductMutationResult = Apollo.MutationResult<UpdateProductMutation>;
-export type UpdateProductMutationOptions = Apollo.BaseMutationOptions<UpdateProductMutation, UpdateProductMutationVariables>;
-export const CurrentUserDocument = gql`
-    query CurrentUser {
-  currentUser {
-    id
-    ...Lite_User
-  }
+export function useUpdateProductMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateProductMutation,
+    UpdateProductMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateProductMutation,
+    UpdateProductMutationVariables
+  >(UpdateProductDocument, options);
 }
-    ${Lite_UserFragmentDoc}`;
+export type UpdateProductMutationHookResult = ReturnType<
+  typeof useUpdateProductMutation
+>;
+export type UpdateProductMutationResult =
+  Apollo.MutationResult<UpdateProductMutation>;
+export type UpdateProductMutationOptions = Apollo.BaseMutationOptions<
+  UpdateProductMutation,
+  UpdateProductMutationVariables
+>;
+export const CompaniesDocument = gql`
+  query Companies {
+    companies {
+      totalCount
+      nodes {
+        id
+        name
+        user {
+          id
+          name
+          email
+        }
+        createdAt
+      }
+    }
+  }
+`;
+
+/**
+ * __useCompaniesQuery__
+ *
+ * To run a query within a React component, call `useCompaniesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCompaniesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCompaniesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useCompaniesQuery(
+  baseOptions?: Apollo.QueryHookOptions<CompaniesQuery, CompaniesQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<CompaniesQuery, CompaniesQueryVariables>(
+    CompaniesDocument,
+    options
+  );
+}
+export function useCompaniesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    CompaniesQuery,
+    CompaniesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<CompaniesQuery, CompaniesQueryVariables>(
+    CompaniesDocument,
+    options
+  );
+}
+export type CompaniesQueryHookResult = ReturnType<typeof useCompaniesQuery>;
+export type CompaniesLazyQueryHookResult = ReturnType<
+  typeof useCompaniesLazyQuery
+>;
+export type CompaniesQueryResult = Apollo.QueryResult<
+  CompaniesQuery,
+  CompaniesQueryVariables
+>;
+export const DeleteCompanyDocument = gql`
+  mutation DeleteCompany($input: DeleteCompanyInput!) {
+    deleteCompany(input: $input) {
+      clientMutationId
+      deletedCompanyNodeId
+    }
+  }
+`;
+export type DeleteCompanyMutationFn = Apollo.MutationFunction<
+  DeleteCompanyMutation,
+  DeleteCompanyMutationVariables
+>;
+
+/**
+ * __useDeleteCompanyMutation__
+ *
+ * To run a mutation, you first call `useDeleteCompanyMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteCompanyMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteCompanyMutation, { data, loading, error }] = useDeleteCompanyMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useDeleteCompanyMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    DeleteCompanyMutation,
+    DeleteCompanyMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    DeleteCompanyMutation,
+    DeleteCompanyMutationVariables
+  >(DeleteCompanyDocument, options);
+}
+export type DeleteCompanyMutationHookResult = ReturnType<
+  typeof useDeleteCompanyMutation
+>;
+export type DeleteCompanyMutationResult =
+  Apollo.MutationResult<DeleteCompanyMutation>;
+export type DeleteCompanyMutationOptions = Apollo.BaseMutationOptions<
+  DeleteCompanyMutation,
+  DeleteCompanyMutationVariables
+>;
+export const DeleteUserDocument = gql`
+  mutation DeleteUser($input: DeleteUserInput!) {
+    deleteUser(input: $input) {
+      clientMutationId
+      deletedUserNodeId
+    }
+  }
+`;
+export type DeleteUserMutationFn = Apollo.MutationFunction<
+  DeleteUserMutation,
+  DeleteUserMutationVariables
+>;
+
+/**
+ * __useDeleteUserMutation__
+ *
+ * To run a mutation, you first call `useDeleteUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteUserMutation, { data, loading, error }] = useDeleteUserMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useDeleteUserMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    DeleteUserMutation,
+    DeleteUserMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<DeleteUserMutation, DeleteUserMutationVariables>(
+    DeleteUserDocument,
+    options
+  );
+}
+export type DeleteUserMutationHookResult = ReturnType<
+  typeof useDeleteUserMutation
+>;
+export type DeleteUserMutationResult =
+  Apollo.MutationResult<DeleteUserMutation>;
+export type DeleteUserMutationOptions = Apollo.BaseMutationOptions<
+  DeleteUserMutation,
+  DeleteUserMutationVariables
+>;
+export const UsersDocument = gql`
+  query Users($filter: UserFilter) {
+    users(filter: $filter) {
+      nodes {
+        id
+        name
+        email
+        createdAt
+      }
+      totalCount
+    }
+  }
+`;
+
+/**
+ * __useUsersQuery__
+ *
+ * To run a query within a React component, call `useUsersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useUsersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useUsersQuery({
+ *   variables: {
+ *      filter: // value for 'filter'
+ *   },
+ * });
+ */
+export function useUsersQuery(
+  baseOptions?: Apollo.QueryHookOptions<UsersQuery, UsersQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<UsersQuery, UsersQueryVariables>(
+    UsersDocument,
+    options
+  );
+}
+export function useUsersLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<UsersQuery, UsersQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<UsersQuery, UsersQueryVariables>(
+    UsersDocument,
+    options
+  );
+}
+export type UsersQueryHookResult = ReturnType<typeof useUsersQuery>;
+export type UsersLazyQueryHookResult = ReturnType<typeof useUsersLazyQuery>;
+export type UsersQueryResult = Apollo.QueryResult<
+  UsersQuery,
+  UsersQueryVariables
+>;
+export const CurrentUserDocument = gql`
+  query CurrentUser {
+    currentUser {
+      id
+      ...Lite_User
+    }
+  }
+  ${Lite_UserFragmentDoc}
+`;
 
 /**
  * __useCurrentUserQuery__
@@ -3926,34 +4757,59 @@ export const CurrentUserDocument = gql`
  *   },
  * });
  */
-export function useCurrentUserQuery(baseOptions?: Apollo.QueryHookOptions<CurrentUserQuery, CurrentUserQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<CurrentUserQuery, CurrentUserQueryVariables>(CurrentUserDocument, options);
-      }
-export function useCurrentUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CurrentUserQuery, CurrentUserQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<CurrentUserQuery, CurrentUserQueryVariables>(CurrentUserDocument, options);
-        }
+export function useCurrentUserQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    CurrentUserQuery,
+    CurrentUserQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<CurrentUserQuery, CurrentUserQueryVariables>(
+    CurrentUserDocument,
+    options
+  );
+}
+export function useCurrentUserLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    CurrentUserQuery,
+    CurrentUserQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<CurrentUserQuery, CurrentUserQueryVariables>(
+    CurrentUserDocument,
+    options
+  );
+}
 export type CurrentUserQueryHookResult = ReturnType<typeof useCurrentUserQuery>;
-export type CurrentUserLazyQueryHookResult = ReturnType<typeof useCurrentUserLazyQuery>;
-export type CurrentUserQueryResult = Apollo.QueryResult<CurrentUserQuery, CurrentUserQueryVariables>;
+export type CurrentUserLazyQueryHookResult = ReturnType<
+  typeof useCurrentUserLazyQuery
+>;
+export type CurrentUserQueryResult = Apollo.QueryResult<
+  CurrentUserQuery,
+  CurrentUserQueryVariables
+>;
 export const LoginDocument = gql`
-    mutation login($input: LoginInput!) {
-  login(input: $input) {
-    token
-    user {
-      ...Lite_User
-      companies {
-        nodes {
-          ...Lite_Company
+  mutation login($input: LoginInput!) {
+    login(input: $input) {
+      token
+      user {
+        ...Lite_User
+        companies {
+          nodes {
+            ...Lite_Company
+          }
         }
       }
     }
   }
-}
-    ${Lite_UserFragmentDoc}
-${Lite_CompanyFragmentDoc}`;
-export type LoginMutationFn = Apollo.MutationFunction<LoginMutation, LoginMutationVariables>;
+  ${Lite_UserFragmentDoc}
+  ${Lite_CompanyFragmentDoc}
+`;
+export type LoginMutationFn = Apollo.MutationFunction<
+  LoginMutation,
+  LoginMutationVariables
+>;
 
 /**
  * __useLoginMutation__
@@ -3972,21 +4828,35 @@ export type LoginMutationFn = Apollo.MutationFunction<LoginMutation, LoginMutati
  *   },
  * });
  */
-export function useLoginMutation(baseOptions?: Apollo.MutationHookOptions<LoginMutation, LoginMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument, options);
-      }
+export function useLoginMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    LoginMutation,
+    LoginMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<LoginMutation, LoginMutationVariables>(
+    LoginDocument,
+    options
+  );
+}
 export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>;
 export type LoginMutationResult = Apollo.MutationResult<LoginMutation>;
-export type LoginMutationOptions = Apollo.BaseMutationOptions<LoginMutation, LoginMutationVariables>;
+export type LoginMutationOptions = Apollo.BaseMutationOptions<
+  LoginMutation,
+  LoginMutationVariables
+>;
 export const LogoutDocument = gql`
-    mutation Logout {
-  logout {
-    success
+  mutation Logout {
+    logout {
+      success
+    }
   }
-}
-    `;
-export type LogoutMutationFn = Apollo.MutationFunction<LogoutMutation, LogoutMutationVariables>;
+`;
+export type LogoutMutationFn = Apollo.MutationFunction<
+  LogoutMutation,
+  LogoutMutationVariables
+>;
 
 /**
  * __useLogoutMutation__
@@ -4004,25 +4874,40 @@ export type LogoutMutationFn = Apollo.MutationFunction<LogoutMutation, LogoutMut
  *   },
  * });
  */
-export function useLogoutMutation(baseOptions?: Apollo.MutationHookOptions<LogoutMutation, LogoutMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<LogoutMutation, LogoutMutationVariables>(LogoutDocument, options);
-      }
+export function useLogoutMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    LogoutMutation,
+    LogoutMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<LogoutMutation, LogoutMutationVariables>(
+    LogoutDocument,
+    options
+  );
+}
 export type LogoutMutationHookResult = ReturnType<typeof useLogoutMutation>;
 export type LogoutMutationResult = Apollo.MutationResult<LogoutMutation>;
-export type LogoutMutationOptions = Apollo.BaseMutationOptions<LogoutMutation, LogoutMutationVariables>;
+export type LogoutMutationOptions = Apollo.BaseMutationOptions<
+  LogoutMutation,
+  LogoutMutationVariables
+>;
 export const RegisterDocument = gql`
-    mutation Register($input: RegisterInput!) {
-  register(input: $input) {
-    token
-    user {
-      id
-      ...Lite_User
+  mutation Register($input: RegisterInput!) {
+    register(input: $input) {
+      token
+      user {
+        id
+        ...Lite_User
+      }
     }
   }
-}
-    ${Lite_UserFragmentDoc}`;
-export type RegisterMutationFn = Apollo.MutationFunction<RegisterMutation, RegisterMutationVariables>;
+  ${Lite_UserFragmentDoc}
+`;
+export type RegisterMutationFn = Apollo.MutationFunction<
+  RegisterMutation,
+  RegisterMutationVariables
+>;
 
 /**
  * __useRegisterMutation__
@@ -4041,25 +4926,40 @@ export type RegisterMutationFn = Apollo.MutationFunction<RegisterMutation, Regis
  *   },
  * });
  */
-export function useRegisterMutation(baseOptions?: Apollo.MutationHookOptions<RegisterMutation, RegisterMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<RegisterMutation, RegisterMutationVariables>(RegisterDocument, options);
-      }
+export function useRegisterMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    RegisterMutation,
+    RegisterMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<RegisterMutation, RegisterMutationVariables>(
+    RegisterDocument,
+    options
+  );
+}
 export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>;
 export type RegisterMutationResult = Apollo.MutationResult<RegisterMutation>;
-export type RegisterMutationOptions = Apollo.BaseMutationOptions<RegisterMutation, RegisterMutationVariables>;
+export type RegisterMutationOptions = Apollo.BaseMutationOptions<
+  RegisterMutation,
+  RegisterMutationVariables
+>;
 export const RegisterCompanyDocument = gql`
-    mutation RegisterCompany($input: RegisterCompanyInput!) {
-  registerCompany(input: $input) {
-    company {
-      ...Lite_Company
-      userId
+  mutation RegisterCompany($input: RegisterCompanyInput!) {
+    registerCompany(input: $input) {
+      company {
+        ...Lite_Company
+        userId
+      }
+      token
     }
-    token
   }
-}
-    ${Lite_CompanyFragmentDoc}`;
-export type RegisterCompanyMutationFn = Apollo.MutationFunction<RegisterCompanyMutation, RegisterCompanyMutationVariables>;
+  ${Lite_CompanyFragmentDoc}
+`;
+export type RegisterCompanyMutationFn = Apollo.MutationFunction<
+  RegisterCompanyMutation,
+  RegisterCompanyMutationVariables
+>;
 
 /**
  * __useRegisterCompanyMutation__
@@ -4078,26 +4978,43 @@ export type RegisterCompanyMutationFn = Apollo.MutationFunction<RegisterCompanyM
  *   },
  * });
  */
-export function useRegisterCompanyMutation(baseOptions?: Apollo.MutationHookOptions<RegisterCompanyMutation, RegisterCompanyMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<RegisterCompanyMutation, RegisterCompanyMutationVariables>(RegisterCompanyDocument, options);
-      }
-export type RegisterCompanyMutationHookResult = ReturnType<typeof useRegisterCompanyMutation>;
-export type RegisterCompanyMutationResult = Apollo.MutationResult<RegisterCompanyMutation>;
-export type RegisterCompanyMutationOptions = Apollo.BaseMutationOptions<RegisterCompanyMutation, RegisterCompanyMutationVariables>;
+export function useRegisterCompanyMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    RegisterCompanyMutation,
+    RegisterCompanyMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    RegisterCompanyMutation,
+    RegisterCompanyMutationVariables
+  >(RegisterCompanyDocument, options);
+}
+export type RegisterCompanyMutationHookResult = ReturnType<
+  typeof useRegisterCompanyMutation
+>;
+export type RegisterCompanyMutationResult =
+  Apollo.MutationResult<RegisterCompanyMutation>;
+export type RegisterCompanyMutationOptions = Apollo.BaseMutationOptions<
+  RegisterCompanyMutation,
+  RegisterCompanyMutationVariables
+>;
 export const CreateOrderDocument = gql`
-    mutation CreateOrder($input: CreateOrderInput!) {
-  createOrder(input: $input) {
-    order {
-      id
-      status
-      productId
-      userId
+  mutation CreateOrder($input: CreateOrderInput!) {
+    createOrder(input: $input) {
+      order {
+        id
+        status
+        productId
+        userId
+      }
     }
   }
-}
-    `;
-export type CreateOrderMutationFn = Apollo.MutationFunction<CreateOrderMutation, CreateOrderMutationVariables>;
+`;
+export type CreateOrderMutationFn = Apollo.MutationFunction<
+  CreateOrderMutation,
+  CreateOrderMutationVariables
+>;
 
 /**
  * __useCreateOrderMutation__
@@ -4116,22 +5033,39 @@ export type CreateOrderMutationFn = Apollo.MutationFunction<CreateOrderMutation,
  *   },
  * });
  */
-export function useCreateOrderMutation(baseOptions?: Apollo.MutationHookOptions<CreateOrderMutation, CreateOrderMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<CreateOrderMutation, CreateOrderMutationVariables>(CreateOrderDocument, options);
-      }
-export type CreateOrderMutationHookResult = ReturnType<typeof useCreateOrderMutation>;
-export type CreateOrderMutationResult = Apollo.MutationResult<CreateOrderMutation>;
-export type CreateOrderMutationOptions = Apollo.BaseMutationOptions<CreateOrderMutation, CreateOrderMutationVariables>;
-export const DeleteProductDocument = gql`
-    mutation DeleteProduct($input: DeleteProductInput!) {
-  deleteProduct(input: $input) {
-    clientMutationId
-    deletedProductNodeId
-  }
+export function useCreateOrderMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    CreateOrderMutation,
+    CreateOrderMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<CreateOrderMutation, CreateOrderMutationVariables>(
+    CreateOrderDocument,
+    options
+  );
 }
-    `;
-export type DeleteProductMutationFn = Apollo.MutationFunction<DeleteProductMutation, DeleteProductMutationVariables>;
+export type CreateOrderMutationHookResult = ReturnType<
+  typeof useCreateOrderMutation
+>;
+export type CreateOrderMutationResult =
+  Apollo.MutationResult<CreateOrderMutation>;
+export type CreateOrderMutationOptions = Apollo.BaseMutationOptions<
+  CreateOrderMutation,
+  CreateOrderMutationVariables
+>;
+export const DeleteProductDocument = gql`
+  mutation DeleteProduct($input: DeleteProductInput!) {
+    deleteProduct(input: $input) {
+      clientMutationId
+      deletedProductNodeId
+    }
+  }
+`;
+export type DeleteProductMutationFn = Apollo.MutationFunction<
+  DeleteProductMutation,
+  DeleteProductMutationVariables
+>;
 
 /**
  * __useDeleteProductMutation__
@@ -4150,38 +5084,52 @@ export type DeleteProductMutationFn = Apollo.MutationFunction<DeleteProductMutat
  *   },
  * });
  */
-export function useDeleteProductMutation(baseOptions?: Apollo.MutationHookOptions<DeleteProductMutation, DeleteProductMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<DeleteProductMutation, DeleteProductMutationVariables>(DeleteProductDocument, options);
-      }
-export type DeleteProductMutationHookResult = ReturnType<typeof useDeleteProductMutation>;
-export type DeleteProductMutationResult = Apollo.MutationResult<DeleteProductMutation>;
-export type DeleteProductMutationOptions = Apollo.BaseMutationOptions<DeleteProductMutation, DeleteProductMutationVariables>;
+export function useDeleteProductMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    DeleteProductMutation,
+    DeleteProductMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    DeleteProductMutation,
+    DeleteProductMutationVariables
+  >(DeleteProductDocument, options);
+}
+export type DeleteProductMutationHookResult = ReturnType<
+  typeof useDeleteProductMutation
+>;
+export type DeleteProductMutationResult =
+  Apollo.MutationResult<DeleteProductMutation>;
+export type DeleteProductMutationOptions = Apollo.BaseMutationOptions<
+  DeleteProductMutation,
+  DeleteProductMutationVariables
+>;
 export const OrdersDocument = gql`
-    query Orders($filter: OrderFilter) {
-  orders(filter: $filter) {
-    nodes {
-      id
-      status
-      user {
+  query Orders($filter: OrderFilter) {
+    orders(filter: $filter) {
+      nodes {
         id
-        name
-        email
-      }
-      product {
-        id
-        name
-        description
-      }
-      address {
-        address
-        id
-        contactNumber
+        status
+        user {
+          id
+          name
+          email
+        }
+        product {
+          id
+          name
+          description
+        }
+        address {
+          address
+          id
+          contactNumber
+        }
       }
     }
   }
-}
-    `;
+`;
 
 /**
  * __useOrdersQuery__
@@ -4199,26 +5147,40 @@ export const OrdersDocument = gql`
  *   },
  * });
  */
-export function useOrdersQuery(baseOptions?: Apollo.QueryHookOptions<OrdersQuery, OrdersQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<OrdersQuery, OrdersQueryVariables>(OrdersDocument, options);
-      }
-export function useOrdersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<OrdersQuery, OrdersQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<OrdersQuery, OrdersQueryVariables>(OrdersDocument, options);
-        }
+export function useOrdersQuery(
+  baseOptions?: Apollo.QueryHookOptions<OrdersQuery, OrdersQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<OrdersQuery, OrdersQueryVariables>(
+    OrdersDocument,
+    options
+  );
+}
+export function useOrdersLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<OrdersQuery, OrdersQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<OrdersQuery, OrdersQueryVariables>(
+    OrdersDocument,
+    options
+  );
+}
 export type OrdersQueryHookResult = ReturnType<typeof useOrdersQuery>;
 export type OrdersLazyQueryHookResult = ReturnType<typeof useOrdersLazyQuery>;
-export type OrdersQueryResult = Apollo.QueryResult<OrdersQuery, OrdersQueryVariables>;
+export type OrdersQueryResult = Apollo.QueryResult<
+  OrdersQuery,
+  OrdersQueryVariables
+>;
 export const ProductsDocument = gql`
-    query Products($filter: ProductFilter, $first: Int) {
-  products(filter: $filter, first: $first) {
-    nodes {
-      ...Lite_Product
+  query Products($filter: ProductFilter, $first: Int) {
+    products(filter: $filter, first: $first) {
+      nodes {
+        ...Lite_Product
+      }
     }
   }
-}
-    ${Lite_ProductFragmentDoc}`;
+  ${Lite_ProductFragmentDoc}
+`;
 
 /**
  * __useProductsQuery__
@@ -4237,30 +5199,49 @@ export const ProductsDocument = gql`
  *   },
  * });
  */
-export function useProductsQuery(baseOptions?: Apollo.QueryHookOptions<ProductsQuery, ProductsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<ProductsQuery, ProductsQueryVariables>(ProductsDocument, options);
-      }
-export function useProductsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProductsQuery, ProductsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<ProductsQuery, ProductsQueryVariables>(ProductsDocument, options);
-        }
+export function useProductsQuery(
+  baseOptions?: Apollo.QueryHookOptions<ProductsQuery, ProductsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<ProductsQuery, ProductsQueryVariables>(
+    ProductsDocument,
+    options
+  );
+}
+export function useProductsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    ProductsQuery,
+    ProductsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<ProductsQuery, ProductsQueryVariables>(
+    ProductsDocument,
+    options
+  );
+}
 export type ProductsQueryHookResult = ReturnType<typeof useProductsQuery>;
-export type ProductsLazyQueryHookResult = ReturnType<typeof useProductsLazyQuery>;
-export type ProductsQueryResult = Apollo.QueryResult<ProductsQuery, ProductsQueryVariables>;
+export type ProductsLazyQueryHookResult = ReturnType<
+  typeof useProductsLazyQuery
+>;
+export type ProductsQueryResult = Apollo.QueryResult<
+  ProductsQuery,
+  ProductsQueryVariables
+>;
 export const CompanyDocument = gql`
-    query Company($id: UUID!) {
-  company(id: $id) {
-    id
-    ...Lite_Company
-    user {
+  query Company($id: UUID!) {
+    company(id: $id) {
       id
-      ...Lite_User
+      ...Lite_Company
+      user {
+        id
+        ...Lite_User
+      }
     }
   }
-}
-    ${Lite_CompanyFragmentDoc}
-${Lite_UserFragmentDoc}`;
+  ${Lite_CompanyFragmentDoc}
+  ${Lite_UserFragmentDoc}
+`;
 
 /**
  * __useCompanyQuery__
@@ -4278,28 +5259,45 @@ ${Lite_UserFragmentDoc}`;
  *   },
  * });
  */
-export function useCompanyQuery(baseOptions: Apollo.QueryHookOptions<CompanyQuery, CompanyQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<CompanyQuery, CompanyQueryVariables>(CompanyDocument, options);
-      }
-export function useCompanyLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CompanyQuery, CompanyQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<CompanyQuery, CompanyQueryVariables>(CompanyDocument, options);
-        }
+export function useCompanyQuery(
+  baseOptions: Apollo.QueryHookOptions<CompanyQuery, CompanyQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<CompanyQuery, CompanyQueryVariables>(
+    CompanyDocument,
+    options
+  );
+}
+export function useCompanyLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<CompanyQuery, CompanyQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<CompanyQuery, CompanyQueryVariables>(
+    CompanyDocument,
+    options
+  );
+}
 export type CompanyQueryHookResult = ReturnType<typeof useCompanyQuery>;
 export type CompanyLazyQueryHookResult = ReturnType<typeof useCompanyLazyQuery>;
-export type CompanyQueryResult = Apollo.QueryResult<CompanyQuery, CompanyQueryVariables>;
+export type CompanyQueryResult = Apollo.QueryResult<
+  CompanyQuery,
+  CompanyQueryVariables
+>;
 export const UpdateCompanyDocument = gql`
-    mutation UpdateCompany($id: UUID!, $company: CompanyPatch!) {
-  updateCompany(input: {patch: $company, id: $id}) {
-    company {
-      id
-      ...Lite_Company
+  mutation UpdateCompany($id: UUID!, $company: CompanyPatch!) {
+    updateCompany(input: { patch: $company, id: $id }) {
+      company {
+        id
+        ...Lite_Company
+      }
     }
   }
-}
-    ${Lite_CompanyFragmentDoc}`;
-export type UpdateCompanyMutationFn = Apollo.MutationFunction<UpdateCompanyMutation, UpdateCompanyMutationVariables>;
+  ${Lite_CompanyFragmentDoc}
+`;
+export type UpdateCompanyMutationFn = Apollo.MutationFunction<
+  UpdateCompanyMutation,
+  UpdateCompanyMutationVariables
+>;
 
 /**
  * __useUpdateCompanyMutation__
@@ -4319,10 +5317,24 @@ export type UpdateCompanyMutationFn = Apollo.MutationFunction<UpdateCompanyMutat
  *   },
  * });
  */
-export function useUpdateCompanyMutation(baseOptions?: Apollo.MutationHookOptions<UpdateCompanyMutation, UpdateCompanyMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<UpdateCompanyMutation, UpdateCompanyMutationVariables>(UpdateCompanyDocument, options);
-      }
-export type UpdateCompanyMutationHookResult = ReturnType<typeof useUpdateCompanyMutation>;
-export type UpdateCompanyMutationResult = Apollo.MutationResult<UpdateCompanyMutation>;
-export type UpdateCompanyMutationOptions = Apollo.BaseMutationOptions<UpdateCompanyMutation, UpdateCompanyMutationVariables>;
+export function useUpdateCompanyMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateCompanyMutation,
+    UpdateCompanyMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateCompanyMutation,
+    UpdateCompanyMutationVariables
+  >(UpdateCompanyDocument, options);
+}
+export type UpdateCompanyMutationHookResult = ReturnType<
+  typeof useUpdateCompanyMutation
+>;
+export type UpdateCompanyMutationResult =
+  Apollo.MutationResult<UpdateCompanyMutation>;
+export type UpdateCompanyMutationOptions = Apollo.BaseMutationOptions<
+  UpdateCompanyMutation,
+  UpdateCompanyMutationVariables
+>;

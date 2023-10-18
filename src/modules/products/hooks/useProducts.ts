@@ -1,6 +1,10 @@
 import { useProductsQuery } from '@/generated/graphql';
 
-export const useProducts = (filters?: { slug?: any; companyId?: any; first?: number }) => {
+export const useProducts = (filters?: {
+  slug?: any;
+  companyId?: any;
+  first?: number;
+}) => {
   const { data } = useProductsQuery({
     variables: {
       filter: {

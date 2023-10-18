@@ -15,4 +15,5 @@ fragment Lite_User on User {
     name
     description
   }
+  isAdmin
 }

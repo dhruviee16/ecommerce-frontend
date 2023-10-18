@@ -13,4 +13,5 @@ fragment Lite_Product on Product {
   company {
     ...Lite_Company
   }
+  createdAt
 }

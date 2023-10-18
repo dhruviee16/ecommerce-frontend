@@ -106,9 +106,7 @@ function Footer() {
             variant="small"
             className="mb-4 text-center font-normal text-blue-gray-900 md:mb-0"
           >
-            &copy; {currentYear}{' '}
-            Arty Us. All
-            Rights Reserved.
+            &copy; {currentYear} Arty Us. All Rights Reserved.
           </Typography>
         </div>
       </div>

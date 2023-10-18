@@ -1,0 +1,15 @@
+query Companies {
+  companies {
+    totalCount
+    nodes {
+      id
+      name
+      user {
+        id
+        name
+        email
+      }
+      createdAt
+    }
+  }
+}

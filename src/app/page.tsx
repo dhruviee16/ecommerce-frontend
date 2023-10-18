@@ -1,7 +1,20 @@
+'use client';
 import HomePage from '@/components/Home/page';
 import Layout from '@/components/Layout';
-import React from 'react';
+import { useCurrentUserQuery } from '@/generated/graphql';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
-  return<Layout> <HomePage /></Layout>;
+  const router = useRouter();
+
+  const { data } = useCurrentUserQuery();
+
+  if (data?.currentUser?.isAdmin) {
+    router.replace('/admin/home');
+  }
+  return (
+    <Layout>
+      <HomePage />
+    </Layout>
+  );
 }

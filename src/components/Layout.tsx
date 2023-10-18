@@ -24,7 +24,6 @@ const Layout: React.FC<LayoutProps> = ({
   children,
   forbidWhen = AuthRestrict.NEVER,
 }) => {
-
   const forbidsLoggedIn = forbidWhen & AuthRestrict.LOGGED_IN;
   const forbidsLoggedOut = forbidWhen & AuthRestrict.LOGGED_OUT;
   const forbidsNotAdmin = forbidWhen & AuthRestrict.NOT_ADMIN;
@@ -52,7 +51,7 @@ const Layout: React.FC<LayoutProps> = ({
   return (
     <>
       <ThemeProvider>
-      <Navigation />
+        <Navigation />
         {renderChildren()}
         <Footer />
       </ThemeProvider>

@@ -172,7 +172,6 @@ export const imgUrls: ImgUrls = {
     '/image/products/12e5c375-3dc9-460f-907a-13934eaed6f7/gt12.jpeg',
     '/image/products/12e5c375-3dc9-460f-907a-13934eaed6f7/gt13.jpeg',
     '/image/products/12e5c375-3dc9-460f-907a-13934eaed6f7/gt14.jpeg',
-    
   ],
   '23a81091-108f-497c-9a2a-a239c7f1f303': [
     '/image/products/23a81091-108f-497c-9a2a-a239c7f1f303/pens1.jpg',

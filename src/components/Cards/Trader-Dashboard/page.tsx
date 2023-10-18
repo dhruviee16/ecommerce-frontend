@@ -22,7 +22,7 @@ export default function HorizontalCard({ id }: { id: string }) {
     companyId: id,
   });
 
-  const { handleDelete, data } = useDeleteProduct();
+  const { handleDelete } = useDeleteProduct();
 
   return (
     <div className="px-20 my-20 grid grid-cols-2 gap-4 w-full ">

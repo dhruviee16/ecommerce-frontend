@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 export const useCreateOrder = (id: any) => {
   const { data } = useCurrentUserQuery();
 
-  const { product } = useProduct(id)
+  const { product } = useProduct(id);
 
   const [createOrder, { data: orderData, loading, error }] =
     useCreateOrderMutation({

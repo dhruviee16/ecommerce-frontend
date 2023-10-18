@@ -67,10 +67,7 @@ const OrderSummary: React.FC<Props> = ({ id }) => {
             orientation="horizontal"
             className="border-2 border-gray-300"
           />
-          <Button
-            onClick={handleSubmit}
-            className="py-3"
-          >
+          <Button onClick={handleSubmit} className="py-3">
             Confirm Order
           </Button>
         </div>

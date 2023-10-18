@@ -9,7 +9,11 @@ type Props = {
 };
 
 const Page: React.FC<Props> = ({ params: { id } }) => {
-  return <Layout><OrderSummary id={id} /></Layout>;
+  return (
+    <Layout>
+      <OrderSummary id={id} />
+    </Layout>
+  );
 };
 
 export default Page;

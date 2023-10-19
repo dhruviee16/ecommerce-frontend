@@ -1,0 +1,8 @@
+query Order($id: UUID!) {
+  order(id: $id) {
+    id
+    status
+    productId
+    userId
+  }
+}

@@ -29,7 +29,7 @@ function HomePage() {
           </div>
         </div>
         <div className="mt-4">
-          <Link href="/categories/stationery-basics">
+          <Link href="/desk-supplies">
             <button className="bg-white text-black sm:bg-black sm:text-white py-2 px-4 border-black border-2 text-center font-medium text-sm hover:bg-white transition-colors duration-200 hover:text-black">
               SHOP NOW
             </button>
@@ -63,7 +63,7 @@ function HomePage() {
             </div>
           </div>
           <div className="mt-4">
-            <Link href="/categories/junior-art">
+            <Link href="/pencils">
               <button className="bg-white text-black sm:bg-black sm:text-white py-2 px-4 border-black border-2 text-center font-medium text-sm hover:bg-white transition-colors duration-200 hover:text-black">
                 SHOP NOW
               </button>
@@ -86,7 +86,7 @@ function HomePage() {
               </div>
             </div>
             <div className="mt-4">
-              <Link href="/categories/art-paints">
+              <Link href="/stationery-kits">
                 <button className="bg-white text-black sm:bg-black sm:text-white py-2 px-4 border-black border-2 text-center font-medium text-sm hover:bg-white transition-colors duration-200 hover:text-black">
                   SHOP NOW
                 </button>

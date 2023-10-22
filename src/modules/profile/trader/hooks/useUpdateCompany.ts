@@ -66,6 +66,7 @@ export const useUpdateCompany = (id?: string) => {
       description: company?.description,
       address: company?.address?.address,
       contactNumber: company?.address?.contactNumber,
+      companyName: company?.name,
     },
     {
       assert: false,

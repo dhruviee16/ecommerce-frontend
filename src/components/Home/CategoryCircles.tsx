@@ -5,7 +5,7 @@ const Categories = [
   {
     id: 1,
     name: 'acrylic colors',
-    href: '/acrylic-Color',
+    href: '/acrylic-colors',
     imageSrc: '/image/HomeImages/ResinCircle.jpg',
     imageAlt: 'colors',
   },
@@ -33,14 +33,14 @@ const Categories = [
   {
     id: 5,
     name: 'Crayons',
-    href: '/Crayons',
+    href: '/crayon-colors',
     imageSrc: '/image/HomeImages/crayonsCircle.jpg',
     imageAlt: 'Crayons',
   },
   {
     id: 6,
     name: 'Geometric tools',
-    href: '/geometric tools',
+    href: '/geometric-tools',
     imageSrc: '/image/HomeImages/SchoolSuppliesCircle.jpg',
     imageAlt: 'Geometric tools',
   },

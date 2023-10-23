@@ -52,6 +52,7 @@ export const useProductForm = (id?: string) => {
         variables: {
           id,
           product: {
+            name: sanitizedInput.name,
             description: sanitizedInput.description,
             quantity: sanitizedInput.quantity,
             price: sanitizedInput.price,

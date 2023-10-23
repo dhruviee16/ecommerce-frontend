@@ -28,6 +28,7 @@ const EditProducts = ({ id }: { id: string }) => {
           {({ isValid }: any) => (
             <Form className="mt-4 mb-2 w-full ">
               <div className=" flex flex-col gap-4">
+                <FormFieldLayout label="Product Name " name="name" />
                 <FormFieldLayout label="QTY " name="quantity" />
                 <FormFieldLayout label="Price" name="price" />
                 <FormFieldLayout label="Description" name="description" />

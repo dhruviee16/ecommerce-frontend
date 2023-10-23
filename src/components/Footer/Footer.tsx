@@ -24,23 +24,23 @@ const LINKS = [
     items: [
       {
         title: 'acrylic colors',
-        link: '/categories/acrylic-colors',
+        link: '/acrylic-colors',
       },
       {
         title: 'stationery kits',
-        link: '/categories/Stationery-kits',
+        link: '/Stationery-kits',
       },
       {
         title: 'vintage diaries',
-        link: '/categories/vintage-diaries',
+        link: '/vintage-diaries',
       },
       {
-        title: 'cute stationery',
-        link: '/categories/cute-stationery',
+        title: 'customized planners',
+        link: '/customized-planners',
       },
       {
         title: 'desk supplies',
-        link: '/categories/desk-supplies',
+        link: '/desk-supplies',
       },
     ],
   },

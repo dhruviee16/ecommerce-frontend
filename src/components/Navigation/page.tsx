@@ -37,7 +37,7 @@ const navigation = {
           items: [
             { name: 'Pencils' },
             { name: 'Pens' },
-            { name: 'Sharpners' },
+            { name: 'Sharpeners' },
             { name: 'Erasers' },
             { name: 'Geometric Tools' },
             { name: 'Exam Boards' },
@@ -54,7 +54,7 @@ const navigation = {
             { name: 'Crayon Colors' },
             { name: 'Poster Colors' },
             { name: 'Sketch Pens' },
-            { name: 'Markers and Highlighters ' },
+            { name: 'Markers and Highlighters' },
             { name: 'Color Palette' },
             { name: 'Paint Brushes' },
           ],
@@ -154,7 +154,7 @@ const navigation = {
           imageAlt: 'Stationery Hamper',
         },
         {
-          name: 'Art-Craft Hamper',
+          name: 'Art-and-Craft Hamper',
           href: '#',
           imageSrc: '/image/navbarImages/hamper2.jpg',
           imageAlt: 'Art & Craft Hamper',
@@ -164,7 +164,7 @@ const navigation = {
         {
           id: 'essential kits',
           name: 'essential kits',
-          items: [{ name: 'Stationery kits' }, { name: 'Art-Craft kits' }],
+          items: [{ name: 'Stationery kits' }, { name: 'Art-and-Craft kits' }],
         },
       ],
     },
@@ -358,8 +358,9 @@ function Navigation() {
                 </Link>
               </div>
               {isLoggedin ? (
-                <div className="font-bold absolute left-[75vw] top-6">
-                  Hello {data.currentUser?.name} !
+                <div className="font-bold absolute left-[70vw] top-6">
+                  Hello{" "}
+                  <span>{data.currentUser?.name} !</span>
                 </div>
               ) : null}
               {/* Flyout menus */}

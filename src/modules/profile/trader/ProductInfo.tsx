@@ -28,7 +28,7 @@ const ProductInfo = () => {
                 <div className="flex flex-row gap-x-3 ">Add Product</div>
               </Button>
             </AlertDialogTrigger>
-            <AlertDialogContent className="">
+            <AlertDialogContent>
               <AddProduct />
             </AlertDialogContent>
           </AlertDialog>

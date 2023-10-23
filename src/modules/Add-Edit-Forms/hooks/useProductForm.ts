@@ -67,8 +67,6 @@ export const useProductForm = (id?: string) => {
     });
   };
 
-  console.log(product);
-
   const initialValues = productSchema.cast(
     {
       product,

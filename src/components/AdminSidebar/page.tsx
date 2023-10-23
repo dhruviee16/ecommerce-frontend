@@ -3,14 +3,12 @@ import { useLogout } from '@/modules/auth/hooks';
 import classNames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
-import Logo from 'public/Arty-US_logo.png';
-import SmallLogo from 'public/Arty-US_logo.png';
+import { default as Logo, default as SmallLogo } from 'public/Arty-US_logo.png';
 import { useState } from 'react';
 import { AiOutlineHome } from 'react-icons/ai';
 import { FiShoppingCart } from 'react-icons/fi';
 import { IoMdLogOut } from 'react-icons/io';
 import { PiUserSwitchDuotone } from 'react-icons/pi';
-import { TbLayoutSidebarLeftCollapseFilled } from 'react-icons/tb';
 
 const menuItems = [
   {

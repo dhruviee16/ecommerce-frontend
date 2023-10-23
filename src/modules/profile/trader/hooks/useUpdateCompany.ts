@@ -22,7 +22,7 @@ export const useUpdateCompany = (id?: string) => {
   });
 
   const handleSubmit = (input: any) => {
-    const { description, address, contactNumber } = TraderRegisterSchema.omit([
+    const { description, shopAddress:address, shopContactNumber: contactNumber } = TraderRegisterSchema.omit([
       'companyName',
       'confirmPassword',
       'email',
@@ -54,32 +54,35 @@ export const useUpdateCompany = (id?: string) => {
   };
 
   const initialValues = TraderRegisterSchema.omit([
-    'companyName',
     'confirmPassword',
     'email',
     'id',
     'name',
     'password',
+    'address',
+    'contactNumber',
   ]).cast(
     {
       company,
       description: company?.description,
-      address: company?.address?.address,
-      contactNumber: company?.address?.contactNumber,
+      companyName: company?.name,
+      shopAddress: company?.address?.address,
+      shopContactNumber: company?.address?.contactNumber,
     },
     {
       assert: false,
-      stripUnknown: true,
+      stripUnknown: false,
     }
   );
 
   const validationSchema = TraderRegisterSchema.omit([
-    'companyName',
     'confirmPassword',
     'email',
     'id',
     'name',
     'password',
+    'address',
+    'contactNumber',
   ]);
 
   return {

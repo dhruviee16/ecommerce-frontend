@@ -276,6 +276,7 @@ function Navigation() {
                               <Link
                                 href={item.href}
                                 className="mt-6 block font-medium text-gray-900"
+                                prefetch
                               >
                                 <span
                                   className="absolute inset-0 z-10"
@@ -306,6 +307,7 @@ function Navigation() {
                                       .replaceAll(' ', '-')
                                       .toLowerCase()}`}
                                     className="-m-2 block p-2 text-gray-500"
+                                    prefetch
                                   >
                                     {item.name}
                                   </Link>
@@ -351,7 +353,7 @@ function Navigation() {
               </button>
               {/* Logo */}
               <div className="ml-4 flex lg:ml-0">
-                <Link href="/">
+                <Link href="/" prefetch>
                   <Image src={logo} alt="" height={140} width={140} />
                 </Link>
               </div>
@@ -417,6 +419,7 @@ function Navigation() {
                                           <Link
                                             href={item.href}
                                             className="mt-6 block font-medium text-gray-900"
+                                            prefetch
                                           >
                                             <span
                                               className="absolute inset-0 z-10"
@@ -452,6 +455,7 @@ function Navigation() {
                                                     .toLowerCase()}`}
                                                   // href={'/Products/Boots'}
                                                   className="hover:text-gray-800"
+                                                  prefetch
                                                 >
                                                   {item.name}
                                                 </Link>
@@ -501,6 +505,7 @@ function Navigation() {
                                   <Link
                                     href="/auth/SignIn"
                                     className="font-semibold text-gray-900"
+                                    prefetch
                                   >
                                     Login
                                     <span className="absolute inset-0" />
@@ -512,6 +517,7 @@ function Navigation() {
                                   <Link
                                     href="/auth/BecomeTrader"
                                     className="font-semibold text-gray-900"
+                                    prefetch
                                   >
                                     Become A Trader
                                     <span className="absolute inset-0" />
@@ -528,6 +534,7 @@ function Navigation() {
                                   <Link
                                     href="/profile/user"
                                     className="font-semibold text-gray-900"
+                                    prefetch
                                   >
                                     My Profile
                                     <span className="absolute inset-0" />
@@ -540,6 +547,7 @@ function Navigation() {
                                     <Link
                                       href="/profile/trader"
                                       className="font-semibold text-gray-900"
+                                      prefetch
                                     >
                                       Trader Profile
                                       <span className="absolute inset-0" />

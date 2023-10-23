@@ -12,8 +12,8 @@ export const useOrders = (filters?: any) => {
           },
           {
             product: {
-              categoryId: {
-                equalTo: filters?.categoryId || null,
+              companyId: {
+                equalTo: filters?.companyId || null,
               },
             },
           },

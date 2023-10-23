@@ -2,6 +2,7 @@
 
 import { FormFieldLayout, FormLayout } from '@/components/forms';
 import {
+  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogFooter,
 } from '@/components/ui/alert-dialog';
@@ -33,14 +34,14 @@ const EditProfile = ({ id }: { id: string }) => {
                   name="companyName"
                   isDisabled
                 />
-                <FormFieldLayout label="Contact" name="contactNumber" />
-                <FormFieldLayout label="Address" name="address" />
+                <FormFieldLayout label="Contact" name="shopContactNumber" />
+                <FormFieldLayout label="Address" name="shopAddress" />
                 <FormFieldLayout label="Description" name="description" />
                 <AlertDialogFooter>
                   <AlertDialogCancel className="w-full">
                     Cancel
                   </AlertDialogCancel>
-                  {/* <AlertDialogAction className="w-full bg-black text-white "> */}
+                  <AlertDialogAction className="w-full bg-transparent">
                   <Button
                     className="w-full"
                     type="submit"
@@ -48,7 +49,7 @@ const EditProfile = ({ id }: { id: string }) => {
                   >
                     Update
                   </Button>
-                  {/* </AlertDialogAction> */}
+                  </AlertDialogAction>
                 </AlertDialogFooter>
               </div>
             </Form>

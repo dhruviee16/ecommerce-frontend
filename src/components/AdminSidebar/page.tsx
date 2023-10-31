@@ -5,28 +5,29 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { default as Logo, default as SmallLogo } from 'public/Arty-US_logo.png';
 import { useState } from 'react';
-import { AiOutlineHome } from 'react-icons/ai';
+import { AiOutlineShop } from 'react-icons/ai';
 import { FiShoppingCart } from 'react-icons/fi';
 import { IoMdLogOut } from 'react-icons/io';
 import { PiUserSwitchDuotone } from 'react-icons/pi';
+import { RiProductHuntLine } from 'react-icons/ri';
 
 const menuItems = [
   {
     id: 1,
     label: 'Manage Users',
-    icon: AiOutlineHome,
+    icon: PiUserSwitchDuotone,
     link: '/admin/manage-users',
   },
   {
     id: 2,
     label: 'Manage Traders',
-    icon: PiUserSwitchDuotone,
+    icon: AiOutlineShop,
     link: '/admin/manage-traders',
   },
   {
     id: 3,
     label: 'Manage Products',
-    icon: FiShoppingCart,
+    icon: RiProductHuntLine,
     link: '/admin/manage-products',
   },
   {
@@ -62,13 +63,6 @@ const Sidebar = () => {
     }
   );
 
-  const collapseIconClasses = classNames(
-    'p-4 rounded bg-light-lighter absolute right-0',
-    {
-      'rotate-180 mt-20': toggleCollapse,
-    }
-  );
-
   const getNavItemClasses = () => {
     return classNames(
       'flex items-center cursor-pointer hover:bg-light-lighter rounded w-full overflow-hidden whitespace-nowrap',
@@ -78,10 +72,6 @@ const Sidebar = () => {
 
   const onMouseOver = () => {
     setIsCollapsible(!isCollapsible);
-  };
-
-  const handleSidebarToggle = () => {
-    setToggleCollapse(!toggleCollapse);
   };
 
   return (

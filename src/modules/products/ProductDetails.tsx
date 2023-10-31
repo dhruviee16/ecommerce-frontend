@@ -48,7 +48,10 @@ const ProductDetails: React.FC<Props> = ({ slug }) => {
           <div className="mt-4 lg:row-span-3 lg:mt-0">
             <h2 className="sr-only">Product information</h2>
             <p className="text-3xl tracking-tight text-gray-900">{product.price}</p> */}
-
+              <h2 className="">QTY</h2>
+              <p className="text-sml tracking-tight text-gray-900">
+                {product?.quantity}
+              </p>
               <Button className="mt-4 px-6">
                 <Link href={`/OrderSummary/${product?.id}`}>BUY NOW</Link>
               </Button>

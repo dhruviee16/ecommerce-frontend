@@ -1,9 +1,8 @@
-import { UpdateAddressByCompanyIdInput } from './../../../../generated/graphql';
 import { useUpdateCompanyMutation } from '@/generated/graphql';
-import toast from 'react-hot-toast';
-import { useRouter } from 'next/navigation';
-import { useCompany } from './useCompany';
 import { TraderRegisterSchema } from '@/modules/auth/schema/traderRegisterSchema';
+import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
+import { useCompany } from './useCompany';
 
 export const useUpdateCompany = (id?: string) => {
   const router = useRouter();

@@ -6,8 +6,11 @@ import poster from 'public/image/HomeImages/vector19.png';
 import banner from 'public/image/HomeImages/vector6.jpg';
 import CategoryCircles from './CategoryCircles';
 import HomeProducts1 from './HomeProducts';
+import { useCurrentUserQuery } from '@/generated/graphql';
 
 function HomePage() {
+  const { data } = useCurrentUserQuery();
+
   return (
     <>
       <div className="">
@@ -107,11 +110,19 @@ function HomePage() {
               <div className="text-center md:text-start text-xl md:text-xl">
                 CURATING CREATIVITY THROUGH OUR ARTFUL SUPPLIES
                 {/* <div className="mt-4"> */}
-                <Link href="/auth/BecomeTrader">
-                  <button className="bg-white text-black sm:bg-black sm:text-white py-2 px-4 border-black border-2 text-center font-medium text-sm hover:bg-white transition-colors duration-200 hover:text-black ml-4">
-                    JOIN NOW
-                  </button>
-                </Link>
+                {data?.currentUser ? (
+                  <Link href="/journals">
+                    <button className="bg-white text-black sm:bg-black sm:text-white py-2 px-4 border-black border-2 text-center font-medium text-sm hover:bg-white transition-colors duration-200 hover:text-black ml-4">
+                      SHOP NOW
+                    </button>
+                  </Link>
+                ) : (
+                  <Link href="/auth/BecomeTrader">
+                    <button className="bg-white text-black sm:bg-black sm:text-white py-2 px-4 border-black border-2 text-center font-medium text-sm hover:bg-white transition-colors duration-200 hover:text-black ml-4">
+                      JOIN NOW
+                    </button>
+                  </Link>
+                )}
                 {/* </div> */}
               </div>
             </div>

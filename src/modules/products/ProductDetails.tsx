@@ -3,6 +3,8 @@ import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useProduct } from '../Add-Edit-Forms/hooks/useProduct';
+import {FaShop} from 'react-icons/fa6'
+import {MdDescription} from 'react-icons/md'
 
 interface Props {
   slug: string;
@@ -32,6 +34,7 @@ const ProductDetails: React.FC<Props> = ({ slug }) => {
                 {product?.name.toUpperCase()}
               </h1>
             </div>
+            
 
             {/* Options */}
             <div className="mt-4 lg:row-span-3 lg:mt-0">
@@ -54,19 +57,22 @@ const ProductDetails: React.FC<Props> = ({ slug }) => {
             <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
               {/* Description and details */}
               <div>
-                <h3 className="sr-only">Description</h3>
 
                 <div className="space-y-6">
+                  <p className="text-lg text-gray-900">
+                    {product?.company?.name}
+                  </p>
                   <p className="text-base text-gray-900">
-                    {product?.category?.description}
+                  <h3 className="font-bold">Description</h3>
+                  {product?.category?.description}
                   </p>
                 </div>
               </div>
 
               <div className="mt-10">
-                <h2 className="text-sm font-medium text-gray-900">Details</h2>
+                <h3 className="font-bold">Details</h3>
 
-                <div className="mt-4 space-y-6">
+                <div className=" space-y-6">
                   <p className="text-sm text-gray-600">
                     {product?.description}
                   </p>

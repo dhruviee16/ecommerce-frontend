@@ -3,9 +3,13 @@ import {
   useCurrentUserQuery,
 } from '@/generated/graphql';
 import { useProduct } from '@/modules/Add-Edit-Forms/hooks/useProduct';
+import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 
 export const useCreateOrder = (id: any) => {
+
+  const router = useRouter()
+
   const { data } = useCurrentUserQuery();
 
   const { product } = useProduct(id);
@@ -14,6 +18,7 @@ export const useCreateOrder = (id: any) => {
     useCreateOrderMutation({
       onCompleted(data) {
         toast.success('Order created successfully');
+        router.replace('/profile/user')
       },
       onError(error) {
         toast.error('Error in order ' + error.message);

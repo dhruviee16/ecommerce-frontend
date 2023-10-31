@@ -18,11 +18,11 @@ const ManageUsers = (props: Props) => {
   return (
     <div className="h-screen flex flex-row justify-start">
       <AdminSidebar />
-      <div className="bg-blue-gray-100 justify-center flex-1 text-black">
+      <div className="bg-gray-200 justify-center flex-1 text-black">
         <div className="text-center text-black text-3xl font-bold m-4 ">
           Manage Products
         </div>
-        <div className="m-6 bg-blue-gray-100">
+        <div className="m-6 bg-gray-100">
           <Card className="h-full w-full">
             <table className="w-full min-w-max table-auto text-left">
               <thead>
@@ -30,12 +30,12 @@ const ManageUsers = (props: Props) => {
                   {TABLE_HEAD.map((head) => (
                     <th
                       key={head}
-                      className="border-b border-blue-gray-100 bg-blue-gray-50 p-4"
+                      className="border-b border-gray-100 bg-blue-gray-100 p-4"
                     >
                       <Typography
                         variant="small"
-                        color="blue-gray"
-                        className="font-normal leading-none opacity-70 "
+                        color="black"
+                        className="font-bold leading-none opacity-70 "
                       >
                         {head}
                       </Typography>

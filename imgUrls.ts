@@ -47,7 +47,6 @@ export const imgUrls: ImgUrls = {
   '3e7d098e-e82e-4fcd-acd3-762070dcdf6d': [
     '/image/products/3e7d098e-e82e-4fcd-acd3-762070dcdf6d/pb1.jpeg',
     '/image/products/3e7d098e-e82e-4fcd-acd3-762070dcdf6d/pb2.jpeg',
-    '/image/products/3e7d098e-e82e-4fcd-acd3-762070dcdf6d/pb3.jpeg',
     '/image/products/3e7d098e-e82e-4fcd-acd3-762070dcdf6d/pb4.jpeg',
     '/image/products/3e7d098e-e82e-4fcd-acd3-762070dcdf6d/pb5.jpeg',
     '/image/products/3e7d098e-e82e-4fcd-acd3-762070dcdf6d/pb6.jpeg',

@@ -47,7 +47,7 @@ const ProductsList: React.FC<Props> = ({ slug }) => {
                     </h3>
                   </div>
                   <p className="text-sm font-medium text-gray-900">
-                    {product.price}
+                    <span>Rs. </span>{product.price}
                   </p>
                 </div>
               </div>

@@ -38,7 +38,7 @@ export default function Order() {
                   scope="col"
                   className="border-b border-gray-200 bg-white  px-5 py-3 text-left  text-sm font-normal uppercase text-gray-800"
                 >
-                  Address
+                  Created at
                 </th>
                 <th
                   scope="col"
@@ -68,7 +68,7 @@ export default function Order() {
                     </td>
                     <td className="border-b border-gray-200 bg-white p-5 text-sm">
                       <p className="whitespace-nowrap text-gray-900">
-                        {order.address?.address}
+                        {order.createdAt}
                       </p>
                     </td>
                      <td className="border-b border-gray-200 bg-white p-5 text-sm">

@@ -28,7 +28,7 @@ const LINKS = [
       },
       {
         title: 'stationery kits',
-        link: '/Stationery-kits',
+        link: '/stationery-kits',
       },
       {
         title: 'vintage diaries',
@@ -36,7 +36,7 @@ const LINKS = [
       },
       {
         title: 'customized planners',
-        link: '/customized-planners',
+        link: '/customized-planner',
       },
       {
         title: 'desk supplies',

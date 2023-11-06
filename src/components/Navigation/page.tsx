@@ -520,7 +520,7 @@ function Navigation() {
                                     className="font-semibold text-gray-900"
                                     prefetch
                                   >
-                                    Become A Trader
+                                    Become An Artisan
                                     <span className="absolute inset-0" />
                                   </Link>
                                 </div>

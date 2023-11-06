@@ -38,6 +38,7 @@ function HomeProducts() {
                     <p className="mt-1 text-sm text-gray-500"></p>
                   </div>
                   <p className="text-sm font-medium text-gray-900">
+                    <span>Rs. </span>
                     {product.price}
                   </p>
                 </div>

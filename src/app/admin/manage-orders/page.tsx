@@ -1,5 +1,4 @@
-import { ManageOrders } from '@/modules/Admin/ManageOrders';
-import { ManageProducts } from '@/modules/Admin/ManageProducts';
+import { ManageOrders } from '@/modules/dashboard/Admin/ManageOrders';
 import React from 'react';
 
 type Props = {};

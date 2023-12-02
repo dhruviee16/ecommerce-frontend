@@ -1,4 +1,4 @@
-import { ManageUsers } from '@/modules/Admin/ManageUsers';
+import { ManageUsers } from '@/modules/dashboard/Admin/ManageUsers';
 import React from 'react';
 
 type Props = {};

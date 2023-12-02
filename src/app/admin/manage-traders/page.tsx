@@ -1,4 +1,4 @@
-import { ManageTraders } from '@/modules/Admin/ManageTraders';
+import { ManageTraders } from '@/modules/dashboard/Admin/ManageTraders';
 import React from 'react';
 
 type Props = {};

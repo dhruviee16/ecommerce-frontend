@@ -1,5 +1,4 @@
-import Layout from '@/components/Layout';
-import { useProduct } from '@/modules/Add-Edit-Forms/hooks/useProduct';
+import { Layout } from '@/components/Layout';
 import { ProductDetails } from '@/modules/products';
 import React from 'react';
 

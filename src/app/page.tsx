@@ -1,10 +1,10 @@
 'use client';
-import HomePage from '@/components/Home/page';
-import Layout from '@/components/Layout';
+import { Layout } from '@/components/Layout';
 import { useCurrentUserQuery } from '@/generated/graphql';
+import { HomePage } from '@/modules/Home';
 import { useRouter } from 'next/navigation';
 
-export default function Home() {
+export default function Page() {
   const router = useRouter();
 
   const { data } = useCurrentUserQuery();

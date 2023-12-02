@@ -1,6 +1,5 @@
-import Layout from '@/components/Layout';
+import { Layout } from '@/components/Layout';
 import { ProductsList } from '@/modules/products';
-import { useProducts } from '@/modules/products/hooks/useProducts';
 
 type Props = {
   params: {
@@ -8,9 +7,6 @@ type Props = {
   };
 };
 
-//const page = ({ params }: { params: { categoryId: string } }) => {
-
-//const { categoryId } = params;
 
 const Products: React.FC<Props> = ({ params }) => {
   const { slug } = params;
@@ -26,6 +22,3 @@ const Products: React.FC<Props> = ({ params }) => {
 
 export default Products;
 
-//localhost/categoryId/sectionId/itemsId/productId
-//{ categoryId: string,sectionId: string, itemId: string }
-//<div className="flex justify-center  mt-[5%] text-4xl font-semibold text-black">{categoryId}</div>

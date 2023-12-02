@@ -1,4 +1,4 @@
-import Layout from '@/components/Layout';
+import { Layout } from '@/components/Layout';
 import { Aboutus } from '@/modules/aboutus';
 
 export default function Page() {

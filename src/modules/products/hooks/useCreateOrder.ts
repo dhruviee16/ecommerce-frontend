@@ -2,9 +2,9 @@ import {
   useCreateOrderMutation,
   useCurrentUserQuery,
 } from '@/generated/graphql';
-import { useProduct } from '@/modules/Add-Edit-Forms/hooks/useProduct';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
+import { useProduct } from './useProduct';
 
 export const useCreateOrder = (id: any) => {
 

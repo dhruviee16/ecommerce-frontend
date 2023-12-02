@@ -2,9 +2,7 @@
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useProduct } from '../Add-Edit-Forms/hooks/useProduct';
-import {FaShop} from 'react-icons/fa6'
-import {MdDescription} from 'react-icons/md'
+import { useProduct } from './hooks/useProduct';
 
 interface Props {
   slug: string;
@@ -50,7 +48,7 @@ const ProductDetails: React.FC<Props> = ({ slug }) => {
             <p className="text-3xl tracking-tight text-gray-900">{product.price}</p> */}
               
               <Button className="mt-4 px-6">
-                <Link href={`/OrderSummary/${product?.id}`}>BUY NOW</Link>
+                <Link href={`/checkout/${product?.id}`}>BUY NOW</Link>
               </Button>
             </div>
 

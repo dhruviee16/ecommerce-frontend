@@ -1,11 +1,10 @@
-import Layout from '@/components/Layout';
-import Profile from '@/modules/profile/user/Profile';
+import { Layout } from '@/components/Layout';
+import { UserProfile } from '@/modules/dashboard/user';
 
 const page = () => {
   return (
     <Layout>
-      {' '}
-      <Profile />
+      <UserProfile />
     </Layout>
   );
 };

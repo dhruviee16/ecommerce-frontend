@@ -1,5 +1,5 @@
-import Layout from '@/components/Layout';
-import { TraderProfile } from '@/modules/profile/trader';
+import { Layout } from '@/components/Layout';
+import { TraderProfile } from '@/modules/dashboard/trader';
 
 const page = () => {
   return (
